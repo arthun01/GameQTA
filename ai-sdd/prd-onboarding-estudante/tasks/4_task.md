@@ -23,11 +23,11 @@ Ver `ai-sdd/prd-onboarding-estudante/design.md`. Telas desta task:
 
 ## Subtarefas
 
-- [ ] 4.1 Converter o Artboard 3 (`5G-0`) para `.html.erb` no `dashboard/index.html.erb`.
-- [ ] 4.2 Configurar o laço de repetição `@levels.each` na view.
-- [ ] 4.3 Aplicar a lógica condicional: `if level.starting_level?` renderiza o layout verde com "Jogar". Senão (`else`), renderiza o card cinza com cadeado.
-- [ ] 4.4 Inserir o HTML do Artboard 4 (`5H-0`) oculto por padrão (Modal/Bottom Sheet).
-- [ ] 4.5 Escrever um pequeno controller Stimulus (ex: `modal_controller.js`) ou usar Data Attributes (`<details>`) nativos para que, ao clicar no Nível Bloqueado, o Modal exiba a iteração (`level.themes.each`) daqueles temas.
+- [x] 4.1 Converter o Artboard 3 (`5G-0`) para `.html.erb` no `dashboard/index.html.erb`.
+- [x] 4.2 Configurar o laço de repetição `@levels.each` na view.
+- [x] 4.3 Aplicar a lógica condicional: `if level.starting_level?` renderiza o layout verde com "Jogar". Senão (`else`), renderiza o card cinza com cadeado.
+- [x] 4.4 Inserir o HTML do Artboard 4 (`5H-0`) oculto por padrão (Modal/Bottom Sheet).
+- [x] 4.5 Escrever um pequeno controller Stimulus (ex: `modal_controller.js`) ou usar Data Attributes (`<details>`) nativos para que, ao clicar no Nível Bloqueado, o Modal exiba a iteração (`level.themes.each`) daqueles temas.
 
 ## Detalhes de Implementação
 
@@ -36,17 +36,17 @@ Ver `ai-sdd/prd-onboarding-estudante/design.md`. Telas desta task:
 
 ## Critérios de Sucesso
 
-- [ ] A tela exibe N níveis idênticos ao cadastrado pelo Admin na Fase 1.
-- [ ] O visual condiz estritamente com os design system definidos no Paper (cores, padding, ícones).
-- [ ] Um Nível bloqueado não redireciona para lugar nenhum, apenas levanta a aba para mostrar os temas.
-- [ ] Todos os testes E2E passando.
+- [x] A tela exibe N níveis idênticos ao cadastrado pelo Admin na Fase 1.
+- [x] O visual condiz estritamente com os design system definidos no Paper (cores, padding, ícones).
+- [x] Um Nível bloqueado não redireciona para lugar nenhum, apenas levanta a aba para mostrar os temas.
+- [x] Todos os testes E2E passando.
 
 ## Testes
 
 > **Obrigatório**: Crie e execute todos os testes antes de considerar a tarefa finalizada.
 
 ### Testes E2E (Capybara)
-- [ ] `DashboardSystemTest`: Realizar login como Aluno válido, visualizar que o Nível 1 tem o botão de Play, e clicar no Nível 2 bloqueado verificando a aparição do modal contendo pelo menos o nome de 1 tema lá dentro.
+- [x] `DashboardSystemTest`: Realizar login como Aluno válido, visualizar que o Nível 1 tem o botão de Play, e clicar no Nível 2 bloqueado verificando a aparição do modal contendo pelo menos o nome de 1 tema lá dentro.
 
 ## Arquivos Relevantes
 

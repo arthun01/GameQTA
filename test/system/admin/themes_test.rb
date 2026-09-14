@@ -34,7 +34,7 @@ class Admin::ThemesSystemTest < ApplicationSystemTestCase
     visit admin_level_themes_url(@level)
 
     click_on "Novo Tema"
-    assert_text "Novo Tema"
+    assert_current_path new_admin_level_theme_path(@level)
 
     fill_in "theme[name]", with: "Tema Avançado"
     fill_in "theme[description]", with: "Desc muito legal"

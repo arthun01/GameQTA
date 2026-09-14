@@ -31,4 +31,16 @@ class LevelTest < ActiveSupport::TestCase
     assert first_level.starting_level?
     assert_not second_level.starting_level?
   end
+
+  test "starting_level? shifts to the next oldest level if the first is deleted" do
+    first_level = Level.order(:id).first
+    second_level = Level.order(:id).second
+
+    # We need to simulate destroying first_level. But first_level has themes in fixtures.
+    # Let's delete the themes first to allow level deletion.
+    first_level.themes.destroy_all
+    first_level.destroy
+
+    assert second_level.starting_level?
+  end
 end

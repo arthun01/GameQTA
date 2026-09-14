@@ -31,6 +31,15 @@ pt-BR:
         submit: Começar a jogar!
         has_account: Já tem uma conta?
         login_link: Entre aqui
+  dashboard:
+    index:
+      title: Sua Jornada
+      subtitle: Explore o mapa do Game QTA e conquiste os níveis.
+      play: Jogar
+      locked_message: Alcance 70% de acertos no nível anterior para liberar.
+      themes_preview: O que vem por aí
+      no_themes: Nenhum tema adicionado ainda.
+      empty_levels: Nenhum nível disponível no momento.
   admin:
     app_name: Painel Admin
     shared:

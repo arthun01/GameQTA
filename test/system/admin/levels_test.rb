@@ -48,10 +48,13 @@ class Admin::LevelsSystemTest < ApplicationSystemTestCase
   end
 
   test "destroying a Level" do
+    empty_level = Level.create!(name: "Nível Vazio", description: "Sem temas", icon: "🌱")
     visit admin_levels_url
 
-    accept_confirm do
-      first("button", text: "Excluir").click
+    within(find(".group", text: empty_level.name)) do
+      accept_confirm do
+        click_on "Excluir"
+      end
     end
 
     assert_text "Nível removido com sucesso."
