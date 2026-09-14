@@ -35,15 +35,14 @@ O ecossistema é dividido em duas frentes complementares:
   - [x] **Tarefa 3.0:** Modelo e CRUD de Temas (Navegação Drill-down a partir do Nível, restrições em cascata).
   - [x] **Tarefa 4.0:** Motor e Banco de Dados de Questões (Validação rigorosa de apenas 1 opção correta no BD).
   - [x] **Tarefa 5.0:** Formulário Frontend de Questões (Campos dinâmicos com JS Stimulus e inclusão de embeds de vídeo).
-- **Fase 2 — Onboarding e Interface do Estudante (Em Progresso):**
+- **Fase 2 — Onboarding e Interface do Estudante (100% Concluído):**
   - [x] **Tarefa 1.0:** Modelo `User`, `UserSession` e Enum de Escolaridade.
   - [x] **Tarefa 2.0:** Layout Mobile-First, Autenticação Isolada e Telas de Cadastro (`/cadastrar`) e Login (`/entrar`).
+  - [x] **Tarefa 3.0:** Motor de Progresso Base (Backend de Níveis).
+  - [x] **Tarefa 4.0:** Lobby do Jogador (Frontend da Trilha de Níveis e Teaser de Temas Bloqueados).
 
 ### 🚧 O que NÃO TEMOS (O que precisa ser feito)
 
-- [ ] **Fase 2 (Conclusão):**
-  - [ ] **Tarefa 3.0:** Motor de Progresso Base (Backend de Níveis).
-  - [ ] **Tarefa 4.0:** Lobby do Jogador (Frontend da Trilha de Níveis e Teaser de Temas Bloqueados).
 - [ ] **Fase 3:** Gameplay e Motor de Progressão (Telas de vídeo, cronômetro de resolução, validação de 70% de acerto).
 - [ ] **Fase 4:** Gamificação e Competição (Cálculo de Ranking Global unindo acertos e tempo de resolução).
 - [ ] **Fase 5:** Inteligência Analítica e Moderação (Dashboards demográficos, exportações e controle da comunidade).
