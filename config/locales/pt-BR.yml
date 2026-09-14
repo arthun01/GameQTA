@@ -43,6 +43,9 @@ pt-BR:
       theme:
         one: "Tema"
         other: "Temas"
+      question:
+        one: "Questão"
+        other: "Questões"
     attributes:
       level:
         name: "Nome"
@@ -59,8 +62,13 @@ pt-BR:
         difficulty: "Nível de Dificuldade"
         options: "Opções de Resposta"
         theme: "Tema"
+      question/difficulty:
+        easy: "Fácil"
+        medium: "Médio"
+        hard: "Difícil"
   errors:
     messages:
+      blank: "não pode ficar em branco"
       invalid_youtube_link: "deve ser um link válido do YouTube"
       invalid_count: "deve conter de 2 a 5 opções"
       must_have_exactly_one_correct: "deve ter exatamente 1 opção correta"

@@ -34,11 +34,9 @@ O ecossistema é dividido em duas frentes complementares:
 - [x] **Tarefa 2.0:** Modelo e CRUD de Níveis (Interface protegida, Grid de Cards).
 - [x] **Tarefa 3.0:** Modelo e CRUD de Temas (Navegação Drill-down a partir do Nível, restrições em cascata).
 - [x] **Tarefa 4.0:** Motor e Banco de Dados de Questões (Validação rigorosa de apenas 1 opção correta no BD).
+- [x] **Tarefa 5.0:** Formulário Frontend de Questões (Campos dinâmicos com JS Stimulus e inclusão de embeds de vídeo).
 
 ### 🚧 O que NÃO TEMOS (O que precisa ser feito)
-
-**Na Fase Atual (Fase 1: Painel Administrativo):**
-- [ ] **Tarefa 5.0:** Formulário Frontend de Questões (Campos dinâmicos com JS Stimulus e inclusão de embeds de vídeo).
 
 **Nas Fases Futuras do Roadmap (Fases 2 a 5):**
 - [ ] **Fase 2:** Onboarding e Interface do Estudante (Cadastro com nome, idade, escola, cidade e login do jogador).

@@ -22,23 +22,23 @@ Ver `ai-sdd/prd-painel-administrativo/design.md`. Telas desta task:
 
 ## Subtarefas
 
-- [ ] 5.1 Criar o `Admin::QuestionsController` (listando questões para um Tema, via shallow nesting).
-- [ ] 5.2 Desenvolver a view `index` baseada no Artboard 3 (exibindo badges de dificuldade e qtd de opções).
-- [ ] 5.3 Criar a view de `_form` (Artboard 4) com os campos padrões da `Question`.
-- [ ] 5.4 Gerar um Stimulus Controller (`bin/rails generate stimulus nested_form`) para lidar com o DOM de inserção/remoção dos campos `fields_for :options`.
-- [ ] 5.5 Garantir que a UI que controla `is_correct` esteja agrupada logicamente (ex: radio buttons) para facilitar a experiência do usuário.
-- [ ] 5.6 Mapear a renderização de erros de validação (RF-12) para que o admin entenda por que o formulário falhou.
+- [x] 5.1 Criar o `Admin::QuestionsController` (listando questões para um Tema, via shallow nesting).
+- [x] 5.2 Desenvolver a view `index` baseada no Artboard 3 (exibindo badges de dificuldade e qtd de opções).
+- [x] 5.3 Criar a view de `_form` (Artboard 4) com os campos padrões da `Question`.
+- [x] 5.4 Gerar um Stimulus Controller (`bin/rails generate stimulus nested_form`) para lidar com o DOM de inserção/remoção dos campos `fields_for :options`.
+- [x] 5.5 Garantir que a UI que controla `is_correct` esteja agrupada logicamente (ex: radio buttons) para facilitar a experiência do usuário.
+- [x] 5.6 Mapear a renderização de erros de validação (RF-12) para que o admin entenda por que o formulário falhou.
 
 ## Critérios de Sucesso
 
-- [ ] Admin consegue acessar o formulário, clicar em "Adicionar Opção" e novos campos surgem via Stimulus.
-- [ ] Submissão do formulário salva a Questão e as Opções aninhadas corretamente.
-- [ ] Erros de validação do banco (ex: esquecer de marcar a correta) refletem na view.
+- [x] Admin consegue acessar o formulário, clicar em "Adicionar Opção" e novos campos surgem via Stimulus.
+- [x] Submissão do formulário salva a Questão e as Opções aninhadas corretamente.
+- [x] Erros de validação do banco (ex: esquecer de marcar a correta) refletem na view.
 
 ## Testes
 
 ### Testes E2E (Sistema - Capybara)
-- [ ] Acessar formulário, preencher enunciado, adicionar 3 opções dinamicamente via JS, marcar uma como correta e salvar -> Questão é listada com sucesso no index.
+- [x] Acessar formulário, preencher enunciado, adicionar 3 opções dinamicamente via JS, marcar uma como correta e salvar -> Questão é listada com sucesso no index.
 
 ## Arquivos Relevantes
 - `app/controllers/admin/questions_controller.rb`

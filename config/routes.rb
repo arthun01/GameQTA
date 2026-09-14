@@ -3,7 +3,9 @@ Rails.application.routes.draw do
     resource :session
     resources :passwords, param: :token
     resources :levels do
-      resources :themes, shallow: true
+      resources :themes, shallow: true do
+        resources :questions, shallow: true
+      end
     end
     root to: "levels#index"
   end

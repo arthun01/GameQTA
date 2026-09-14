@@ -1,0 +1,107 @@
+<!-- Breadcrumb -->
+<nav class="flex mb-4" aria-label="Breadcrumb">
+  <ol class="inline-flex items-center space-x-1 md:space-x-3">
+    <li class="inline-flex items-center">
+      <%= link_to admin_levels_path, class: "inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600" do %>
+        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
+        </svg>
+        Níveis
+      <% end %>
+    </li>
+    <li>
+      <div class="flex items-center">
+        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+        </svg>
+        <%= link_to @theme.level.name, admin_level_themes_path(@theme.level), class: "ml-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2" %>
+      </div>
+    </li>
+    <li>
+      <div class="flex items-center">
+        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+        </svg>
+        <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2"><%= @theme.name %></span>
+      </div>
+    </li>
+    <li aria-current="page">
+      <div class="flex items-center">
+        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+        </svg>
+        <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2">Questões</span>
+      </div>
+    </li>
+  </ol>
+</nav>
+
+<div class="flex flex-col sm:flex-row sm:items-center justify-between mb-8">
+  <div>
+    <h1 class="text-2xl font-bold text-gray-900"><%= t('.title', default: 'Questões') %></h1>
+    <p class="mt-1 text-sm text-gray-500"><%= t('.subtitle', default: 'Gerencie as questões deste tema') %></p>
+  </div>
+  <div class="mt-4 sm:mt-0">
+    <%= link_to t('.new', default: 'Nova Questão'), new_admin_theme_question_path(@theme), class: "inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
+  </div>
+</div>
+
+<% if @questions.empty? %>
+  <div class="text-center py-12 bg-white rounded-lg shadow border border-gray-200">
+    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    <h3 class="mt-2 text-sm font-medium text-gray-900"><%= t('.empty_title', default: 'Nenhuma questão') %></h3>
+    <p class="mt-1 text-sm text-gray-500"><%= t('.empty_subtitle', default: 'Comece criando a primeira questão para este tema.') %></p>
+    <div class="mt-6">
+      <%= link_to t('.new', default: 'Nova Questão'), new_admin_theme_question_path(@theme), class: "inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700" %>
+    </div>
+  </div>
+<% else %>
+  <div class="space-y-4">
+    <% @questions.each do |question| %>
+      <div class="bg-white overflow-hidden shadow rounded-lg border border-gray-200 hover:shadow-md transition-shadow">
+        <div class="p-6">
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between">
+            <div class="flex-1">
+              <div class="flex items-center mb-2 space-x-2">
+                <% case question.difficulty %>
+                <% when 'easy' %>
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                    <%= I18n.t("activerecord.attributes.question/difficulty.#{question.difficulty}") %>
+                  </span>
+                <% when 'medium' %>
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                    <%= I18n.t("activerecord.attributes.question/difficulty.#{question.difficulty}") %>
+                  </span>
+                <% when 'hard' %>
+                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                    <%= I18n.t("activerecord.attributes.question/difficulty.#{question.difficulty}") %>
+                  </span>
+                <% end %>
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                  <%= t('.options_count', count: question.options.count, default: "%{count} opções") %>
+                </span>
+              </div>
+              <h3 class="text-lg font-medium text-gray-900 mb-2 line-clamp-2"><%= question.statement %></h3>
+              <% if question.youtube_link.present? %>
+                <p class="text-sm text-gray-500 mb-4 flex items-center">
+                  <svg class="w-4 h-4 mr-1 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
+                  </svg>
+                  <%= truncate(question.youtube_link, length: 50) %>
+                </p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="bg-gray-50 px-6 py-4 flex justify-end items-center border-t border-gray-200">
+          <div class="flex space-x-3 items-center">
+            <%= link_to t('admin.shared.edit', default: 'Editar'), edit_admin_question_path(question), class: "text-blue-600 hover:text-blue-900 text-sm font-medium" %>
+            <%= button_to t('admin.shared.delete', default: 'Excluir'), admin_question_path(question), method: :delete, form: { data: { turbo_confirm: t('admin.shared.confirm', default: 'Tem certeza?') } }, class: "text-red-600 hover:text-red-900 text-sm font-medium bg-transparent border-none cursor-pointer" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -60,11 +60,10 @@
         </div>
         <div class="bg-gray-50 px-6 py-4 flex justify-between items-center border-t border-gray-200">
           <div class="text-xs font-medium text-gray-500">
-            <%# t('.questions_count', count: theme.questions.count) %>
-            <!-- (Questions count will be added later) -->
+            <%= t('.questions_count', count: theme.questions.count, default: "%{count} questões") %>
           </div>
           <div class="flex space-x-3 items-center">
-            <%= link_to t('admin.shared.manage_questions', default: 'Ver questões'), "#", class: "text-indigo-600 hover:text-indigo-900 text-sm font-medium mr-2" %>
+            <%= link_to t('admin.shared.manage_questions', default: 'Ver questões'), admin_theme_questions_path(theme), class: "text-indigo-600 hover:text-indigo-900 text-sm font-medium mr-2" %>
             <%= link_to t('admin.shared.edit', default: 'Editar'), edit_admin_theme_path(theme), class: "text-blue-600 hover:text-blue-900 text-sm font-medium" %>
             <%= button_to t('admin.shared.delete', default: 'Excluir'), admin_theme_path(theme), method: :delete, form: { data: { turbo_confirm: t('admin.shared.confirm', default: 'Tem certeza?') } }, class: "text-red-600 hover:text-red-900 text-sm font-medium bg-transparent border-none cursor-pointer" %>
           </div>

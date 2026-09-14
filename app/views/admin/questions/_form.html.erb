@@ -1,0 +1,109 @@
+<%= form_with(model: [:admin, @theme, @question].compact, class: "space-y-8", data: { controller: "nested-form" }) do |f| %>
+  <% if @question.errors.any? %>
+    <div class="rounded-md bg-red-50 p-4 mb-6">
+      <div class="flex">
+        <div class="flex-shrink-0">
+          <svg class="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="ml-3">
+          <h3 class="text-sm font-medium text-red-800">
+            <%= t('errors.template.header', count: @question.errors.count, model: t('activerecord.models.question')) %>
+          </h3>
+          <div class="mt-2 text-sm text-red-700">
+            <ul class="list-disc pl-5 space-y-1">
+              <% @question.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
+    <div class="md:grid md:grid-cols-3 md:gap-6">
+      <div class="md:col-span-1">
+        <h3 class="text-lg font-medium leading-6 text-gray-900">Informações Básicas</h3>
+        <p class="mt-1 text-sm text-gray-500">Detalhes principais da questão.</p>
+      </div>
+      <div class="mt-5 md:mt-0 md:col-span-2 space-y-6">
+        <div>
+          <%= f.label :statement, "Enunciado", class: "block text-sm font-medium text-gray-700" %>
+          <div class="mt-1">
+            <%= f.text_area :statement, rows: 4, class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md" %>
+          </div>
+        </div>
+
+        <div>
+          <%= f.label :youtube_link, "Link do YouTube", class: "block text-sm font-medium text-gray-700" %>
+          <div class="mt-1">
+            <%= f.text_field :youtube_link, class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md", placeholder: "https://www.youtube.com/watch?v=..." %>
+          </div>
+        </div>
+
+        <div>
+          <%= f.label :difficulty, "Nível de Dificuldade", class: "block text-sm font-medium text-gray-700" %>
+          <div class="mt-1">
+            <%= f.select :difficulty, Question.difficulties.keys.map { |k| [I18n.t("activerecord.attributes.question/difficulty.#{k}"), k] }, {}, class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
+    <div class="md:grid md:grid-cols-3 md:gap-6">
+      <div class="md:col-span-1">
+        <h3 class="text-lg font-medium leading-6 text-gray-900">Opções de Resposta</h3>
+        <p class="mt-1 text-sm text-gray-500">Adicione de 2 a 5 opções. Exatamente uma deve ser marcada como correta.</p>
+      </div>
+      <div class="mt-5 md:mt-0 md:col-span-2">
+        <div data-nested-form-target="target" class="space-y-4">
+          <%= f.fields_for :options do |option_form| %>
+            <%= render "option_fields", f: option_form %>
+          <% end %>
+        </div>
+
+        <div class="mt-4">
+          <button type="button" data-action="nested-form#add" class="inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+            <svg class="-ml-1 mr-2 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
+            </svg>
+            Adicionar Opção
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <template data-nested-form-target="template">
+    <%= f.fields_for :options, Option.new, child_index: 'NEW_RECORD' do |option_form| %>
+      <%= render "option_fields", f: option_form %>
+    <% end %>
+  </template>
+
+  <div class="bg-white shadow px-4 py-5 sm:rounded-lg sm:p-6">
+    <div class="md:grid md:grid-cols-3 md:gap-6">
+      <div class="md:col-span-1">
+        <h3 class="text-lg font-medium leading-6 text-gray-900">Artigo de Feedback</h3>
+        <p class="mt-1 text-sm text-gray-500">Texto exibido ao aluno após responder a questão.</p>
+      </div>
+      <div class="mt-5 md:mt-0 md:col-span-2">
+        <div>
+          <%= f.label :feedback_article, "Artigo de Feedback", class: "sr-only block text-sm font-medium text-gray-700" %>
+          <div class="mt-1">
+            <%= f.text_area :feedback_article, rows: 6, class: "shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full sm:text-sm border-gray-300 rounded-md", placeholder: "Explique o contexto da resposta correta aqui..." %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-end space-x-3">
+    <%= link_to "Cancelar", @question.persisted? ? admin_theme_questions_path(@question.theme) : admin_theme_questions_path(@theme), class: "bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
+    <%= f.submit "Salvar Questão", class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
+  </div>
+<% end %>
