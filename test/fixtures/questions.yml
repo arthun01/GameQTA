@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  statement: "Qual é o principal objetivo do Princípio do Poluidor-Pagador?"
+  youtube_link: "https://www.youtube.com/watch?v=123456789"
+  feedback_article: "O Princípio do Poluidor-Pagador estabelece que quem polui deve arcar com os custos."
+  difficulty: easy
+  theme: one
+
+two:
+  statement: "Sobre o Princípio da Precaução, assinale a correta:"
+  youtube_link: "https://www.youtube.com/watch?v=987654321"
+  feedback_article: "A precaução é acionada mesmo diante de incerteza científica."
+  difficulty: medium
+  theme: two

@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  description: MyText
-  icon: MyString
+  name: "Princípio do Poluidor-Pagador"
+  description: "Entenda quem deve arcar com os custos de prevenção e reparação ambiental."
+  icon: "💰"
   level: one
 
 two:
-  name: "MyString 2"
-  description: "MyText 2"
-  icon: "MyString 2"
+  name: "Princípio da Precaução"
+  description: "Quando não há certeza científica absoluta, como o Direito deve agir?"
+  icon: "🛡️"
   level: one

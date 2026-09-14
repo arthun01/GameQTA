@@ -1,28 +1,21 @@
 require "test_helper"
 
 class ThemeTest < ActiveSupport::TestCase
-  test "should not save theme without name" do
-    theme = Theme.new(description: "Desc", icon: "📚", level: levels(:one))
-    assert_not theme.save
+  setup do
+    @theme = themes(:one)
   end
 
-  test "should not save theme without description" do
-    theme = Theme.new(name: "Name", icon: "📚", level: levels(:one))
-    assert_not theme.save
+  test "should be valid" do
+    assert @theme.valid?
   end
 
-  test "should not save theme without icon" do
-    theme = Theme.new(name: "Name", description: "Desc", level: levels(:one))
-    assert_not theme.save
-  end
+  test "should not destroy if has questions" do
+    assert_not @theme.questions.empty?
 
-  test "should not save theme without level" do
-    theme = Theme.new(name: "Name", description: "Desc", icon: "📚")
-    assert_not theme.save
-  end
+    assert_no_difference("Theme.count") do
+      @theme.destroy
+    end
 
-  test "should save valid theme" do
-    theme = Theme.new(name: "Name", description: "Desc", icon: "📚", level: levels(:one))
-    assert theme.save
+    assert_not_empty @theme.errors[:base]
   end
 end

@@ -52,7 +52,18 @@ pt-BR:
         name: "Nome"
         description: "Descrição"
         icon: "Ícone"
+      question:
+        statement: "Enunciado"
+        youtube_link: "Link do YouTube"
+        feedback_article: "Artigo de Feedback"
+        difficulty: "Nível de Dificuldade"
+        options: "Opções de Resposta"
+        theme: "Tema"
   errors:
+    messages:
+      invalid_youtube_link: "deve ser um link válido do YouTube"
+      invalid_count: "deve conter de 2 a 5 opções"
+      must_have_exactly_one_correct: "deve ter exatamente 1 opção correta"
     template:
       header:
         one: "1 erro proibiu este %{model} de ser salvo"

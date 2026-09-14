@@ -18,13 +18,13 @@ Implementar as regras de banco de dados pesadas (Backend): as tabelas de Questã
 
 ## Subtarefas
 
-- [ ] 4.1 Gerar modelo `Question` (statement:text, youtube_link:string, feedback_article:text, difficulty:integer, theme:references).
-- [ ] 4.2 Configurar enum `difficulty` (easy: 0, medium: 1, hard: 2) no model.
-- [ ] 4.3 Gerar modelo `Option` (content:string, is_correct:boolean, question:references).
-- [ ] 4.4 Configurar `has_many :options, dependent: :destroy` em `Question`.
-- [ ] 4.5 Adicionar `accepts_nested_attributes_for :options, allow_destroy: true` em `Question`.
-- [ ] 4.6 Modificar `Theme` para `has_many :questions, dependent: :restrict_with_error`.
-- [ ] 4.7 Escrever um custom validator em `Question` que verifique se entre os `options` há entre 2 a 5 itens, e se exatamente 1 deles possui `is_correct == true`.
+- [x] 4.1 Gerar modelo `Question` (statement:text, youtube_link:string, feedback_article:text, difficulty:integer, theme:references).
+- [x] 4.2 Configurar enum `difficulty` (easy: 0, medium: 1, hard: 2) no model.
+- [x] 4.3 Gerar modelo `Option` (content:string, is_correct:boolean, question:references).
+- [x] 4.4 Configurar `has_many :options, dependent: :destroy` em `Question`.
+- [x] 4.5 Adicionar `accepts_nested_attributes_for :options, allow_destroy: true` em `Question`.
+- [x] 4.6 Modificar `Theme` para `has_many :questions, dependent: :restrict_with_error`.
+- [x] 4.7 Escrever um custom validator em `Question` que verifique se entre os `options` há entre 2 a 5 itens, e se exatamente 1 deles possui `is_correct == true`.
 
 ## Critérios de Sucesso
 
@@ -35,10 +35,10 @@ Implementar as regras de banco de dados pesadas (Backend): as tabelas de Questã
 ## Testes
 
 ### Testes Unitários
-- [ ] Salvar Questão sem opções corretas -> falha.
-- [ ] Salvar Questão com 2 opções corretas -> falha.
-- [ ] Salvar Questão com apenas 1 opção total -> falha (mínimo 2).
-- [ ] Salvar Questão com 1 opção correta e 3 incorretas -> passa com sucesso.
+- [x] Salvar Questão sem opções corretas -> falha.
+- [x] Salvar Questão com 2 opções corretas -> falha.
+- [x] Salvar Questão com apenas 1 opção total -> falha (mínimo 2).
+- [x] Salvar Questão com 1 opção correta e 3 incorretas -> passa com sucesso.
 
 ## Arquivos Relevantes
 - `app/models/question.rb`

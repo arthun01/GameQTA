@@ -33,11 +33,11 @@ O ecossistema é dividido em duas frentes complementares:
 - [x] **Tarefa 1.0:** Setup do Projeto (Rails 8, Tailwind, PostgreSQL) e Autenticação Administrativa (Modelo `Admin`).
 - [x] **Tarefa 2.0:** Modelo e CRUD de Níveis (Interface protegida, Grid de Cards).
 - [x] **Tarefa 3.0:** Modelo e CRUD de Temas (Navegação Drill-down a partir do Nível, restrições em cascata).
+- [x] **Tarefa 4.0:** Motor e Banco de Dados de Questões (Validação rigorosa de apenas 1 opção correta no BD).
 
 ### 🚧 O que NÃO TEMOS (O que precisa ser feito)
 
 **Na Fase Atual (Fase 1: Painel Administrativo):**
-- [ ] **Tarefa 4.0:** Motor e Banco de Dados de Questões (Validação rigorosa para garantir 1 opção correta no banco de dados).
 - [ ] **Tarefa 5.0:** Formulário Frontend de Questões (Campos dinâmicos com JS Stimulus e inclusão de embeds de vídeo).
 
 **Nas Fases Futuras do Roadmap (Fases 2 a 5):**

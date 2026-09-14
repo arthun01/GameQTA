@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_14_003214) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_14_004617) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -28,6 +28,26 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_14_003214) do
     t.string "icon"
     t.string "name", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "options", force: :cascade do |t|
+    t.string "content", null: false
+    t.datetime "created_at", null: false
+    t.boolean "is_correct", default: false, null: false
+    t.bigint "question_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_options_on_question_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "difficulty", default: 0, null: false
+    t.text "feedback_article", null: false
+    t.text "statement", null: false
+    t.bigint "theme_id", null: false
+    t.datetime "updated_at", null: false
+    t.string "youtube_link", null: false
+    t.index ["theme_id"], name: "index_questions_on_theme_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -49,6 +69,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_14_003214) do
     t.index ["level_id"], name: "index_themes_on_level_id"
   end
 
+  add_foreign_key "options", "questions"
+  add_foreign_key "questions", "themes"
   add_foreign_key "sessions", "admins"
   add_foreign_key "themes", "levels"
 end
