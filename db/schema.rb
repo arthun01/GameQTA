@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_14_000922) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_14_003214) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -39,5 +39,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_14_000922) do
     t.index ["admin_id"], name: "index_sessions_on_admin_id"
   end
 
+  create_table "themes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.text "description"
+    t.string "icon"
+    t.bigint "level_id", null: false
+    t.string "name"
+    t.datetime "updated_at", null: false
+    t.index ["level_id"], name: "index_themes_on_level_id"
+  end
+
   add_foreign_key "sessions", "admins"
+  add_foreign_key "themes", "levels"
 end

@@ -1,45 +1,94 @@
-# EcoGestão: Plataforma Gamificada de Direito Ambiental
+<div align="center">
+  <h1>🌿 Game QTA: Jogo de Direito Ambiental</h1>
+  <p><i>Projeto de Extensão Universitária - UESC (Universidade Estadual de Santa Cruz)</i></p>
+</div>
 
-> **Status do Projeto:** Fase 1 em Desenvolvimento (MVP).
+---
 
-O Direito Ambiental frequentemente é percebido como um tema denso e difícil pelo público jovem. Este projeto é uma plataforma educacional gamificada que transforma o aprendizado em uma jornada interativa, acessível e envolvente (Mobile-first para os alunos, Painel robusto para administradores).
+## 📖 Sobre o Projeto
 
-## 🛠 Stack Tecnológica
-- **Linguagem/Framework:** Ruby 4.0.2 / Rails 8.1
-- **Banco de Dados:** PostgreSQL
-- **Frontend:** Hotwire (Turbo + Stimulus), Tailwind CSS, Importmap (Sem Node.js)
-- **Testes:** Minitest + Fixtures
-- **Background/Cache/Websocket:** Solid Queue, Solid Cache, Solid Cable
+O **Game QTA** é uma plataforma educacional gamificada concebida como um **Projeto de Extensão na UESC**. Seu objetivo primário é democratizar e facilitar o aprendizado de **Direito Ambiental** para o público jovem (alunos do ensino fundamental e médio), transformando pautas densas e leis complexas em uma jornada interativa e envolvente.
 
-## 📍 O que TEMOS atualmente (Feito)
+O ecossistema é dividido em duas frentes complementares:
+1. **🎮 A Jornada do Estudante (Mobile-First):** Um jogo onde o aluno consome pílulas de conhecimento (vídeos via YouTube), responde a desafios de múltipla escolha e absorve artigos de feedback. A progressão é regida por uma taxa de acerto mínima de 70% e coroada por um Ranking Global (gamificação).
+2. **⚙️ O Sistema de Gerenciamento (Backoffice):** Um robusto painel de controle (Painel Administrativo) voltado para a equipe de educadores e criadores do projeto. Permite o cadastro completo da "árvore do conhecimento" (Níveis > Temas > Questões) e fornece dados analíticos sobre o desempenho dos alunos.
 
-**Planejamento Estratégico (AI-SDD):**
+---
+
+## 🚀 Status do Projeto
+
+> **Status Atual:** Fase 1 em Desenvolvimento (Construção do Painel Administrativo/MVP).
+
+### 📍 O que TEMOS atualmente (Feito)
+
+**Planejamento Estratégico (Metodologia AI-SDD):**
 - [x] Visão do Produto (`ai-sdd/system/vision.md`)
 - [x] Mapa de Produto (`ai-sdd/system/product_map.md`)
 - [x] Roadmap Completo em 5 Fases (`ai-sdd/system/roadmap.md`)
 - [x] PRD do Painel Administrativo (`ai-sdd/prd-painel-administrativo/prd.md`)
 - [x] Design e Telas do Painel Administrativo (`ai-sdd/prd-painel-administrativo/design.md`)
-- [x] Tech Spec e Quebra de Tarefas do Painel Administrativo
+- [x] Especificação Técnica e Quebra de Tarefas do Painel Administrativo
 
-**Implementação (Código):**
-- [x] Tarefa 1.0: Setup do Projeto (Rails 8, Tailwind, BD).
-- [x] Tarefa 1.0: Autenticação Administrativa nativa (Modelo `Admin`) e proteção de rotas `/admin/`.
-- [x] Tarefa 2.0: Modelo e CRUD de Níveis.
+**Implementação (Código Base):**
+- [x] **Tarefa 1.0:** Setup do Projeto (Rails 8, Tailwind, PostgreSQL) e Autenticação Administrativa (Modelo `Admin`).
+- [x] **Tarefa 2.0:** Modelo e CRUD de Níveis (Interface protegida, Grid de Cards).
+- [x] **Tarefa 3.0:** Modelo e CRUD de Temas (Navegação Drill-down a partir do Nível, restrições em cascata).
 
-## 🚧 O que NÃO TEMOS (O que precisa ser feito)
+### 🚧 O que NÃO TEMOS (O que precisa ser feito)
 
-### Na Fase Atual (Fase 1: Painel Administrativo)
-Estas tarefas já estão documentadas e prontas para execução na pasta `ai-sdd/prd-painel-administrativo/tasks/`:
-- [ ] **Tarefa 3.0:** Modelo e CRUD de Temas (Drill-down a partir do Nível).
-- [ ] **Tarefa 4.0:** Motor e Banco de Dados de Questões (Validação rigorosa de apenas 1 opção correta).
-- [ ] **Tarefa 5.0:** Formulário Frontend de Questões (Campos dinâmicos com JS Stimulus e inclusão de links do YouTube).
+**Na Fase Atual (Fase 1: Painel Administrativo):**
+- [ ] **Tarefa 4.0:** Motor e Banco de Dados de Questões (Validação rigorosa para garantir 1 opção correta no banco de dados).
+- [ ] **Tarefa 5.0:** Formulário Frontend de Questões (Campos dinâmicos com JS Stimulus e inclusão de embeds de vídeo).
 
-### Nas Fases Futuras (Fases 2 a 5)
-Ainda requerem geração de PRD, Design, Tech Spec e Implementação:
-- [ ] **Fase 2:** Onboarding e Interface do Estudante (Cadastro com nome, idade, cidade e login do jogador).
-- [ ] **Fase 3:** Gameplay e Progressão (Telas de vídeo do youtube, cronômetro de resolução, bloqueio de 70% de acerto).
-- [ ] **Fase 4:** Gamificação e Competição (Cálculo de acertos vs tempo e listagem de Ranking Global).
-- [ ] **Fase 5:** Inteligência Analítica e Moderação (Gráficos de dados demográficos, exportações de dados e moderação de alunos).
+**Nas Fases Futuras do Roadmap (Fases 2 a 5):**
+- [ ] **Fase 2:** Onboarding e Interface do Estudante (Cadastro com nome, idade, escola, cidade e login do jogador).
+- [ ] **Fase 3:** Gameplay e Motor de Progressão (Telas de vídeo, cronômetro de resolução, validação de 70% de acerto).
+- [ ] **Fase 4:** Gamificação e Competição (Cálculo de Ranking Global unindo acertos e tempo de resolução).
+- [ ] **Fase 5:** Inteligência Analítica e Moderação (Dashboards demográficos, exportações e controle da comunidade).
 
 ---
-*Este arquivo é atualizado a cada fechamento de ciclo de desenvolvimento para refletir o estado real da aplicação.*
+
+## 🛠 Stack Tecnológica
+
+O projeto adere estritamente ao ecossistema "The Rails Way", garantindo longevidade e baixa manutenção.
+- **Linguagem / Framework:** Ruby 4.0.2 / Rails 8.1
+- **Banco de Dados:** PostgreSQL
+- **Frontend:** Hotwire (Turbo + Stimulus), Tailwind CSS, Propshaft + Importmap (Zero dependência de Node.js).
+- **Trabalhos em Background e WebSockets:** Solid Queue, Solid Cache, Solid Cable.
+- **Testes:** Minitest + Fixtures, System Tests com Capybara.
+
+---
+
+## 📚 Documentação e Especificações
+
+O projeto utiliza a metodologia **AI-Specification-Driven Development (AI-SDD)**. Todo o planejamento está documentado na pasta `/ai-sdd/`. Antes de codificar qualquer funcionalidade, seus requisitos, arquitetura e interface são aprovados através dos seguintes documentos:
+- [Visão do Produto e Problema](ai-sdd/system/vision.md)
+- [Mapeamento de Produto (Fluxos)](ai-sdd/system/product_map.md)
+- [Roadmap do Projeto](ai-sdd/system/roadmap.md)
+- **Painel Administrativo:** [PRD](ai-sdd/prd-painel-administrativo/prd.md) | [Design](ai-sdd/prd-painel-administrativo/design.md) | [Tech Spec](ai-sdd/prd-painel-administrativo/techspec.md) | [Tasks](ai-sdd/prd-painel-administrativo/tasks.md)
+
+---
+
+## 💻 Como Executar Localmente
+
+**Pré-requisitos:** Docker (para rodar o devcontainer), Ruby e PostgreSQL.
+
+1. **Clonar e Preparar o Banco de Dados:**
+   ```bash
+   bin/setup
+   ```
+
+2. **Rodar o Servidor de Desenvolvimento:**
+   *(Isso subirá o servidor Rails e compilará o Tailwind em watch mode)*
+   ```bash
+   bin/dev
+   ```
+
+3. **Executar a Suíte de Testes e Linting:**
+   ```bash
+   bin/rubocop -a  # Linting e formatação
+   bin/rails test  # Testes Unitários e de Integração
+   bin/rails test:system # Testes End-to-End
+   ```
+
+Acesso via navegador: `http://localhost:3000/admin`

@@ -1,0 +1,76 @@
+<!-- Breadcrumb -->
+<nav class="flex mb-4" aria-label="Breadcrumb">
+  <ol class="inline-flex items-center space-x-1 md:space-x-3">
+    <li class="inline-flex items-center">
+      <%= link_to admin_levels_path, class: "inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600" do %>
+        <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
+        </svg>
+        Níveis
+      <% end %>
+    </li>
+    <li>
+      <div class="flex items-center">
+        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+        </svg>
+        <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2"><%= @level.name %></span>
+      </div>
+    </li>
+    <li aria-current="page">
+      <div class="flex items-center">
+        <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+        </svg>
+        <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2">Temas</span>
+      </div>
+    </li>
+  </ol>
+</nav>
+
+<div class="flex flex-col sm:flex-row sm:items-center justify-between mb-8">
+  <div>
+    <h1 class="text-2xl font-bold text-gray-900"><%= t('.title', default: 'Temas') %></h1>
+    <p class="mt-1 text-sm text-gray-500"><%= t('.subtitle', default: 'Gerencie os temas deste nível') %></p>
+  </div>
+  <div class="mt-4 sm:mt-0">
+    <%= link_to t('.new', default: 'Novo Tema'), new_admin_level_theme_path(@level), class: "inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
+  </div>
+</div>
+
+<% if @themes.empty? %>
+  <div class="text-center py-12 bg-white rounded-lg shadow border border-gray-200">
+    <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+    </svg>
+    <h3 class="mt-2 text-sm font-medium text-gray-900"><%= t('.empty_title', default: 'Nenhum tema') %></h3>
+    <p class="mt-1 text-sm text-gray-500"><%= t('.empty_subtitle', default: 'Comece criando o primeiro tema para este nível.') %></p>
+    <div class="mt-6">
+      <%= link_to t('.new', default: 'Novo Tema'), new_admin_level_theme_path(@level), class: "inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700" %>
+    </div>
+  </div>
+<% else %>
+  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <% @themes.each do |theme| %>
+      <div class="bg-white overflow-hidden shadow rounded-lg border border-gray-200 hover:shadow-md transition-shadow relative group">
+        <div class="p-6 flex flex-col items-center text-center">
+          <div class="text-4xl mb-4"><%= theme.icon.presence || "📚" %></div>
+          <h3 class="text-lg font-bold text-gray-900 mb-2"><%= theme.name %></h3>
+          <p class="text-sm text-gray-500 line-clamp-3"><%= theme.description %></p>
+        </div>
+        <div class="bg-gray-50 px-6 py-4 flex justify-between items-center border-t border-gray-200">
+          <div class="text-xs font-medium text-gray-500">
+            <%# t('.questions_count', count: theme.questions.count) %>
+            <!-- (Questions count will be added later) -->
+          </div>
+          <div class="flex space-x-3 items-center">
+            <%= link_to t('admin.shared.manage_questions', default: 'Ver questões'), "#", class: "text-indigo-600 hover:text-indigo-900 text-sm font-medium mr-2" %>
+            <%= link_to t('admin.shared.edit', default: 'Editar'), edit_admin_theme_path(theme), class: "text-blue-600 hover:text-blue-900 text-sm font-medium" %>
+            <%= button_to t('admin.shared.delete', default: 'Excluir'), admin_theme_path(theme), method: :delete, form: { data: { turbo_confirm: t('admin.shared.confirm', default: 'Tem certeza?') } }, class: "text-red-600 hover:text-red-900 text-sm font-medium bg-transparent border-none cursor-pointer" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+

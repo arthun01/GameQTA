@@ -22,26 +22,26 @@ Ver `ai-sdd/prd-painel-administrativo/design.md`. Telas desta task:
 
 ## Subtarefas
 
-- [ ] 3.1 Gerar o modelo `Theme` (name:string, description:text, icon:string, level:references).
-- [ ] 3.2 Modificar o model `Level` para `has_many :themes, dependent: :restrict_with_error`.
-- [ ] 3.3 Adicionar validações de presença no `app/models/theme.rb`.
-- [ ] 3.4 Criar o `Admin::ThemesController` e rotas aninhadas rasas (shallow nesting).
-- [ ] 3.5 Desenvolver a view `index` baseada no Artboard 2 (mostrando o Breadcrumb do Nível pai).
-- [ ] 3.6 Desenvolver as views de form para o Tema.
+- [x] 3.1 Gerar o modelo `Theme` (name:string, description:text, icon:string, level:references).
+- [x] 3.2 Modificar o model `Level` para `has_many :themes, dependent: :restrict_with_error`.
+- [x] 3.3 Adicionar validações de presença no `app/models/theme.rb`.
+- [x] 3.4 Criar o `Admin::ThemesController` e rotas aninhadas rasas (shallow nesting).
+- [x] 3.5 Desenvolver a view `index` baseada no Artboard 2 (mostrando o Breadcrumb do Nível pai).
+- [x] 3.6 Desenvolver as views de form para o Tema.
 
 ## Critérios de Sucesso
 
-- [ ] Nível que contém Temas não pode ser apagado do banco de dados (retorna erro).
-- [ ] Breadcrumb exibe corretamente o nome do Nível pai ao listar os Temas.
-- [ ] Todos os testes passando.
+- [x] Nível que contém Temas não pode ser apagado do banco de dados (retorna erro).
+- [x] Breadcrumb exibe corretamente o nome do Nível pai ao listar os Temas.
+- [x] Todos os testes passando.
 
 ## Testes
 
 ### Testes Unitários
-- [ ] Tentar deletar um Nível com Tema -> falha (restrict_with_error).
+- [x] Tentar deletar um Nível com Tema -> falha (restrict_with_error).
 
 ### Testes E2E (se aplicável)
-- [ ] (Capybara) Admin navega de um Nível para seus Temas, visualizando a lista correspondente.
+- [x] (Capybara) Admin navega de um Nível para seus Temas, visualizando a lista correspondente.
 
 ## Arquivos Relevantes
 - `app/models/theme.rb`

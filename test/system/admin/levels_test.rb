@@ -34,7 +34,9 @@ class Admin::LevelsSystemTest < ApplicationSystemTestCase
     visit admin_levels_url
 
     # Click edit on the first level in the list
-    first("a", text: "Editar").click
+    within(first(".group")) do
+      click_on "Editar"
+    end
 
     assert_text "Editar Nível" # wait for the page to load
 

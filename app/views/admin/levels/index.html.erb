@@ -30,10 +30,10 @@
         </div>
         <div class="bg-gray-50 px-6 py-4 flex justify-between items-center border-t border-gray-200">
           <div class="text-xs font-medium text-gray-500">
-            <%# t('.themes_count', count: level.themes.count) %> 
-            <!-- (We'll add themes count in the next task) -->
+            <%= t('.themes_count', count: level.themes.count, default: "%{count} temas") %>
           </div>
-          <div class="flex space-x-3">
+          <div class="flex space-x-3 items-center">
+            <%= link_to t('admin.shared.manage_themes', default: 'Ver temas'), admin_level_themes_path(level), class: "text-indigo-600 hover:text-indigo-900 text-sm font-medium mr-2" %>
             <%= link_to t('admin.shared.edit', default: 'Editar'), edit_admin_level_path(level), class: "text-blue-600 hover:text-blue-900 text-sm font-medium" %>
             <%= button_to t('admin.shared.delete', default: 'Excluir'), admin_level_path(level), method: :delete, form: { data: { turbo_confirm: t('admin.shared.confirm', default: 'Tem certeza?') } }, class: "text-red-600 hover:text-red-900 text-sm font-medium bg-transparent border-none cursor-pointer" %>
           </div>

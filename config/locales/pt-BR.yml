@@ -32,12 +32,23 @@ pt-BR:
       destroy:
         success: "Nível removido com sucesso."
   activerecord:
+    errors:
+      messages:
+        restrict_dependent_destroy:
+          has_many: "não pode ser excluído porque possui %{record} associados(as)."
     models:
       level:
         one: "Nível"
         other: "Níveis"
+      theme:
+        one: "Tema"
+        other: "Temas"
     attributes:
       level:
+        name: "Nome"
+        description: "Descrição"
+        icon: "Ícone"
+      theme:
         name: "Nome"
         description: "Descrição"
         icon: "Ícone"

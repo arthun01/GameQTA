@@ -15,4 +15,12 @@ class LevelTest < ActiveSupport::TestCase
     level = Level.new(name: "Nível 1", description: "Uma descrição legal")
     assert level.save, "Failed to save the valid level"
   end
+
+  test "should restrict deletion if themes are present" do
+    level = levels(:one)
+    Theme.create!(name: "Tema 1", description: "Desc", icon: "📚", level: level)
+
+    assert_not level.destroy, "Destroyed the level with themes"
+    assert_match(/não pode ser excluído porque possui (themes|temas) associados/, level.errors[:base].join)
+  end
 end
