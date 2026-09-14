@@ -1,0 +1,13 @@
+<div class="mb-8">
+  <div class="flex items-center space-x-2 text-sm text-gray-500 mb-4">
+    <%= link_to t('admin.sidebar.levels', default: 'Níveis'), admin_levels_path, class: "hover:text-gray-900 hover:underline" %>
+    <span>/</span>
+    <span class="text-gray-900"><%= t('.title', default: 'Novo Nível') %></span>
+  </div>
+  <h1 class="text-2xl font-bold text-gray-900"><%= t('.title', default: 'Novo Nível') %></h1>
+</div>
+
+<div class="bg-white shadow rounded-lg px-4 py-5 sm:p-6 border border-gray-200">
+  <%= render 'form', level: @level %>
+</div>
+

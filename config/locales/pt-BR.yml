@@ -1,0 +1,49 @@
+pt-BR:
+  admin:
+    app_name: "Painel Admin"
+    shared:
+      cancel: "Cancelar"
+      save: "Salvar"
+      edit: "Editar"
+      delete: "Excluir"
+      confirm: "Tem certeza?"
+    sidebar:
+      levels: "Níveis"
+      logout: "Sair"
+    levels:
+      index:
+        title: "Níveis"
+        subtitle: "Gerencie os grandes capítulos do jogo"
+        new: "Novo Nível"
+        empty_title: "Nenhum nível"
+        empty_subtitle: "Comece criando o primeiro nível do jogo."
+      new:
+        title: "Novo Nível"
+      edit:
+        title: "Editar Nível"
+      form:
+        name: "Nome"
+        icon: "Ícone (Emoji)"
+        description: "Descrição"
+      create:
+        success: "Nível criado com sucesso."
+      update:
+        success: "Nível atualizado com sucesso."
+      destroy:
+        success: "Nível removido com sucesso."
+  activerecord:
+    models:
+      level:
+        one: "Nível"
+        other: "Níveis"
+    attributes:
+      level:
+        name: "Nome"
+        description: "Descrição"
+        icon: "Ícone"
+  errors:
+    template:
+      header:
+        one: "1 erro proibiu este %{model} de ser salvo"
+        other: "%{count} erros proibiram este %{model} de ser salvo"
+

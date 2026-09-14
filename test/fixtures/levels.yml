@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: "Princípios do Direito Ambiental"
+  description: "Introdução aos fundamentos legais de proteção ao meio ambiente, incluindo princípio da precaução e poluidor-pagador."
+  icon: "🌱"
+
+two:
+  name: "Legislação de Águas"
+  description: "Estudo sobre o Código de Águas e as regulamentações sobre recursos hídricos."
+  icon: "💧"
