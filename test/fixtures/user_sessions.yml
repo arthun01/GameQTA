@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: student_one
+  ip_address: 127.0.0.1
+  user_agent: Mozilla/5.0
+
+two:
+  user: student_two
+  ip_address: 192.168.0.1
+  user_agent: Safari/5.0

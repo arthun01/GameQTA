@@ -3,4 +3,8 @@ class Level < ApplicationRecord
 
   validates :name, presence: true
   validates :description, presence: true
+
+  def starting_level?
+    self == Level.order(:id).first
+  end
 end

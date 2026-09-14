@@ -23,4 +23,12 @@ class LevelTest < ActiveSupport::TestCase
     assert_not level.destroy, "Destroyed the level with themes"
     assert_match(/não pode ser excluído porque possui (themes|temas) associados/, level.errors[:base].join)
   end
+
+  test "starting_level? returns true only for the first level ordered by id" do
+    first_level = Level.order(:id).first
+    second_level = Level.order(:id).second
+
+    assert first_level.starting_level?
+    assert_not second_level.starting_level?
+  end
 end

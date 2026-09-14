@@ -64,8 +64,10 @@ class Admin::ThemesSystemTest < ApplicationSystemTestCase
   test "destroying a Theme" do
     visit admin_level_themes_url(@level)
 
-    accept_confirm do
-      first("button", text: "Excluir").click
+    within(find(".group", text: @theme.name)) do
+      accept_confirm do
+        click_on "Excluir"
+      end
     end
 
     assert_text "Tema removido com sucesso."

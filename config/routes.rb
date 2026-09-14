@@ -9,6 +9,17 @@ Rails.application.routes.draw do
     end
     root to: "levels#index"
   end
-  root to: redirect("/admin/session/new")
+
+  # Autenticação e rotas de aluno
+  get "/cadastrar", to: "users/registrations#new"
+  post "/cadastrar", to: "users/registrations#create"
+
+  get "/entrar", to: "users/sessions#new"
+  post "/entrar", to: "users/sessions#create"
+  delete "/sair", to: "users/sessions#destroy"
+
+  get "/jornada", to: "dashboard#index"
+
+  root to: redirect("/jornada")
   get "up" => "rails/health#show", as: :rails_health_check
 end

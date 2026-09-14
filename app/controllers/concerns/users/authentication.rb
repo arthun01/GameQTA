@@ -1,0 +1,54 @@
+module Users
+  module Authentication
+    extend ActiveSupport::Concern
+
+    included do
+      before_action :require_authentication
+      helper_method :authenticated?
+    end
+
+    class_methods do
+      def allow_unauthenticated_access(**options)
+        skip_before_action :require_authentication, **options
+      end
+    end
+
+    private
+      def authenticated?
+        resume_session
+      end
+
+      def require_authentication
+        resume_session || request_authentication
+      end
+
+      def resume_session
+        Current.user_session ||= find_session_by_cookie
+      end
+
+      def find_session_by_cookie
+        UserSession.find_by(id: cookies.signed[:user_session_id]) if cookies.signed[:user_session_id]
+      end
+
+      def request_authentication
+        session[:return_to_after_authenticating] = request.url
+        redirect_to "/entrar"
+      end
+
+      def after_authentication_url
+        session.delete(:return_to_after_authenticating) || "/jornada"
+      end
+
+      def start_new_session_for(user)
+        user.user_sessions.create!(user_agent: request.user_agent, ip_address: request.remote_ip).tap do |user_session|
+          Current.user_session = user_session
+          cookies.signed.permanent[:user_session_id] = { value: user_session.id, httponly: true, same_site: :lax }
+        end
+      end
+
+      def terminate_session
+        Current.user_session.destroy
+        cookies.delete(:user_session_id)
+      end
+  end
+end

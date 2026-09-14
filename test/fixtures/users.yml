@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+student_one:
+  email_address: student1@example.com
+  password_digest: <%= BCrypt::Password.create('password') %>
+  full_name: João Aluno
+  age: 18
+  city: Rio de Janeiro
+  education_level: 3
+
+student_two:
+  email_address: student2@example.com
+  password_digest: <%= BCrypt::Password.create('password') %>
+  full_name: Maria Estudante
+  age: 16
+  city: São Paulo
+  education_level: 2

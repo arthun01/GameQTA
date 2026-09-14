@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_14_004617) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_14_022312) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -69,8 +69,30 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_14_004617) do
     t.index ["level_id"], name: "index_themes_on_level_id"
   end
 
+  create_table "user_sessions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "ip_address"
+    t.datetime "updated_at", null: false
+    t.string "user_agent"
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_user_sessions_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.integer "age", null: false
+    t.string "city", null: false
+    t.datetime "created_at", null: false
+    t.integer "education_level", null: false
+    t.string "email_address", null: false
+    t.string "full_name", null: false
+    t.string "password_digest", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email_address"], name: "index_users_on_email_address", unique: true
+  end
+
   add_foreign_key "options", "questions"
   add_foreign_key "questions", "themes"
   add_foreign_key "sessions", "admins"
   add_foreign_key "themes", "levels"
+  add_foreign_key "user_sessions", "users"
 end

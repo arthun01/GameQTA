@@ -18,10 +18,10 @@ Estabelece a fundação de banco de dados para os alunos, criando as tabelas `Us
 
 ## Subtarefas
 
-- [ ] 1.1 Gerar o modelo `User` com atributos definidos (full_name, age, city, education_level, email_address, password_digest).
-- [ ] 1.2 Gerar o modelo `UserSession` associado.
-- [ ] 1.3 Implementar o `enum :education_level` e as validações de presença (`validates`) no model `User`.
-- [ ] 1.4 Adicionar chaves de tradução no `pt-BR.yml` para os valores do enum (se necessário).
+- [x] 1.1 Gerar o modelo `User` com atributos definidos (full_name, age, city, education_level, email_address, password_digest).
+- [x] 1.2 Gerar o modelo `UserSession` associado.
+- [x] 1.3 Implementar o `enum :education_level` e as validações de presença (`validates`) no model `User`.
+- [x] 1.4 Adicionar chaves de tradução no `pt-BR.yml` para os valores do enum (se necessário).
 
 ## Detalhes de Implementação
 
@@ -30,18 +30,18 @@ Estabelece a fundação de banco de dados para os alunos, criando as tabelas `Us
 
 ## Critérios de Sucesso
 
-- [ ] As tabelas `users` e `user_sessions` existem.
-- [ ] É impossível criar um `User` sem informar cidade, idade, ou nome.
-- [ ] Todos os testes passando.
+- [x] As tabelas `users` e `user_sessions` existem.
+- [x] É impossível criar um `User` sem informar cidade, idade, ou nome.
+- [x] Todos os testes passando.
 
 ## Testes
 
 > **Obrigatório**: Crie e execute todos os testes antes de considerar a tarefa finalizada.
 
 ### Testes Unitários
-- [ ] `UserTest`: Tentar salvar sem parâmetros requeridos e validar recusa.
-- [ ] `UserTest`: Passar valores inválidos para o `education_level` e confirmar exceção do ActiveRecord.
-- [ ] `UserTest`: Sucesso total preenchendo todos os campos corretamente.
+- [x] `UserTest`: Tentar salvar sem parâmetros requeridos e validar recusa.
+- [x] `UserTest`: Passar valores inválidos para o `education_level` e confirmar exceção do ActiveRecord.
+- [x] `UserTest`: Sucesso total preenchendo todos os campos corretamente.
 
 ## Arquivos Relevantes
 

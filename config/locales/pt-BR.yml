@@ -1,79 +1,128 @@
+---
 pt-BR:
+  app:
+    name: Game QTA
+  users:
+    sessions:
+      new:
+        title: Entrar no Game
+        welcome_back: Bem-vindo de volta!
+        subtitle: Continue sua jornada no Game QTA.
+        email_label: E-mail
+        password_label: Senha
+        submit: Entrar para jogar
+        no_account: Ainda não tem uma conta?
+        signup_link: Cadastre-se agora
+      create:
+        rate_limit: Muitas tentativas. Tente novamente mais tarde.
+        invalid_credentials: E-mail ou senha incorretos.
+    registrations:
+      new:
+        title: Crie sua conta
+        join_us: Junte-se à aventura!
+        subtitle: Crie sua conta e comece sua jornada de aprendizado.
+        full_name_label: Nome Completo
+        age_label: Idade
+        city_label: Cidade
+        education_level_label: Nível de Ensino
+        select_education: Selecione seu nível
+        email_label: E-mail
+        password_label: Senha
+        submit: Começar a jogar!
+        has_account: Já tem uma conta?
+        login_link: Entre aqui
   admin:
-    app_name: "Painel Admin"
+    app_name: Painel Admin
     shared:
-      cancel: "Cancelar"
-      save: "Salvar"
-      edit: "Editar"
-      delete: "Excluir"
-      confirm: "Tem certeza?"
+      cancel: Cancelar
+      save: Salvar
+      edit: Editar
+      delete: Excluir
+      confirm: Tem certeza?
     sidebar:
-      levels: "Níveis"
-      logout: "Sair"
+      levels: Níveis
+      logout: Sair
     levels:
       index:
-        title: "Níveis"
-        subtitle: "Gerencie os grandes capítulos do jogo"
-        new: "Novo Nível"
-        empty_title: "Nenhum nível"
-        empty_subtitle: "Comece criando o primeiro nível do jogo."
+        title: Níveis
+        subtitle: Gerencie os grandes capítulos do jogo
+        new: Novo Nível
+        empty_title: Nenhum nível
+        empty_subtitle: Comece criando o primeiro nível do jogo.
       new:
-        title: "Novo Nível"
+        title: Novo Nível
       edit:
-        title: "Editar Nível"
+        title: Editar Nível
       form:
-        name: "Nome"
-        icon: "Ícone (Emoji)"
-        description: "Descrição"
+        name: Nome
+        icon: Ícone (Emoji)
+        description: Descrição
       create:
-        success: "Nível criado com sucesso."
+        success: Nível criado com sucesso.
       update:
-        success: "Nível atualizado com sucesso."
+        success: Nível atualizado com sucesso.
       destroy:
-        success: "Nível removido com sucesso."
+        success: Nível removido com sucesso.
   activerecord:
     errors:
       messages:
         restrict_dependent_destroy:
-          has_many: "não pode ser excluído porque possui %{record} associados(as)."
+          has_many: não pode ser excluído porque possui %{record} associados(as).
     models:
       level:
-        one: "Nível"
-        other: "Níveis"
+        one: Nível
+        other: Níveis
       theme:
-        one: "Tema"
-        other: "Temas"
+        one: Tema
+        other: Temas
       question:
-        one: "Questão"
-        other: "Questões"
+        one: Questão
+        other: Questões
+      user:
+        one: Estudante
+        other: Estudantes
     attributes:
       level:
-        name: "Nome"
-        description: "Descrição"
-        icon: "Ícone"
+        name: Nome
+        description: Descrição
+        icon: Ícone
       theme:
-        name: "Nome"
-        description: "Descrição"
-        icon: "Ícone"
+        name: Nome
+        description: Descrição
+        icon: Ícone
       question:
-        statement: "Enunciado"
-        youtube_link: "Link do YouTube"
-        feedback_article: "Artigo de Feedback"
-        difficulty: "Nível de Dificuldade"
-        options: "Opções de Resposta"
-        theme: "Tema"
+        statement: Enunciado
+        youtube_link: Link do YouTube
+        feedback_article: Artigo de Feedback
+        difficulty: Nível de Dificuldade
+        options: Opções de Resposta
+        theme: Tema
       question/difficulty:
-        easy: "Fácil"
-        medium: "Médio"
-        hard: "Difícil"
+        easy: Fácil
+        medium: Médio
+        hard: Difícil
+      user:
+        full_name: Nome Completo
+        age: Idade
+        city: Cidade
+        education_level: Nível de Ensino
+        email_address: E-mail
+        password: Senha
+      user/education_level:
+        fundamental_incompleto: Ensino Fundamental Incompleto
+        fundamental_completo: Ensino Fundamental Completo
+        medio_incompleto: Ensino Médio Incompleto
+        medio_completo: Ensino Médio Completo
+        tecnico: Ensino Técnico
+        superior_incompleto: Ensino Superior Incompleto
+        superior_completo: Ensino Superior Completo
   errors:
     messages:
-      blank: "não pode ficar em branco"
-      invalid_youtube_link: "deve ser um link válido do YouTube"
-      invalid_count: "deve conter de 2 a 5 opções"
-      must_have_exactly_one_correct: "deve ter exatamente 1 opção correta"
+      blank: não pode ficar em branco
+      invalid_youtube_link: deve ser um link válido do YouTube
+      invalid_count: deve conter de 2 a 5 opções
+      must_have_exactly_one_correct: deve ter exatamente 1 opção correta
     template:
       header:
-        one: "1 erro proibiu este %{model} de ser salvo"
+        one: 1 erro proibiu este %{model} de ser salvo
         other: "%{count} erros proibiram este %{model} de ser salvo"
-

@@ -24,11 +24,11 @@ Ver `ai-sdd/prd-onboarding-estudante/design.md`. Telas desta task:
 
 ## Subtarefas
 
-- [ ] 2.1 Criar rotas `/entrar` e `/cadastrar` atreladas aos controllers correspondentes (`Users::SessionsController` e `Users::RegistrationsController`).
-- [ ] 2.2 Criar um `Users::BaseController` que implemente a validação de sessão usando o `UserSession` (análogo à lógica nativa, mas para alunos).
-- [ ] 2.3 Criar layout base `app/views/layouts/student.html.erb` (ou user) vazio de dependências corporativas (apenas links de assets do Rails e Tailwind base).
-- [ ] 2.4 Transcrever e conectar o HTML do Paper `5F-0` (Cadastro) ao controller de `create`, atrelando o dropdown de níveis de ensino ao enum do modelo.
-- [ ] 2.5 Transcrever e conectar o HTML do Paper `5E-0` (Login) ao controller de autenticação.
+- [x] 2.1 Criar rotas `/entrar` e `/cadastrar` atreladas aos controllers correspondentes (`Users::SessionsController` e `Users::RegistrationsController`).
+- [x] 2.2 Criar um `Users::BaseController` que implemente a validação de sessão usando o `UserSession` (análogo à lógica nativa, mas para alunos).
+- [x] 2.3 Criar layout base `app/views/layouts/student.html.erb` (ou user) vazio de dependências corporativas (apenas links de assets do Rails e Tailwind base).
+- [x] 2.4 Transcrever e conectar o HTML do Paper `5F-0` (Cadastro) ao controller de `create`, atrelando o dropdown de níveis de ensino ao enum do modelo.
+- [x] 2.5 Transcrever e conectar o HTML do Paper `5E-0` (Login) ao controller de autenticação.
 
 ## Detalhes de Implementação
 
@@ -37,17 +37,17 @@ Ver `ai-sdd/prd-onboarding-estudante/design.md`. Telas desta task:
 
 ## Critérios de Sucesso
 
-- [ ] Um visitante anônimo acessa `/cadastrar` pelo navegador celular, vê o layout aprovado, preenche os dados e seu registro aparece no banco.
-- [ ] A rota `/entrar` inicia uma nova `UserSession`.
-- [ ] Todos os testes passando.
+- [x] Um visitante anônimo acessa `/cadastrar` pelo navegador celular, vê o layout aprovado, preenche os dados e seu registro aparece no banco.
+- [x] A rota `/entrar` inicia uma nova `UserSession`.
+- [x] Todos os testes passando.
 
 ## Testes
 
 > **Obrigatório**: Crie e execute todos os testes antes de considerar a tarefa finalizada.
 
 ### Testes E2E (Capybara)
-- [ ] `UserRegistrationTest`: Simular o preenchimento de todos os campos no formulário de `/cadastrar` e submeter.
-- [ ] `UserLoginTest`: Simular acesso em `/entrar` com as credenciais criadas e verificar o cookie/auth válido.
+- [x] `UserRegistrationTest`: Simular o preenchimento de todos os campos no formulário de `/cadastrar` e submeter.
+- [x] `UserLoginTest`: Simular acesso em `/entrar` com as credenciais criadas e verificar o cookie/auth válido.
 
 ## Arquivos Relevantes
 

@@ -1,0 +1,18 @@
+<% if flash.any? %>
+  <div id="flash-messages" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex flex-col gap-2 min-w-[300px] max-w-md w-full px-4">
+    <% flash.each do |key, message| %>
+      <%
+        bg_color = case key.to_s
+          when "notice", "success" then "bg-emerald-50 text-emerald-800 border-emerald-200"
+          when "alert", "error" then "bg-red-50 text-red-800 border-red-200"
+          when "warning" then "bg-amber-50 text-amber-800 border-amber-200"
+          else "bg-gray-50 text-gray-800 border-gray-200"
+          end
+      %>
+      <div class="flex items-start p-4 rounded-xl border shadow-lg <%= bg_color %>">
+        <p class="text-sm font-medium"><%= message %></p>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+

@@ -17,7 +17,7 @@ O ecossistema é dividido em duas frentes complementares:
 
 ## 🚀 Status do Projeto
 
-> **Status Atual:** Fase 1 em Desenvolvimento (Construção do Painel Administrativo/MVP).
+> **Status Atual:** Fase 2 em Desenvolvimento (Onboarding e Interface do Estudante).
 
 ### 📍 O que TEMOS atualmente (Feito)
 
@@ -25,21 +25,25 @@ O ecossistema é dividido em duas frentes complementares:
 - [x] Visão do Produto (`ai-sdd/system/vision.md`)
 - [x] Mapa de Produto (`ai-sdd/system/product_map.md`)
 - [x] Roadmap Completo em 5 Fases (`ai-sdd/system/roadmap.md`)
-- [x] PRD do Painel Administrativo (`ai-sdd/prd-painel-administrativo/prd.md`)
-- [x] Design e Telas do Painel Administrativo (`ai-sdd/prd-painel-administrativo/design.md`)
-- [x] Especificação Técnica e Quebra de Tarefas do Painel Administrativo
+- [x] **Fase 1 (Painel Admin):** PRD, Design, Tech Spec e Tasks (`ai-sdd/prd-painel-administrativo/`)
+- [x] **Fase 2 (Onboarding):** PRD, Design no Paper, Tech Spec e Tasks (`ai-sdd/prd-onboarding-estudante/`)
 
 **Implementação (Código Base):**
-- [x] **Tarefa 1.0:** Setup do Projeto (Rails 8, Tailwind, PostgreSQL) e Autenticação Administrativa (Modelo `Admin`).
-- [x] **Tarefa 2.0:** Modelo e CRUD de Níveis (Interface protegida, Grid de Cards).
-- [x] **Tarefa 3.0:** Modelo e CRUD de Temas (Navegação Drill-down a partir do Nível, restrições em cascata).
-- [x] **Tarefa 4.0:** Motor e Banco de Dados de Questões (Validação rigorosa de apenas 1 opção correta no BD).
-- [x] **Tarefa 5.0:** Formulário Frontend de Questões (Campos dinâmicos com JS Stimulus e inclusão de embeds de vídeo).
+- **Fase 1 — Painel Administrativo (100% Concluído):**
+  - [x] **Tarefa 1.0:** Setup do Projeto (Rails 8, Tailwind, PostgreSQL) e Autenticação Administrativa (Modelo `Admin`).
+  - [x] **Tarefa 2.0:** Modelo e CRUD de Níveis (Interface protegida, Grid de Cards).
+  - [x] **Tarefa 3.0:** Modelo e CRUD de Temas (Navegação Drill-down a partir do Nível, restrições em cascata).
+  - [x] **Tarefa 4.0:** Motor e Banco de Dados de Questões (Validação rigorosa de apenas 1 opção correta no BD).
+  - [x] **Tarefa 5.0:** Formulário Frontend de Questões (Campos dinâmicos com JS Stimulus e inclusão de embeds de vídeo).
+- **Fase 2 — Onboarding e Interface do Estudante (Em Progresso):**
+  - [x] **Tarefa 1.0:** Modelo `User`, `UserSession` e Enum de Escolaridade.
+  - [x] **Tarefa 2.0:** Layout Mobile-First, Autenticação Isolada e Telas de Cadastro (`/cadastrar`) e Login (`/entrar`).
 
 ### 🚧 O que NÃO TEMOS (O que precisa ser feito)
 
-**Nas Fases Futuras do Roadmap (Fases 2 a 5):**
-- [ ] **Fase 2:** Onboarding e Interface do Estudante (Cadastro com nome, idade, escola, cidade e login do jogador).
+- [ ] **Fase 2 (Conclusão):**
+  - [ ] **Tarefa 3.0:** Motor de Progresso Base (Backend de Níveis).
+  - [ ] **Tarefa 4.0:** Lobby do Jogador (Frontend da Trilha de Níveis e Teaser de Temas Bloqueados).
 - [ ] **Fase 3:** Gameplay e Motor de Progressão (Telas de vídeo, cronômetro de resolução, validação de 70% de acerto).
 - [ ] **Fase 4:** Gamificação e Competição (Cálculo de Ranking Global unindo acertos e tempo de resolução).
 - [ ] **Fase 5:** Inteligência Analítica e Moderação (Dashboards demográficos, exportações e controle da comunidade).
@@ -63,7 +67,8 @@ O projeto utiliza a metodologia **AI-Specification-Driven Development (AI-SDD)**
 - [Visão do Produto e Problema](ai-sdd/system/vision.md)
 - [Mapeamento de Produto (Fluxos)](ai-sdd/system/product_map.md)
 - [Roadmap do Projeto](ai-sdd/system/roadmap.md)
-- **Painel Administrativo:** [PRD](ai-sdd/prd-painel-administrativo/prd.md) | [Design](ai-sdd/prd-painel-administrativo/design.md) | [Tech Spec](ai-sdd/prd-painel-administrativo/techspec.md) | [Tasks](ai-sdd/prd-painel-administrativo/tasks.md)
+- **Fase 1 (Painel Administrativo):** [PRD](ai-sdd/prd-painel-administrativo/prd.md) | [Design](ai-sdd/prd-painel-administrativo/design.md) | [Tech Spec](ai-sdd/prd-painel-administrativo/techspec.md) | [Tasks](ai-sdd/prd-painel-administrativo/tasks.md)
+- **Fase 2 (Onboarding do Estudante):** [PRD](ai-sdd/prd-onboarding-estudante/prd.md) | [Design](ai-sdd/prd-onboarding-estudante/design.md) | [Tech Spec](ai-sdd/prd-onboarding-estudante/techspec.md) | [Tasks](ai-sdd/prd-onboarding-estudante/tasks.md)
 
 ---
 
