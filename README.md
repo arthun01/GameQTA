@@ -67,26 +67,79 @@ O projeto utiliza a metodologia **AI-Specification-Driven Development (AI-SDD)**
 
 ---
 
-## 💻 Como Executar Localmente
+## 💻 Como Preparar o Ambiente e Executar (Para Iniciantes)
 
-**Pré-requisitos:** Docker (para rodar o devcontainer), Ruby e PostgreSQL.
+Se você nunca trabalhou com Ruby on Rails, siga o passo a passo abaixo para configurar a sua máquina (focado em Linux/Ubuntu, MacOS ou WSL no Windows):
 
-1. **Clonar e Preparar o Banco de Dados:**
-   ```bash
-   bin/setup
-   ```
+### 1. Instalar as Dependências Básicas e o Banco de Dados (PostgreSQL)
 
-2. **Rodar o Servidor de Desenvolvimento:**
-   *(Isso subirá o servidor Rails e compilará o Tailwind em watch mode)*
-   ```bash
-   bin/dev
-   ```
+O nosso projeto usa o banco de dados PostgreSQL. Precisamos instalá-lo primeiro.
+No terminal, rode:
 
-3. **Executar a Suíte de Testes e Linting:**
-   ```bash
-   bin/rubocop -a  # Linting e formatação
-   bin/rails test  # Testes Unitários e de Integração
-   bin/rails test:system # Testes End-to-End
-   ```
+**Ubuntu/Linux (ou WSL):**
+```bash
+sudo apt update
+sudo apt install curl g++ gcc autoconf automake bison libc6-dev libffi-dev libgdbm-dev libncurses5-dev libsqlite3-dev libtool libyaml-dev make pkg-config sqlite3 zlib1g-dev libgmp-dev libreadline-dev libssl-dev
+sudo apt install postgresql postgresql-contrib libpq-dev
+```
 
-Acesso via navegador: `http://localhost:3000/admin`
+**MacOS:**
+```bash
+brew install postgresql
+brew services start postgresql
+```
+
+### 2. Instalar o Gerenciador de Versões do Ruby (rbenv)
+
+Nunca instale o Ruby direto no sistema. Usaremos o `rbenv` para controlar a versão certinha do projeto.
+
+```bash
+# 1. Instalar o rbenv e o ruby-build
+curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
+
+# 2. Adicionar ao seu terminal (se usar bash)
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+source ~/.bashrc
+```
+*(Se você usar `zsh`, substitua `.bashrc` por `.zshrc` nos comandos acima).*
+
+### 3. Instalar o Ruby e o Rails
+
+Agora vamos instalar a linguagem de programação (Ruby) e a base do sistema.
+
+```bash
+# Instalar a versão do Ruby que o projeto pede
+rbenv install 3.3.0 # ou a versão listada no arquivo .ruby-version do projeto
+rbenv global 3.3.0
+
+# Instalar o Bundler (gerenciador de pacotes do Ruby) e o Rails
+gem install bundler
+gem install rails
+```
+
+### 4. Setup do Projeto Game QTA
+
+Com a linguagem instalada, vamos baixar e rodar o nosso jogo:
+
+```bash
+# 1. Entre na pasta do projeto
+cd pasta-do-projeto-game-qta
+
+# 2. Instale todas as dependências e crie o banco de dados magicamente
+bin/setup
+
+# 3. Rode o servidor de desenvolvimento (Deixe essa aba do terminal aberta!)
+bin/dev
+```
+
+Pronto! Agora é só abrir o seu navegador e acessar: **http://localhost:3000**
+
+### 🧪 Rodando os Testes (Para Desenvolvedores)
+
+Se você for programar, antes de enviar seu código, garanta que nada quebrou:
+```bash
+bin/rubocop -a        # Arruma a formatação do código
+bin/rails test        # Roda os testes de unidade
+bin/rails test:system # Roda os testes simulando cliques no navegador
+```
