@@ -21,13 +21,24 @@ class Play::QuestionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should redirect to dashboard if no questions left" do
-    # student_two has an attempt for theme two, which only has question two.
-    # The fixture already marks it as answered.
     attempt = theme_attempts(:two)
-
     post entrar_url, params: { email_address: users(:student_two).email_address, password: "password" }
 
     get play_theme_attempt_question_url(attempt)
     assert_redirected_to jornada_url
+  end
+
+  test "should post reveal and create a provisional submission" do
+    assert_difference("QuestionSubmission.count", 1) do
+      post reveal_play_theme_attempt_question_url(@attempt), as: :turbo_stream
+    end
+
+    assert_response :success
+    assert_equal "text/vnd.turbo-stream.html", @response.media_type
+    assert_select "turbo-stream[action='update'][target='question_play_area']"
+
+    submission = QuestionSubmission.last
+    assert_not_nil submission.revealed_at
+    assert_equal questions(:three), submission.question
   end
 end

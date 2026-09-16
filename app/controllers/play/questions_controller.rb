@@ -11,7 +11,17 @@ class Play::QuestionsController < Users::BaseController
   end
 
   def reveal
-    # A implementar na task 3
+    @question = @theme_attempt.next_pending_question
+    @submission = @theme_attempt.question_submissions.create!(
+      question: @question,
+      revealed_at: Time.current
+    )
+
+    @time_limit = GameSetting.current.time_for_difficulty(@question.difficulty)
+
+    respond_to do |format|
+      format.turbo_stream
+    end
   end
 
   def submit

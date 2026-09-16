@@ -22,10 +22,10 @@ Ver `ai-sdd/prd-gameplay-estudante/design.md`. Telas desta task:
 
 ## Subtarefas
 
-- [ ] 3.1 Adicionar Action `reveal` em `Play::QuestionsController` que encontra a tentativa, salva `revealed_at = Time.current` em um `QuestionSubmission` provisório, e renderiza Turbo Stream.
-- [ ] 3.2 Criar a View/Partial de revelação baseada no artboard `9C-0` do Paper.
-- [ ] 3.3 Criar o controller Stimulus `gameplay_timer_controller.js`.
-- [ ] 3.4 Conectar o Stimulus ao HTML para ler o tempo base da dificuldade (`data-gameplay-timer-seconds-value`) da configuração global (`GameSetting`), diminuir segundo a segundo, e fazer um `.requestSubmit()` do form quando chegar em 0.
+- [x] 3.1 Adicionar Action `reveal` em `Play::QuestionsController` que encontra a tentativa, salva `revealed_at = Time.current` em um `QuestionSubmission` provisório, e renderiza Turbo Stream.
+- [x] 3.2 Criar a View/Partial de revelação baseada no artboard `9C-0` do Paper.
+- [x] 3.3 Criar o controller Stimulus `gameplay_timer_controller.js`.
+- [x] 3.4 Conectar o Stimulus ao HTML para ler o tempo base da dificuldade (`data-gameplay-timer-seconds-value`) da configuração global (`GameSetting`), diminuir segundo a segundo, e fazer um `.requestSubmit()` do form quando chegar em 0.
 
 ## Detalhes de Implementação
 
@@ -34,19 +34,19 @@ Ver `ai-sdd/prd-gameplay-estudante/design.md`. Telas desta task:
 
 ## Critérios de Sucesso
 
-- [ ] O clique no botão "Mostrar Questão" imediatamente injeta a área de alternativas e encolhe a área do vídeo de consumo sem reload.
-- [ ] O contador regressivo JS flui suavemente e ativa o submit no tempo esgotado.
-- [ ] Todos os testes passando.
+- [x] O clique no botão "Mostrar Questão" imediatamente injeta a área de alternativas e encolhe a área do vídeo de consumo sem reload.
+- [x] O contador regressivo JS flui suavemente e ativa o submit no tempo esgotado.
+- [x] Todos os testes passando.
 
 ## Testes
 
 > **Obrigatório**: Crie e execute todos os testes antes de considerar a tarefa finalizada.
 
 ### Testes de Integração
-- [ ] Post para `reveal` cria um submission frame com `revealed_at` e retorna a Turbo Stream de atualização.
+- [x] Post para `reveal` cria um submission frame com `revealed_at` e retorna a Turbo Stream de atualização.
 
 ### Testes E2E (se aplicável)
-- [ ] System test verificando que após 1 segundo na tela, o contador muda visualmente (pode ser com mock da velocidade).
+- [x] System test verificando que após 1 segundo na tela, o contador muda visualmente (pode ser com mock da velocidade).
 
 ## Arquivos Relevantes
 

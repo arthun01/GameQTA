@@ -10,9 +10,8 @@
   
   <div class="grow flex flex-col p-4 gap-6">
     <div class="w-full aspect-video flex items-center justify-center rounded-xl bg-black overflow-hidden">
-      <% if @question.youtube_link.present? %>
-        <% video_id = @question.youtube_link.split('v=').last %>
-        <iframe class="w-full h-full" src="https://www.youtube.com/embed/<%= video_id %>?rel=0" frameborder="0" allowfullscreen></iframe>
+      <% if @question.youtube_video_id.present? %>
+        <iframe class="w-full h-full" src="https://www.youtube.com/embed/<%= @question.youtube_video_id %>?rel=0" frameborder="0" allowfullscreen></iframe>
       <% else %>
         <div class="text-white"><%= t(".video_unavailable", default: "Vídeo não disponível") %></div>
       <% end %>

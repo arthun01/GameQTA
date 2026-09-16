@@ -15,6 +15,13 @@ class Question < ApplicationRecord
 
   validate :validate_options_count_and_correctness
 
+  def youtube_video_id
+    return nil if youtube_link.blank?
+    if match = youtube_link.match(%r{(?:v=|youtu\.be/|embed/)([^&?]+)})
+      match[1]
+    end
+  end
+
   private
 
   def validate_options_count_and_correctness
