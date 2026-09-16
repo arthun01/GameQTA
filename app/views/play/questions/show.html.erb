@@ -1,0 +1,28 @@
+<%= turbo_frame_tag "question_play_area", class: "flex flex-col bg-(--color-surface-sunken) min-h-screen" do %>
+  <div class="flex items-center justify-between p-4 bg-(--color-surface) border-b border-(--color-border)">
+    <div class="font-sans font-semibold text-(--color-text-primary) text-base/5">
+      <%= @theme_attempt.theme.level.name %>
+    </div>
+    <div class="font-sans text-(--color-text-muted) text-sm/4.5">
+      <%= @theme_attempt.theme.name %>
+    </div>
+  </div>
+  
+  <div class="grow flex flex-col p-4 gap-6">
+    <div class="w-full aspect-video flex items-center justify-center rounded-xl bg-black overflow-hidden">
+      <% if @question.youtube_video_id.present? %>
+        <iframe class="w-full h-full" src="https://www.youtube.com/embed/<%= @question.youtube_video_id %>?rel=0" frameborder="0" allowfullscreen></iframe>
+      <% else %>
+        <div class="text-white"><%= t(".video_unavailable", default: "Vídeo não disponível") %></div>
+      <% end %>
+    </div>
+    
+    <div class="text-center font-sans flex justify-center flex-wrap text-(--color-text-muted) text-[15px]/4.5">
+      <%= t(".instructions", default: "Assista ao vídeo explicativo. Quando estiver pronto, revele a questão para iniciar o tempo.") %>
+    </div>
+    
+    <div class="mt-auto flex flex-col gap-3">
+      <%= button_to t(".show_question", default: "Mostrar Questão"), reveal_play_theme_attempt_question_path(@theme_attempt), class: "w-full p-4 rounded-xl bg-(--color-primary) hover:bg-(--color-primary-hover) font-sans font-semibold text-white text-base/5 text-center cursor-pointer transition-colors block" %>
+    </div>
+  </div>
+<% end %>

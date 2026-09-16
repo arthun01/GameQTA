@@ -1,0 +1,9 @@
+pt-BR:
+  play:
+    questions:
+      unauthorized: "Tentativa inválida ou não autorizada."
+      show:
+        theme_completed: "Tema concluído!"
+        video_unavailable: "Vídeo não disponível"
+        instructions: "Assista ao vídeo explicativo. Quando estiver pronto, revele a questão para iniciar o tempo."
+        show_question: "Mostrar Questão"

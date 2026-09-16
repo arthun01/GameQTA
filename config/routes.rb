@@ -21,5 +21,18 @@ Rails.application.routes.draw do
   get "/jornada", to: "dashboard#index"
 
   root to: redirect("/jornada")
+  namespace :play do
+    resources :themes, only: [] do
+      post :start, on: :member
+      get :finish, on: :member
+    end
+    resources :theme_attempts, only: [] do
+      resource :question, only: [ :show ] do
+        post :reveal
+        post :submit
+      end
+    end
+  end
+
   get "up" => "rails/health#show", as: :rails_health_check
 end

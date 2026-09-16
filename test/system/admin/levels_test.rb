@@ -48,7 +48,7 @@ class Admin::LevelsSystemTest < ApplicationSystemTestCase
   end
 
   test "destroying a Level" do
-    empty_level = Level.create!(name: "Nível Vazio", description: "Sem temas", icon: "🌱")
+    empty_level = Level.create!(name: "Novo Nível Vazio Criado", description: "Sem temas", icon: "🌱")
     visit admin_levels_url
 
     within(find(".group", text: empty_level.name)) do

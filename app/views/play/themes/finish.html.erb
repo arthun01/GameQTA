@@ -1,0 +1,81 @@
+<div class="flex flex-col bg-white min-h-screen">
+  <% if @passed %>
+    <div class="flex flex-col items-center justify-center p-6 bg-green-50 flex-grow">
+      <div class="w-30 h-30 flex items-center justify-center mb-8 rounded-full shrink-0 bg-green-500">
+        <div class="flex font-sans text-white text-6xl">
+          🏆
+        </div>
+      </div>
+      
+      <div class="mb-3 text-center font-sans font-extrabold flex justify-center flex-wrap text-green-900 text-3xl">
+        <%= t(".level_completed", default: "Nível Concluído!") %>
+      </div>
+      
+      <div class="mb-8 text-base text-center max-w-[280px] leading-relaxed font-sans flex justify-center flex-wrap text-green-700">
+        <%= t(".level_completed_desc", level_name: @level.name, default: "Você dominou a %{level_name}.") %>
+      </div>
+      
+      <div class="w-full flex flex-col mb-12 p-6 rounded-[20px] gap-5 shadow-lg bg-white">
+        <div class="flex justify-between items-center">
+          <div class="inline-block font-sans font-semibold text-slate-600 text-base">
+            <%= t(".your_score", default: "Sua Nota") %>
+          </div>
+          <div class="inline-block font-sans font-extrabold text-green-500 text-2xl">
+            <%= @score %>%
+          </div>
+        </div>
+        <div class="w-full h-3 rounded-md overflow-clip shrink-0 bg-slate-200">
+          <div class="h-full rounded-md bg-green-500" style="width: <%= @score %>%;"></div>
+        </div>
+        <div class="text-center font-sans flex justify-center flex-wrap text-slate-500 text-sm">
+          <%= t(".minimum_score", default: "Mínimo para aprovação: 70%") %>
+        </div>
+      </div>
+      
+      <%= link_to jornada_path, class: "w-full p-4 rounded-xl bg-green-500 text-center block" do %>
+        <span class="font-sans font-semibold text-white text-base">
+          <%= t(".advance", default: "Voltar para Jornada") %>
+        </span>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="flex flex-col items-center justify-center p-6 bg-red-50 flex-grow">
+      <div class="w-30 h-30 flex items-center justify-center mb-8 rounded-full shrink-0 bg-red-500">
+        <div class="flex font-sans text-white text-6xl">
+          🔄
+        </div>
+      </div>
+      
+      <div class="mb-3 text-center font-sans font-extrabold flex justify-center flex-wrap text-red-900 text-3xl">
+        <%= t(".level_failed", default: "Nível Reprovado!") %>
+      </div>
+      
+      <div class="mb-8 text-base text-center max-w-[280px] leading-relaxed font-sans flex justify-center flex-wrap text-red-700">
+        <%= t(".level_failed_desc", level_name: @level.name, default: "Você não alcançou a nota mínima em %{level_name}.") %>
+      </div>
+      
+      <div class="w-full flex flex-col mb-12 p-6 rounded-[20px] gap-5 shadow-lg bg-white">
+        <div class="flex justify-between items-center">
+          <div class="inline-block font-sans font-semibold text-slate-600 text-base">
+            <%= t(".your_score", default: "Sua Nota") %>
+          </div>
+          <div class="inline-block font-sans font-extrabold text-red-500 text-2xl">
+            <%= @score %>%
+          </div>
+        </div>
+        <div class="w-full h-3 rounded-md overflow-clip shrink-0 bg-slate-200">
+          <div class="h-full rounded-md bg-red-500" style="width: <%= @score %>%;"></div>
+        </div>
+        <div class="text-center font-sans flex justify-center flex-wrap text-slate-500 text-sm">
+          <%= t(".minimum_score", default: "Mínimo para aprovação: 70%") %>
+        </div>
+      </div>
+      
+      <%= link_to jornada_path, class: "w-full p-4 rounded-xl bg-red-500 text-center block" do %>
+        <span class="font-sans font-semibold text-white text-base">
+          <%= t(".restart", default: "Recomeçar Nível") %>
+        </span>
+      <% end %>
+    </div>
+  <% end %>
+</div>

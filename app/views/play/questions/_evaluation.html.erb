@@ -1,0 +1,42 @@
+<div class="flex flex-col bg-(--color-surface-sunken) size-full min-h-screen">
+  <div class="flex items-center justify-between p-4 bg-(--color-surface-elevated) border-b border-(--color-border)">
+    <div class="font-sans font-semibold text-(--color-text-primary) text-base/5">
+      <%= @theme_attempt.theme.level.name %>
+    </div>
+    
+    <div data-controller="gameplay-timer" data-gameplay-timer-seconds-value="<%= time_limit %>" class="py-1 px-2 rounded-md bg-(--color-danger-subtle) transition-all" data-gameplay-timer-target="container">
+      <div class="font-sans font-bold text-(--color-danger) text-base/5" data-gameplay-timer-target="display">
+        00:00
+      </div>
+    </div>
+  </div>
+  
+  <div class="grow flex flex-col p-4 overflow-hidden gap-6">
+    <div class="w-full h-30 flex items-center justify-center rounded-xl bg-black overflow-hidden relative">
+      <% if question.youtube_video_id.present? %>
+        <iframe class="w-full h-full absolute inset-0" src="https://www.youtube.com/embed/<%= question.youtube_video_id %>?rel=0" frameborder="0" allowfullscreen></iframe>
+      <% else %>
+        <div class="text-white text-xs"><%= t("play.questions.show.video_unavailable", default: "Vídeo não disponível") %></div>
+      <% end %>
+    </div>
+    
+    <div class="text-[18px] leading-[140%] font-sans font-semibold text-(--color-text-primary)">
+      <%= question.statement %>
+    </div>
+    
+    <%= form_with url: submit_play_theme_attempt_question_path(@theme_attempt), id: "evaluation_form", class: "flex flex-col gap-3", data: { turbo: true, turbo_frame: "_top" } do |f| %>
+      <% ('A'..'Z').zip(question.options.order(:id)).each do |letter, option| %>
+        <% next unless option %>
+        <label class="flex items-center p-4 rounded-xl gap-3 bg-(--color-surface-elevated) border-2 border-(--color-border) cursor-pointer hover:border-(--color-primary) transition-colors has-[:checked]:border-(--color-primary)">
+          <%= f.radio_button :option_id, option.id, class: "sr-only", onchange: "this.form.requestSubmit()" %>
+          <div class="flex items-center justify-center rounded-[14px] shrink-0 bg-(--color-surface-sunken) size-7 text-(--color-text-primary) font-bold text-sm">
+            <%= letter %>
+          </div>
+          <div class="inline-block font-sans text-(--color-text-primary) text-base/5">
+            <%= option.content %>
+          </div>
+        </label>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -13,3 +13,9 @@ two:
   feedback_article: "A precaução é acionada mesmo diante de incerteza científica."
   difficulty: medium
   theme: two
+three:
+  statement: "Questão não respondida do tema 1."
+  youtube_link: "https://www.youtube.com/watch?v=333"
+  feedback_article: "Feedback 3"
+  difficulty: easy
+  theme: one
