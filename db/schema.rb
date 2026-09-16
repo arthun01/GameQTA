@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_14_022312) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_16_003408) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -20,6 +20,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_14_022312) do
     t.string "password_digest", null: false
     t.datetime "updated_at", null: false
     t.index ["email_address"], name: "index_admins_on_email_address", unique: true
+  end
+
+  create_table "game_settings", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "easy_time", default: 60, null: false
+    t.integer "hard_time", default: 30, null: false
+    t.integer "medium_time", default: 45, null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "levels", force: :cascade do |t|
@@ -37,6 +45,21 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_14_022312) do
     t.bigint "question_id", null: false
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_options_on_question_id"
+  end
+
+  create_table "question_submissions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.boolean "is_correct", default: false, null: false
+    t.bigint "option_id"
+    t.bigint "question_id", null: false
+    t.datetime "revealed_at", null: false
+    t.bigint "theme_attempt_id", null: false
+    t.integer "time_taken"
+    t.datetime "updated_at", null: false
+    t.index ["option_id"], name: "index_question_submissions_on_option_id"
+    t.index ["question_id"], name: "index_question_submissions_on_question_id"
+    t.index ["theme_attempt_id", "question_id"], name: "index_question_submissions_on_theme_attempt_id_and_question_id", unique: true
+    t.index ["theme_attempt_id"], name: "index_question_submissions_on_theme_attempt_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -57,6 +80,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_14_022312) do
     t.datetime "updated_at", null: false
     t.string "user_agent"
     t.index ["admin_id"], name: "index_sessions_on_admin_id"
+  end
+
+  create_table "theme_attempts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "status", default: 0, null: false
+    t.bigint "theme_id", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["theme_id"], name: "index_theme_attempts_on_theme_id"
+    t.index ["user_id", "theme_id"], name: "index_theme_attempts_on_user_id_and_theme_id", unique: true, where: "(status = 0)"
+    t.index ["user_id"], name: "index_theme_attempts_on_user_id"
   end
 
   create_table "themes", force: :cascade do |t|
@@ -91,8 +125,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_14_022312) do
   end
 
   add_foreign_key "options", "questions"
+  add_foreign_key "question_submissions", "options"
+  add_foreign_key "question_submissions", "questions"
+  add_foreign_key "question_submissions", "theme_attempts"
   add_foreign_key "questions", "themes"
   add_foreign_key "sessions", "admins"
+  add_foreign_key "theme_attempts", "themes"
+  add_foreign_key "theme_attempts", "users"
   add_foreign_key "themes", "levels"
   add_foreign_key "user_sessions", "users"
 end

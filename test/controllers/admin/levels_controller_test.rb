@@ -44,7 +44,7 @@ class Admin::LevelsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy level" do
-    level_to_delete = levels(:two)
+    level_to_delete = levels(:level_without_themes)
     assert_difference("Level.count", -1) do
       delete admin_level_url(level_to_delete)
     end

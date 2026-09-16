@@ -9,3 +9,8 @@ two:
   name: "Legislação de Águas"
   description: "Estudo sobre o Código de Águas e as regulamentações sobre recursos hídricos."
   icon: "💧"
+
+level_without_themes:
+  name: "Nível Vazio"
+  description: "Nível sem temas para teste de deleção."
+  icon: "🗑️"
