@@ -18,8 +18,20 @@
           <div class="p-6">
             <h2 class="text-xl font-bold text-(--color-text-primary)"><%= level.name %></h2>
             <p class="text-sm text-(--color-text-muted) mt-1"><%= level.description %></p>
-            <div class="mt-6 flex justify-end">
-              <%= link_to t('.play'), "#", class: "inline-flex items-center gap-2 px-6 py-3 rounded-full bg-(--color-primary) hover:bg-(--color-primary-hover) text-white font-semibold transition shadow" %>
+            <div class="mt-6">
+              <h4 class="text-sm font-semibold text-(--color-text-primary) mb-3 uppercase tracking-wider"><%= t('.themes', default: "Temas") %></h4>
+              <% if level.themes.any? %>
+                <ul class="space-y-3">
+                  <% level.themes.each do |theme| %>
+                    <li class="bg-(--color-surface) border border-(--color-border) rounded-(--radius-md) p-4 flex items-center justify-between">
+                      <span class="text-sm font-medium text-(--color-text-primary)"><%= theme.name %></span>
+                      <%= button_to t('.play_theme', default: "Iniciar Tema"), start_play_theme_path(theme), class: "inline-flex items-center gap-2 px-4 py-2 rounded-full bg-(--color-primary) hover:bg-(--color-primary-hover) text-white font-semibold transition shadow text-sm" %>
+                    </li>
+                  <% end %>
+                </ul>
+              <% else %>
+                <p class="text-sm text-(--color-text-muted) italic"><%= t('.no_themes') %></p>
+              <% end %>
             </div>
           </div>
         </div>

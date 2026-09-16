@@ -18,4 +18,14 @@ class ThemeAttemptTest < ActiveSupport::TestCase
 
     assert attempt2.valid?
   end
+
+  test "next_pending_question returns the first unanswered question" do
+    attempt = theme_attempts(:one)
+    assert_equal questions(:three), attempt.next_pending_question
+  end
+
+  test "next_pending_question returns nil if all answered" do
+    attempt = theme_attempts(:two)
+    assert_nil attempt.next_pending_question
+  end
 end

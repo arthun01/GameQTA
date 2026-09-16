@@ -20,11 +20,11 @@ Ver `ai-sdd/prd-gameplay-estudante/design.md`. Telas desta task:
 
 ## Subtarefas
 
-- [ ] 2.1 Criar rotas no namespace `play` (themes e theme_attempts).
-- [ ] 2.2 Implementar `Play::ThemesController#start` que encontra ou cria um `ThemeAttempt` `in_progress` para o tema em questão.
-- [ ] 2.3 Implementar lógica no model `ThemeAttempt` para `next_pending_question`.
-- [ ] 2.4 Implementar `Play::QuestionsController#show` que renderiza o layout e o vídeo em um Turbo Frame principal.
-- [ ] 2.5 Desenhar a View `show.html.erb` (Desafio - Passo 1: Consumo) baseada no design `9B-0` do Paper.
+- [x] 2.1 Criar rotas no namespace `play` (themes e theme_attempts).
+- [x] 2.2 Implementar `Play::ThemesController#start` que encontra ou cria um `ThemeAttempt` `in_progress` para o tema em questão.
+- [x] 2.3 Implementar lógica no model `ThemeAttempt` para `next_pending_question`.
+- [x] 2.4 Implementar `Play::QuestionsController#show` que renderiza o layout e o vídeo em um Turbo Frame principal.
+- [x] 2.5 Desenhar a View `show.html.erb` (Desafio - Passo 1: Consumo) baseada no design `9B-0` do Paper.
 
 ## Detalhes de Implementação
 
@@ -33,18 +33,18 @@ Ver `ai-sdd/prd-gameplay-estudante/design.md`. Telas desta task:
 
 ## Critérios de Sucesso
 
-- [ ] Clicar num Tema na Home do Estudante (`/dashboard`) direciona ao `start` e logo pro `show` da questão.
-- [ ] UI reproduz fielmente o artboard `9B-0` do Paper.
-- [ ] Todos os testes passando.
+- [x] Clicar num Tema na Home do Estudante (`/dashboard`) direciona ao `start` e logo pro `show` da questão.
+- [x] UI reproduz fielmente o artboard `9B-0` do Paper.
+- [x] Todos os testes passando.
 
 ## Testes
 
 > **Obrigatório**: Crie e execute todos os testes antes de considerar a tarefa finalizada.
 
 ### Testes de Integração
-- [ ] Post para `start` redireciona para a questão pendente.
-- [ ] Get em `show` de uma tentativa que não pertence ao current_user dá erro (autorização).
-- [ ] Get em `show` mostra o vídeo do youtube e o botão "Mostrar Questão".
+- [x] Post para `start` redireciona para a questão pendente.
+- [x] Get em `show` de uma tentativa que não pertence ao current_user dá erro (autorização).
+- [x] Get em `show` mostra o vídeo do youtube e o botão "Mostrar Questão".
 
 ## Arquivos Relevantes
 
