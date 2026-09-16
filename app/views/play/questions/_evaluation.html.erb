@@ -24,7 +24,7 @@
       <%= question.statement %>
     </div>
     
-    <%= form_with url: submit_play_theme_attempt_question_path(@theme_attempt), id: "evaluation_form", class: "flex flex-col gap-3", data: { turbo: true } do |f| %>
+    <%= form_with url: submit_play_theme_attempt_question_path(@theme_attempt), id: "evaluation_form", class: "flex flex-col gap-3", data: { turbo: true, turbo_frame: "_top" } do |f| %>
       <% ('A'..'Z').zip(question.options.order(:id)).each do |letter, option| %>
         <% next unless option %>
         <label class="flex items-center p-4 rounded-xl gap-3 bg-(--color-surface-elevated) border-2 border-(--color-border) cursor-pointer hover:border-(--color-primary) transition-colors has-[:checked]:border-(--color-primary)">

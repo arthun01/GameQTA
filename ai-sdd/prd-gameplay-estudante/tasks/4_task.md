@@ -23,11 +23,11 @@ Ver `ai-sdd/prd-gameplay-estudante/design.md`. Telas desta task:
 
 ## Subtarefas
 
-- [ ] 4.1 Adicionar action `submit` ao `Play::QuestionsController`.
-- [ ] 4.2 Lógica no Model (ou no controller) que avalia `Time.current - revealed_at`. Se exceder o `GameSetting` da dificuldade (com 2s de margem), computa como erro.
-- [ ] 4.3 Se correto: salva `QuestionSubmission`, redireciona pro `show` (próxima pergunta) ou `themes_controller#finish` (se última).
-- [ ] 4.4 Se incorreto: salva `QuestionSubmission`, renderiza view Turbo Stream que abre o Modal e mostra o artigo explicativo (referência `9D-0`).
-- [ ] 4.5 Botão "Próxima Questão" do Modal faz redirect para a próxima.
+- [x] 4.1 Adicionar action `submit` ao `Play::QuestionsController`.
+- [x] 4.2 Lógica no Model (ou no controller) que avalia `Time.current - revealed_at`. Se exceder o `GameSetting` da dificuldade (com 2s de margem), computa como erro.
+- [x] 4.3 Se correto: salva `QuestionSubmission`, redireciona pro `show` (próxima pergunta) ou `themes_controller#finish` (se última).
+- [x] 4.4 Se incorreto: salva `QuestionSubmission`, renderiza view Turbo Stream que abre o Modal e mostra o artigo explicativo (referência `9D-0`).
+- [x] 4.5 Botão "Próxima Questão" do Modal faz redirect para a próxima.
 
 ## Detalhes de Implementação
 
@@ -36,19 +36,19 @@ Ver `ai-sdd/prd-gameplay-estudante/design.md`. Telas desta task:
 
 ## Critérios de Sucesso
 
-- [ ] Errar invoca um Turbo Stream que exibe imediatamente o design de falha.
-- [ ] Acertar vai para a próxima tela sem travamentos.
-- [ ] Hacks simulados no relógio do client são identificados pelo cálculo de `revealed_at`.
-- [ ] Todos os testes passando.
+- [x] Errar invoca um Turbo Stream que exibe imediatamente o design de falha.
+- [x] Acertar vai para a próxima tela sem travamentos.
+- [x] Hacks simulados no relógio do client são identificados pelo cálculo de `revealed_at`.
+- [x] Todos os testes passando.
 
 ## Testes
 
 > **Obrigatório**: Crie e execute todos os testes antes de considerar a tarefa finalizada.
 
 ### Testes de Integração
-- [ ] Submissão no tempo correto com opção certa redireciona pro `show` com sucesso.
-- [ ] Submissão com tempo estourado (simulado em teste) marca como errado e devolve Turbo stream pro modal.
-- [ ] Submissão de opção errada retorna Turbo stream pro modal.
+- [x] Submissão no tempo correto com opção certa redireciona pro `show` com sucesso.
+- [x] Submissão com tempo estourado (simulado em teste) marca como errado e devolve Turbo stream pro modal.
+- [x] Submissão de opção errada retorna Turbo stream pro modal.
 
 ## Arquivos Relevantes
 
