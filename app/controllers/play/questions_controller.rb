@@ -5,7 +5,7 @@ class Play::QuestionsController < Users::BaseController
     @question = @theme_attempt.next_pending_question
 
     if @question.nil?
-      redirect_to jornada_path, notice: t(".theme_completed", default: "Tema concluído!")
+      redirect_to finish_play_theme_path(@theme_attempt.theme)
     end
   end
 

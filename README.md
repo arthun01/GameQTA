@@ -17,7 +17,7 @@ O ecossistema é dividido em duas frentes complementares:
 
 ## 🚀 Status do Projeto
 
-> **Status Atual:** Fase 2 em Desenvolvimento (Onboarding e Interface do Estudante).
+> **Status Atual:** Fase 3 Concluída (Fase 4: Gamificação e Ranking em Planejamento).
 
 ### 📍 O que TEMOS atualmente (Feito)
 
@@ -27,6 +27,7 @@ O ecossistema é dividido em duas frentes complementares:
 - [x] Roadmap Completo em 5 Fases (`ai-sdd/system/roadmap.md`)
 - [x] **Fase 1 (Painel Admin):** PRD, Design, Tech Spec e Tasks (`ai-sdd/prd-painel-administrativo/`)
 - [x] **Fase 2 (Onboarding):** PRD, Design no Paper, Tech Spec e Tasks (`ai-sdd/prd-onboarding-estudante/`)
+- [x] **Fase 3 (Gameplay):** PRD, Design no Paper, Tech Spec e Tasks (`ai-sdd/prd-gameplay-estudante/`)
 
 **Implementação (Código Base):**
 - **Fase 1 — Painel Administrativo (100% Concluído):**
@@ -40,10 +41,15 @@ O ecossistema é dividido em duas frentes complementares:
   - [x] **Tarefa 2.0:** Layout Mobile-First, Autenticação Isolada e Telas de Cadastro (`/cadastrar`) e Login (`/entrar`).
   - [x] **Tarefa 3.0:** Motor de Progresso Base (Backend de Níveis).
   - [x] **Tarefa 4.0:** Lobby do Jogador (Frontend da Trilha de Níveis e Teaser de Temas Bloqueados).
+- **Fase 3 — Gameplay e Motor de Progressão do Estudante (100% Concluído):**
+  - [x] **Tarefa 1.0:** Infraestrutura de Dados (`ThemeAttempt`, `QuestionSubmission`, `GameSetting` para tempos por dificuldade).
+  - [x] **Tarefa 2.0:** Motor de Inicialização (`Play::ThemesController#start`), Embeds YouTube responsivos e visualização de consumo.
+  - [x] **Tarefa 3.0:** Dinâmica de Revelação (Hotwire Turbo Streams) e Cronômetro Stimulus (`gameplay_timer_controller.js`) com contagem regressiva por dificuldade.
+  - [x] **Tarefa 4.0:** Submissão Segura, Anti-Cheat (validação no servidor do tempo decorrido) e Modal de Feedback de Erro (`9D-0`).
+  - [x] **Tarefa 5.0:** Progressão de Nível e Regra dos 70% (Tela de resultado `9E-0`, reset em transação em caso de reprovação ou avanço em caso de aprovação).
 
 ### 🚧 O que NÃO TEMOS (O que precisa ser feito)
 
-- [ ] **Fase 3:** Gameplay e Motor de Progressão (Telas de vídeo, cronômetro de resolução, validação de 70% de acerto).
 - [ ] **Fase 4:** Gamificação e Competição (Cálculo de Ranking Global unindo acertos e tempo de resolução).
 - [ ] **Fase 5:** Inteligência Analítica e Moderação (Dashboards demográficos, exportações e controle da comunidade).
 
@@ -68,6 +74,7 @@ O projeto utiliza a metodologia **AI-Specification-Driven Development (AI-SDD)**
 - [Roadmap do Projeto](ai-sdd/system/roadmap.md)
 - **Fase 1 (Painel Administrativo):** [PRD](ai-sdd/prd-painel-administrativo/prd.md) | [Design](ai-sdd/prd-painel-administrativo/design.md) | [Tech Spec](ai-sdd/prd-painel-administrativo/techspec.md) | [Tasks](ai-sdd/prd-painel-administrativo/tasks.md)
 - **Fase 2 (Onboarding do Estudante):** [PRD](ai-sdd/prd-onboarding-estudante/prd.md) | [Design](ai-sdd/prd-onboarding-estudante/design.md) | [Tech Spec](ai-sdd/prd-onboarding-estudante/techspec.md) | [Tasks](ai-sdd/prd-onboarding-estudante/tasks.md)
+- **Fase 3 (Gameplay e Progressão):** [PRD](ai-sdd/prd-gameplay-estudante/prd.md) | [Design](ai-sdd/prd-gameplay-estudante/design.md) | [Tech Spec](ai-sdd/prd-gameplay-estudante/techspec.md) | [Tasks](ai-sdd/prd-gameplay-estudante/tasks.md)
 
 ---
 

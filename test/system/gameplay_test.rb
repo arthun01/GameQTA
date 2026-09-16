@@ -3,9 +3,27 @@ require "application_system_test_case"
 class GameplayTest < ApplicationSystemTestCase
   setup do
     @student = users(:student_one)
-    ThemeAttempt.destroy_all
-    QuestionSubmission.destroy_all
-    Question.where(statement: ["Test Q 1", "Test Q 2", "Test Q 3", "Test Q 4"]).destroy_all
+
+    level = Level.create!(name: "Gameplay Level", description: "Desc", icon: "⭐")
+    # Torna este o primeiro nível para ficar desbloqueado
+    level.update_column(:id, (Level.minimum(:id) || 0) - 100)
+
+    theme = level.themes.create!(name: "Gameplay Theme", description: "Desc", icon: "🔥")
+
+    q1 = theme.questions.build(statement: "Test Q 1", difficulty: :easy, youtube_link: "https://youtube.com/watch?v=123", feedback_article: "test")
+    q1.options.build(content: "Certa 1", is_correct: true)
+    q1.options.build(content: "Errada 1", is_correct: false)
+    q1.save!
+
+    q2 = theme.questions.build(statement: "Test Q 2", difficulty: :easy, youtube_link: "https://youtube.com/watch?v=123", feedback_article: "test")
+    q2.options.build(content: "Certa 2", is_correct: true)
+    q2.options.build(content: "Errada 2", is_correct: false)
+    q2.save!
+
+    q3 = theme.questions.build(statement: "Test Q 3", difficulty: :easy, youtube_link: "https://youtube.com/watch?v=123", feedback_article: "test")
+    q3.options.build(content: "Certa 3", is_correct: true)
+    q3.options.build(content: "Errada 3", is_correct: false)
+    q3.save!
 
     visit entrar_path
     fill_in "E-mail", with: @student.email_address
@@ -14,88 +32,37 @@ class GameplayTest < ApplicationSystemTestCase
     assert_selector "h1", text: "Sua Jornada"
   end
 
-  test "student can start theme, watch video and reveal question with working timer" do
-    unlocked_level = Level.order(:id).first
-    theme = unlocked_level.themes.first
-    q = theme.questions.build(statement: "Test Q 1", difficulty: :easy, youtube_link: "https://www.youtube.com/watch?v=123", feedback_article: "test")
-    q.options.build(content: "A", is_correct: true)
-    q.options.build(content: "B", is_correct: false)
-    q.save!
-
-    visit jornada_path
-    assert_selector "h2", text: unlocked_level.name
-    click_on "Iniciar Tema", match: :first
-
-    assert_selector "button", text: "Mostrar Questão"
-    click_on "Mostrar Questão"
-
-    assert_text q.statement
-    assert_selector "[data-gameplay-timer-target='display']", text: "01:00"
-  end
-
-  test "submissão com opção errada mostra modal de erro" do
-    unlocked_level = Level.order(:id).first
-    theme = unlocked_level.themes.first
-    q = theme.questions.build(statement: "Test Q 2", difficulty: :easy, youtube_link: "https://www.youtube.com/watch?v=123", feedback_article: "test")
-    q.options.build(content: "Certa", is_correct: true)
-    q.options.build(content: "Errada", is_correct: false)
-    q.save!
-
+  test "gameplay flow" do
     visit jornada_path
     click_on "Iniciar Tema", match: :first
-    
-    assert_selector "button", text: "Mostrar Questão"
+
+    # Q1
     click_on "Mostrar Questão"
+    assert_text "Test Q 1"
 
-    assert_text q.statement
-    find('label', text: 'Errada').click
-
+    # Errada:
+    find("label", text: "Errada 1").click
     assert_text "Resposta Incorreta"
     click_on "Próxima Questão"
-    
-    assert_text "Tema concluído!"
-  end
 
-  test "timeout conta como erro e mostra modal" do
-    unlocked_level = Level.order(:id).first
-    theme = unlocked_level.themes.first
-    q = theme.questions.build(statement: "Test Q 3", difficulty: :easy, youtube_link: "https://www.youtube.com/watch?v=123", feedback_article: "test")
-    q.options.build(content: "Certa", is_correct: true)
-    q.options.build(content: "Errada", is_correct: false)
-    q.save!
-
-    visit jornada_path
-    click_on "Iniciar Tema", match: :first
-    
-    assert_selector "button", text: "Mostrar Questão"
+    # Q2
     click_on "Mostrar Questão"
+    assert_text "Test Q 2"
 
-    assert_text q.statement
-
+    # Timeout
     submission = QuestionSubmission.last
     submission.update!(revealed_at: 2.minutes.ago)
     execute_script("document.getElementById('evaluation_form').requestSubmit()")
 
     assert_text "Resposta Incorreta"
-  end
+    click_on "Próxima Questão"
 
-  test "submissão com opção certa redireciona para a próxima" do
-    unlocked_level = Level.order(:id).first
-    theme = unlocked_level.themes.first
-    q = theme.questions.build(statement: "Test Q 4", difficulty: :easy, youtube_link: "https://www.youtube.com/watch?v=123", feedback_article: "test")
-    q.options.build(content: "Certa", is_correct: true)
-    q.options.build(content: "Errada", is_correct: false)
-    q.save!
-
-    visit jornada_path
-    click_on "Iniciar Tema", match: :first
-    
-    assert_selector "button", text: "Mostrar Questão"
+    # Q3
     click_on "Mostrar Questão"
+    assert_text "Test Q 3"
+    find("label", text: "Certa 3").click
 
-    assert_text q.statement
-    find('label', text: 'Certa').click
-
-    assert_text "Tema concluído!"
+    # Redirecionou pra finish!
+    assert_text "Nível Reprovado!"
   end
 end

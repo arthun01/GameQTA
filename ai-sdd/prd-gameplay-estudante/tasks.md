@@ -19,9 +19,9 @@ O motor de gameplay foi decomposto em 5 entregáveis lógicos, começando da fun
 |---|--------|---------|------|--------|
 | 1.0 | Infraestrutura de Dados (Modelagem e Settings) | [tasks/1_task.md](tasks/1_task.md) | — | ✅ |
 | 2.0 | Motor de Inicialização e Tela de Consumo | [tasks/2_task.md](tasks/2_task.md) | 1.0 | ✅ |
-| 3.0 | Dinâmica de Revelação e Cronômetro | [tasks/3_task.md](tasks/3_task.md) | 2.0 | ⬜ |
-| 4.0 | Submissão, Validação e Feedback | [tasks/4_task.md](tasks/4_task.md) | 3.0 | ⬜ |
-| 5.0 | Progressão de Nível e Regra dos 70% | [tasks/5_task.md](tasks/5_task.md) | 4.0 | ⬜ |
+| 3.0 | Dinâmica de Revelação e Cronômetro | [tasks/3_task.md](tasks/3_task.md) | 2.0 | ✅ |
+| 4.0 | Submissão, Validação e Feedback | [tasks/4_task.md](tasks/4_task.md) | 3.0 | ✅ |
+| 5.0 | Progressão de Nível e Regra dos 70% | [tasks/5_task.md](tasks/5_task.md) | 4.0 | ✅ |
 
 **Legenda**: ⬜ Pendente · 🔄 Em andamento · ✅ Concluída
 

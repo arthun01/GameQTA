@@ -24,3 +24,13 @@ two_opt2:
   content: "Determina ação protetiva mesmo sem certeza científica absoluta."
   is_correct: true
   question: two
+
+three_opt1:
+  content: "Certa 3"
+  is_correct: true
+  question: three
+
+three_opt2:
+  content: "Errada 3"
+  is_correct: false
+  question: three

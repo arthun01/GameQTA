@@ -25,7 +25,7 @@ class Play::QuestionsControllerTest < ActionDispatch::IntegrationTest
     post entrar_url, params: { email_address: users(:student_two).email_address, password: "password" }
 
     get play_theme_attempt_question_url(attempt)
-    assert_redirected_to jornada_url
+    assert_redirected_to finish_play_theme_url(attempt.theme)
   end
 
   test "should post reveal and create a provisional submission" do

@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   namespace :play do
     resources :themes, only: [] do
       post :start, on: :member
+      get :finish, on: :member
     end
     resources :theme_attempts, only: [] do
       resource :question, only: [ :show ] do

@@ -22,11 +22,11 @@ Ver `ai-sdd/prd-gameplay-estudante/design.md`. Telas desta task:
 
 ## Subtarefas
 
-- [ ] 5.1 Adicionar Action `finish` no `Play::ThemesController` que verifica se era o último tema do nível.
-- [ ] 5.2 Se for o último: criar método no Model para juntar todos os `ThemeAttempt` e `QuestionSubmission` daquele Level.
-- [ ] 5.3 Se total_score >= 70%: Renderiza view Sucesso (Referência `9E-0`) que libera próximo nível.
-- [ ] 5.4 Se total_score < 70%: Realiza a deleção `ThemeAttempt.where(user: user, theme: level.themes).destroy_all`. Renderiza view Falha.
-- [ ] 5.5 View Result para exibir a barra de % de acertos.
+- [x] 5.1 Adicionar Action `finish` no `Play::ThemesController` que verifica se era o último tema do nível.
+- [x] 5.2 Se for o último: criar método no Model para juntar todos os `ThemeAttempt` e `QuestionSubmission` daquele Level.
+- [x] 5.3 Se total_score >= 70%: Renderiza view Sucesso (Referência `9E-0`) que libera próximo nível.
+- [x] 5.4 Se total_score < 70%: Realiza a deleção `ThemeAttempt.where(user: user, theme: level.themes).destroy_all`. Renderiza view Falha.
+- [x] 5.5 View Result para exibir a barra de % de acertos.
 
 ## Detalhes de Implementação
 
@@ -35,17 +35,17 @@ Ver `ai-sdd/prd-gameplay-estudante/design.md`. Telas desta task:
 
 ## Critérios de Sucesso
 
-- [ ] Acessar um Nível com < 70% ao final resulta em exclusão silenciosa dos logs e reinício limpo se o aluno voltar ao painel.
-- [ ] UI de resultado implementada com fiel representação do progresso (0 a 100%).
-- [ ] Todos os testes passando.
+- [x] Acessar um Nível com < 70% ao final resulta em exclusão silenciosa dos logs e reinício limpo se o aluno voltar ao painel.
+- [x] UI de resultado implementada com fiel representação do progresso (0 a 100%).
+- [x] Todos os testes passando.
 
 ## Testes
 
 > **Obrigatório**: Crie e execute todos os testes antes de considerar a tarefa finalizada.
 
 ### Testes de Integração
-- [ ] Completar a última questão que resulta em < 70% apaga `ThemeAttempts` da base.
-- [ ] Completar a última questão com > 70% mantém os records e renderiza UI de vitória.
+- [x] Completar a última questão que resulta em < 70% apaga `ThemeAttempts` da base.
+- [x] Completar a última questão com > 70% mantém os records e renderiza UI de vitória.
 
 ## Arquivos Relevantes
 
