@@ -5,4 +5,12 @@ class QuestionSubmission < ApplicationRecord
 
   validates :revealed_at, presence: true
   validates :question_id, uniqueness: { scope: :theme_attempt_id }
+
+  after_commit :update_leaderboard, on: :create
+
+  private
+
+  def update_leaderboard
+    Leaderboards::UpdateUserJob.perform_later(theme_attempt.user_id)
+  end
 end

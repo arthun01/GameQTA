@@ -19,11 +19,11 @@ Implementação da lógica core do ranking: um worker em background que calcula 
 
 ## Subtarefas
 
-- [ ] 2.1 Criar o job `Leaderboards::UpdateUserJob`.
-- [ ] 2.2 Implementar a lógica de cálculo: buscar as submissões corretas do aluno e fazer o JOIN com `Question` para mapear a dificuldade e aplicar o score.
-- [ ] 2.3 Implementar a lógica de soma de tempo de *todas* as submissões (`time_taken`).
-- [ ] 2.4 Fazer o `upsert` na tabela `Leaderboard` para não duplicar o registro do `user_id`.
-- [ ] 2.5 Configurar o callback (`after_commit on: :create`) no `QuestionSubmission` para chamar `UpdateUserJob.perform_later(theme_attempt.user_id)`.
+- [x] 2.1 Criar o job `Leaderboards::UpdateUserJob`.
+- [x] 2.2 Implementar a lógica de cálculo: buscar as submissões corretas do aluno e fazer o JOIN com `Question` para mapear a dificuldade e aplicar o score.
+- [x] 2.3 Implementar a lógica de soma de tempo de *todas* as submissões (`time_taken`).
+- [x] 2.4 Fazer o `upsert` na tabela `Leaderboard` para não duplicar o registro do `user_id`.
+- [x] 2.5 Configurar o callback (`after_commit on: :create`) no `QuestionSubmission` para chamar `UpdateUserJob.perform_later(theme_attempt.user_id)`.
 
 ## Detalhes de Implementação
 
@@ -32,17 +32,17 @@ Implementação da lógica core do ranking: um worker em background que calcula 
 
 ## Critérios de Sucesso
 
-- [ ] Submissões corretas recebem score (10/20/30) proporcional e somam no Leaderboard do usuário de forma correta e atualizada.
-- [ ] O tempo total reflete as submissões independentemente da sua corretude.
-- [ ] O job é ativado via Solid Queue.
+- [x] Submissões corretas recebem score (10/20/30) proporcional e somam no Leaderboard do usuário de forma correta e atualizada.
+- [x] O tempo total reflete as submissões independentemente da sua corretude.
+- [x] O job é ativado via Solid Queue.
 
 ## Testes
 
 > **Obrigatório**: Crie e execute todos os testes antes de considerar a tarefa finalizada.
 
 ### Testes Unitários
-- [ ] UpdateUserJobTest: Passar um UserID de uma fixture que tenha uma submissão de cada nível (fácil/médio/difícil), certas e erradas. Afirmar que o total de tempo bate com a soma de todas e o score reflete a regra específica do RF.
-- [ ] QuestionSubmissionTest: Checar se o callback está realmente enfileirando a execução assíncrona.
+- [x] UpdateUserJobTest: Passar um UserID de uma fixture que tenha uma submissão de cada nível (fácil/médio/difícil), certas e erradas. Afirmar que o total de tempo bate com a soma de todas e o score reflete a regra específica do RF.
+- [x] QuestionSubmissionTest: Checar se o callback está realmente enfileirando a execução assíncrona.
 
 ## Arquivos Relevantes
 

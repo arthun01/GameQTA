@@ -1,6 +1,8 @@
 require "test_helper"
 
 class QuestionSubmissionTest < ActiveSupport::TestCase
+  include ActiveJob::TestHelper
+
   setup do
     @attempt = theme_attempts(:one)
     @question = questions(:one)
@@ -17,5 +19,15 @@ class QuestionSubmissionTest < ActiveSupport::TestCase
     # use question: one for attempt: two, since there is no submission for this pair
     submission = QuestionSubmission.new(theme_attempt: theme_attempts(:two), question: questions(:one), revealed_at: Time.current)
     assert submission.valid?, submission.errors.full_messages.join(", ")
+  end
+
+  test "enqueues UpdateUserJob after creation" do
+    assert_enqueued_with(job: Leaderboards::UpdateUserJob) do
+      QuestionSubmission.create!(
+        theme_attempt: theme_attempts(:two),
+        question: questions(:one),
+        revealed_at: Time.current
+      )
+    end
   end
 end
