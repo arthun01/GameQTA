@@ -13,9 +13,9 @@ Session.destroy_all if defined?(Session)
 
 puts "== Criando Configurações Gerais =="
 GameSetting.find_or_create_by!(id: 1) do |setting|
-  setting.easy_time_seconds = 60
-  setting.medium_time_seconds = 45
-  setting.hard_time_seconds = 30
+  setting.easy_time = 60
+  setting.medium_time = 45
+  setting.hard_time = 30
 end
 
 puts "== Criando Usuários Base =="

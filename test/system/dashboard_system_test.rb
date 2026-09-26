@@ -24,8 +24,11 @@ class DashboardSystemTest < ApplicationSystemTestCase
     assert_text levels(:one).name
     assert_text levels(:two).name
 
+    # Clica no nível para abrir o accordion
+    first("summary").click
+
     # O level unlocked deve ter o botão Iniciar Tema
-    assert_selector "form.button_to"
+    assert_selector "form.button_to", visible: true
     assert_text "Iniciar Tema"
   end
 end

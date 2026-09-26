@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   delete "/sair", to: "users/sessions#destroy"
 
   get "/jornada", to: "dashboard#index"
+  get "/ranking", to: "rankings#index"
 
   root to: redirect("/jornada")
   namespace :play do

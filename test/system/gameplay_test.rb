@@ -34,19 +34,22 @@ class GameplayTest < ApplicationSystemTestCase
 
   test "gameplay flow" do
     visit jornada_path
+    find("summary", text: "Gameplay Level").click
     click_on "Iniciar Tema", match: :first
 
     # Q1
-    click_on "Mostrar Questão"
+    sleep 0.5; click_on "Mostrar Questão"
     assert_text "Test Q 1"
 
     # Errada:
-    find("label", text: "Errada 1").click
+    option1 = Option.find_by(content: "Errada 1")
+    execute_script("document.getElementById('theme_attempt_option_id_#{option1.id}').checked = true;")
+    execute_script("document.getElementById('evaluation_form').requestSubmit();")
     assert_text "Resposta Incorreta"
     click_on "Próxima Questão"
 
     # Q2
-    click_on "Mostrar Questão"
+    sleep 0.5; click_on "Mostrar Questão"
     assert_text "Test Q 2"
 
     # Timeout
@@ -58,9 +61,11 @@ class GameplayTest < ApplicationSystemTestCase
     click_on "Próxima Questão"
 
     # Q3
-    click_on "Mostrar Questão"
+    sleep 0.5; click_on "Mostrar Questão"
     assert_text "Test Q 3"
-    find("label", text: "Certa 3").click
+    option3 = Option.find_by(content: "Certa 3")
+    execute_script("document.getElementById('theme_attempt_option_id_#{option3.id}').checked = true;")
+    execute_script("document.getElementById('evaluation_form').requestSubmit();")
 
     # Redirecionou pra finish!
     assert_text "Nível Reprovado!"

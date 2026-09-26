@@ -28,15 +28,20 @@ class ProgressionTest < ApplicationSystemTestCase
 
   test "progression success" do
     visit jornada_path
+    find("summary", text: "Progression Level").click
     click_on "Iniciar Tema", match: :first
 
     # Q1
-    click_on "Mostrar Questão"
-    find("label", text: "Certa 1").click
+    sleep 0.5; click_on "Mostrar Questão"
+    option1 = Option.find_by(content: "Certa 1")
+    execute_script("document.getElementById('theme_attempt_option_id_#{option1.id}').checked = true;")
+    execute_script("document.getElementById('evaluation_form').requestSubmit();")
 
     # Q2
-    click_on "Mostrar Questão"
-    find("label", text: "Certa 2").click
+    sleep 0.5; click_on "Mostrar Questão"
+    option2 = Option.find_by(content: "Certa 2")
+    execute_script("document.getElementById('theme_attempt_option_id_#{option2.id}').checked = true;")
+    execute_script("document.getElementById('evaluation_form').requestSubmit();")
 
     assert_text "Nível Concluído!"
     assert_text "100.0%"

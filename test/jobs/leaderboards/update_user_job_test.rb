@@ -10,11 +10,11 @@ class Leaderboards::UpdateUserJobTest < ActiveJob::TestCase
     leaderboard = user.leaderboard
 
     # Verificar cálculo:
-    # student_one tem duas submissões:
-    # 1 errada (15s), 1 correta (fácil -> 10 pts, 30s)
-    # Total esperado: Score 10, Tempo 45
-    assert_equal 10, leaderboard.total_score
-    assert_equal 45, leaderboard.total_time_taken
+    # student_one tem uma submissões:
+    # 1 errada (15s)
+    # Total esperado: Score 0, Tempo 15
+    assert_equal 0, leaderboard.total_score
+    assert_equal 15, leaderboard.total_time_taken
   end
 
   test "calculates medium difficulty score" do

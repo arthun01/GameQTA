@@ -1,0 +1,16 @@
+<div class="flex flex-col items-center gap-2 <%= local_assigns[:extra_classes] %>">
+  <div class="flex items-center justify-center rounded-full shrink-0 shadow <%= badge_color %> border-4 border-solid border-white <%= size %>">
+    <div class="flex font-sans font-extrabold text-white <%= text_size %>">
+      <%= position %>
+    </div>
+  </div>
+  <div class="font-sans font-bold text-white text-base/5">
+    <%= leaderboard.user.full_name.split(' ').first %>
+  </div>
+  <div class="font-sans font-extrabold text-amber-100 text-base/5">
+    <%= t('rankings.index.points', count: leaderboard.total_score) %>
+  </div>
+  <div class="opacity-90 font-sans font-medium text-white text-[11px]/3.5">
+    <%= t('rankings.index.time_format', min: leaderboard.total_time_taken / 60, sec: leaderboard.total_time_taken % 60) %>
+  </div>
+</div>

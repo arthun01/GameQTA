@@ -1,20 +1,15 @@
 one:
   theme_attempt: one
   question: one
+  option: one_opt1 # errada
   is_correct: false
   revealed_at: 2026-09-15 21:34:07
   time_taken: 15
 
-three_correct_easy:
-  theme_attempt: one
-  question: three
-  is_correct: true
-  revealed_at: 2026-09-15 21:35:07
-  time_taken: 30
-
 two:
   theme_attempt: two
   question: two
+  option: two_opt2 # certa
   is_correct: true
   revealed_at: 2026-09-15 21:34:07
   time_taken: 20

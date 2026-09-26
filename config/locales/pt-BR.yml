@@ -40,6 +40,13 @@ pt-BR:
       themes_preview: O que vem por aí
       no_themes: Nenhum tema adicionado ainda.
       empty_levels: Nenhum nível disponível no momento.
+  rankings:
+    index:
+      title: Ranking Global
+      your_position: Sua Posição
+      you: Você (%{name})
+      points: "%{count} pts"
+      time_format: "%{min}m %{sec}s"
   admin:
     app_name: Painel Admin
     shared:

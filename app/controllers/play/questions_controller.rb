@@ -11,15 +11,15 @@ class Play::QuestionsController < Users::BaseController
 
   def reveal
     @question = @theme_attempt.next_pending_question
-    @submission = @theme_attempt.question_submissions.create!(
-      question: @question,
-      revealed_at: Time.current
-    )
+    @submission = @theme_attempt.question_submissions.find_or_create_by!(question: @question) do |sub|
+      sub.revealed_at = Time.current
+    end
 
     @time_limit = GameSetting.current.time_for_difficulty(@question.difficulty)
 
     respond_to do |format|
       format.turbo_stream
+      format.html { redirect_to play_theme_attempt_question_path(@theme_attempt) }
     end
   end
 
@@ -52,6 +52,11 @@ class Play::QuestionsController < Users::BaseController
     else
       respond_to do |format|
         format.turbo_stream
+        format.html do
+          @time_limit = GameSetting.current.time_for_difficulty(@question.difficulty)
+          @show_feedback_modal = true
+          render :show
+        end
       end
     end
   end

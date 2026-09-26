@@ -24,12 +24,12 @@ Ver `ai-sdd/prd-gamificacao-ranking/design.md`. Telas desta task:
 
 ## Subtarefas
 
-- [ ] 3.1 Declarar a rota `resources :rankings, only: [:index]` e criar o `RankingsController#index`.
-- [ ] 3.2 Buscar a coleção do Top 10 via query simples: `.order(total_score: :desc, total_time_taken: :asc).limit(10)`.
-- [ ] 3.3 Desenvolver a query/subquery para o aluno current_user identificando o `RANK()`/`DENSE_RANK() OVER (...)` daquele `user_id`, garantindo que ela não sofra impacto severo se existirem milhares de usuários.
-- [ ] 3.4 Implementar a renderização da View (`index.html.erb`), extraindo partials para itens individuais (`_ranking_item.html.erb`).
-- [ ] 3.5 Ajustar destaque visual (badge, cores) para as posições 1º, 2º e 3º.
-- [ ] 3.6 Exibir a faixa fixa para a posição corrente do usuário.
+- [x] 3.1 Declarar a rota `resources :rankings, only: [:index]` e criar o `RankingsController#index`.
+- [x] 3.2 Buscar a coleção do Top 10 via query simples: `.order(total_score: :desc, total_time_taken: :asc).limit(10)`.
+- [x] 3.3 Desenvolver a query/subquery para o aluno current_user identificando o `RANK()`/`DENSE_RANK() OVER (...)` daquele `user_id`, garantindo que ela não sofra impacto severo se existirem milhares de usuários.
+- [x] 3.4 Implementar a renderização da View (`index.html.erb`), extraindo partials para itens individuais (`_ranking_item.html.erb`).
+- [x] 3.5 Ajustar destaque visual (badge, cores) para as posições 1º, 2º e 3º.
+- [x] 3.6 Exibir a faixa fixa para a posição corrente do usuário.
 
 ## Detalhes de Implementação
 
@@ -38,21 +38,21 @@ Ver `ai-sdd/prd-gamificacao-ranking/design.md`. Telas desta task:
 
 ## Critérios de Sucesso
 
-- [ ] Rota `/ranking` carrega mostrando até 10 usuários classificados, ou menos se não houver registros suficientes.
-- [ ] Usuário que visita e está fora do top 10 vê o componente de "Sua Posição" indicando número exato (ex: 21º).
-- [ ] Desempate no display exibe primeiramente aquele com menor tempo total.
-- [ ] Layout responde bem em tela mobile conforme planejado.
-- [ ] Todos os testes passando.
+- [x] Rota `/ranking` carrega mostrando até 10 usuários classificados, ou menos se não houver registros suficientes.
+- [x] Usuário que visita e está fora do top 10 vê o componente de "Sua Posição" indicando número exato (ex: 21º).
+- [x] Desempate no display exibe primeiramente aquele com menor tempo total.
+- [x] Layout responde bem em tela mobile conforme planejado.
+- [x] Todos os testes passando.
 
 ## Testes
 
 > **Obrigatório**: Crie e execute todos os testes antes de considerar a tarefa finalizada.
 
 ### Testes de Integração
-- [ ] RankingsControllerTest: Teste autenticado. Confirme se acessa `/ranking`. Se retornar 10 e se a ordem atende primeiramente score, e depois o tiebreak do tempo menor.
+- [x] RankingsControllerTest: Teste autenticado. Confirme se acessa `/ranking`. Se retornar 10 e se a ordem atende primeiramente score, e depois o tiebreak do tempo menor.
 
 ### Testes E2E
-- [ ] System test `ranking_test.rb`: Navegue até a tela, confirme os dados carregando e validando se o badge especial do Top 1 existe.
+- [x] System test `ranking_test.rb`: Navegue até a tela, confirme os dados carregando e validando se o badge especial do Top 1 existe.
 
 ## Arquivos Relevantes
 
