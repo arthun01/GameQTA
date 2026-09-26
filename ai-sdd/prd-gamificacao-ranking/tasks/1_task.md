@@ -19,10 +19,10 @@ Criação da base de dados que sustentará a leitura ultrarrápida do ranking. E
 
 ## Subtarefas
 
-- [ ] 1.1 Gerar a migration e o model `Leaderboard` associado ao `User`.
-- [ ] 1.2 Definir valores default para `total_score` (0) e `total_time_taken` (0).
-- [ ] 1.3 Criar índices combinados na migration: index ordenando `total_score` de forma decrescente e `total_time_taken` de forma crescente.
-- [ ] 1.4 Adicionar a associação `has_one :leaderboard` no model `User`.
+- [x] 1.1 Gerar a migration e o model `Leaderboard` associado ao `User`.
+- [x] 1.2 Definir valores default para `total_score` (0) e `total_time_taken` (0).
+- [x] 1.3 Criar índices combinados na migration: index ordenando `total_score` de forma decrescente e `total_time_taken` de forma crescente.
+- [x] 1.4 Adicionar a associação `has_one :leaderboard` no model `User`.
 
 ## Detalhes de Implementação
 
@@ -31,16 +31,16 @@ Criação da base de dados que sustentará a leitura ultrarrápida do ranking. E
 
 ## Critérios de Sucesso
 
-- [ ] Tabela `leaderboards` criada com todas as colunas requisitadas.
-- [ ] O model valida presença de relacionamentos com `User`.
-- [ ] Todos os testes passando.
+- [x] Tabela `leaderboards` criada com todas as colunas requisitadas.
+- [x] O model valida presença de relacionamentos com `User`.
+- [x] Todos os testes passando.
 
 ## Testes
 
 > **Obrigatório**: Crie e execute todos os testes antes de considerar a tarefa finalizada.
 
 ### Testes Unitários
-- [ ] Model Leaderboard: Testar asserções básicas de presença de usuário. Validação do escopo.
+- [x] Model Leaderboard: Testar asserções básicas de presença de usuário. Validação do escopo.
 
 ## Arquivos Relevantes
 

@@ -1,0 +1,9 @@
+student_one_leaderboard:
+  user: student_one
+  total_score: 50
+  total_time_taken: 120
+
+student_two_leaderboard:
+  user: student_two
+  total_score: 30
+  total_time_taken: 90

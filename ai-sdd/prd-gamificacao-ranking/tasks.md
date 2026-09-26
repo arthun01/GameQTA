@@ -17,7 +17,7 @@ Esta funcionalidade foi decomposta em três tarefas focadas: primeiro criar a fu
 
 | # | Tarefa | Arquivo | Deps | Status |
 |---|--------|---------|------|--------|
-| 1.0 | Infraestrutura de Dados do Leaderboard | [tasks/1_task.md](tasks/1_task.md) | — | ⬜ |
+| 1.0 | Infraestrutura de Dados do Leaderboard | [tasks/1_task.md](tasks/1_task.md) | — | ✅ |
 | 2.0 | Motor de Atualização Assíncrona (Job) | [tasks/2_task.md](tasks/2_task.md) | 1.0 | ⬜ |
 | 3.0 | Motor de Visualização: Tela do Ranking | [tasks/3_task.md](tasks/3_task.md) | 2.0 | ⬜ |
 

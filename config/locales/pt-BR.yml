@@ -128,6 +128,7 @@ pt-BR:
   errors:
     messages:
       blank: não pode ficar em branco
+      taken: já está em uso
       invalid_youtube_link: deve ser um link válido do YouTube
       invalid_count: deve conter de 2 a 5 opções
       must_have_exactly_one_correct: deve ter exatamente 1 opção correta

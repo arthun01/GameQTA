@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_secure_password
   has_many :user_sessions, dependent: :destroy
   has_many :theme_attempts, dependent: :destroy
+  has_one :leaderboard, dependent: :destroy
 
   enum :education_level, {
     fundamental_incompleto: 0,
