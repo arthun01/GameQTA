@@ -15,6 +15,24 @@ Bem-vindo à equipe de engenharia do QTA. Adotamos rigidamente a filosofia **"Th
 2. **REST Estrito:** Controllers devem ter apenas as 7 ações REST. Se você precisa de uma ação diferente (ex: bloquear um usuário), crie um novo Controller focado naquele recurso (ex: `Users::BlocksController` ou actions explícitas em um controller dedicado usando PATCH).
 3. **Sem JavaScript Inline:** Toda a interatividade front-end (modais, timers, validações customizadas front-end) DEVE viver em um controller do Stimulus (`app/javascript/controllers/`).
 
+## Fluxo de Trabalho (Metodologia AI-SDD)
+
+Para evitar que o sistema vire um "Frankenstein" ao longo dos meses, **nenhuma melhoria média ou grande vai direto para o código**. O trajeto de desenvolvimento é estritamente estruturado e visual.
+
+Se você assumiu um item do Backlog, siga o trajeto abaixo:
+
+1. **🌳 Branching:** Crie uma branch limpa para a sua feature (ex: `git checkout -b feature/feedback-pos-erro`).
+2. **🧠 Planejamento (A Fase AI-SDD):** 
+   - Crie uma nova pasta de requisitos: `/ai-sdd/prd-nome-da-feature/`.
+   - Dentro dela, redija e aprove os 3 arquivos fundamentais:
+     - `prd.md` (Como funciona a regra de negócio e experiência do usuário).
+     - `techspec.md` (Quais migrações, models e rotas vão nascer/mudar).
+     - `tasks.md` (Um checklist exato com a ordem técnica de execução).
+3. **💻 Execução:** Programe seguindo estritamente as `tasks.md`.
+4. **🧪 Validação:** Siga o Check-list abaixo antes de finalizar.
+
+> **O motivo dessa burocracia:** Isso garante que daqui a dois anos, se um colega olhar para a coluna `explanation` na tabela `questions`, ele pode abrir o `/ai-sdd/` e entender todo o contexto histórico, aprovações e motivações que geraram aquela coluna.
+
 ## Check-list antes de abrir um PR (Pull Request)
 
 Qualquer código submetido deve passar pelas seguintes etapas de validação sob pena de rejeição sumária:

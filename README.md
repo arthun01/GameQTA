@@ -88,7 +88,10 @@ Se você acabou de chegar no projeto, por favor leia os guias abaixo:
 - 🛡️ [Guia Administrativo](./docs/ADMIN_GUIDE.md) (Como operar o backoffice e a moderação)
 - 🎮 [Guia do Estudante](./docs/USER_GUIDE.md) (Como a dinâmica do jogo funciona para o usuário)
 
-*(Nota Histórica: O histórico imutável do planejamento das sprints usando a metodologia AI-SDD repousa preservado na pasta `/ai-sdd/`).*
+💡 **Quer ver o que vem por aí ou tem ideias para a v2.0?**
+- 🚀 [Acesse o Backlog Estratégico (Pós-MVP)](./ai-sdd/system/backlog.md)
+
+*(Nota Histórica: O histórico imutável do planejamento das sprints iniciais usando a metodologia AI-SDD repousa preservado na pasta `/ai-sdd/`).*
 
 ---
 
