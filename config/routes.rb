@@ -10,6 +10,7 @@ Rails.application.routes.draw do
         get :themes
       end
     end
+    resources :admins, except: [ :show ]
     resources :students, only: [ :index ] do
       member do
         patch :block

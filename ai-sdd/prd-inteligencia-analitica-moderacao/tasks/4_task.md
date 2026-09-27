@@ -8,11 +8,11 @@ Ver `ai-sdd/prd-inteligencia-analitica-moderacao/design.md`. Telas desta task:
 - #4 Gestão de Administradores — Origem: Texto
 
 ## Subtarefas
-- [ ] 4.1 **Rotas e Navegação:** Adicionar resources `:admins` sob namespace admin. Incluir link "Equipe/Admins" na Sidebar do admin.
-- [ ] 4.2 **Controller Administrativo:** Criar `Admin::AdminsController` herdando o concern de segurança. Criar as actions padrão `index`, `new`, `create`, `edit`, `update`, `destroy`.
-- [ ] 4.3 **View Index (Listagem):** Tabela replicando a estética do Painel exibindo todos os admins cadastrados (sem a senha, obviamente).
-- [ ] 4.4 **Views New/Edit (Formulários):** Criar `_form.html.erb` permitindo inserção de `email_address`, `password` e `password_confirmation`. Para o Edit, deixar o password opcional.
-- [ ] 4.5 **Testes de Acesso e Sistema:** Escrever o `admin_management_test.rb` cobrindo o fluxo de criação e deleção (evitando que o último admin seja deletado e perca o acesso geral).
+- [x] 4.1 **Rotas e Navegação:** Adicionar resources `:admins` sob namespace admin. Incluir link "Equipe/Admins" na Sidebar do admin.
+- [x] 4.2 **Controller Administrativo:** Criar `Admin::AdminsController` herdando o concern de segurança. Criar as actions padrão `index`, `new`, `create`, `edit`, `update`, `destroy`.
+- [x] 4.3 **View Index (Listagem):** Tabela replicando a estética do Painel exibindo todos os admins cadastrados (sem a senha, obviamente).
+- [x] 4.4 **Views New/Edit (Formulários):** Criar `_form.html.erb` permitindo inserção de `email_address`, `password` e `password_confirmation`. Para o Edit, deixar o password opcional.
+- [x] 4.5 **Testes de Acesso e Sistema:** Escrever o `admin_management_test.rb` cobrindo o fluxo de criação e deleção (evitando que o último admin seja deletado e perca o acesso geral).
 
 ## Critérios de Sucesso
 - Conseguir abrir a nova área do Admin, clicar em "Novo", cadastrar um colega, fazer logout, e entrar com sucesso na conta criada.
