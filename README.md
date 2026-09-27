@@ -77,16 +77,21 @@ O projeto adere estritamente ao ecossistema "The Rails Way", garantindo longevid
 
 ---
 
-## 📚 Documentação e Especificações
+## 📚 Documentação e Guias do Projeto
 
-O projeto utiliza a metodologia **AI-Specification-Driven Development (AI-SDD)**. Todo o planejamento está documentado na pasta `/ai-sdd/`. Antes de codificar qualquer funcionalidade, seus requisitos, arquitetura e interface são aprovados através dos seguintes documentos:
-- [Visão do Produto e Problema](ai-sdd/system/vision.md)
-- [Mapeamento de Produto (Fluxos)](ai-sdd/system/product_map.md)
-- [Roadmap do Projeto](ai-sdd/system/roadmap.md)
-- **Fase 1 (Painel Administrativo):** [PRD](ai-sdd/prd-painel-administrativo/prd.md) | [Design](ai-sdd/prd-painel-administrativo/design.md) | [Tech Spec](ai-sdd/prd-painel-administrativo/techspec.md) | [Tasks](ai-sdd/prd-painel-administrativo/tasks.md)
-- **Fase 2 (Onboarding do Estudante):** [PRD](ai-sdd/prd-onboarding-estudante/prd.md) | [Design](ai-sdd/prd-onboarding-estudante/design.md) | [Tech Spec](ai-sdd/prd-onboarding-estudante/techspec.md) | [Tasks](ai-sdd/prd-onboarding-estudante/tasks.md)
-- **Fase 3 (Gameplay e Progressão):** [PRD](ai-sdd/prd-gameplay-estudante/prd.md) | [Design](ai-sdd/prd-gameplay-estudante/design.md) | [Tech Spec](ai-sdd/prd-gameplay-estudante/techspec.md) | [Tasks](ai-sdd/prd-gameplay-estudante/tasks.md)
-- **Fase 4 (Gamificação e Ranking):** [PRD](ai-sdd/prd-gamificacao-ranking/prd.md) | [Design](ai-sdd/prd-gamificacao-ranking/design.md) | [Tech Spec](ai-sdd/prd-gamificacao-ranking/techspec.md) | [Tasks](ai-sdd/prd-gamificacao-ranking/tasks.md)
+O conhecimento, regras e manuais de operação deste projeto estão centralizados no nosso portal interno de documentação.
+
+Se você acabou de chegar no projeto, por favor leia os guias abaixo:
+- 📖 [Portal Principal da Documentação (Índice)](./docs/README.md)
+- 🧠 [Regras de Negócio & Escopo](./docs/BUSINESS_RULES.md) (Ranking, aprovação, pontos)
+- 👨‍💻 [Guia de Desenvolvimento](./docs/DEVELOPMENT_GUIDE.md) (Arquitetura Rails, testes, padrões)
+- 🛡️ [Guia Administrativo](./docs/ADMIN_GUIDE.md) (Como operar o backoffice e a moderação)
+- 🎮 [Guia do Estudante](./docs/USER_GUIDE.md) (Como a dinâmica do jogo funciona para o usuário)
+
+💡 **Quer ver o que vem por aí ou tem ideias para a v2.0?**
+- 🚀 [Acesse o Backlog Estratégico (Pós-MVP)](./ai-sdd/system/backlog.md)
+
+*(Nota Histórica: O histórico imutável do planejamento das sprints iniciais usando a metodologia AI-SDD repousa preservado na pasta `/ai-sdd/`).*
 
 ---
 
