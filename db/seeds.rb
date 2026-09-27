@@ -13,9 +13,9 @@ Session.destroy_all if defined?(Session)
 
 puts "== Criando Configurações Gerais =="
 GameSetting.find_or_create_by!(id: 1) do |setting|
-  setting.easy_time_seconds = 60
-  setting.medium_time_seconds = 45
-  setting.hard_time_seconds = 30
+  setting.easy_time = 60
+  setting.medium_time = 45
+  setting.hard_time = 30
 end
 
 puts "== Criando Usuários Base =="
@@ -620,6 +620,33 @@ q.options.build(content: "Um perdão judicial irrestrito que anula a necessidade
 q.options.build(content: "Um contrato de compra e venda de terras públicas florestais.", is_correct: false)
 q.options.build(content: "Um decreto executivo que autoriza o fechamento permanente de indústrias sem direito de defesa.", is_correct: false)
 q.save!
+
+puts "== Criando Estudantes Fake para o Ranking =="
+students_data = [
+  { name: "Ana Silva", email: "ana@qta.uesc.br", score: 150, time: 300 },
+  { name: "Bruno Costa", email: "bruno@qta.uesc.br", score: 120, time: 250 },
+  { name: "Carlos Mendes", email: "carlos@qta.uesc.br", score: 120, time: 210 },
+  { name: "Diana Rocha", email: "diana@qta.uesc.br", score: 90, time: 180 },
+  { name: "Eduardo Lima", email: "eduardo@qta.uesc.br", score: 60, time: 100 }
+]
+
+students_data.each do |data|
+  user = User.create!(
+    email_address: data[:email],
+    password: "password123",
+    full_name: data[:name],
+    age: 20,
+    education_level: :superior_completo,
+    city: "Ilhéus"
+  )
+  
+  # Como o ranking atualiza assincronamente baseado nas submissões, 
+  # para o seed vamos injetar direto no Leaderboard para demonstração visual
+  Leaderboard.upsert(
+    { user_id: user.id, total_score: data[:score], total_time_taken: data[:time] },
+    unique_by: :user_id
+  )
+end
 
 puts "== Seed finalizado com Sucesso! =="
 puts "-> Níveis criados: #{Level.count}"

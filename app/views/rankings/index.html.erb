@@ -1,0 +1,54 @@
+<div class="wrap-anywhere flex overflow-clip flex-col relative bg-gray-50 min-h-screen antialiased pb-24">
+  <div class="flex items-center justify-between pt-12 pb-5 px-5 bg-emerald-500">
+    <%= link_to "←", root_path, class: "font-sans font-medium text-white text-2xl/7.5" %>
+    <div class="font-sans font-semibold text-white text-lg/5.5">
+      <%= t('rankings.index.title') %>
+    </div>
+    <div class="w-6 shrink-0"></div>
+  </div>
+
+  <div class="flex justify-center items-end pt-6 pb-8 gap-4 px-5 bg-emerald-500 rounded-b-3xl">
+    <% if @top_leaderboards.length >= 2 %>
+      <%= render "top_3_item", leaderboard: @top_leaderboards[1], position: 2, badge_color: "bg-gray-400", size: "size-14", text_size: "text-2xl/7.5" %>
+    <% end %>
+    <% if @top_leaderboards.length >= 1 %>
+      <%= render "top_3_item", leaderboard: @top_leaderboards[0], position: 1, badge_color: "bg-amber-400", size: "size-20", text_size: "text-[32px]/10", extra_classes: "mb-8" %>
+    <% end %>
+    <% if @top_leaderboards.length >= 3 %>
+      <%= render "top_3_item", leaderboard: @top_leaderboards[2], position: 3, badge_color: "bg-amber-600", size: "size-14", text_size: "text-2xl/7.5" %>
+    <% end %>
+  </div>
+
+  <div class="flex flex-col grow basis-[0%] py-6 px-5 gap-3">
+    <% @top_leaderboards.each_with_index do |leaderboard, index| %>
+      <% position = index + 1 %>
+      <% if position > 3 %>
+        <%= render "ranking_item", leaderboard: leaderboard, position: position %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% if @current_user_position && @current_user_position > 10 && @current_user_leaderboard %>
+    <div class="fixed bottom-0 pt-6 pb-8 px-5 [box-shadow:#00000014_0px_-4px_20px] bg-white inset-x-0 rounded-t-3xl z-10">
+      <div class="mb-3 uppercase tracking-[0.5px] font-sans font-bold text-gray-400 text-xs/4">
+        <%= t('rankings.index.your_position') %>
+      </div>
+      <div class="flex items-center p-4 rounded-2xl bg-emerald-50 border-2 border-solid border-emerald-400">
+        <div class="w-10 text-center shrink-0 font-sans font-extrabold flex justify-center flex-wrap text-emerald-600 text-lg/5.5">
+          <%= @current_user_position %>
+        </div>
+        <div class="flex flex-col grow basis-[0%] ml-3">
+          <div class="font-sans font-bold text-emerald-800 text-[15px]/4.5">
+            <%= t('rankings.index.you', name: Current.user.full_name) %>
+          </div>
+          <div class="font-sans font-medium text-emerald-600 text-[13px]/4">
+            <%= t('rankings.index.time_format', min: @current_user_leaderboard.total_time_taken / 60, sec: @current_user_leaderboard.total_time_taken % 60) %>
+          </div>
+        </div>
+        <div class="font-sans font-extrabold text-emerald-600 text-base/5">
+          <%= t('rankings.index.points', count: @current_user_leaderboard.total_score) %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
