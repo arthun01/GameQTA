@@ -7,12 +7,12 @@
 Sem UI/Design associado nesta tarefa (apenas infraestrutura de backend).
 
 ## Subtarefas
-- [ ] 1.1 **Migração:** Criar e rodar migração `AddBlockedAtToUsers` com a coluna `blocked_at:datetime`.
-- [ ] 1.2 **Métodos do Model:** No model `User`, adicionar os métodos lógicos `blocked?`, `block!` e `unblock!`.
-- [ ] 1.3 **Transação de Bloqueio:** No método `block!`, garantir a destruição de `user_sessions.destroy_all` e a deleção limpa do `leaderboard`.
-- [ ] 1.4 **Barragem de Login:** Atualizar `Users::SessionsController#create` para bloquear explicitamente a geração de sessão se `user.blocked?`, injetando a mensagem "Conta bloqueada".
-- [ ] 1.5 **Testes de Unidade:** Adicionar teste em `user_test.rb` garantindo a transação e as destruições das sessões associadas.
-- [ ] 1.6 **Testes de Integração:** Atualizar `test/controllers/users/sessions_controller_test.rb` (ou criar) assegurando que login de conta com `blocked_at` não passa.
+- [x] 1.1 **Migração:** Criar e rodar migração `AddBlockedAtToUsers` com a coluna `blocked_at:datetime`.
+- [x] 1.2 **Métodos do Model:** No model `User`, adicionar os métodos lógicos `blocked?`, `block!` e `unblock!`.
+- [x] 1.3 **Transação de Bloqueio:** No método `block!`, garantir a destruição de `user_sessions.destroy_all` e a deleção limpa do `leaderboard`.
+- [x] 1.4 **Barragem de Login:** Atualizar `Users::SessionsController#create` para bloquear explicitamente a geração de sessão se `user.blocked?`, injetando a mensagem "Conta bloqueada".
+- [x] 1.5 **Testes de Unidade:** Adicionar teste em `user_test.rb` garantindo a transação e as destruições das sessões associadas.
+- [x] 1.6 **Testes de Integração:** Atualizar `test/controllers/users/sessions_controller_test.rb` (ou criar) assegurando que login de conta com `blocked_at` não passa.
 
 ## Critérios de Sucesso
 - Migração no banco executada e mapeada em `schema.rb`.

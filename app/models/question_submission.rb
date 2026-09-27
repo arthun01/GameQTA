@@ -6,7 +6,7 @@ class QuestionSubmission < ApplicationRecord
   validates :revealed_at, presence: true
   validates :question_id, uniqueness: { scope: :theme_attempt_id }
 
-  after_commit :update_leaderboard, on: [:create, :update]
+  after_commit :update_leaderboard, on: [ :create, :update ]
 
   private
 

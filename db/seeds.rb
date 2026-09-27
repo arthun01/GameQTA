@@ -639,8 +639,8 @@ students_data.each do |data|
     education_level: :superior_completo,
     city: "Ilhéus"
   )
-  
-  # Como o ranking atualiza assincronamente baseado nas submissões, 
+
+  # Como o ranking atualiza assincronamente baseado nas submissões,
   # para o seed vamos injetar direto no Leaderboard para demonstração visual
   Leaderboard.upsert(
     { user_id: user.id, total_score: data[:score], total_time_taken: data[:time] },
