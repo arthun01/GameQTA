@@ -17,7 +17,7 @@ O ecossistema é dividido em duas frentes complementares:
 
 ## 🚀 Status do Projeto
 
-> **Status Atual:** Fase 4 Concluída (Fase 5: Inteligência Analítica & Moderação em Planejamento).
+> **Status Atual:** MVP Concluído (Fases 1 a 5 Completas). Prontos para Homologação e Produção.
 
 ### 📍 O que TEMOS atualmente (Feito)
 
@@ -29,6 +29,7 @@ O ecossistema é dividido em duas frentes complementares:
 - [x] **Fase 2 (Onboarding):** PRD, Design no Paper, Tech Spec e Tasks (`ai-sdd/prd-onboarding-estudante/`)
 - [x] **Fase 3 (Gameplay):** PRD, Design no Paper, Tech Spec e Tasks (`ai-sdd/prd-gameplay-estudante/`)
 - [x] **Fase 4 (Gamificação):** PRD, Design no Paper, Tech Spec e Tasks (`ai-sdd/prd-gamificacao-ranking/`)
+- [x] **Fase 5 (Moderação):** PRD, Tech Spec e Tasks (`ai-sdd/prd-inteligencia-analitica-moderacao/`)
 
 **Implementação (Código Base):**
 - **Fase 1 — Painel Administrativo (100% Concluído):**
@@ -53,10 +54,15 @@ O ecossistema é dividido em duas frentes complementares:
   - [x] **Tarefa 1.0:** Backend de Ranking (`Leaderboard`, algorítmos de score baseados na dificuldade e tempo total como desempate).
   - [x] **Tarefa 2.0:** Processamento Assíncrono (`UpdateUserJob` com Solid Queue) para manter a performance nas submissões.
   - [x] **Tarefa 3.0:** Frontend e UI do Pódio Global (`/ranking`), integração de posição com navegação no Dashboard (`<details>` accordion cascata).
+- **Fase 5 — Inteligência Analítica & Moderação (100% Concluído):**
+  - [x] **Tarefa 1.0:** Fundação da Moderação (Model User, bloqueios lógicos em Sessão e remoção do Leaderboard).
+  - [x] **Tarefa 2.0:** Dashboard Admin (Estatísticas globais) e interface Turbo Stream para banimento em tempo real na Listagem de Estudantes.
+  - [x] **Tarefa 3.0:** Exportação e Relatórios CSV (Streaming seguro de dados de estudantes e consultas O(1) de agregação de performance em temas).
+  - [x] **Tarefa 4.0:** CRUD de Equipe Administrativa (Gerenciamento de contas de administrador com proteções de auto-exclusão e trancamento).
 
-### 🚧 O que NÃO TEMOS (O que precisa ser feito)
+### 🚧 Próximos Passos (O que NÃO TEMOS)
 
-- [ ] **Fase 5:** Inteligência Analítica e Moderação (Dashboards demográficos, exportações e controle da comunidade).
+- [ ] Todas as fases do escopo MVP inicial foram concluídas com sucesso. O sistema está preparado para deploy de produção e iterações de balanceamento de game design (tuning de pontos e tempos).
 
 ---
 
