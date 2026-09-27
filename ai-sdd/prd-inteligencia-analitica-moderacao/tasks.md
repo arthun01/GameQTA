@@ -5,7 +5,7 @@
 | ID | Tarefa | Requisitos | Complexidade |
 |----|--------|------------|--------------|
 | **1.0** | ✅ Fundação da Moderação (Model User) | RF-008, RF-009 | Baixa |
-| **2.0** | Dashboard e Interface de Moderação de Alunos | RF-001, RF-002, RF-007 | Média |
+| **2.0** | ✅ Dashboard e Interface de Moderação de Alunos | RF-001, RF-002, RF-007 | Média |
 | **3.0** | Módulo de Relatórios e Exportação CSV | RF-003 a RF-006 | Média |
 | **4.0** | CRUD de Equipe (Gestão de Administradores) | RF-010 a RF-012 | Baixa |
 

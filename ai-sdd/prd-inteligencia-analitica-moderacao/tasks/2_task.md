@@ -9,12 +9,12 @@ Ver `ai-sdd/prd-inteligencia-analitica-moderacao/design.md`. Telas desta task:
 - #3 Listagem de Estudantes (Moderação) — Origem: Texto
 
 ## Subtarefas
-- [ ] 2.1 **Queries do Dashboard:** Modificar `Admin::DashboardsController` com chamadas eficientes como `User.count` e `QuestionSubmission.where(is_correct: true).count`.
-- [ ] 2.2 **View do Dashboard:** Substituir o HTML da tela `/admin/painel` pelo Grid com os 3 cards conforme Design.
-- [ ] 2.3 **Controller da Moderação:** Criar os actions `block` e `unblock` (via PATCH) em `Admin::StudentsController` que chamam `user.block!` ou `user.unblock!` e respondem via `turbo_stream`.
-- [ ] 2.4 **View de Estudantes:** Alterar `app/views/admin/students/index.html.erb` ou o partial da tabela, adicionando a coluna de Status (Badges).
-- [ ] 2.5 **Botão de Moderação:** Renderizar os botões (Vermelho para Bloquear, Cinza para Desbloquear) e linká-los aos novos endpoints (com confirm de Turbo).
-- [ ] 2.6 **Testes de Sistema:** Atualizar/criar `test/system/admin/students_test.rb` testando o clique de bloqueio visual.
+- [x] 2.1 **Queries do Dashboard:** Modificar `Admin::DashboardsController` com chamadas eficientes como `User.count` e `QuestionSubmission.where(is_correct: true).count`.
+- [x] 2.2 **View do Dashboard:** Substituir o HTML da tela `/admin/painel` pelo Grid com os 3 cards conforme Design.
+- [x] 2.3 **Controller da Moderação:** Criar os actions `block` e `unblock` (via PATCH) em `Admin::StudentsController` que chamam `user.block!` ou `user.unblock!` e respondem via `turbo_stream`.
+- [x] 2.4 **View de Estudantes:** Alterar `app/views/admin/students/index.html.erb` ou o partial da tabela, adicionando a coluna de Status (Badges).
+- [x] 2.5 **Botão de Moderação:** Renderizar os botões (Vermelho para Bloquear, Cinza para Desbloquear) e linká-los aos novos endpoints (com confirm de Turbo).
+- [x] 2.6 **Testes de Sistema:** Atualizar/criar `test/system/admin/students_test.rb` testando o clique de bloqueio visual.
 
 ## Critérios de Sucesso
 - Acessar `/admin/painel` exibe imediatamente os 3 dados (Estudantes, Média de Acerto e Temas Concluídos).

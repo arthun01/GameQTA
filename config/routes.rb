@@ -2,12 +2,21 @@ Rails.application.routes.draw do
   namespace :admin do
     resource :session
     resources :passwords, param: :token
+
+    resource :dashboard, only: [ :show ]
+    resources :students, only: [ :index ] do
+      member do
+        patch :block
+        patch :unblock
+      end
+    end
+
     resources :levels do
       resources :themes, shallow: true do
         resources :questions, shallow: true
       end
     end
-    root to: "levels#index"
+    root to: "dashboards#show"
   end
 
   # Autenticação e rotas de aluno

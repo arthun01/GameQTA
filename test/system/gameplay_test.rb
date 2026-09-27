@@ -38,7 +38,7 @@ class GameplayTest < ApplicationSystemTestCase
     click_on "Iniciar Tema", match: :first
 
     # Q1
-    sleep 0.5; click_on "Mostrar Questão"
+    sleep 1; click_on "Mostrar Questão"
     assert_text "Test Q 1"
 
     # Errada:
@@ -49,7 +49,8 @@ class GameplayTest < ApplicationSystemTestCase
     click_on "Próxima Questão"
 
     # Q2
-    sleep 0.5; click_on "Mostrar Questão"
+    assert_text "Assista ao vídeo"
+    sleep 1; click_on "Mostrar Questão"
     assert_text "Test Q 2"
 
     # Timeout
@@ -61,7 +62,8 @@ class GameplayTest < ApplicationSystemTestCase
     click_on "Próxima Questão"
 
     # Q3
-    sleep 0.5; click_on "Mostrar Questão"
+    assert_text "Assista ao vídeo"
+    sleep 1; click_on "Mostrar Questão"
     assert_text "Test Q 3"
     option3 = Option.find_by(content: "Certa 3")
     execute_script("document.getElementById('theme_attempt_option_id_#{option3.id}').checked = true;")

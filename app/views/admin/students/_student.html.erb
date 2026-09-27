@@ -1,0 +1,19 @@
+<tr id="<%= dom_id(student) %>">
+  <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"><%= student.full_name %></td>
+  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= student.email_address %></td>
+  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500"><%= student.city %></td>
+  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+    <% if student.blocked? %>
+      <span class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">Bloqueado</span>
+    <% else %>
+      <span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">Ativo</span>
+    <% end %>
+  </td>
+  <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+    <% if student.blocked? %>
+      <%= button_to "Desbloquear", unblock_admin_student_path(student), method: :patch, class: "text-gray-600 hover:text-gray-900", form: { class: "inline-block" } %>
+    <% else %>
+      <%= button_to "Bloquear", block_admin_student_path(student), method: :patch, class: "text-red-600 hover:text-red-900", form: { class: "inline-block" } %>
+    <% end %>
+  </td>
+</tr>
