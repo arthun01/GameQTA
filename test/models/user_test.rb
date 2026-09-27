@@ -27,4 +27,32 @@ class UserTest < ActiveSupport::TestCase
     )
     assert user.save, "Failed to save valid user"
   end
+
+  test "block! should set blocked_at, destroy sessions and leaderboard" do
+    user = users(:student_one)
+
+    # Create a session
+    user.user_sessions.create!(ip_address: "127.0.0.1", user_agent: "Test")
+
+    # Has existing leaderboard from fixtures
+    assert_not_nil user.leaderboard
+
+    assert_not user.blocked?
+
+    user.block!
+
+    assert user.reload.blocked?
+    assert_equal 0, user.user_sessions.count
+    assert_nil user.leaderboard
+  end
+
+  test "unblock! should clear blocked_at" do
+    user = users(:student_one)
+    user.update(blocked_at: Time.current)
+    assert user.blocked?
+
+    user.unblock!
+
+    assert_not user.blocked?
+  end
 end

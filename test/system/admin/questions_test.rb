@@ -56,6 +56,6 @@ class Admin::QuestionsTest < ApplicationSystemTestCase
     fill_in "Enter your email address", with: admin.email_address
     fill_in "Enter your password", with: "password"
     click_on "Sign in"
-    assert_text "Gerencie os grandes capítulos do jogo" # wait for dashboard to load
+    assert_text "Dashboard" # wait for dashboard to load
   end
 end

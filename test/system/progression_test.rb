@@ -32,13 +32,16 @@ class ProgressionTest < ApplicationSystemTestCase
     click_on "Iniciar Tema", match: :first
 
     # Q1
-    sleep 0.5; click_on "Mostrar Questão"
+    sleep 1; click_on "Mostrar Questão"
+    assert_text "Test Q 1"
     option1 = Option.find_by(content: "Certa 1")
     execute_script("document.getElementById('theme_attempt_option_id_#{option1.id}').checked = true;")
     execute_script("document.getElementById('evaluation_form').requestSubmit();")
 
     # Q2
-    sleep 0.5; click_on "Mostrar Questão"
+    click_on "Próxima Questão"
+    sleep 1; click_on "Mostrar Questão"
+    assert_text "Test Q 2"
     option2 = Option.find_by(content: "Certa 2")
     execute_script("document.getElementById('theme_attempt_option_id_#{option2.id}').checked = true;")
     execute_script("document.getElementById('evaluation_form').requestSubmit();")

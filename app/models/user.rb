@@ -16,4 +16,20 @@ class User < ApplicationRecord
 
   validates :full_name, :age, :city, :education_level, presence: true
   normalizes :email_address, with: ->(e) { e.strip.downcase }
+
+  def block!
+    transaction do
+      touch(:blocked_at)
+      user_sessions.destroy_all
+      leaderboard&.destroy
+    end
+  end
+
+  def unblock!
+    update(blocked_at: nil)
+  end
+
+  def blocked?
+    blocked_at.present?
+  end
 end
