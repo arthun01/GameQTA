@@ -4,6 +4,12 @@ Rails.application.routes.draw do
     resources :passwords, param: :token
 
     resource :dashboard, only: [ :show ]
+    resources :reports, only: [ :index ] do
+      collection do
+        get :students
+        get :themes
+      end
+    end
     resources :students, only: [ :index ] do
       member do
         patch :block
