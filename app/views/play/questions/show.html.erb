@@ -1,35 +1,63 @@
-<%= turbo_frame_tag "question_play_area", class: "flex flex-col bg-(--color-surface-sunken) min-h-screen" do %>
-  <% submission = @theme_attempt.question_submissions.find_by(question: @question, option_id: nil) %>
-  <% if submission %>
-    <%= render "evaluation", question: @question, time_limit: GameSetting.current.time_for_difficulty(@question.difficulty) %>
-  <% else %>
-    <div class="flex items-center justify-between p-4 bg-(--color-surface) border-b border-(--color-border)">
-      <div class="font-sans font-semibold text-(--color-text-primary) text-base/5">
-        <%= @theme_attempt.theme.level.name %>
-      </div>
-      <div class="font-sans text-(--color-text-muted) text-sm/4.5">
-        <%= @theme_attempt.theme.name %>
-      </div>
-    </div>
+<%= turbo_frame_tag "question_play_area", class: "min-h-screen flex items-start sm:items-center justify-center bg-slate-50 sm:p-6" do %>
+  <!-- Container Mobile -->
+  <div class="w-full max-w-md bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col min-h-screen sm:min-h-[800px]">
     
-    <div class="grow flex flex-col p-4 gap-6">
-      <div class="w-full aspect-video flex items-center justify-center rounded-xl bg-black overflow-hidden">
-        <% if @question.youtube_video_id.present? %>
-          <iframe class="w-full h-full" src="https://www.youtube.com/embed/<%= @question.youtube_video_id %>?rel=0" frameborder="0" allowfullscreen></iframe>
-        <% else %>
-          <div class="text-white"><%= t(".video_unavailable", default: "Vídeo não disponível") %></div>
-        <% end %>
+    <!-- Cabeçalho / Navbar Superior -->
+    <div class="flex items-center justify-between px-6 py-4 border-b border-emerald-50 bg-white shrink-0">
+      <div class="flex items-center gap-2">
+        <img src="/logo_qta.png" alt="Game QTA" class="w-6 h-6 object-contain">
+        <span class="text-emerald-500 font-bold text-lg tracking-tight">Game QTA</span>
       </div>
-      
-      <div class="text-center font-sans flex justify-center flex-wrap text-(--color-text-muted) text-[15px]/4.5">
-        <%= t(".instructions", default: "Assista ao vídeo explicativo. Quando estiver pronto, revele a questão para iniciar o tempo.") %>
-      </div>
-      
-      <div class="mt-auto flex flex-col gap-3">
-        <%= button_to t(".show_question", default: "Mostrar Questão"), reveal_play_theme_attempt_question_path(@theme_attempt), class: "w-full p-4 rounded-xl bg-(--color-primary) hover:bg-(--color-primary-hover) font-sans font-semibold text-white text-base/5 text-center cursor-pointer transition-colors block" %>
+      <div class="w-10 h-10 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold text-sm">
+        A
       </div>
     </div>
-  <% end %>
+
+    <% submission = @theme_attempt.question_submissions.find_by(question: @question, option_id: nil) %>
+    <% if submission %>
+      <%= render "evaluation", question: @question, time_limit: GameSetting.current.time_for_difficulty(@question.difficulty) %>
+    <% else %>
+      <!-- Informações do Nível e Imagem -->
+      <div class="flex items-center justify-between px-6 py-4 bg-emerald-50/30 border-b border-emerald-50 shrink-0">
+        <div class="flex items-center gap-3">
+          <!-- Ícone do Nível -->
+          <div class="w-10 h-10 min-w-[40px] flex-none shrink-0 rounded-xl overflow-hidden border border-emerald-100 bg-emerald-50/50 flex items-center justify-center shadow-sm">
+            <img src="/ods-<%= @theme_attempt.theme.level.id %>.png" onerror="this.src='/logo_qta.png'" style="width: 180%; height: auto; max-width: none;" class="object-center" alt="<%= @theme_attempt.theme.level.name %>">
+          </div>
+          
+          <div class="flex flex-col">
+            <span class="font-bold text-slate-900 text-base">
+              <%= @theme_attempt.theme.level.name %>
+            </span>
+            <span class="text-slate-500 text-sm">
+              <%= @theme_attempt.theme.name %>
+            </span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="grow flex flex-col p-6 gap-6">
+        <!-- Área do Vídeo -->
+        <div class="w-full aspect-video flex items-center justify-center rounded-2xl bg-black overflow-hidden shadow-md shrink-0">
+          <% if @question.youtube_video_id.present? %>
+            <iframe class="w-full h-full" src="https://www.youtube.com/embed/<%= @question.youtube_video_id %>?rel=0" frameborder="0" allowfullscreen></iframe>
+          <% else %>
+            <div class="text-white text-sm"><%= t(".video_unavailable", default: "Vídeo não disponível") %></div>
+          <% end %>
+        </div>
+        
+        <!-- Instruções -->
+        <div class="text-center flex justify-center flex-wrap text-slate-500 text-[15px] leading-relaxed px-2">
+          <%= t(".instructions", default: "Assista ao vídeo explicativo. Quando estiver pronto, revele a questão para iniciar o tempo.") %>
+        </div>
+        
+        <!-- Botão de Ação -->
+        <div class="mt-auto flex flex-col gap-3 pb-2">
+          <%= button_to t(".show_question", default: "Mostrar Questão"), reveal_play_theme_attempt_question_path(@theme_attempt), class: "w-full py-4 px-6 rounded-2xl bg-emerald-500 hover:bg-emerald-600 font-bold text-white text-base text-center cursor-pointer transition-all shadow-sm block" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% end %>
 
 <% if @show_feedback_modal %>
