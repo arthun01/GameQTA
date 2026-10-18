@@ -4,15 +4,29 @@
   
   <div class="w-full max-w-md bg-white rounded-3xl shadow-xl overflow-hidden border border-emerald-100 my-8">
     
-    <div class="p-8 text-center border-b border-emerald-50 bg-emerald-50/30">
-      <img src="/logo_qta.png" style="width: 75px;" class="h-auto mx-auto mb-4 object-contain drop-shadow-sm" alt="Logo QTA">
-      <h1 class="text-2xl font-bold tracking-tight text-gray-900">
-        <%= t('.title') %>
-      </h1>
-      <p class="text-sm text-gray-500 mt-1.5">
-        <%= t('.subtitle', default: 'Explore o mapa do Game QTA e conquiste os níveis.') %>
-      </p>
-    </div>
+    <!-- Cabeçalho / Navbar Superior -->
+    <div class="flex items-center justify-between px-6 py-4 border-b border-emerald-50 bg-white">
+       <!-- Logo e Nome do Lado Esquerdo -->
+       <div class="flex items-center gap-2">
+        <img src="/logo_qta.png" alt="Game QTA" class="w-6 h-6 object-contain">
+        <span class="text-emerald-500 font-bold text-lg tracking-tight">Game QTA</span>
+      </div>
+  
+  <!-- Avatar do Lado Direito -->
+  <div class="w-10 h-10 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold text-sm">
+    A
+  </div>
+</div>
+
+<!-- Título da Página -->
+<div class="px-6 pt-6 pb-4 text-left bg-emerald-50/30 border-b border-emerald-50">
+  <h1 class="text-2xl font-extrabold text-slate-900 tracking-tight">
+    <%= t('.title') %>
+  </h1>
+  <p class="text-sm text-slate-500 mt-1">
+    <%= t('.subtitle', default: 'Explore o mapa do Game QTA e conquiste os níveis.') %>
+  </p>
+</div>
 
     <div class="p-5 sm:p-6 flex flex-col gap-3">
       <% @levels.each_with_index do |level, index| %>
