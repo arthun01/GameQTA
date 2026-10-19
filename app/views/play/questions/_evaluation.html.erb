@@ -1,7 +1,14 @@
 <div class="flex flex-col bg-(--color-surface-sunken) size-full min-h-screen">
   <div class="flex items-center justify-between p-4 bg-(--color-surface-elevated) border-b border-(--color-border)">
-    <div class="font-sans font-semibold text-(--color-text-primary) text-base/5">
-      <%= @theme_attempt.theme.level.name %>
+    
+    <!-- Imagem e Título do Nível -->
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 min-w-[40px] flex-none shrink-0 rounded-xl overflow-hidden border border-(--color-border) bg-(--color-surface-sunken) flex items-center justify-center">
+        <img src="/ods-<%= @theme_attempt.theme.level.id %>.png" onerror="this.src='/logo_qta.png'" style="width: 180%; height: auto; max-width: none;" class="object-center" alt="<%= @theme_attempt.theme.level.name %>">
+      </div>
+      <div class="font-sans font-semibold text-(--color-text-primary) text-base/5">
+        <%= @theme_attempt.theme.level.name %>
+      </div>
     </div>
     
     <div data-controller="gameplay-timer" data-gameplay-timer-seconds-value="<%= time_limit %>" class="py-1 px-2 rounded-md bg-(--color-danger-subtle) transition-all" data-gameplay-timer-target="container">

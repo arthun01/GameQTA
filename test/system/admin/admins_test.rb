@@ -14,31 +14,31 @@ class Admin::AdminsTest < ApplicationSystemTestCase
 
   test "creating a new admin" do
     visit admin_admins_path
-    
+
     click_on "Novo Administrador"
-    
+
     fill_in "E-mail", with: "novo_admin@example.com"
     fill_in "Senha", with: "secret123"
     fill_in "Confirme a Senha", with: "secret123"
-    
+
     click_on "Salvar"
-    
+
     assert_text "Administrador criado com sucesso."
     assert_text "novo_admin@example.com"
   end
 
   test "updating an admin" do
     visit admin_admins_path
-    
+
     within(first("tbody tr")) do
       click_on "Editar"
     end
-    
+
     fill_in "E-mail", with: "admin_atualizado@example.com"
     # Deixando senha em branco
-    
+
     click_on "Salvar"
-    
+
     assert_text "Administrador atualizado com sucesso."
     assert_text "admin_atualizado@example.com"
   end
@@ -55,7 +55,7 @@ class Admin::AdminsTest < ApplicationSystemTestCase
 
   test "destroying an admin works if there are more than 1" do
     new_admin = Admin.create!(email_address: "extra@example.com", password: "password")
-    
+
     visit admin_admins_path
 
     within("#admin_#{new_admin.id}") do
