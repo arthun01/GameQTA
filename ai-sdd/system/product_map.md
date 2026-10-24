@@ -15,15 +15,16 @@ Plataforma educacional gamificada para o ensino de Direito Ambiental, focada na 
 3. Confirma o cadastro, é autenticado e visualiza a tela principal de Níveis.
 
 ### 2. Navegar e Progredir nos Níveis
-1. O estudante visualiza a tela com os Níveis do jogo e seu progresso atual.
-2. Tenta acessar o próximo Nível, mas ele está bloqueado se o progresso no Nível atual for inferior a 70%.
-3. Seleciona um Nível desbloqueado para acessar a lista de Temas correspondentes.
+1. O estudante visualiza a tela principal "Sua Jornada", equipada com Navbar superior (perfil, pontuação e atalho para o Ranking) e cartões de Nível com ilustrações temáticas minimalistas quadradas (ODS).
+2. Cada Nível exibe seus Temas explicitamente numerados (ex: Tema 1.1, 1.2), progresso percentual e status de desbloqueio.
+3. Tenta acessar o próximo Nível, mas ele permanece bloqueado visual e logicamente se o aproveitamento no Nível atual for inferior a 70%.
+4. Seleciona um Tema desbloqueado para iniciar o ciclo de aprendizado.
 
 ### 3. Resolver Desafios (Consumo e Resposta)
-1. O estudante escolhe um Tema e inicia uma questão, momento em que o tempo de resolução começa a ser cronometrado.
-2. Assiste a um curto vídeo explicativo sobre o assunto.
-3. Visualiza o enunciado da questão (que tem nível de dificuldade: fácil, médio ou difícil) e seleciona uma resposta.
-4. Confirma a resposta, é informado se acertou ou errou, e recebe um artigo de feedback explicando o motivo.
+1. O estudante escolhe um Tema e inicia uma questão, momento em que o tempo de resolução começa a ser cronometrado de forma regressiva.
+2. Assiste a um curto vídeo explicativo sobre o assunto (embed do YouTube).
+3. Visualiza o enunciado da questão (fácil, médio ou difícil) e seleciona uma alternativa.
+4. Confirma a resposta, é informado se acertou ou errou com feedback imediato estilizado, e recebe um artigo de feedback explicando o motivo, com créditos ao projeto UESC e TekohaLab no rodapé.
 5. O sistema registra a conclusão, atualizando os pontos, o progresso percentual e o tempo total investido.
 
 ### 4. Consultar Ranking

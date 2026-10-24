@@ -42,6 +42,15 @@ Plano de implementação dividido em 5 fases sequenciais, visando o lançamento 
   - Painel de moderação para visualização, bloqueio ou exclusão de contas de estudantes.
   - Capacidade do administrador atual convidar/criar novos acessos administrativos.
 
+## Fase 6: Refatoração de Design, UI/UX & Identidade Visual
+- **Objetivo:** Estabelecer a identidade visual oficial, polir a experiência de usuário mobile-first e padronizar o ecossistema estético.
+- **Entregas:**
+  - Identidade visual consolidada com a paleta temática Emerald e inserção da logo oficial (`logo_qta.png`).
+  - Redesign do Lobby "Sua Jornada" com Navbar superior, temas numerados e ilustrações quadradas minimalistas dos níveis (`ods-1.png` a `ods-5.png`).
+  - Nova experiência na tela de Gameplay e cartões de avaliação pedagógica.
+  - Inclusão de rodapés integrados com créditos institucionais da UESC e do laboratório TekohaLab (`tekohalab.png`).
+  - Padronização estética completa do Backoffice Administrativo (sidebar, métricas e tabelas).
+
 ## Ordem de Dependências
 ```mermaid
 flowchart TD
@@ -49,21 +58,25 @@ flowchart TD
     F2 --> F3[Fase 3: Motor de Gameplay]
     F3 --> F4[Fase 4: Ranking]
     F3 --> F5[Fase 5: Analítico & Moderação]
+    F4 --> F6[Fase 6: Refatoração de Design & UI/UX]
+    F5 --> F6
 ```
-*Nota: O desenvolvimento é majoritariamente sequencial para garantir um MVP seguro em 1 mês. As Fases 4 e 5 são focadas em expansão de engajamento e gestão avançada, podendo ser implementadas após o teste do ciclo core.*
+*Nota: As Fases 1 a 5 concluíram o escopo estrutural do MVP. A Fase 6 refinou e consolidou a identidade visual e ergonomia antes da disponibilização em ambiente de homologação/produção.*
 
 ## Critérios de Priorização
 1. **Viabilização de Conteúdo (O Gargalo Inicial):** Sem conteúdo não há plataforma. A Fase 1 foca exclusivamente nas ferramentas de criação para os educadores.
 2. **Caminho Feliz do Aluno:** As Fases 2 e 3 garantem que a principal jornada de aprendizado do MVP esteja completa, desde o login até a progressão de Níveis.
 3. **Engajamento Estendido:** A Fase 4 é sequencial e consolida o aspecto de "jogo", utilizando a massa de dados gerada na Fase 3.
 4. **Governança a Longo Prazo:** A Fase 5 complementa a gestão, dando visão ampla para embasar os próximos passos de conteúdo e moderação.
+5. **Identidade e Ergonomia Visual:** A Fase 6 eleva a percepção de qualidade do produto final, garantindo identidade de marca forte para o público escolar e extensão universitária.
 
 ## Estimativa de Esforço Relativo
-| Fase | Complexidade | Estimativa | Descrição |
-|------|--------------|------------|-----------|
-| Fase 1 | Média | 25% | Setup de ambiente, modelo relacional primário e CRUDs. |
-| Fase 2 | Baixa | 15% | Captura de dados de usuário e construção da vitrine de Níveis. |
-| Fase 3 | Alta | 30% | Lógica essencial de travas de segurança (70%), embeds e relógios. |
-| Fase 4 | Média | 15% | Lógica de queries para ranking ordenado por tempo e pontuação. |
-| Fase 5 | Alta | 15% | Dashboards de agregação estatística complexa e sistema de exportação. |
+| Fase | Complexidade | Estimativa | Status | Descrição |
+|------|--------------|------------|:------:|-----------|
+| Fase 1 | Média | 20% | ✅ Concluído | Setup de ambiente, modelo relacional primário e CRUDs. |
+| Fase 2 | Baixa | 15% | ✅ Concluído | Captura de dados de usuário e construção da vitrine de Níveis. |
+| Fase 3 | Alta | 25% | ✅ Concluído | Lógica essencial de travas de segurança (70%), embeds e relógios. |
+| Fase 4 | Média | 15% | ✅ Concluído | Lógica de queries para ranking ordenado por tempo e pontuação. |
+| Fase 5 | Alta | 15% | ✅ Concluído | Dashboards de agregação estatística complexa e sistema de exportação. |
+| Fase 6 | Média | 10% | ✅ Concluído | Identidade visual Emerald, ilustrações ODS, Navbar e padronização UI/UX. |
 

@@ -3,7 +3,7 @@
 Bem-vindo ao **Game QTA**! Aqui está o resumo do que você precisa saber para começar sua jornada, subir no ranking e dominar o conteúdo.
 
 ## O Fluxo Principal
-1.  **A Jornada:** Sua tela inicial é a "Jornada". Aqui você vê a "estrada" do conhecimento. O jogo é dividido em Níveis e Temas.
+1.  **A Jornada:** Sua tela inicial é a "Sua Jornada". No topo, uma barra de navegação exibe seu perfil, seus pontos acumulados e atalho direto para o **Ranking Global**. A trilha é dividida em Níveis ilustrados (inspirados nos ODS) e Temas numerados sequencialmente (ex: 1.1, 1.2).
 2.  **Desbloqueio:** Você só consegue jogar temas que estão desbloqueados. Para desbloquear temas avançados, você precisa provar que dominou os anteriores.
 
 ## Como Jogar um Tema

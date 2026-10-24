@@ -17,19 +17,20 @@ O ecossistema é dividido em duas frentes complementares:
 
 ## 🚀 Status do Projeto
 
-> **Status Atual:** MVP Concluído (Fases 1 a 5 Completas). Prontos para Homologação e Produção.
+> **Status Atual:** MVP e Refatoração de Design Concluídos (Fases 1 a 6 Completas). Prontos para Homologação e Produção.
 
 ### 📍 O que TEMOS atualmente (Feito)
 
 **Planejamento Estratégico (Metodologia AI-SDD):**
 - [x] Visão do Produto (`ai-sdd/system/vision.md`)
 - [x] Mapa de Produto (`ai-sdd/system/product_map.md`)
-- [x] Roadmap Completo em 5 Fases (`ai-sdd/system/roadmap.md`)
+- [x] Roadmap Completo em 6 Fases (`ai-sdd/system/roadmap.md`)
 - [x] **Fase 1 (Painel Admin):** PRD, Design, Tech Spec e Tasks (`ai-sdd/prd-painel-administrativo/`)
 - [x] **Fase 2 (Onboarding):** PRD, Design no Paper, Tech Spec e Tasks (`ai-sdd/prd-onboarding-estudante/`)
 - [x] **Fase 3 (Gameplay):** PRD, Design no Paper, Tech Spec e Tasks (`ai-sdd/prd-gameplay-estudante/`)
 - [x] **Fase 4 (Gamificação):** PRD, Design no Paper, Tech Spec e Tasks (`ai-sdd/prd-gamificacao-ranking/`)
 - [x] **Fase 5 (Moderação):** PRD, Tech Spec e Tasks (`ai-sdd/prd-inteligencia-analitica-moderacao/`)
+- [x] **Fase 6 (Refatoração de Design & UI/UX):** PRD, Design, Tech Spec e Tasks (`ai-sdd/prd-refatoracao-design-ui/`)
 
 **Implementação (Código Base):**
 - **Fase 1 — Painel Administrativo (100% Concluído):**
@@ -59,10 +60,16 @@ O ecossistema é dividido em duas frentes complementares:
   - [x] **Tarefa 2.0:** Dashboard Admin (Estatísticas globais) e interface Turbo Stream para banimento em tempo real na Listagem de Estudantes.
   - [x] **Tarefa 3.0:** Exportação e Relatórios CSV (Streaming seguro de dados de estudantes e consultas O(1) de agregação de performance em temas).
   - [x] **Tarefa 4.0:** CRUD de Equipe Administrativa (Gerenciamento de contas de administrador com proteções de auto-exclusão e trancamento).
+- **Fase 6 — Refatoração de Design, UI/UX & Identidade Visual (100% Concluído — PR #17 por Ana Beatriz Guerra Mello):**
+  - [x] **Tarefa 1.0:** Identidade Visual Base & Autenticação (Paleta Emerald `#059669`, logo oficial `logo_qta.png`, tela de cadastro responsiva e tela de login com rodapé integrado).
+  - [x] **Tarefa 2.0:** Redesign da "Sua Jornada" (Navbar superior com perfil e atalho ao ranking, temas explicitamente numerados e ilustrações quadradas minimalistas dos níveis `ods-1.png` a `ods-5.png`).
+  - [x] **Tarefa 3.0:** Interface de Gameplay e Rodapé Institucional (Resolução fluida de desafios, cartões de feedback visual pedagógico e assinatura institucional do TekohaLab / UESC com `tekohalab.png`).
+  - [x] **Tarefa 4.0:** Padronização Visual do Painel Administrativo (Sidebar, tabelas, cards de métricas e formulários unificados na identidade visual; testes de sistema Capybara adaptados e 100% aprovados).
 
 ### 🚧 Próximos Passos (O que NÃO TEMOS)
 
-- [ ] Todas as fases do escopo MVP inicial foram concluídas com sucesso. O sistema está preparado para deploy de produção e iterações de balanceamento de game design (tuning de pontos e tempos).
+- [ ] Validação de campo (homologação) com alunos e professores da rede de ensino atendida pelo projeto de extensão da UESC.
+- [ ] Planejamento e execução de itens da v2.0 a partir do [Backlog Estratégico](./ai-sdd/system/backlog.md) (como Sistema de Vidas/Energia, Streaks e Gráficos analíticos).
 
 ---
 

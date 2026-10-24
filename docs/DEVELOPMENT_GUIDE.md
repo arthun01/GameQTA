@@ -42,6 +42,23 @@ Qualquer código submetido deve passar pelas seguintes etapas de validação sob
 3. **Testes de Sistema E2E:** Rodar `bin/rails test:system`. Isso testará as interações Turbo e Hotwire com Headless Chrome.
 4. **Segurança e I18n:** Todas as strings voltadas para o usuário final devem usar `t('.key')` referenciando arquivos do `config/locales/`.
 
+## Identidade Visual & Diretrizes de UI/UX
+
+A partir da **Fase 6 (Refatoração de Design & UI/UX)**, conduzida por Ana Beatriz Guerra Mello, o projeto estabeleceu padrões estéticos rígidos para preservar a coerência visual:
+
+1. **Paleta de Cores Oficial:**
+   - Cor Primária: **Emerald** do Tailwind (`emerald-600` para botões e destaques, `emerald-700` para estados de hover, `emerald-50`/`emerald-100` para backgrounds e cartões sutis).
+   - Superfícies Neutras: `slate-50` para fundos e `white` para cartões.
+   - Textos: `slate-900` / `slate-800` para alta legibilidade; `slate-500` para legendas.
+2. **Assets Institucionais e Ilustrações:**
+   - Logo oficial em `public/logo_qta.png`.
+   - Assinatura do laboratório parceiro da UESC em `public/tekohalab.png`.
+   - Ilustrações dos Níveis temáticos em formato quadrado padronizado (`public/ods-1.png` a `public/ods-5.png`), preservando proporção `aspect-square` sem distorções.
+3. **Padrões de Interface:**
+   - **Lobby do Aluno ("Sua Jornada"):** Deve manter a Navbar superior (perfil, score e ranking) e os temas sempre explicitamente numerados (ex: 1.1, 1.2).
+   - **Backoffice Administrativo:** Sidebar e tabelas devem seguir rigorosamente a mesma linguagem visual com acentos em tom emerald.
+   - **Rodapé Institucional:** Telas públicas devem exibir a vinculação com o projeto de extensão da UESC e o laboratório TekohaLab.
+
 ## Tratamento de Dados (Performance)
 - **Evite o problema de N+1 queries:** Sempre que iterar coleções no banco, use `includes(:association)` ou queries agregadas como `.group(:id).count`.
 - **Exportações Pesadas:** Nunca crie variáveis string gigantes na memória para baixar arquivos. Use sempre o `Enumerator` do Rails em conjunto com o `find_each` do ActiveRecord para realizar o *HTTP Streaming*.
