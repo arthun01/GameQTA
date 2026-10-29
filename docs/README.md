@@ -18,6 +18,9 @@ Manual focado em quem vai operar o sistema no dia a dia. Explica como estruturar
 ### 4. [Guia do Usuário Final (Estudante)](./USER_GUIDE.md)
 Documentação do fluxo e da experiência do estudante. Como ele se cadastra, como o tempo das perguntas afeta sua pontuação e como ele interage com a plataforma gamificada.
 
+### 5. [Governança Jurídica, LGPD e Acessibilidade](../ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/prd.md)
+PRD do pacote em andamento, com [especificação técnica](../ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/techspec.md) e [tarefas](../ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/tasks.md). O tópico 1 disponibiliza `/termos` e `/privacidade` como minutas públicas e imprimíveis. O tópico 2 acrescenta aceite versionado, perfil e exclusão da aplicação ativa. Canal de atendimento, fluxo de menores, outras definições jurídicas e operacionais e tópicos 3 e 4 permanecem pendentes.
+
 ---
 
 > **Nota aos Desenvolvedores:** Mantenha esta documentação viva. Se uma nova regra de negócio complexa for introduzida, atualize o `BUSINESS_RULES.md`. Se uma nova biblioteca padrão for adotada, atualize o `DEVELOPMENT_GUIDE.md`.

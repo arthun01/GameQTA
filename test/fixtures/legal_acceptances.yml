@@ -1,0 +1,9 @@
+<% [:student_one, :student_two].each do |student| %>
+<%= student %>:
+  user: <%= student %>
+  accepted_at: 2026-10-27 12:00:00
+  document_revision: <%= LegalDocument.revision %>
+  terms_version: <%= LegalDocument.version %>
+  privacy_version: <%= LegalDocument.version %>
+  document_snapshot: <%= LegalDocument.snapshot.to_json %>
+<% end %>

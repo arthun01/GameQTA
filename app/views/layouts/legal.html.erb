@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= content_for(:title) %> · <%= t("app.name") %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="icon" href="/logo_qta.png" type="image/png">
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+  </head>
+  <body class="legal-page bg-slate-50 font-sans text-slate-800 antialiased">
+    <%= link_to t("legal_documents.shared.skip_to_content"), "#main-content", class: "legal-screen-only sr-only focus:not-sr-only focus:absolute focus:z-10 focus:bg-white focus:p-4 focus:text-emerald-900" %>
+    <header class="legal-screen-only border-b border-emerald-100 bg-white">
+      <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-5 py-5 sm:px-8">
+        <%= link_to root_path, class: "flex items-center gap-3 rounded-md font-semibold text-emerald-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-700" do %>
+          <%= image_tag "/logo_qta.png", alt: "", class: "h-10 w-10 object-contain", width: 40, height: 40 %>
+          <span><%= t("app.name") %></span>
+        <% end %>
+        <nav aria-label="<%= t("legal_documents.shared.navigation") %>" class="flex flex-wrap gap-x-6 gap-y-3 text-sm">
+          <%= link_to t("legal_documents.shared.terms"), terms_path, aria: { current: current_page?(terms_path) ? "page" : nil }, class: "rounded-sm text-emerald-900 underline decoration-emerald-300 underline-offset-4 hover:decoration-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-700" %>
+          <%= link_to t("legal_documents.shared.privacy"), privacy_policy_path, aria: { current: current_page?(privacy_policy_path) ? "page" : nil }, class: "rounded-sm text-emerald-900 underline decoration-emerald-300 underline-offset-4 hover:decoration-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-700" %>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" tabindex="-1" class="legal-shell mx-auto max-w-6xl px-5 py-10 sm:px-8 sm:py-14">
+      <%= yield %>
+    </main>
+
+    <footer class="legal-screen-only mx-auto max-w-6xl border-t border-slate-200 px-5 py-8 text-sm text-slate-600 sm:px-8">
+      <%= link_to t("legal_documents.shared.back_to_game"), root_path, class: "rounded-sm text-emerald-900 underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-700" %>
+    </footer>
+  </body>
+</html>

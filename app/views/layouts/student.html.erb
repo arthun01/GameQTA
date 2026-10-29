@@ -22,6 +22,12 @@
       <%= render "shared/flash" %>
       <%= yield %>
     </main>
+    <% if Current.user.present? %>
+      <nav aria-label="<%= t('shared.profile_link') %>" class="px-4 pt-5 text-center text-sm">
+        <%= link_to t("shared.profile_link"), profile_path, class: "rounded-sm font-semibold text-emerald-900 underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4" %>
+      </nav>
+    <% end %>
+    <%= render "shared/legal_links" %>
     <div id="modal_container"></div>
   </body>
 </html>

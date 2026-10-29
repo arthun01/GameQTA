@@ -32,3 +32,14 @@ O sistema tem tolerância zero para manipulação ou violação de regras.
     1. Marca `blocked_at`.
     2. Encerra imediatamente todas as sessões ativas (Deslogando o aluno se ele estiver online).
     3. Apaga o registro do aluno do Ranking (Deleta o registro `Leaderboard`), retirando-o do pódio público instantaneamente.
+
+
+## 6. Aceite, perfil e exclusão (governança em andamento)
+
+- O cadastro público valida o aceite dos Termos e a ciência da Política no servidor, vinculando uma revisão e cópia dos documentos. Não tratar esse registro como consentimento geral ou autorização de responsável.
+- Contas existentes não recebem aceites retroativos. Sem manifestação atual, o jogo e o ranking redirecionam para a tela de documentos; perfil, exclusão, leitura pública e saída continuam disponíveis.
+- Cidade e escolaridade são opcionais. Não solicitar dados adicionais excessivos no cadastro geral.
+- Atualização do perfil exige senha atual e somente campos permitidos. Estado de bloqueio, senha e metadados de aceite não podem ser alterados por esse formulário.
+- A exclusão exige senha e confirmação explícita, age exclusivamente sobre `Current.user` e remove os dados relacionados em transação. Todas as sessões do estudante são encerradas; outros usuários e o conteúdo didático são preservados.
+- Atualizações de ranking usam lock da conta, em comum com exclusão e bloqueio. Conta ausente ou bloqueada não recebe novo ranking.
+- Autorizações por faixa etária, bases legais, contato público, retenções e cópias exportadas seguem pendentes. A entrega parcial não declara adequação integral à LGPD.

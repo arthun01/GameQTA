@@ -1,0 +1,76 @@
+pt-BR:
+  errors:
+    messages:
+      invalid: "não é válido"
+      too_long: "deve ter no máximo %{count} caracteres"
+      not_a_number: "deve ser um número"
+      not_an_integer: "deve ser um número inteiro"
+      greater_than_or_equal_to: "deve ser maior ou igual a %{count}"
+      less_than_or_equal_to: "deve ser menor ou igual a %{count}"
+  shared:
+    legal_acceptance:
+      version: "Documentos apresentados: %{version}."
+      draft: "Os documentos ainda são minutas, com decisões jurídicas e operacionais pendentes."
+      label: "Li e concordo com os Termos de Uso e estou ciente da Política de Privacidade na versão apresentada."
+      new_tab: "Os links abrem em nova aba e preservam os dados deste formulário."
+      distinction: "Este registro não é consentimento geral para tratamento de dados nem autorização de responsável por menor."
+    form_errors:
+      title: "Confira as informações abaixo:"
+    profile_link: "Meu perfil e meus dados"
+  users:
+    legal_acceptances:
+      new:
+        title: "Conheça os documentos atualizados"
+        description: "Antes de continuar no jogo, leia os documentos apresentados e registre sua manifestação. Nenhum aceite foi atribuído à sua conta automaticamente."
+        submit: "Registrar aceite e continuar"
+        rights: "Você pode consultar ou corrigir seus dados, excluir a conta e sair sem registrar este aceite."
+        sign_out: "Sair da conta"
+    profiles:
+      city_placeholder: "Sua cidade (opcional)"
+      back_to_game: "Voltar à jornada"
+      not_informed: "Não informado"
+      current_password: "Senha atual"
+      optional_fields: "Cidade e escolaridade são opcionais e ajudam a conhecer o público do projeto. Você pode deixá-las em branco."
+      rate_limit: "Muitas tentativas. Aguarde alguns minutos antes de tentar novamente."
+      show:
+        acceptance_history: "Seus registros de leitura e aceite"
+        acceptance_explanation: "Cada registro conserva uma cópia dos documentos apresentados. Ele não representa consentimento geral de tratamento ou autorização de responsável."
+        acceptance_record: "Termos: %{terms}; privacidade: %{privacy}. Registrado em %{date}."
+        no_acceptance: "Sua conta ainda não possui registro de aceite. Nenhum registro será atribuído automaticamente."
+        title: "Meu perfil e meus dados"
+        description: "Consulte seus dados de cadastro, corrija suas informações ou exclua a conta."
+        data_title: "Dados de cadastro"
+        edit: "Editar meus dados"
+        delete_title: "Excluir minha conta"
+        delete_effects: "A exclusão é permanente: apaga seu cadastro, suas sessões, tentativas, respostas e registros de aceite, além de retirar você do ranking. Todas as sessões serão encerradas. Essa ação não pode ser desfeita."
+        retention_limits: "Esta ação remove os dados da aplicação ativa. Os prazos e procedimentos para registros operacionais, backups e cópias de relatórios já exportados ainda estão pendentes; não prometemos a remoção imediata dessas cópias. O canal de atendimento será informado quando estiver disponível."
+        delete_confirmation: "Entendo as consequências e confirmo que quero excluir permanentemente minha conta e meus dados da aplicação ativa."
+        delete_submit: "Excluir minha conta e meus dados"
+      edit:
+        title: "Editar meus dados"
+        description: "Para proteger sua conta, confirme as alterações com sua senha atual."
+        cancel: "Voltar ao perfil"
+        submit: "Salvar alterações"
+      update:
+        success: "Seus dados foram atualizados."
+      destroy:
+        success: "Sua conta e seus dados da aplicação ativa foram excluídos. As sessões foram encerradas."
+  activerecord:
+    attributes:
+      user:
+        legal_documents_accepted: "Leitura e aceite dos documentos"
+        legal_revision: "Versão dos documentos"
+        current_password: "Senha atual"
+        deletion_confirmed: "Confirmação de exclusão"
+    errors:
+      models:
+        user:
+          attributes:
+            legal_documents_accepted:
+              accepted: "precisa ser confirmada"
+            legal_revision:
+              stale: "mudou durante o preenchimento; leia a versão atual e confirme novamente"
+            current_password:
+              invalid: "está incorreta"
+            deletion_confirmed:
+              accepted: "precisa ser marcada para excluir a conta"

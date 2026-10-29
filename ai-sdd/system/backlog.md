@@ -13,15 +13,19 @@ O objetivo aqui é **registrar estrategicamente o "O quê", o "Por quê" e os "C
 ### 📋 Escopo Detalhado da Feature (Para o Desenvolvedor):
 
 #### 1. Termos de Serviço & Política de Privacidade
-- [ ] **Páginas Institucionais Dedicadas:** Criar rotas públicas `/termos` e `/privacidade` (com layout limpo, responsivo e versão para impressão).
-- [ ] **Linguagem Acessível (Legal Design / Visual Law):** Textos claros e didáticos, adequados para jovens, pais e professores, explicando exatamente quais dados são coletados e para que finalidade pedagógica.
+- [x] **Páginas Institucionais Dedicadas:** Criar rotas públicas `/termos` e `/privacidade` (com layout limpo, responsivo e versão para impressão).
+- [x] **Linguagem Acessível (Legal Design / Visual Law):** Textos claros e didáticos, adequados para jovens, pais e professores, explicando exatamente quais dados são coletados e para que finalidade pedagógica.
 - [ ] **Direitos do Titular (Art. 18 LGPD):** Instruções explícitas de como o estudante ou seu responsável legal pode solicitar a correção ou a exclusão definitiva dos seus dados.
 
+> **Andamento em 27/10/2026:** páginas implementadas como minutas, com versão, data, inventário atual e direitos descritos. O atendimento permanece pendente de canal real; identificação formal, bases legais e definições operacionais exigem validação. O design do Paper foi adiado pelo usuário. Ver [tarefas e validação](../prd-governanca-juridica-lgpd-acessibilidade/tasks.md). O tópico 2 possui entrega parcial descrita abaixo; os tópicos 3 e 4 permanecem pendentes.
+
 #### 2. Adequação Estrita à LGPD & Proteção de Crianças e Adolescentes (Art. 14 da LGPD)
-- [ ] **Minimização de Dados (Princípio da Necessidade):** Auditar e restringir o formulário de cadastro apenas ao indispensável para a dinâmica do jogo e extensão (Nome, E-mail, Idade, Escolaridade e Cidade). Nenhum dado excessivo (como CPF, telefone ou geolocalização precisa) deve ser solicitado.
-- [ ] **Consentimento & Aceite no Cadastro:** Adicionar checkbox obrigatório no formulário de criação de conta (`/cadastrar`): *"Declaro que li e concordo com os Termos de Uso e a Política de Privacidade"*, com link direto abrindo em modal ou nova aba.
-- [ ] **Base Legal & Segurança:** Salvar o consentimento com data/hora do aceite (`accepted_terms_at`) no registro do usuário.
-- [ ] **Direito ao Esquecimento (Exclusão da Conta):** Disponibilizar no perfil do estudante um botão seguro de *"Excluir minha conta e meus dados"*, que remove ou anonimiza integralmente suas submissões, mantendo integridade referencial sem expor dados pessoais.
+- [x] **Minimização de Dados (Princípio da Necessidade):** Auditar e restringir o formulário de cadastro apenas ao indispensável para a dinâmica do jogo e extensão (Nome, E-mail, Idade, Escolaridade e Cidade). Nenhum dado excessivo (como CPF, telefone ou geolocalização precisa) deve ser solicitado.
+- [x] **Consentimento & Aceite no Cadastro:** Adicionar checkbox obrigatório no formulário de criação de conta (`/cadastrar`): *"Declaro que li e concordo com os Termos de Uso e a Política de Privacidade"*, com link direto abrindo em modal ou nova aba.
+- [ ] **Base Legal & Segurança:** Data/hora do aceite (`accepted_terms_at`), versões e cópia dos documentos implementadas. A definição das bases legais por finalidade e dos consentimentos específicos continua pendente.
+- [x] **Direito ao Esquecimento (Exclusão da Conta):** Disponibilizar no perfil do estudante um botão seguro de *"Excluir minha conta e meus dados"*, que remove ou anonimiza integralmente suas submissões, mantendo integridade referencial sem expor dados pessoais.
+
+> **Entrega parcial do tópico 2:** aceite de documentos (data, versões e cópia), perfil e exclusão da aplicação ativa implementados. Cidade e escolaridade são opcionais. Os checks acima indicam os mecanismos técnicos descritos, não definição de base legal ou consentimento amplo. A redação do checkbox distingue concordância com os Termos de ciência da Política. Autorização de responsáveis e regras etárias, exposição de menores no ranking, bases legais, contato e retenções continuam pendentes, conforme [PRD](../prd-governanca-juridica-lgpd-acessibilidade/prd.md). O cadastro continua aberto, sem bloqueio geral novo para menores.
 
 #### 3. Auditoria de Cookies & Diretriz de Scripts de Tracking
 - [ ] **Zero Tracking Invasivo:** Manter a plataforma estritamente livre de ferramentas de espionagem de dados comerciais de terceiros (como Meta Pixel ou redes de ad tracking).

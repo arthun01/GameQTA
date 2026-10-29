@@ -1,0 +1,154 @@
+pt-BR:
+  shared:
+    legal_links:
+      label: "Documentos do Game QTA"
+      terms: "Termos de Uso"
+      privacy: "Política de Privacidade"
+      new_tab: "(abre em nova aba)"
+  legal_documents:
+    shared:
+      skip_to_content: "Ir para o conteúdo"
+      navigation: "Documentos do Game QTA"
+      terms: "Termos de Uso"
+      privacy: "Política de Privacidade"
+      back_to_game: "Voltar ao Game QTA"
+      eyebrow: "Game QTA · Transparência"
+      draft_title: "Minuta — documento em elaboração"
+      draft_notice: "Este texto apresenta o funcionamento atual do projeto. A identificação formal do responsável, o canal de atendimento, as bases legais, as regras para menores, a hospedagem e os prazos de retenção ainda precisam ser definidos e validados. Esta minuta não declara que a adequação à LGPD está concluída."
+      version_label: "Versão"
+      version: "0.2 — minuta"
+      updated_on_label: "Atualização"
+      updated_on: "2026-10-27"
+      print_hint: "Para imprimir ou salvar uma cópia em PDF, use a opção Imprimir do seu navegador. A impressão mantém o texto, a versão e os avisos deste documento."
+      index_title: "Neste documento"
+    terms:
+      title: "Termos de Uso"
+      subtitle: "Conheça a proposta do jogo e as regras de participação."
+      summary: "O Game QTA é um projeto educacional sobre Direito Ambiental, com vídeos, questões e uma jornada de aprendizado. Estes termos estão em elaboração e devem ser lidos junto com a Política de Privacidade. A leitura desta página não registra aceite nem autoriza tratamentos opcionais de dados."
+      sections:
+        project:
+          title: "1. Sobre o Game QTA"
+          paragraphs:
+            - "O projeto busca apoiar o aprendizado por meio de níveis, temas, perguntas e explicações. Os conteúdos têm finalidade educacional e não substituem orientação jurídica sobre um caso concreto."
+            - "A equipe do projeto foi indicada como responsável pela operação. A identificação formal das pessoas ou da entidade que responderá pelo serviço e pelos dados ainda está pendente. O vínculo com a UESC e o TekohaLab não atribui automaticamente a essas instituições o papel de controlador dos dados."
+        participation:
+          title: "2. Cadastro e participação"
+          paragraphs:
+            - "O cadastro é aberto ao público e solicita nome, e-mail, senha e idade. Cidade e escolaridade são opcionais e ajudam a conhecer o público do projeto. Use informações corretas e uma conta que você possa administrar com segurança. Não use a identidade de outra pessoa."
+            - "Crianças e adolescentes podem se interessar pelo jogo. Os procedimentos de participação dos responsáveis, aferição de idade e proteção desse público ainda estão em definição. O cadastro atual ou a leitura desta minuta não comprovam autorização de um responsável legal."
+        rules:
+          title: "3. Regras de participação"
+          items:
+            - "Respeite a finalidade educacional do jogo e as demais pessoas participantes."
+            - "Não tente manipular respostas, pontuações, tempos ou mecanismos de acesso."
+            - "Não tente acessar contas, relatórios ou informações que não pertençam a você ou às suas atribuições."
+            - "Não utilize falhas do sistema para prejudicar o projeto ou expor dados de terceiros."
+          paragraphs:
+            - "A administração pode bloquear contas por infrações às regras. O bloqueio encerra as sessões do estudante e retira sua participação do ranking. O procedimento de atendimento para esclarecimentos e contestação ainda precisa ser definido e divulgado."
+        account:
+          title: "4. Segurança da conta"
+          paragraphs:
+            - "Mantenha sua senha em sigilo, evite reutilizá-la em outros serviços e encerre sua sessão ao usar um dispositivo compartilhado. A equipe não deve solicitar que você informe sua senha para atender um pedido."
+            - "As áreas de estudantes e de administração utilizam acessos separados. A existência de uma conta de estudante não concede acesso aos dados administrativos."
+        learning:
+          title: "5. Jornada, desempenho e ranking"
+          paragraphs:
+            - "O jogo registra tentativas, respostas e informações de desempenho para organizar a jornada e calcular resultados. A dificuldade das questões influencia a pontuação; o tempo registrado participa dos critérios do ranking."
+            - "Outros estudantes autenticados podem visualizar nomes e resultados no ranking. A forma de exposição dos participantes, especialmente dos menores, ainda será revista no processo de adequação à proteção de dados. Consulte a política para conhecer os dados utilizados."
+        external_content:
+          title: "6. Conteúdo e serviços externos"
+          paragraphs:
+            - "O jogo apresenta vídeos hospedados no YouTube e utiliza fontes do Google em telas existentes. Ao carregar esses serviços, seu navegador pode estabelecer conexão com terceiros sujeitos às respectivas políticas. Os efeitos dessas integrações sobre a privacidade estão em avaliação."
+            - "Disponibilidade, anúncios, acessibilidade e conteúdo dos serviços externos podem mudar. A equipe precisa avaliar alternativas e medidas de proteção antes da versão definitiva destes documentos."
+        closing:
+          title: "7. Encerramento e direitos"
+          paragraphs:
+            - "Você pode parar de utilizar o jogo. Sair da sessão ou deixar de jogar não equivale a excluir os dados da conta. O procedimento de solicitação de exclusão está descrito, com suas pendências atuais, na Política de Privacidade."
+            - "Estes termos não afastam direitos garantidos pela legislação. O canal para solicitações e esclarecimentos ainda não foi informado; esta página não recebe nem protocola pedidos."
+        changes:
+          title: "8. Alterações e versão deste documento"
+          paragraphs:
+            - "A versão e a data acima permitem identificar esta minuta. Textos e funcionalidades poderão ser ajustados durante sua revisão. Mudanças relevantes precisarão ser comunicadas aos participantes antes da adoção definitiva."
+            - "O cadastro registra o aceite dos termos e a ciência da política, com data, versões e cópia dos textos apresentados. Contas existentes precisam registrar sua manifestação para retomar o jogo quando houver documentos atualizados. Essa manifestação não equivale a consentimento geral de tratamento nem a autorização de responsável por menor. A navegação nesta página não registra concordância automática."
+    privacy:
+      title: "Política de Privacidade"
+      subtitle: "Entenda quais dados aparecem no jogo, para que são usados e quais direitos você tem."
+      summary: "Esta minuta descreve o uso atual de dados de estudantes e administradores no Game QTA. Ela também aponta decisões ainda pendentes. Não há, nesta página, formulário de atendimento ou registro de consentimento."
+      sections:
+        responsibility:
+          title: "1. Quem responde pelos dados"
+          paragraphs:
+            - "A equipe do projeto foi indicada como responsável pela operação do Game QTA. A identificação formal de quem exercerá o papel de controlador e a definição do contato de privacidade ainda estão pendentes."
+            - "O projeto está vinculado a uma iniciativa educacional da UESC e conta com referência ao TekohaLab. Esse vínculo, isoladamente, não identifica quem decide sobre cada tratamento de dados. Essa responsabilidade precisa ser confirmada antes da publicação definitiva da política."
+        supplied_data:
+          title: "2. Dados que você fornece"
+          items:
+            - "Estudantes: nome, e-mail, idade e senha para criação e acesso à conta. Cidade e escolaridade são opcionais e podem ser removidas no perfil."
+            - "Administradores: e-mail e senha para acesso à gestão do conteúdo e da comunidade."
+          paragraphs:
+            - "A aplicação armazena uma representação protegida da senha, e não a senha em texto aberto. Os demais dados de cadastro são usados para identificar a conta e compor informações sobre o público participante. A necessidade e as finalidades específicas de cada campo ainda serão revisadas."
+        generated_data:
+          title: "3. Dados gerados durante o uso"
+          items:
+            - "Tentativas de temas, questões respondidas, alternativas escolhidas, acertos e erros."
+            - "Momentos de revelação e envio de respostas, informações de tempo quando registradas, pontuação e posição no ranking."
+            - "Dados de sessão, endereço IP e informações do navegador no login."
+            - "Datas dos registros, situação de bloqueio da conta, histórico de aceite dos documentos e registros operacionais de acesso e de erros."
+          paragraphs:
+            - "Esses registros apoiam o funcionamento da jornada, a apresentação de resultados, a autenticação, a segurança e a manutenção do serviço. A política de retenção e a avaliação de necessidade dos registros ainda estão pendentes."
+        purposes:
+          title: "4. Finalidades e bases legais"
+          paragraphs:
+            - "O uso atual dos dados abrange funcionamento das contas, atividades educacionais, acompanhamento do desempenho, ranking, moderação e relatórios administrativos. As bases legais precisam ser definidas e documentadas por finalidade antes da adoção definitiva desta política."
+            - "A ciência da política, o aceite dos termos e um consentimento específico têm funções diferentes. A leitura desta página ou o uso do jogo não representam autorização geral para todas as formas de tratamento de dados."
+        access:
+          title: "5. Quem pode visualizar os dados"
+          paragraphs:
+            - "Administradores autenticados têm acesso a dados de estudantes e relatórios. As exportações de estudantes podem conter nome, e-mail, cidade, escolaridade, pontuação, tempo, situação de bloqueio e data de cadastro. Os relatórios por tema apresentam resultados agregados."
+            - "O ranking mostra a outros estudantes autenticados nomes, pontuações e informações de tempo. A identificação exibida no ranking e os acessos administrativos ainda precisam ser avaliados quanto à necessidade e à proteção de menores."
+            - "Cópias de relatórios baixadas por administradores também precisam de regras de acesso, guarda e descarte. A exclusão na aplicação não apaga automaticamente essas cópias."
+        cookies:
+          title: "6. Cookies e serviços externos"
+          paragraphs:
+            - "A aplicação utiliza cookies de navegação e autenticação para manter o contexto de uso e identificar sessões de estudantes e administradores. A duração e as características de todos os cookies serão inventariadas na etapa específica de adequação."
+            - "O YouTube, nos vídeos incorporados, e o Google Fonts, em telas existentes, podem receber dados de conexão, como IP e informações do navegador. A análise dessas integrações e de suas tecnologias de armazenamento ainda está em andamento; não afirmamos nesta minuta que toda a navegação usa somente cookies necessários."
+            - "A definição de hospedagem, fornecedores, locais de tratamento e eventuais transferências internacionais está pendente. Esta política será complementada com essas informações antes da publicação definitiva."
+        children:
+          title: "7. Crianças e adolescentes"
+          paragraphs:
+            - "O cadastro atual é aberto ao público e pode alcançar crianças menores de 12 anos. As medidas de proteção, participação dos responsáveis e verificação necessárias ainda estão em definição, considerando o melhor interesse desse público e a legislação aplicável."
+            - "Informar uma idade ou marcar um aceite isolado não comprova que um responsável autorizou o tratamento de dados de uma criança. Esta minuta não declara que esse procedimento já está disponível ou validado."
+        retention:
+          title: "8. Guarda e exclusão dos dados"
+          paragraphs:
+            - "Ainda não foram definidos os prazos de guarda de contas, dados de jogo, registros operacionais e backups. Não há nesta minuta um prazo fictício ou promessa de exclusão automática de contas inativas."
+            - "O estudante autenticado pode excluir sua conta no perfil, confirmando a senha atual e as consequências da ação. A exclusão remove o cadastro, todas as sessões, tentativas, respostas, ranking e registros de aceite da aplicação ativa. A atualização pendente do ranking não restaura uma conta excluída. O procedimento de atendimento e o tratamento de registros operacionais, backups e cópias exportadas continuam pendentes, observadas as hipóteses legais de conservação."
+            - "Sair da conta, interromper o uso ou apagar cookies do navegador não exclui os registros já armazenados pelo projeto."
+        rights:
+          title: "9. Seus direitos sobre os dados"
+          paragraphs:
+            - "A LGPD prevê direitos que podem ser exercidos pelo titular ou por seu representante legal, conforme as condições aplicáveis a cada tratamento."
+          items:
+            - "Confirmar o tratamento e acessar seus dados; corrigir informações incompletas, inexatas ou desatualizadas."
+            - "Pedir anonimização, bloqueio ou eliminação de dados desnecessários, excessivos ou tratados em desacordo com a lei."
+            - "Solicitar portabilidade nos limites da regulamentação e eliminação de dados tratados com consentimento, ressalvadas as hipóteses legais de conservação."
+            - "Conhecer os compartilhamentos, a possibilidade de recusar consentimento e as consequências dessa escolha; revogar o consentimento quando ele for a base utilizada."
+            - "Opor-se ao tratamento em caso de descumprimento da LGPD e solicitar revisão e explicação de decisões exclusivamente automatizadas que afetem seus interesses, quando cabível."
+            - "Apresentar petição à ANPD e recorrer aos órgãos competentes nas hipóteses legais."
+        requests:
+          title: "10. Como solicitar correção ou exclusão"
+          paragraphs:
+            - "Para corrigir dados de cadastro ou excluir a conta da aplicação ativa, entre no jogo e acesse Meu perfil e meus dados. As ações pedem sua senha atual; a exclusão exige confirmação adicional e não pode ser desfeita. Esses recursos continuam disponíveis mesmo sem aceitar documentos atualizados. O canal de privacidade ainda não foi definido: quem perdeu acesso à conta, representantes legais e outros pedidos ainda dependem desse canal. Esta página não recebe mensagens nem gera protocolo. O canal real deverá ser publicado antes da adoção definitiva desta política."
+            - "Quando o canal estiver disponível, o estudante ou seu representante poderá identificar a conta, indicar o direito que deseja exercer e descrever a informação a corrigir ou excluir. A equipe deverá verificar a identidade de forma proporcional, informar o recebimento e responder nos prazos legais, com as justificativas aplicáveis."
+            - "Não envie sua senha ou documentos pessoais sem necessidade. Para conhecer os direitos e os canais da autoridade, consulte as orientações oficiais da ANPD abaixo."
+        updates:
+          title: "11. Atualizações e referências"
+          paragraphs:
+            - "A versão e a data identificam esta minuta. As definições pendentes e as mudanças no funcionamento do jogo deverão ser refletidas nas próximas versões, com comunicação adequada das alterações relevantes."
+          links:
+            - label: "LGPD — Lei nº 13.709/2018"
+              url: "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709compilado.htm"
+            - label: "ANPD — Direitos dos titulares"
+              url: "https://www.gov.br/anpd/pt-br/assuntos/titular-de-dados/direito-dos-titulares"
+            - label: "ANPD — Proteção de crianças e adolescentes no ambiente digital"
+              url: "https://www.gov.br/anpd/pt-br/assuntos/eca-digital"

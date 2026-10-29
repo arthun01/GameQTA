@@ -17,7 +17,7 @@ O ecossistema é dividido em duas frentes complementares:
 
 ## 🚀 Status do Projeto
 
-> **Status Atual:** MVP e Refatoração de Design Concluídos (Fases 1 a 6 Completas). Prontos para Homologação e Produção.
+> **Status Atual:** MVP e Refatoração de Design concluídos (Fases 1 a 6). Adequação jurídica, proteção de dados e acessibilidade em andamento; existem decisões pendentes antes da publicação definitiva.
 
 ### 📍 O que TEMOS atualmente (Feito)
 
@@ -68,6 +68,7 @@ O ecossistema é dividido em duas frentes complementares:
 
 ### 🚧 Próximos Passos (O que NÃO TEMOS)
 
+- [ ] Concluir os quatro tópicos do [pacote de governança jurídica, LGPD e acessibilidade](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/prd.md), em sequência. A primeira entrega disponibiliza minutas públicas; não representa conclusão da adequação.
 - [ ] Validação de campo (homologação) com alunos e professores da rede de ensino atendida pelo projeto de extensão da UESC.
 - [ ] Planejamento e execução de itens da v2.0 a partir do [Backlog Estratégico](./ai-sdd/system/backlog.md) (como Sistema de Vidas/Energia, Streaks e Gráficos analíticos).
 
@@ -99,6 +100,24 @@ Se você acabou de chegar no projeto, por favor leia os guias abaixo:
 - 🚀 [Acesse o Backlog Estratégico (Pós-MVP)](./ai-sdd/system/backlog.md)
 
 *(Nota Histórica: O histórico imutável do planejamento das sprints iniciais usando a metodologia AI-SDD repousa preservado na pasta `/ai-sdd/`).*
+
+### Termos e Política de Privacidade — tópico 1
+
+As páginas públicas **`/termos`** e **`/privacidade`** podem ser lidas sem login. Há links no cadastro, nos logins e nas áreas autenticadas, que abrem em nova aba para preservar formulários e partidas. Para imprimir ou salvar em PDF, use a opção **Imprimir** do navegador: a página mantém conteúdo, versão, data e aviso de minuta, ocultando a navegação.
+
+Os textos estão em **minuta**, com descrição dos dados atuais, sessões, ranking, relatórios, YouTube e Google Fonts. Identificação formal do controlador, contato de privacidade, bases legais, fluxo para menores, hospedagem e retenção de dados/backups permanecem pendentes. As páginas não recebem pedidos nem registram consentimento. Aceite, perfil e exclusão estão disponíveis na entrega parcial do tópico 2 descrita abaixo. Controles de cookies e auditoria abrangente de acessibilidade continuam nos próximos tópicos.
+
+O acompanhamento está no [PRD](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/prd.md), na [Tech Spec](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/techspec.md) e nas [tarefas](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/tasks.md). O usuário autorizou implementar a estrutura funcional antes do design do Paper, que poderá ser incorporado pelo colaborador posteriormente.
+
+### Cadastro, perfil e exclusão — tópico 2 (parcial)
+
+O cadastro público exige manifestação desmarcada por padrão sobre os termos e a política apresentados. O servidor conserva data, versões e cópia do texto; ele rejeita revisão desatualizada e não atribui aceites retroativos a contas antigas. Quando necessário, o estudante é direcionado para **`/aceite/new`** antes de voltar ao jogo. Isso não equivale a consentimento geral de tratamento nem a autorização do responsável.
+
+**`/perfil`** permite consultar dados e o histórico de aceites, editar o cadastro com senha atual e excluir a própria conta com senha e confirmação das consequências. A exclusão remove dados da aplicação ativa (cadastro, sessões, tentativas, respostas, ranking e aceites). Jobs pendentes não restauram o ranking de contas excluídas ou bloqueadas. Os procedimentos para logs, backups e cópias exportadas continuam pendentes e são informados antes da confirmação.
+
+Cidade e escolaridade são opcionais e podem ser apagadas do perfil. O cadastro permanece aberto com os limites de idade já existentes; não foi acrescentada uma exigência geral de autorização para todos os menores de 18 anos. O fluxo adequado por faixa etária, a base legal e a exposição de menores no ranking continuam pendentes de decisão e validação. Nenhuma autorização presencial ou escolar é simulada pelo sistema. O e-mail público de atendimento será definido futuramente pela equipe.
+
+As mudanças de banco devem ser aplicadas com `bin/rails db:migrate`. Resultados de testes e limitações das auditorias estão no [acompanhamento da feature](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/tasks.md).
 
 ---
 

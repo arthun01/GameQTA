@@ -1,0 +1,63 @@
+<% document = t("legal_documents.#{document_key}") %>
+<% content_for :title, document.fetch(:title) %>
+
+<article aria-labelledby="document-title">
+  <div class="mb-8 max-w-3xl border-l-4 border-amber-700 bg-amber-50 px-5 py-4 text-amber-950" role="note" aria-labelledby="draft-notice-title" data-legal-draft>
+    <p id="draft-notice-title" class="text-sm font-bold"><%= t("legal_documents.shared.draft_title") %></p>
+    <p class="mt-2 text-sm leading-relaxed"><%= t("legal_documents.shared.draft_notice") %></p>
+  </div>
+
+  <header class="mb-10 max-w-3xl">
+    <p class="mb-3 text-sm font-semibold tracking-wide text-emerald-800"><%= t("legal_documents.shared.eyebrow") %></p>
+    <h1 id="document-title" class="text-3xl font-bold leading-tight tracking-tight text-emerald-950 sm:text-4xl"><%= document.fetch(:title) %></h1>
+    <p class="mt-4 text-lg leading-relaxed text-slate-600"><%= document.fetch(:subtitle) %></p>
+    <dl class="mt-5 flex flex-wrap gap-x-8 gap-y-3 text-sm text-slate-600">
+      <div class="flex gap-2">
+        <dt class="font-semibold"><%= t("legal_documents.shared.version_label") %></dt>
+        <dd data-legal-version><%= t("legal_documents.shared.version") %></dd>
+      </div>
+      <div class="flex gap-2">
+        <dt class="font-semibold"><%= t("legal_documents.shared.updated_on_label") %></dt>
+        <dd><time datetime="<%= t("legal_documents.shared.updated_on") %>"><%= l(Date.iso8601(t("legal_documents.shared.updated_on")), format: "%d/%m/%Y") %></time></dd>
+      </div>
+    </dl>
+    <p class="legal-screen-only mt-5 text-sm text-slate-500"><%= t("legal_documents.shared.print_hint") %></p>
+  </header>
+
+  <div class="legal-columns grid items-start gap-10 lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-16">
+    <nav aria-labelledby="document-index-title" class="legal-screen-only rounded-xl border border-emerald-100 bg-white p-5">
+      <h2 id="document-index-title" class="text-sm font-bold text-emerald-950"><%= t("legal_documents.shared.index_title") %></h2>
+      <ol class="mt-4 space-y-3 text-sm leading-relaxed">
+        <% document.fetch(:sections).each do |key, section| %>
+          <li><%= link_to section.fetch(:title), "#section-#{key}", class: "rounded-sm text-emerald-900 underline decoration-emerald-200 underline-offset-4 hover:decoration-emerald-800 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-700" %></li>
+        <% end %>
+      </ol>
+    </nav>
+
+    <div class="legal-content min-w-0 max-w-3xl">
+      <p class="mb-10 border-b border-slate-200 pb-8 text-base leading-8 text-slate-700"><%= document.fetch(:summary) %></p>
+      <% document.fetch(:sections).each do |key, section| %>
+        <section id="section-<%= key %>" aria-labelledby="heading-<%= key %>" class="mb-10 scroll-mt-6">
+          <h2 id="heading-<%= key %>" class="mb-4 text-xl font-bold leading-snug text-emerald-950"><%= section.fetch(:title) %></h2>
+          <% Array(section[:paragraphs]).each do |paragraph| %>
+            <p class="mb-4 text-base leading-8 text-slate-700"><%= paragraph %></p>
+          <% end %>
+          <% if section[:items].present? %>
+            <ul class="mb-4 list-disc space-y-3 pl-6 text-base leading-8 text-slate-700">
+              <% section.fetch(:items).each do |item| %>
+                <li><%= item %></li>
+              <% end %>
+            </ul>
+          <% end %>
+          <% if section[:links].present? %>
+            <ul class="space-y-3 text-base leading-8">
+              <% section.fetch(:links).each do |reference| %>
+                <li><%= link_to reference.fetch(:label), reference.fetch(:url), rel: "external noopener", class: "break-words rounded-sm text-emerald-900 underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-700" %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        </section>
+      <% end %>
+    </div>
+  </div>
+</article>

@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resource :terms, only: :show, path: "termos"
+  resource :privacy_policy, only: :show, path: "privacidade"
+  resource :profile, only: %i[ show edit update destroy ], path: "perfil", controller: "users/profiles"
+  resource :legal_acceptance, only: %i[ new create ], path: "aceite", controller: "users/legal_acceptances"
+
   namespace :admin do
     resource :session
     resources :passwords, param: :token

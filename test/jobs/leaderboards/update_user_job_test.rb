@@ -30,4 +30,24 @@ class Leaderboards::UpdateUserJobTest < ActiveJob::TestCase
     assert_equal 20, leaderboard.total_score
     assert_equal 20, leaderboard.total_time_taken
   end
+
+  test "pending updates do not recreate the leaderboard of an erased account" do
+    user = users(:student_one)
+    user.erase_account(password: "password", confirmed: "1")
+
+    assert_no_difference "Leaderboard.count" do
+      Leaderboards::UpdateUserJob.perform_now(user.id)
+    end
+    assert_not Leaderboard.exists?(user_id: user.id)
+  end
+
+  test "pending updates do not put blocked students back in the ranking" do
+    user = users(:student_one)
+    user.block!
+
+    assert_no_difference "Leaderboard.count" do
+      Leaderboards::UpdateUserJob.perform_now(user.id)
+    end
+    assert_not Leaderboard.exists?(user_id: user.id)
+  end
 end

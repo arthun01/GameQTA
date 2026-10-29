@@ -1,4 +1,5 @@
 class Users::SessionsController < Users::BaseController
+  skip_before_action :require_current_legal_acceptance
   allow_unauthenticated_access only: %i[ new create ]
   rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to "/entrar", alert: t(".rate_limit") }
 
