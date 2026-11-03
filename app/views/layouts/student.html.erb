@@ -9,16 +9,14 @@
     
     <%= yield :head %>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body class="h-full antialiased font-body bg-(--color-surface) text-(--color-text-primary)">
-    <main id="main-content" class="min-h-full">
+    <%= render "shared/skip_link" %>
+    <main id="main-content" tabindex="-1" class="min-h-full">
       <%= render "shared/flash" %>
       <%= yield %>
     </main>
@@ -28,6 +26,7 @@
       </nav>
     <% end %>
     <%= render "shared/legal_links" %>
+    <%= render "shared/cookie_notice" %>
     <div id="modal_container"></div>
   </body>
 </html>

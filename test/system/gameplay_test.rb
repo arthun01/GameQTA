@@ -35,22 +35,21 @@ class GameplayTest < ApplicationSystemTestCase
   test "gameplay flow" do
     visit jornada_path
     find("summary", text: "Gameplay Level").click
-    click_on "Iniciar Tema", match: :first
+    click_button "Iniciar Tema", match: :first
 
     # Q1
-    sleep 1; click_on "Mostrar Questão"
+    click_on "Mostrar Questão"
     assert_text "Test Q 1"
 
     # Errada:
-    option1 = Option.find_by(content: "Errada 1")
-    execute_script("document.getElementById('theme_attempt_option_id_#{option1.id}').checked = true;")
-    execute_script("document.getElementById('evaluation_form').requestSubmit();")
-    assert_text "Resposta Incorreta"
-    click_on "Próxima Questão"
+    choose "Errada 1"
+    click_on "Confirmar resposta"
+    assert_selector "dialog[open]"
+    within("dialog[open]") { click_on "Próxima Questão" }
 
     # Q2
     assert_text "Assista ao vídeo"
-    sleep 1; click_on "Mostrar Questão"
+    click_on "Mostrar Questão"
     assert_text "Test Q 2"
 
     # Timeout
@@ -58,16 +57,15 @@ class GameplayTest < ApplicationSystemTestCase
     submission.update!(revealed_at: 2.minutes.ago)
     execute_script("document.getElementById('evaluation_form').requestSubmit()")
 
-    assert_text "Resposta Incorreta"
-    click_on "Próxima Questão"
+    assert_selector "dialog[open]"
+    within("dialog[open]") { click_on "Próxima Questão" }
 
     # Q3
     assert_text "Assista ao vídeo"
-    sleep 1; click_on "Mostrar Questão"
+    click_on "Mostrar Questão"
     assert_text "Test Q 3"
-    option3 = Option.find_by(content: "Certa 3")
-    execute_script("document.getElementById('theme_attempt_option_id_#{option3.id}').checked = true;")
-    execute_script("document.getElementById('evaluation_form').requestSubmit();")
+    choose "Certa 3"
+    click_on "Confirmar resposta"
 
     # Redirecionou pra finish!
     assert_text "Nível Reprovado!"

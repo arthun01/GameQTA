@@ -191,3 +191,21 @@ Documentos sobem para versão 0.3, de 03/11/2026. A mudança gera nova revisão 
 Produzir PDF para a equipe, com identidade, inventário, acesso/ranking, versão integral dos documentos, operação de atendimento, explicação da opção escolhida e quadro de pendências. Usar o locale real como fonte dos termos/política, evitar divergência entre PDF e site, renderizar e inspecionar todas as páginas. Não declarar pesquisa autorizada, conformidade integral à LGPD/ECA Digital ou auditoria WCAG concluída.
 
 Ref: tarefa 7.0; testes de cadastro de menores sem novos gates, rejeição de ranking_code fornecido pelo cliente, não exposição dos nomes e e-mails de terceiros em todas as posições, persistência dos campos e presença do contato. Nenhum dado real é excluído na validação.
+
+
+## Conclusão técnica dos tópicos 3 e 4 — 03/11/2026
+
+### Tópico 3 (tarefa 8)
+Inventariar `_qta_rails8_session` (navegação Rails), `user_session_id` e `session_id` (IDs assinados, separados por perfil). Fixar autenticação em 12 horas com validade também no servidor, HttpOnly, SameSite=Lax e Secure em produção; sessão de navegação limitada a 12 horas. Logout revoga registro no servidor. Forçar HTTPS em produção, preservando healthcheck. Retenção dos registros no banco continua decisão operacional separada.
+
+Remover Google Fonts/preconnect e usar fontes do sistema. Player compartilhado sem iframe, thumbnail externa ou conexão automática. Botões de mesmo destaque permitem carregar apenas aquele vídeo ou continuar sem ele; escolha não persiste, não equivale a autorização parental, e pode ser revogada removendo o iframe. Antes do cache Turbo, remover player. Domínio youtube-nocookie não significa ausência de tratamento pelo Google. Aviso estático no rodapé informa uso necessário próprio e vídeo externo opcional; sem banner obrigatório ou cookies adicionais. Não instalar analytics.
+
+### Tópico 4 (tarefa 9)
+Preservar Emerald e corrigir cores de texto/controle com contraste insuficiente; foco global visível, redução de movimento, skip link, idioma, nomes de controles, imagens locais com fallback no servidor, erros associados aos formulários e landmarks. Dialog nativo com Stimulus gerencia abertura, Escape, foco e limpeza Turbo. Feedback recebe título e foco ao aparecer; fechamento deixa próxima ação disponível. Alternativas usam grupo com legenda e botão explícito de confirmar, evitando envio ao navegar com setas.
+
+Antes de revelar a questão, oferecer ajuste de 1 a 10 vezes o tempo padrão para qualquer participante, sem coletar diagnóstico. Persistir o limite em `question_submissions.time_limit_seconds`; servidor controla a validade e recarregar não reinicia o prazo. Guardar `answered_at` para que timeout seja resposta encerrada e não reabra a mesma questão. Registrar tempo efetivo no ranking, sem multiplicar pontos; opção de tempo não se altera após revelação. Comparabilidade competitiva limitada fica explícita. Dados existentes e pontuações preservados. Conteúdo audiovisual requer conferência editorial de legendas/transcrições pelo professor; não inventar conteúdo nem certificar WCAG apenas com testes automáticos.
+
+### Validação e entrega (tarefa 10)
+Minitest para cookies/expiração/logout, HTML sem conexões externas automáticas, autorização reversível do player, limites e timeout; Capybara para teclado, foco, formulário dinâmico e jogo. Rodar toda a suíte e corrigir seletores antigos que não representam a interface. Atualizar apenas dependências afetadas pelos alertas (`brakeman`, `crass`, `net-ssh`) e verificar advisories atuais. Documentar auditorias com limites, matriz WCAG e pendências operacionais sem presumir resolvidas. Regenerar/inspecionar PDF e realizar revisão de código antes do PR para main.
+
+Fontes: [ANPD cookies](https://www.gov.br/anpd/pt-br/centrais-de-conteudo/materiais-educativos-e-publicacoes/guia_orientativo_cookies_e_protecao_de_dados_pessoais), [W3C tempo ajustável](https://www.w3.org/WAI/WCAG21/Understanding/timing-adjustable.html), [W3C dialogs](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/), [YouTube privacidade avançada](https://support.google.com/youtube/answer/171780?hl=pt-BR), [Rails cookies](https://api.rubyonrails.org/classes/ActionDispatch/Cookies.html). Context7 foi consultado, mas não retornou a biblioteca principal Rails; usadas referências oficiais diretamente.

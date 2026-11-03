@@ -2,29 +2,35 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = ["dialog"]
+  static values = { autoOpen: Boolean }
 
   connect() {
-    this.boundHandleKeydown = this.handleKeydown.bind(this)
+    if (this.autoOpenValue) this.show()
   }
 
   open(event) {
     event.preventDefault()
-    this.dialogTarget.classList.remove("hidden")
-    document.addEventListener("keydown", this.boundHandleKeydown)
-    document.body.style.overflow = "hidden"
+    this.trigger = event.currentTarget
+    this.show()
   }
 
-  close(event) {
-    if (event) event.preventDefault()
-    this.dialogTarget.classList.add("hidden")
-    document.removeEventListener("keydown", this.boundHandleKeydown)
-    document.body.style.overflow = ""
+  show() {
+    this.trigger ||= document.activeElement
+    if (this.panel.open) this.panel.close()
+    this.panel.showModal()
+    this.panel.querySelector("[data-dialog-heading]")?.focus()
   }
 
-  handleKeydown(event) {
-    if (event.key === "Escape") {
-      this.close()
-    }
+  close() {
+    this.panel.close()
+    this.trigger?.focus()
+  }
+
+  disconnect() {
+    this.panel.close()
+  }
+
+  get panel() {
+    return this.hasDialogTarget ? this.dialogTarget : this.element
   }
 }
-

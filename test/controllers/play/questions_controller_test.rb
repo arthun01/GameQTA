@@ -10,8 +10,9 @@ class Play::QuestionsControllerTest < ActionDispatch::IntegrationTest
   test "should get show for own attempt" do
     get play_theme_attempt_question_url(@attempt)
     assert_response :success
-    assert_select "iframe" # check video present
-    assert_select "button", text: "Mostrar Questão"
+    assert_select "iframe", count: 0
+    assert_select "[data-controller=external-video]"
+    assert_select "input[type=submit][value=?]", "Mostrar Questão"
   end
 
   test "should not get show for other user attempt" do

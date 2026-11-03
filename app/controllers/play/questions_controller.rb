@@ -10,12 +10,12 @@ class Play::QuestionsController < Users::BaseController
   end
 
   def reveal
-    @question = @theme_attempt.next_pending_question
-    @submission = @theme_attempt.question_submissions.find_or_create_by!(question: @question) do |sub|
-      sub.revealed_at = Time.current
+    @submission = @theme_attempt.reveal_question(time_multiplier: params[:time_multiplier])
+    if @submission.nil?
+      redirect_to finish_play_theme_path(@theme_attempt.theme)
+      return
     end
-
-    @time_limit = GameSetting.current.time_for_difficulty(@question.difficulty)
+    @question = @submission.question
 
     respond_to do |format|
       format.turbo_stream
@@ -26,26 +26,14 @@ class Play::QuestionsController < Users::BaseController
   def submit
     @submission = @theme_attempt.question_submissions.order(created_at: :desc).first
 
-    if @submission.nil? || @submission.option_id.present? || @submission.is_correct
+    if @submission.nil? || @submission.answered_at.present? || @submission.option_id.present?
       redirect_to play_theme_attempt_question_path(@theme_attempt)
       return
     end
 
     @question = @submission.question
 
-    time_limit = GameSetting.current.time_for_difficulty(@question.difficulty)
-    time_taken = Time.current - @submission.revealed_at
-
-    is_timeout = time_taken > (time_limit + 2.seconds)
-    option = Option.find_by(id: params[:option_id])
-
-    if is_timeout
-      @submission.update!(is_correct: false, option: nil)
-    elsif option.present? && option.question_id == @question.id
-      @submission.update!(is_correct: option.is_correct, option: option)
-    else
-      @submission.update!(is_correct: false, option: nil)
-    end
+    @submission.answer(option_id: params[:option_id])
 
     if @submission.is_correct?
       redirect_to play_theme_attempt_question_path(@theme_attempt)
@@ -53,7 +41,6 @@ class Play::QuestionsController < Users::BaseController
       respond_to do |format|
         format.turbo_stream
         format.html do
-          @time_limit = GameSetting.current.time_for_difficulty(@question.difficulty)
           @show_feedback_modal = true
           render :show
         end

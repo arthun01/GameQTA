@@ -1,0 +1,56 @@
+pt-BR:
+  privacy_controls:
+    cookies_title: "Cookies e vídeos externos"
+    cookies_notice: "O Game QTA usa cookies próprios necessários à navegação e ao acesso, sem analytics ou publicidade comercial instalada. Vídeos externos só se conectam ao YouTube quando você escolhe carregá-los."
+    video_title: "Vídeo educativo do YouTube"
+    video_notice: "Este vídeo é externo. Ao carregá-lo, o YouTube recebe dados de conexão, como IP e navegador, e pode usar tecnologias de armazenamento. A escolha vale apenas para este vídeo nesta página. Você pode continuar sem carregá-lo e desativá-lo depois."
+    load_video: "Carregar este vídeo"
+    skip_video: "Continuar sem vídeo"
+    stop_video: "Desativar vídeo externo"
+    video_rejected: "Vídeo não carregado. Você pode continuar à questão ou mudar sua escolha aqui."
+    video_no_js: "O vídeo externo permanece desligado sem JavaScript. Você pode continuar à questão."
+  dashboard:
+    index:
+      play_theme: "Iniciar Tema"
+  accessibility:
+    page:
+      title: "Acessibilidade"
+      summary: "O Game QTA oferece recursos para facilitar a navegação e o tempo de resposta. Esta página informa os controles disponíveis e os limites conhecidos; não é uma certificação de conformidade integral."
+      controls_title: "Como usar os recursos"
+      controls:
+        - "Use Tab e Shift+Tab para navegar e Enter ou Espaço para ativar controles. O link Ir para o conteúdo pula a navegação."
+        - "Use as setas para escolher uma alternativa e o botão Confirmar resposta para enviá-la. A seleção sozinha não envia a resposta."
+        - "Antes de revelar cada questão, escolha de 1 a 10 vezes o tempo padrão. A opção está disponível a todos; não é necessário informar deficiência ou diagnóstico. O tempo efetivo continua no desempate do ranking."
+        - "Feche os diálogos com Escape ou pelo botão Fechar. O foco retorna ao ponto de abertura; após um erro, a próxima questão também fica disponível fora do diálogo."
+        - "Amplie a página pelo navegador. A preferência de reduzir movimento do seu dispositivo é respeitada."
+        - "Vídeos externos começam desligados. É possível continuar sem vídeo e desativar um player que você carregou."
+      limits_title: "Limites conhecidos e ajuda"
+      limits: "As verificações automáticas e de teclado não substituem testes com pessoas e tecnologias assistivas. A equipe ainda precisa conferir legendas, transcrições e alternativas dos vídeos, além de realizar avaliação com leitor de tela. Os formulários e questões usam texto, mas isso não garante equivalência integral do conteúdo audiovisual. Informe dificuldades e o endereço da página pelo contato abaixo, sem enviar senha."
+    admin_navigation: "Navegação da administração"
+    close: "Fechar"
+    level_number: "Nível %{number}"
+    in_progress: "Em progresso"
+    previous_level: "Alcance a meta no nível anterior"
+    time_adjustment: "Tempo para responder"
+    time_multiple:
+      one: "Tempo padrão (1×)"
+      other: "%{count}× o tempo padrão"
+    time_help: "Escolha até 10 vezes o tempo antes de mostrar a questão. Disponível a todos. Os pontos são os mesmos; o tempo efetivo continua no desempate do ranking."
+    time_remaining: "Tempo restante para responder"
+    time_warning: "Restam 20 segundos ou menos para confirmar sua resposta."
+    choose_answer: "Escolha uma alternativa e confirme"
+    confirm_answer: "Confirmar resposta"
+    correct_option: "Marcar esta opção como correta"
+    option_text: "Texto da opção"
+    option_placeholder: "Digite a opção de resposta..."
+    remove_option: "Remover opção"
+    admin_email: "E-mail da administração"
+    admin_password: "Senha"
+    admin_login: "Entrar na administração"
+    admin_forgot_password: "Esqueceu a senha?"
+  play:
+    questions:
+      feedback_modal:
+        incorrect: "Resposta Incorreta"
+        understand_error: "Entenda o erro"
+        next_question: "Próxima Questão"

@@ -4,38 +4,35 @@
     <!-- Imagem e Título do Nível -->
     <div class="flex items-center gap-3">
       <div class="w-10 h-10 min-w-[40px] flex-none shrink-0 rounded-xl overflow-hidden border border-(--color-border) bg-(--color-surface-sunken) flex items-center justify-center">
-        <img src="/ods-<%= @theme_attempt.theme.level.id %>.png" onerror="this.src='/logo_qta.png'" style="width: 180%; height: auto; max-width: none;" class="object-center" alt="<%= @theme_attempt.theme.level.name %>">
+        <img src="<%= level_image_path(@theme_attempt.theme.level.id) %>" style="width: 180%; height: auto; max-width: none;" class="object-center" alt="<%= @theme_attempt.theme.level.name %>">
       </div>
       <div class="font-sans font-semibold text-(--color-text-primary) text-base/5">
         <%= @theme_attempt.theme.level.name %>
       </div>
     </div>
     
-    <div data-controller="gameplay-timer" data-gameplay-timer-seconds-value="<%= time_limit %>" class="py-1 px-2 rounded-md bg-(--color-danger-subtle) transition-all" data-gameplay-timer-target="container">
-      <div class="font-sans font-bold text-(--color-danger) text-base/5" data-gameplay-timer-target="display">
-        00:00
+    <div id="question-timer" data-controller="gameplay-timer" data-gameplay-timer-seconds-value="<%= submission.remaining_seconds %>" data-gameplay-timer-warning-value="<%= t("accessibility.time_warning") %>" class="py-1 px-2 rounded-md bg-(--color-danger-subtle) transition-all" data-gameplay-timer-target="container">
+      <div class="font-sans font-bold text-(--color-danger) text-base/5" role="timer" aria-label="<%= t("accessibility.time_remaining") %>" aria-live="off" data-gameplay-timer-target="display">
+        <%= "%02d:%02d" % [submission.remaining_seconds / 60, submission.remaining_seconds % 60] %>
       </div>
+      <span class="sr-only" role="status" aria-live="polite" data-gameplay-timer-target="announcement"></span>
     </div>
   </div>
   
   <div class="grow flex flex-col p-4 overflow-hidden gap-6">
-    <div class="w-full h-30 flex items-center justify-center rounded-xl bg-black overflow-hidden relative">
-      <% if question.youtube_video_id.present? %>
-        <iframe class="w-full h-full absolute inset-0" src="https://www.youtube.com/embed/<%= question.youtube_video_id %>?rel=0" frameborder="0" allowfullscreen></iframe>
-      <% else %>
-        <div class="text-white text-xs"><%= t("play.questions.show.video_unavailable", default: "Vídeo não disponível") %></div>
-      <% end %>
-    </div>
-    
-    <div class="text-[18px] leading-[140%] font-sans font-semibold text-(--color-text-primary)">
+    <%= render "shared/external_video", question: question %>
+
+    <h1 tabindex="-1" data-controller="focus" class="text-[18px] leading-[140%] font-sans font-semibold text-(--color-text-primary)">
       <%= question.statement %>
-    </div>
+    </h1>
     
     <%= form_with url: submit_play_theme_attempt_question_path(@theme_attempt), id: "evaluation_form", class: "flex flex-col gap-3", data: { turbo: true, turbo_frame: "_top" } do |f| %>
+      <fieldset class="space-y-3">
+      <legend class="mb-3 font-semibold"><%= t("accessibility.choose_answer") %></legend>
       <% ('A'..'Z').zip(question.options.order(:id)).each do |letter, option| %>
         <% next unless option %>
         <label class="flex items-center p-4 rounded-xl gap-3 bg-(--color-surface-elevated) border-2 border-(--color-border) cursor-pointer hover:border-(--color-primary) transition-colors has-[:checked]:border-(--color-primary)">
-          <%= f.radio_button :option_id, option.id, class: "sr-only", onchange: "this.form.requestSubmit()" %>
+          <%= f.radio_button :option_id, option.id, class: "h-5 w-5 shrink-0" %>
           <div class="flex items-center justify-center rounded-[14px] shrink-0 bg-(--color-surface-sunken) size-7 text-(--color-text-primary) font-bold text-sm">
             <%= letter %>
           </div>
@@ -44,6 +41,8 @@
           </div>
         </label>
       <% end %>
+      </fieldset>
+      <%= f.submit t("accessibility.confirm_answer"), class: "rounded-xl bg-emerald-800 p-4 font-semibold text-white" %>
     <% end %>
   </div>
 </div>

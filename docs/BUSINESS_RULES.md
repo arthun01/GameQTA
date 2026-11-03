@@ -43,3 +43,10 @@ O sistema tem tolerância zero para manipulação ou violação de regras.
 - A exclusão exige senha e confirmação explícita, age exclusivamente sobre `Current.user` e remove os dados relacionados em transação. Todas as sessões do estudante são encerradas; outros usuários e o conteúdo didático são preservados.
 - Atualizações de ranking usam lock da conta, em comum com exclusão e bloqueio. Conta ausente ou bloqueada não recebe novo ranking.
 - A operação segue cadastro direto sem nova aprovação externa, com idade, escolaridade e cidade preservadas. Ranking usa código automático; contato público informado: Guilhardes de Jesus Júnior, guilhardesj@gmail.com. Bases legais, medidas de proteção/supervisão, retenções e cópias exportadas continuam em avaliação. A entrega parcial não declara adequação integral à LGPD.
+
+
+## Vídeos, tempo e acessibilidade
+
+Vídeos externos ficam desligados até a escolha Carregar este vídeo. É possível continuar sem vídeo ou desativá-lo depois; essa escolha não é salva para outras páginas. Antes de revelar cada questão, qualquer pessoa pode escolher de 1 a 10 vezes o tempo padrão. A seleção não exige diagnóstico. O limite é definido no servidor e não reinicia ao recarregar. Pontos por acerto não mudam; o tempo efetivo continua no desempate. Selecione a alternativa e use Confirmar resposta; o envio não ocorre só pela seleção. Uma resposta encerrada por tempo esgotado não reabre a mesma questão.
+
+O acesso expira 12 horas após login; dados e progresso da conta são preservados. A página /acessibilidade explica teclado, controles e limitações. Não há declaração de equivalência audiovisual ou conformidade integral antes da avaliação editorial e humana.

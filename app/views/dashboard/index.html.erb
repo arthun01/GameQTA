@@ -9,7 +9,7 @@
        <!-- Logo e Nome do Lado Esquerdo -->
        <div class="flex items-center gap-2">
         <img src="/logo_qta.png" alt="Game QTA" class="w-6 h-6 object-contain">
-        <span class="text-emerald-500 font-bold text-lg tracking-tight">Game QTA</span>
+        <span class="text-emerald-800 font-bold text-lg tracking-tight">Game QTA</span>
       </div>
   
   <!-- Avatar do Lado Direito -->
@@ -46,27 +46,27 @@
               <div class="flex items-start gap-4">
                 
                 <div class="w-16 h-16 min-w-[64px] flex-none shrink-0 rounded-2xl overflow-hidden border border-emerald-100 bg-emerald-50/50 flex items-center justify-center shadow-sm">
-                 <img src="/ods-<%= level.id %>.png" onerror="this.src='/logo_qta.png'" style="width: 170%; height: auto; max-width: none;" class="object-center" alt="<%= level.name %>">
+                 <img src="<%= level_image_path(level.id) %>" style="width: 170%; height: auto; max-width: none;" class="object-center" alt="<%= level.name %>">
                 </div>
 
                 <div class="flex-1 min-w-0 pt-0.5">
                   <div class="flex justify-between items-start gap-2">
                     <div class="min-w-0">
-                      <span class="text-[10px] font-bold text-emerald-600 uppercase tracking-wider block truncate">Nível <%= index + 1 %></span>
+                      <span class="text-[10px] font-bold text-emerald-800 uppercase tracking-wider block truncate"><%= t("accessibility.level_number", number: index + 1) %></span>
                       <h2 class="text-base font-bold text-gray-900 leading-tight mt-0.5"><%= level.name %></h2>
                     </div>
                     
                     <span class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-1 rounded-lg shrink-0 flex-none text-center leading-tight">
-                      Em<br>Progresso
+                      <%= t("accessibility.in_progress") %>
                     </span>
                   </div>
                   <p class="text-[13px] text-gray-500 mt-1.5 line-clamp-2 leading-tight"><%= level.description %></p>
                 </div>
               </div>
 
-              <div class="mt-4 w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm py-3 rounded-xl flex justify-center items-center gap-2 transition-colors">
+              <div class="mt-4 w-full bg-emerald-700 hover:bg-emerald-700 text-white font-bold text-sm py-3 rounded-xl flex justify-center items-center gap-2 transition-colors">
                 <span><%= t('.play_theme', default: 'Jogar') %></span>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                 </svg>
               </div>
@@ -76,7 +76,7 @@
                  Área de Temas 
                  ========================================== -->
             <div class="px-4 sm:px-5 pb-6 pt-4 border-t border-gray-100 bg-white">
-              <h4 class="text-[11px] font-bold text-gray-400 mb-4 uppercase tracking-widest"><%= t('.themes', default: "Temas disponíveis") %></h4>
+              <h3 class="text-[11px] font-bold text-gray-600 mb-4 uppercase tracking-widest"><%= t('.themes', default: "Temas disponíveis") %></h3>
               <% if level.themes.any? %>
                 <ul class="space-y-3">
                   <!-- Usamos each_with_index para gerar os números automaticamente -->
@@ -89,7 +89,7 @@
                       </span>
                       
                       <!-- Botão 'Iniciar' como texto subtil -->
-                      <%= button_to t('.play_theme', default: "Iniciar"), start_play_theme_path(theme), class: "shrink-0 ml-3 text-emerald-600 font-bold text-[13px] transition-colors group-hover:text-emerald-700 active:scale-95 bg-transparent p-0 cursor-pointer" %>
+                      <%= button_to t('.play_theme', default: "Iniciar"), start_play_theme_path(theme), class: "shrink-0 ml-3 text-emerald-800 font-bold text-[13px] transition-colors group-hover:text-emerald-700 active:scale-95 bg-transparent p-0 cursor-pointer" %>
                       
                     </li>
                   <% end %>
@@ -111,64 +111,41 @@
               <div class="flex items-center gap-3 sm:gap-4">
                 
                 <div class="w-12 h-12 min-w-[48px] flex-none shrink-0 rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 flex items-center justify-center grayscale opacity-60 transition-transform group-hover:scale-105">
-                 <img src="/ods-<%= level.id %>.png" onerror="this.src='/logo_qta.png'" style="width: 170%; height: auto; max-width: none;" class="object-center" alt="<%= level.name %>">
+                 <img src="<%= level_image_path(level.id) %>" style="width: 170%; height: auto; max-width: none;" class="object-center" alt="<%= level.name %>">
                 </div>
                 <div class="flex-1 min-w-0">
                   <div class="flex justify-between items-center gap-2">
                     <div class="min-w-0">
-                      <span class="text-[9px] font-bold text-gray-400 uppercase tracking-wider block truncate">Nível <%= index + 1 %></span>
+                      <span class="text-[9px] font-bold text-gray-600 uppercase tracking-wider block truncate"><%= t("accessibility.level_number", number: index + 1) %></span>
                       <h2 class="text-[14px] font-bold text-gray-600 leading-tight truncate mt-0.5 group-hover:text-gray-800 transition-colors"><%= level.name %></h2>
                     </div>
                     
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400 shrink-0 flex-none" viewBox="0 0 20 20" fill="currentColor">
+                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-600 shrink-0 flex-none" viewBox="0 0 20 20" fill="currentColor">
                       <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
                     </svg>
                   </div>
                   
                   <div class="mt-1.5 flex items-center gap-1.5">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-rose-400 shrink-0 flex-none" viewBox="0 0 20 20" fill="currentColor">
+                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-rose-400 shrink-0 flex-none" viewBox="0 0 20 20" fill="currentColor">
                       <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
                     </svg>
-                    <span class="text-[11px] font-medium text-gray-500 truncate">Alcance a meta no Nível anterior</span>
+                    <span class="text-[11px] font-medium text-gray-500 truncate"><%= t("accessibility.previous_level") %></span>
                   </div>
                 </div>
               </div>
             </button>
 
-            <!-- Modal do Nível Bloqueado -->
-            <div data-modal-target="dialog" class="fixed inset-0 z-50 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-              <div class="fixed inset-0 bg-black/60 transition-opacity" data-action="click->modal#close" aria-hidden="true"></div>
-              <div class="fixed inset-x-0 bottom-0 sm:inset-0 sm:flex sm:items-center sm:justify-center p-0 sm:p-4">
-                <div class="bg-white w-full sm:max-w-md rounded-t-3xl sm:rounded-b-3xl shadow-xl p-6 transform transition-all max-h-[80vh] flex flex-col mt-auto sm:mt-0">
-                  <div class="flex justify-between items-center mb-5 border-b border-gray-100 pb-4">
-                    <h3 class="text-lg font-bold text-gray-900" id="modal-title"><%= level.name %></h3>
-                    <button type="button" data-action="click->modal#close" class="text-gray-400 hover:text-gray-900 bg-gray-100 hover:bg-gray-200 p-1.5 rounded-full transition-colors">
-                      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-                    </button>
-                  </div>
-                  
-                  <p class="text-sm text-emerald-800 bg-emerald-50 p-4 rounded-xl mb-6 border border-emerald-100"><%= t('.locked_message') %></p>
-
-                  <div class="overflow-y-auto flex-1">
-                    <h4 class="text-xs font-bold text-gray-400 mb-3 uppercase tracking-widest"><%= t('.themes_preview') %></h4>
-                    <% if level.themes.any? %>
-                      <ul class="space-y-3">
-                        <% level.themes.each do |theme| %>
-                          <li class="bg-gray-50 border border-gray-100 rounded-xl p-3 flex items-center justify-between">
-                            <span class="text-sm font-medium text-gray-600"><%= theme.name %></span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-300" viewBox="0 0 20 20" fill="currentColor">
-                              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
-                            </svg>
-                          </li>
-                        <% end %>
-                      </ul>
-                    <% else %>
-                      <p class="text-sm text-gray-400 italic"><%= t('.no_themes') %></p>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <dialog data-modal-target="dialog" aria-labelledby="level-dialog-<%= level.id %>" class="w-full max-w-md rounded-2xl bg-white p-6 text-slate-800 shadow-xl">
+              <h2 id="level-dialog-<%= level.id %>" tabindex="-1" data-dialog-heading class="mb-4 text-lg font-bold"><%= level.name %></h2>
+              <p class="mb-5"><%= t('.locked_message') %></p>
+              <h3 class="mb-3 font-semibold"><%= t('.themes_preview') %></h3>
+              <ul class="mb-5 space-y-2">
+                <% level.themes.each do |theme| %>
+                  <li><%= theme.name %></li>
+                <% end %>
+              </ul>
+              <button type="button" data-action="modal#close" class="rounded-lg bg-emerald-800 px-4 py-3 font-semibold text-white"><%= t('accessibility.close') %></button>
+            </dialog>
           </div>
         <% end %>
       <% end %>
@@ -188,14 +165,14 @@
         
         <!-- Créditos  -->
         <div class="flex flex-col items-center gap-1.5">
-          <span class="text-[10px] font-bold uppercase tracking-widest" style="color: #064e3b; opacity: 0.65;">Desenvolvido por</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest" style="color: #064e3b; opacity: 1;">Desenvolvido por</span>
           
           <div class="flex flex-wrap justify-center items-center gap-x-3 gap-y-1 text-[13px] font-semibold" style="color: #064e3b;">
-            <a href="https://www.linkedin.com/in/ana-beatriz-guerra-mello-290693364" target="_blank" rel="noopener noreferrer" class="hover:opacity-50 transition-opacity duration-300">Ana Beatriz</a>
+            <a href="https://www.linkedin.com/in/ana-beatriz-guerra-mello-290693364" target="_blank" rel="noopener noreferrer" class="hover:underline transition-opacity duration-300">Ana Beatriz</a>
             <span class="text-[10px]" style="color: #064e3b; opacity: 0.3;">•</span>
-            <a href="https://www.linkedin.com/in/arthurrv/" target="_blank" rel="noopener noreferrer" class="hover:opacity-50 transition-opacity duration-300">Arthur</a>
+            <a href="https://www.linkedin.com/in/arthurrv/" target="_blank" rel="noopener noreferrer" class="hover:underline transition-opacity duration-300">Arthur</a>
             <span class="text-[10px]" style="color: #064e3b; opacity: 0.3;">•</span>
-            <a href="https://www.linkedin.com/in/raffscardoso/" target="_blank" rel="noopener noreferrer" class="hover:opacity-50 transition-opacity duration-300">Rafael</a>
+            <a href="https://www.linkedin.com/in/raffscardoso/" target="_blank" rel="noopener noreferrer" class="hover:underline transition-opacity duration-300">Rafael</a>
           </div>
         </div>
       </div>

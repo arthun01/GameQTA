@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= I18n.locale %>">
   <head>
+    <meta charset="UTF-8">
     <title><%= content_for(:title) || "Qta Rails8" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -21,10 +22,12 @@
   </head>
 
   <body>
-    <main class="container mx-auto mt-28 px-5 flex">
+    <%= render "shared/skip_link" %>
+    <main id="main-content" tabindex="-1" class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
     </main>
     <%= render "shared/legal_links" %>
+    <%= render "shared/cookie_notice" %>
     <div id="modal_container"></div>
 
   </body>

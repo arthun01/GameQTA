@@ -27,7 +27,7 @@ module Users
       end
 
       def find_session_by_cookie
-        UserSession.find_by(id: cookies.signed[:user_session_id]) if cookies.signed[:user_session_id]
+        UserSession.where(created_at: 12.hours.ago..).find_by(id: cookies.signed[:user_session_id]) if cookies.signed[:user_session_id]
       end
 
       def request_authentication
@@ -42,7 +42,7 @@ module Users
       def start_new_session_for(user)
         user.user_sessions.create!(user_agent: request.user_agent, ip_address: request.remote_ip).tap do |user_session|
           Current.user_session = user_session
-          cookies.signed.permanent[:user_session_id] = { value: user_session.id, httponly: true, same_site: :lax }
+          cookies.signed[:user_session_id] = { value: user_session.id, expires: 12.hours.from_now, httponly: true, same_site: :lax, secure: Rails.env.production? }
         end
       end
 

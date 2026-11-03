@@ -30,17 +30,19 @@ O objetivo aqui é **registrar estrategicamente o "O quê", o "Por quê" e os "C
 > **Atualização em 03/11/2026:** opção 1 implementada: cadastro direto, campos e valores de idade, escolaridade e cidade preservados; códigos automáticos substituem nomes no ranking para todos. Contato público de Guilhardes de Jesus Júnior: guilhardesj@gmail.com, com instruções no site e procedimento de atendimento documentado. A equipe ainda precisa executar esse atendimento. Bases legais, necessidade dos dados, proteção de menores e retenções permanecem em avaliação; o caráter educativo não dispensa essas decisões. A proposta anterior de aprovação externa não foi implementada. Documentos 0.3 e dossiê em PDF disponíveis; o tópico 2 continua parcial e os tópicos 3 e 4 seguem pendentes. Ver [validação técnica](../prd-governanca-juridica-lgpd-acessibilidade/tasks.md).
 
 #### 3. Auditoria de Cookies & Diretriz de Scripts de Tracking
-- [ ] **Zero Tracking Invasivo:** Manter a plataforma estritamente livre de ferramentas de espionagem de dados comerciais de terceiros (como Meta Pixel ou redes de ad tracking).
-- [ ] **Auditoria de Cookies:** Assegurar que o sistema utilize exclusivamente **cookies estritamente necessários** (sessão do Rails: `_game_qta_session` criptografada, HttpOnly, SameSite=Lax).
-- [ ] **Aviso de Cookies / Privacidade (Banner ou Footer Notifier):** Se não houver cookies de terceiros, exibir um aviso transparente e não invasivo informando que *"Utilizamos apenas cookies essenciais para o funcionamento seguro da sua sessão de jogo, de acordo com nossa Política de Privacidade"*. Caso analytics venha a ser instalado, implementar bloqueio condicional prévio (*opt-in*).
+- [x] **Zero Tracking Invasivo:** Manter a plataforma estritamente livre de ferramentas de espionagem de dados comerciais de terceiros (como Meta Pixel ou redes de ad tracking).
+- [x] **Auditoria de Cookies:** cookies próprios necessários inventariados (`_qta_rails8_session`, `user_session_id`, `session_id`), HttpOnly/SameSite=Lax, Secure em produção, acesso limitado a 12h também no servidor. YouTube opcional começa desligado; ativação não representa ausência de tratamento externo.
+- [x] **Aviso de Cookies / Privacidade (Banner ou Footer Notifier):** Se não houver cookies de terceiros, exibir um aviso transparente e não invasivo informando que *"Utilizamos apenas cookies essenciais para o funcionamento seguro da sua sessão de jogo, de acordo com nossa Política de Privacidade"*. Caso analytics venha a ser instalado, implementar bloqueio condicional prévio (*opt-in*).
 
 #### 4. Acessibilidade Digital (WCAG 2.1 Nível AA) & Correção de Contraste
-- [ ] **Revisão de Contraste de Cores:** Auditar e ajustar todas as combinações da paleta `emerald` e textos `slate` contra fundos brancos/cinzas, garantindo a razão mínima de contraste de **4.5:1** para textos normais e **3:1** para elementos gráficos/botões (atendendo usuários com baixa visão ou daltonismo).
-- [ ] **Navegação por Teclado:** Garantir ordem lógica de foco (`tabindex`), anéis de foco visíveis (`focus-visible:ring-2`) em todos os botões, links e alternativas de perguntas.
+- [x] **Revisão de Contraste de Cores:** Auditar e ajustar todas as combinações da paleta `emerald` e textos `slate` contra fundos brancos/cinzas, garantindo a razão mínima de contraste de **4.5:1** para textos normais e **3:1** para elementos gráficos/botões (atendendo usuários com baixa visão ou daltonismo).
+- [x] **Navegação por Teclado:** Garantir ordem lógica de foco (`tabindex`), anéis de foco visíveis (`focus-visible:ring-2`) em todos os botões, links e alternativas de perguntas.
 - [ ] **Acessibilidade para Leitores de Tela (Screen Readers):**
   - Textos alternativos descritivos (`alt="..."`) em todas as imagens (`ods-*.png`, `logo_qta.png`, `tekohalab.png`).
   - Atributos ARIA adequados (`aria-live="polite"` no cronômetro regressivo da questão, `role="dialog"` nos modais de erro/acerto, `aria-expanded` nos accordions do dashboard).
-- [ ] **Semântica HTML:** Estruturar cabeçalhos corretos (`<h1>`, `<h2>`, `<main>`, `<nav>`, `<section>`).
+- [x] **Semântica HTML:** Estruturar cabeçalhos corretos (`<h1>`, `<h2>`, `<main>`, `<nav>`, `<section>`).
+
+> **Entrega técnica em 03/11/2026:** contraste, teclado/foco, semântica, dialog nativo, labels/erros, tempo ajustável de 1 a 10× antes da questão e confirmação explícita implementados. Auditoria axe e suíte de navegador passaram. Leitor de tela humano, legendas/transcrições e alternativas dos vídeos ainda dependem de avaliação; o item de leitores de tela e a conformidade WCAG integral não estão concluídos. Ver [auditorias e pendências](../prd-governanca-juridica-lgpd-acessibilidade/tasks.md).
 
 ---
 

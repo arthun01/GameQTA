@@ -99,3 +99,27 @@ A [avaliação preliminar](avaliacao-tratamentos.md) não conclui que todos os d
 - Migração aplicada em desenvolvimento e teste; schema gerado pelo Rails. Nenhum campo demográfico ou valor existente foi removido, nenhum aceite foi criado retroativamente e nenhuma conta de desenvolvimento foi excluída.
 - CSS compilado; cadastro e contato público conferidos no navegador em largura móvel de 390 px. PDF de **12 páginas**, com extração de conteúdo e inspeção visual de todas as páginas sem cortes ou sobreposições.
 - `git diff --check`: sem erros. A implementação desta tarefa está validada; a conformidade jurídica do pacote, os tópicos 3 e 4 e a revisão final antes do PR não estão concluídos.
+
+
+## Rodada final autorizada — 03/11/2026
+
+| # | Tarefa | Status |
+|---|---|---|
+| 8.0 | [Cookies e serviços externos](tasks/8_task.md) | ✅ |
+| 9.0 | [Acessibilidade](tasks/9_task.md) | ✅ |
+| 10.0 | [Validação final, documentos e PR](tasks/10_task.md) | 🔄 |
+
+Execução sequencial 8 → 9 → 10. Mantém cadastro direto e campos atuais. Pendências jurídicas/operacionais não são presumidas resolvidas pela conclusão técnica.
+
+
+### Validação final dos tópicos 3 e 4 — 03/11/2026
+
+- `bin/rubocop -a`: **139 arquivos**, correção automática de um espaçamento em teste; nenhum erro remanescente.
+- `bin/brakeman --no-pager`: Brakeman **8.1.0**, **79 verificações**, zero alertas e erros.
+- `bin/bundler-audit`: **nenhuma vulnerabilidade conhecida**. Atualizações conservadoras: crass 1.0.8, net-ssh 7.3.8 e brakeman 8.1.0. A ferramenta de acessibilidade axe-core-capybara 4.14.0 é dependência somente de teste.
+- `bin/rails test`: **103 testes, 642 assertions, zero falhas e erros**.
+- `bin/rails test:system`: **28 testes, 188 assertions, zero falhas e erros**, incluindo axe em telas públicas, estudantis e administrativas, keyboard/dialog, vídeos e reflow administrativo a 390px. Nenhum teste antigo foi excluído ou ignorado.
+- A rodada anterior com falhas revelou imports JS 404, espera incorreta do login e seletores obsoletos; foram corrigidas as causas, sem relaxar verificações. Logs finais: `tmp/lgpd-final-*.log`, regeneráveis, não versionados.
+- Nova migração aplicada em desenvolvimento e teste; schema gerado pelo Rails. Nenhum campo de cadastro, pontuação ou conta real foi removido. Novo limite não reinicia com reload; respostas encerradas por timeout deixam de reabrir a mesma questão.
+- Versão jurídica **0.4 — minuta**: novo texto gera nova revisão, sem aceite retroativo. PDF atualizado com mesmos textos integrais, controles e pendências. Site reiniciado em localhost:3000.
+- Ver [cookies](auditoria-cookies.md), [acessibilidade](auditoria-acessibilidade.md) e [decisões para publicação](pendencias-publicacao.md). A entrega técnica não conclui a avaliação jurídica do tópico 2, a revisão editorial audiovisual ou testes humanos com leitor de tela; sem declaração de conformidade integral.

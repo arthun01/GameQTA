@@ -42,7 +42,7 @@ class LegalDocumentsSystemTest < ApplicationSystemTestCase
 
       assert_no_selector ".legal-screen-only", visible: true
       assert_selector "[data-legal-draft]", visible: true
-      assert_selector "[data-legal-version]", text: "0.3 — minuta"
+      assert_selector "[data-legal-version]", text: "0.4 — minuta"
       assert_equal screen_text, find(".legal-content").text
 
       page.driver.browser.execute_cdp("Emulation.setEmulatedMedia", media: "screen")

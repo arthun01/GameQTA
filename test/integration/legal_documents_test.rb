@@ -10,7 +10,7 @@ class LegalDocumentsTest < ActionDispatch::IntegrationTest
         assert_select "html[lang='pt-BR']"
         assert_select "main article h1", count: 1
         assert_select "[data-legal-draft]", text: /Minuta — documento em elaboração/
-        assert_select "[data-legal-version]", text: "0.3 — minuta"
+        assert_select "[data-legal-version]", text: "0.4 — minuta"
         assert_select "time[datetime='2026-11-03']", text: "03/11/2026"
         assert_select "form", count: 0
         assert_select "a[href='mailto:guilhardesj@gmail.com']", count: 1
@@ -41,7 +41,7 @@ class LegalDocumentsTest < ActionDispatch::IntegrationTest
     assert_select "#section-purposes", text: /Não existe autorização automática para pesquisas futuras/
     assert_select "#section-generated_data", text: /endereço IP/
     assert_select "#section-access", text: /exportações.*nome, e-mail, cidade, escolaridade/m
-    assert_select "#section-cookies", text: /YouTube.*Google Fonts/m
+    assert_select "#section-cookies", text: /fontes externas.*youtube-nocookie/m
     assert_select "#section-retention", text: /Ainda não foram definidos os prazos/
     assert_select "#section-rights", text: /corrigir.*revogar.*revisão/m
     assert_select "#section-requests", text: /guilhardesj@gmail.com/

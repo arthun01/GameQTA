@@ -96,7 +96,7 @@ para('Responsável informado: ' + DATA['shared']['contact_name'])
 para('Contato público de privacidade: ' + DATA['shared']['contact_email'])
 story.append(Spacer(1, 10 * mm))
 para('Estado da entrega', 'H2QTA')
-para('Cadastro direto preservado, com os campos de idade, escolaridade e cidade. Termos, política, aceite versionado, perfil e exclusão já possuem implementação. Esta atualização reduz a exposição no ranking e publica o contato do responsável.')
+para('Cadastro direto preservado, com os campos de idade, escolaridade e cidade. Termos, política, aceite versionado, perfil e exclusão já possuem implementação. A entrega também protege cookies, bloqueia conexões opcionais, melhora acessibilidade e publica o contato do responsável.')
 para('Este dossiê reúne decisões de produto, funcionamento implementado, minutas integrais e pendências. Não é parecer jurídico, aprovação de pesquisa ou certificação de conformidade. As avaliações de bases legais e de proteção de menores não estão encerradas.')
 story.append(Spacer(1, 8 * mm))
 para('A UESC não foi indicada como responsável formal pela operação do jogo. A possibilidade de pesquisa futura pela instituição será avaliada separadamente. Papéis jurídicos dependem da atuação efetiva das partes.', 'SmallQTA')
@@ -110,6 +110,7 @@ table([
     ['Ranking', 'Código aleatório gerado pelo sistema substitui nome completo e e-mail. Pontos, tempo e ordem da classificação são preservados. O código ainda pode ser associado à conta pela administração.'],
     ['Aceite', 'Registro de horário, versões, revisão e cópia dos textos apresentados. Contas antigas não recebem aceite retroativo. Mudança de texto exige nova manifestação antes do jogo.'],
     ['Direitos', 'Perfil e exclusão continuam disponíveis mesmo sem novo aceite. O contato público complementa casos de representantes, falta de acesso e outros direitos.'],
+    ['Tempo e resposta', 'Escolha de 1 a 10 vezes o tempo antes de revelar a questão. Pontos iguais, tempo efetivo no desempate. Alternativa só é enviada pelo botão de confirmação.'],
     ['Segurança', 'Senha verificada com BCrypt no servidor; edição exige senha atual e exclusão exige confirmação adicional. Páginas estudantis e exportações administrativas recebem no-store.'],
 ], [42 * mm, 126 * mm])
 heading('2. Dados, finalidades e pesquisa', 1)
@@ -131,14 +132,19 @@ for item in [
 heading('Autoatendimento no perfil', 2)
 para('O estudante pode consultar e editar seus dados em /perfil. A edição verifica a senha atual. A exclusão exige senha e confirmação, remove cadastro, sessões, tentativas, respostas, ranking e aceites da aplicação ativa. Conteúdo didático e dados dos demais participantes são preservados. Jobs pendentes não devem restaurar um ranking excluído.')
 para('A exclusão na aplicação não apaga automaticamente logs, backups, e-mails recebidos ou cópias de relatórios já exportadas. Os procedimentos e prazos dessas cópias permanecem pendentes. Não se promete eliminação universal imediata.')
+heading('Cookies e acessibilidade implementados', 2)
+para('Cookies próprios: _qta_rails8_session (navegação, até 12h após uso), user_session_id (estudante) e session_id (administração). O acesso autenticado vence 12h após login também no servidor. HttpOnly e SameSite=Lax; Secure e HTTPS em produção. Sair revoga a sessão. Esse limite de acesso não define retenção de registros no banco.')
+para('Fontes do dispositivo substituem Google Fonts. Vídeos começam sem iframe ou conexão externa. Carregar este vídeo ativa somente aquele player; Continuar sem vídeo mantém bloqueio, e Desativar vídeo externo remove o iframe. A escolha não é salva. Navegar ou recarregar exige nova escolha. O fornecedor recebe dados após ativação; revogar não desfaz dados já enviados.')
+para('Foco visível, skip link, diálogos nativos com Escape, erros associados aos campos, preferência de reduzir movimento e confirmação explícita pelo botão Confirmar resposta foram implementados. O relógio anuncia apenas um aviso próximo do fim, sem interromper leitura a cada segundo. A página /acessibilidade explica esses recursos e os limites conhecidos.')
+para('Validação local: 103 testes de aplicação e 28 de navegador passaram. Brakeman sem alertas; bundler-audit sem vulnerabilidades conhecidas. Axe verificou as telas públicas, estudantis e administrativas. Resultados automáticos não são certificação jurídica ou WCAG. Vídeos, leitor de tela humano e implantação definitiva exigem avaliação complementar.')
 heading('4. Pontos que ainda precisam de decisão', 1)
 table([
     ['Tema', 'Pendência'],
     ['Base legal e menores', 'Concluir avaliação por finalidade, necessidade e riscos, com decisão do responsável. Definir medidas de supervisão/proteção aplicáveis antes de declarar adequação integral.'],
-    ['Infraestrutura e guarda', 'Definir hospedagem, operadores, locais de tratamento, transporte HTTPS e retenção de contas, logs, aceites, backups e exportações.'],
+    ['Infraestrutura e guarda', 'Definir hospedagem, operadores, locais de tratamento e retenção de contas, logs, aceites, backups e exportações. HTTPS está configurado, mas requer conferência do proxy e domínio definitivo.'],
     ['Operação de atendimento', 'Confirmar monitoramento da caixa, substituto, procedimento para contas sem acesso e verificação de representantes.'],
-    ['Cookies e terceiros', 'Auditoria completa e implementação do tópico 3 pendentes. Telas existentes ainda usam Google Fonts e vídeos YouTube; não afirmar que toda navegação usa somente tecnologias essenciais.'],
-    ['Acessibilidade', 'Auditoria abrangente do tópico 4 pendente: contraste, teclado, leitor de tela, cronômetro, modais, alternativas e vídeos. Sem declaração integral WCAG.'],
+    ['Cookies e terceiros', 'Controles técnicos implementados e inventário disponível. Confirmar adequação dos vídeos ao público infantil e requisitos do fornecedor; não afirmar ausência de tratamento externo após ativação.'],
+    ['Acessibilidade', 'Testes automáticos e de teclado executados. Conferir legendas, transcrições, alternativas e leitores de tela com avaliação humana. Sem declaração integral WCAG ou de PDF acessível/tagueado.'],
     ['Pesquisa', 'Estudo, análises, instituição responsável e requisitos éticos/bases aplicáveis ainda por definir.'],
 ], [42 * mm, 126 * mm])
 story.append(PageBreak())
@@ -177,6 +183,8 @@ for label, url in [
     ('ANPD - Enunciado 1/2023 sobre dados de crianças e adolescentes', 'https://bibliotecadigital.mj.gov.br/bitstream/1/10215/2/Enunciado_ANPD_2023_1.html'),
     ('ANPD - Guia de legítimo interesse', 'https://www.gov.br/anpd/pt-br/centrais-de-conteudo/materiais-educativos-e-publicacoes/guia_legitimo_interesse.pdf'),
     ('ANPD - ECA Digital', 'https://www.gov.br/anpd/pt-br/assuntos/eca-digital'),
+    ('ANPD - Guia de cookies', 'https://www.gov.br/anpd/pt-br/centrais-de-conteudo/materiais-educativos-e-publicacoes/guia_orientativo_cookies_e_protecao_de_dados_pessoais'),
+    ('W3C - WCAG 2.1', 'https://www.w3.org/TR/WCAG21/'),
     ('ANPD - Guia de fins acadêmicos e pesquisas', 'https://www.gov.br/anpd/pt-br/centrais-de-conteudo/materiais-educativos-e-publicacoes/web-guia-anpd-tratamento-de-dados-para-fins-academicos.pdf'),
 ]:
     link(label, url)

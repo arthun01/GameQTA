@@ -4,6 +4,7 @@ one:
   option: one_opt1 # errada
   is_correct: false
   revealed_at: 2026-09-15 21:34:07
+  answered_at: 2026-09-15 21:34:27
   time_taken: 15
 
 two:
@@ -12,4 +13,5 @@ two:
   option: two_opt2 # certa
   is_correct: true
   revealed_at: 2026-09-15 21:34:07
+  answered_at: 2026-09-15 21:34:27
   time_taken: 20

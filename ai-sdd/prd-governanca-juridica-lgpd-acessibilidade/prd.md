@@ -99,3 +99,12 @@ Os textos usarão português simples e a identidade Emerald existente, com resum
 - Elaboração unilateral de protocolo científico, aprovação ética ou criação de banco de pesquisa antes da definição de finalidade, governança e autorizações pelo professor/UESC. A governança documenta essa dependência; não presume pesquisa já autorizada.
 - Atribuição automática de responsabilidade à UESC, certificação jurídica, declaração antecipada de conformidade ou publicação em produção nesta etapa.
 - As minutas finais dos termos e da política, o design, a arquitetura e as tarefas de implementação serão elaborados nas etapas correspondentes; este documento define seus requisitos.
+
+
+## Entrega técnica dos tópicos 3 e 4 — 03/11/2026
+
+RF-019 a RF-024: cookies próprios inventariados, acesso limitado a 12 horas também no servidor, HTTPS/Secure em produção, fontes locais e vídeos bloqueados por padrão com escolha reversível por página. Sem analytics ou armazenamento de autorização geral. O fornecedor externo continua sujeito à análise de adequação, especialmente para crianças.
+
+RF-025 a RF-032: melhorias de contraste, teclado, foco, semântica, formulários e dialog; confirmação explícita de alternativa e opção de tempo de 1 a 10× antes da questão. O servidor conserva o limite e o tempo efetivo, sem bônus de pontos ou reinício ao recarregar. O ranking não representa comparação padronizada de capacidade. Ver [auditoria de acessibilidade](auditoria-acessibilidade.md), que registra evidências e limites, especialmente vídeos e leitor de tela humano. Não se declara conformidade WCAG integral.
+
+Termos e política evoluem para 0.4. O [inventário de cookies](auditoria-cookies.md), a [lista de decisões para publicação](pendencias-publicacao.md), o PDF e os testes acompanham o PR. O tópico 2 mantém pendências de avaliação e operação. Concluir desenvolvimento não encerra as decisões jurídicas nem autoriza publicação em produção.

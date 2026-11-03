@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_11_03_120000) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_03_140000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -71,6 +71,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_03_120000) do
   end
 
   create_table "question_submissions", force: :cascade do |t|
+    t.datetime "answered_at"
     t.datetime "created_at", null: false
     t.boolean "is_correct", default: false, null: false
     t.bigint "option_id"
@@ -78,6 +79,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_11_03_120000) do
     t.datetime "revealed_at", null: false
     t.integer "score", default: 0, null: false
     t.bigint "theme_attempt_id", null: false
+    t.integer "time_limit_seconds"
     t.integer "time_taken"
     t.datetime "updated_at", null: false
     t.index ["option_id"], name: "index_question_submissions_on_option_id"

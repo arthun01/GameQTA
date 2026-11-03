@@ -11,7 +11,7 @@
 <div class="px-4 sm:px-6 lg:px-8">
 <% if @levels.empty? %>
   <div class="text-center py-16 bg-white rounded-2xl shadow-sm border border-slate-100">
-    <svg class="mx-auto h-12 w-12 opacity-40" style="color: #064e3b;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <svg aria-hidden="true" class="mx-auto h-12 w-12 opacity-40" style="color: #064e3b;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
     </svg>
     <h3 class="mt-4 text-sm font-bold text-slate-900"><%= t('.empty_title', default: 'Nenhum nível') %></h3>
@@ -23,20 +23,20 @@
 <% else %>
   <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
     <% @levels.each do |level| %>
-      <div class="bg-white overflow-hidden shadow-sm rounded-2xl border border-slate-100 hover:shadow-md transition-all duration-300 flex flex-col">
+      <div data-level-card class="bg-white overflow-hidden shadow-sm rounded-2xl border border-slate-100 hover:shadow-md transition-all duration-300 flex flex-col">
         <div class="p-8 flex flex-col items-center text-center flex-1">
           <div class="mb-5" style="font-size: 4rem; line-height: 1;"><%= level.icon.presence || "🎮" %></div>
           <h3 class="text-lg font-bold mb-3 leading-snug" style="color: #064e3b;"><%= level.name %></h3>
           <p class="text-sm text-slate-500 line-clamp-3"><%= level.description %></p>
         </div>
         <div class="bg-slate-50 px-6 py-4 flex flex-wrap justify-between items-center gap-y-2 gap-x-4 border-t border-slate-100">
-          <div class="text-xs font-bold uppercase tracking-wider text-slate-400">
+          <div class="text-xs font-bold uppercase tracking-wider text-slate-600">
             <%= t('.themes_count', count: level.themes.count, default: "%{count} temas") %>
           </div>
           <div class="flex items-center gap-4">
             <%= link_to t('admin.shared.manage_themes', default: 'Temas'), admin_level_themes_path(level), class: "text-xs font-bold uppercase tracking-wide transition-opacity hover:opacity-100", style: "color: #064e3b; opacity: 0.85;" %>
-            <%= link_to t('admin.shared.edit', default: 'Editar'), edit_admin_level_path(level), class: "text-xs font-bold uppercase tracking-wide transition-opacity hover:opacity-100", style: "color: #064e3b; opacity: 0.45;" %>
-            <%= button_to t('admin.shared.delete', default: 'Excluir'), admin_level_path(level), method: :delete, form: { data: { turbo_confirm: t('admin.shared.confirm', default: 'Tem certeza?') } }, class: "text-xs font-bold uppercase tracking-wide text-red-400 hover:text-red-600 transition-colors bg-transparent border-none cursor-pointer p-0" %>
+            <%= link_to t('admin.shared.edit', default: 'Editar'), edit_admin_level_path(level), class: "text-xs font-bold uppercase tracking-wide transition-opacity hover:opacity-100", style: "color: #064e3b; opacity: 1;" %>
+            <%= button_to t('admin.shared.delete', default: 'Excluir'), admin_level_path(level), method: :delete, form: { data: { turbo_confirm: t('admin.shared.confirm', default: 'Tem certeza?') } }, class: "text-xs font-bold uppercase tracking-wide text-red-700 hover:text-red-600 transition-colors bg-transparent border-none cursor-pointer p-0" %>
           </div>
         </div>
       </div>

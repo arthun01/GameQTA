@@ -9,7 +9,7 @@ class RankingsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     get ranking_url
     assert_response :success
-    assert_select "div", text: "Ranking Global"
+    assert_select "h1", text: "Ranking Global"
   end
 
   test "ranking uses generated codes and does not expose participant names or profile data" do

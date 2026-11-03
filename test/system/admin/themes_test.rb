@@ -11,8 +11,8 @@ class Admin::ThemesSystemTest < ApplicationSystemTestCase
     visit new_admin_session_path
     fill_in "email_address", with: @admin.email_address
     fill_in "password", with: "password"
-    click_on "Sign in"
-    assert_text "Dashboard" # wait for dashboard to load
+    click_on "Entrar na administração"
+    assert_current_path admin_root_path
   end
 
   test "admin navigates from Level to Themes and sees the list" do
@@ -20,8 +20,8 @@ class Admin::ThemesSystemTest < ApplicationSystemTestCase
 
     # Encontra o card do nível "Princípios do Direito Ambiental"
     # and click on "Ver temas"
-    within(find(".group", text: @level.name)) do
-      click_on "Ver temas"
+    within(find("[data-level-card]", text: @level.name)) do
+      click_on "Temas"
     end
 
     assert_text "Temas"

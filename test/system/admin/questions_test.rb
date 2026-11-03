@@ -19,6 +19,7 @@ class Admin::QuestionsTest < ApplicationSystemTestCase
     click_on "Adicionar Opção"
 
     # We should have 3 option fields now (2 default + 1 added)
+    assert_selector "input[placeholder='Digite a opção de resposta...']", count: 3
     option_inputs = all("input[placeholder='Digite a opção de resposta...']")
     assert_equal 3, option_inputs.length
 
@@ -55,7 +56,7 @@ class Admin::QuestionsTest < ApplicationSystemTestCase
     visit new_admin_session_path
     fill_in "Enter your email address", with: admin.email_address
     fill_in "Enter your password", with: "password"
-    click_on "Sign in"
-    assert_text "Dashboard" # wait for dashboard to load
+    click_on "Entrar na administração"
+    assert_current_path admin_root_path
   end
 end

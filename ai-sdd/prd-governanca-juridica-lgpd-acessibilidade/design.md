@@ -46,3 +46,13 @@ A proposta de faixas etárias não foi aprovada; nenhuma tela de autorização d
 ## Atualização da opção 1 — 03/11/2026
 
 Mantém telas e fluxo do cadastro, com os campos atuais. Ranking troca nome por código automático; perfil mostra o próprio código. Cadastro, perfil e documentos recebem contato público de privacidade, em texto legível e link de e-mail, sem modais ou nova aprovação. A tarefa 7.0 não depende do Paper.
+
+
+## Telas dos tópicos 3 e 4 — Texto/Código
+
+8. Rodapé: aviso de cookies próprios e link à política, no fluxo da página, sem cobrir o jogo.
+9. Vídeo: card com explicação de dados compartilhados e dois botões equivalentes (carregar este vídeo / continuar sem vídeo); após carregar, botão para desativar. Sem escolha persistente.
+10. Questão: ajuste de tempo antes da revelação (1 a 10×), relógio nomeado com anúncios pontuais, título e alternativas em fieldset, confirmação explícita. Sem pergunta sobre deficiência ou idade adicional.
+11. Jornada/admin: mesmos componentes e identidade; foco visível, skip link, dialog com título único e fechamento nomeado, formulários com rótulos e erros associados. Navegação administrativa reorganiza verticalmente no celular.
+
+Sem dependência de Paper, conforme autorização vigente. Conteúdo de vídeos não é substituído por transcrições inventadas; revisão editorial é registrada na auditoria.

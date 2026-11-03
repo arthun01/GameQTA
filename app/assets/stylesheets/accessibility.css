@@ -1,0 +1,13 @@
+:focus-visible { outline: 3px solid #064e3b !important; outline-offset: 4px; box-shadow: 0 0 0 6px white; }
+.skip-link { position: fixed; top: 8px; left: 8px; z-index: 100; transform: translateY(-200%); padding: 1rem; background: white; color: #064e3b; }
+.skip-link:focus { transform: translateY(0); }
+[hidden] { display: none !important; }
+dialog { margin: auto; max-height: 85vh; overflow-y: auto; }
+dialog::backdrop { background: rgb(15 23 42 / 75%); }
+input:not([type=hidden]), select, textarea { border: 1px solid #64748b; }
+input[type=radio], input[type=checkbox] { accent-color: #065f46; }
+.field-error { display: block; margin-top: .3rem; color: #991b1b; font-size: .875rem; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+@media print { .cookie-notice, .skip-link { display: none; } }

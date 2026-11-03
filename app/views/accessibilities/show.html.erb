@@ -1,0 +1,14 @@
+<% content_for :title, t('accessibility.page.title') %>
+<article class="mx-auto max-w-3xl space-y-6 leading-relaxed">
+  <h1 class="text-3xl font-bold text-emerald-950"><%= t('accessibility.page.title') %></h1>
+  <p><%= t('accessibility.page.summary') %></p>
+  <h2 class="text-xl font-semibold"><%= t('accessibility.page.controls_title') %></h2>
+  <ul class="list-disc space-y-3 pl-5">
+    <% t('accessibility.page.controls').each do |instruction| %>
+      <li><%= instruction %></li>
+    <% end %>
+  </ul>
+  <h2 class="text-xl font-semibold"><%= t('accessibility.page.limits_title') %></h2>
+  <p><%= t('accessibility.page.limits') %></p>
+  <%= render 'shared/privacy_contact' %>
+</article>
