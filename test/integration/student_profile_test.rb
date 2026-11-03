@@ -33,7 +33,7 @@ class StudentProfileTest < ActionDispatch::IntegrationTest
 
     patch profile_path, params: { user: {
       id: other.id, full_name: "Nome corrigido", city: "", education_level: "", current_password: "password",
-      password: "forged-password", blocked_at: Time.current, accepted_terms_at: Time.current
+      password: "forged-password", blocked_at: Time.current, accepted_terms_at: Time.current, ranking_code: "FORGED123456"
     } }
 
     assert_redirected_to profile_path
@@ -41,6 +41,7 @@ class StudentProfileTest < ActionDispatch::IntegrationTest
     assert_nil user.city
     assert_nil user.education_level
     assert_nil user.blocked_at
+    assert_equal "A1B2C3D4E5F6", user.ranking_code
     assert_equal original_digest, user.password_digest
     assert_equal "Maria Estudante", other.reload.full_name
   end

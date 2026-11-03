@@ -105,7 +105,7 @@ Se você acabou de chegar no projeto, por favor leia os guias abaixo:
 
 As páginas públicas **`/termos`** e **`/privacidade`** podem ser lidas sem login. Há links no cadastro, nos logins e nas áreas autenticadas, que abrem em nova aba para preservar formulários e partidas. Para imprimir ou salvar em PDF, use a opção **Imprimir** do navegador: a página mantém conteúdo, versão, data e aviso de minuta, ocultando a navegação.
 
-Os textos estão em **minuta**, com descrição dos dados atuais, sessões, ranking, relatórios, YouTube e Google Fonts. Identificação formal do controlador, contato de privacidade, bases legais, fluxo para menores, hospedagem e retenção de dados/backups permanecem pendentes. As páginas não recebem pedidos nem registram consentimento. Aceite, perfil e exclusão estão disponíveis na entrega parcial do tópico 2 descrita abaixo. Controles de cookies e auditoria abrangente de acessibilidade continuam nos próximos tópicos.
+Os textos estão em **minuta**, com descrição dos dados atuais, sessões, ranking, relatórios, YouTube e Google Fonts. O responsável informado é Guilhardes de Jesus Júnior, com contato público de privacidade em guilhardesj@gmail.com. Avaliação das bases legais e medidas de proteção de menores, hospedagem e retenção de dados/backups permanecem pendentes. As páginas não recebem pedidos nem registram consentimento. Aceite, perfil e exclusão estão disponíveis na entrega parcial do tópico 2 descrita abaixo. Controles de cookies e auditoria abrangente de acessibilidade continuam nos próximos tópicos.
 
 O acompanhamento está no [PRD](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/prd.md), na [Tech Spec](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/techspec.md) e nas [tarefas](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/tasks.md). O usuário autorizou implementar a estrutura funcional antes do design do Paper, que poderá ser incorporado pelo colaborador posteriormente.
 
@@ -115,9 +115,21 @@ O cadastro público exige manifestação desmarcada por padrão sobre os termos 
 
 **`/perfil`** permite consultar dados e o histórico de aceites, editar o cadastro com senha atual e excluir a própria conta com senha e confirmação das consequências. A exclusão remove dados da aplicação ativa (cadastro, sessões, tentativas, respostas, ranking e aceites). Jobs pendentes não restauram o ranking de contas excluídas ou bloqueadas. Os procedimentos para logs, backups e cópias exportadas continuam pendentes e são informados antes da confirmação.
 
-Cidade e escolaridade são opcionais e podem ser apagadas do perfil. O cadastro permanece aberto com os limites de idade já existentes; não foi acrescentada uma exigência geral de autorização para todos os menores de 18 anos. O fluxo adequado por faixa etária, a base legal e a exposição de menores no ranking continuam pendentes de decisão e validação. Nenhuma autorização presencial ou escolar é simulada pelo sistema. O e-mail público de atendimento será definido futuramente pela equipe.
+Cidade e escolaridade são opcionais e podem ser apagadas do perfil. O cadastro permanece aberto com os limites de idade já existentes; não foi acrescentada uma exigência geral de autorização para todos os menores de 18 anos. A opção aprovada mantém entrada direta com as mesmas proteções para todos. O ranking usa um código gerado automaticamente em vez do nome, inclusive para adultos; não há aprovação externa no cadastro. A avaliação das bases legais e das medidas legais de proteção/supervisão continua pendente, sem dispensa presumida pelo caráter educativo. Nenhuma autorização presencial ou escolar é simulada pelo sistema. O contato de privacidade para estudantes, representantes e pessoas sem acesso à conta é **guilhardesj@gmail.com**; o responsável informado é **Guilhardes de Jesus Júnior**. O site fornece um link de e-mail, sem envio automático ou protocolo.
+
+A atualização de 03/11/2026 preserva idade, escolaridade e cidade, além dos valores existentes, e atribui códigos de ranking às contas por migração. Nenhum aceite é criado retroativamente. Cidade e escolaridade continuam opcionais, conforme a implementação anterior. A avaliação preliminar e suas limitações estão em [avaliação dos tratamentos](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/avaliacao-tratamentos.md); as instruções da equipe estão no [procedimento de atendimento](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/atendimento-privacidade.md). O [dossiê em PDF](./output/pdf/game-qta-governanca-e-privacidade.pdf) contém os textos integrais da versão 0.3, procedimentos e pendências.
 
 As mudanças de banco devem ser aplicadas com `bin/rails db:migrate`. Resultados de testes e limitações das auditorias estão no [acompanhamento da feature](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/tasks.md).
+
+Para regenerar o dossiê a partir dos textos localizados, use Python com ReportLab e a fonte DejaVu Sans instalada em `/usr/share/fonts/dejavu-sans-fonts`:
+
+```bash
+mkdir -p tmp/pdfs
+ruby -rjson -ryaml -e 'print JSON.pretty_generate(YAML.load_file("config/locales/pt-BR/legal.yml").fetch("pt-BR").fetch("legal_documents"))' > tmp/pdfs/legal_documents.json
+python3 script/build_governance_pdf.py tmp/pdfs/legal_documents.json
+```
+
+O dossiê também contém um retrato operacional datado: revise esse conteúdo no gerador e confira a diagramação antes de publicar uma nova edição.
 
 ---
 

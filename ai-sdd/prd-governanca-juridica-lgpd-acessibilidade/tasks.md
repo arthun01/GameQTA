@@ -77,3 +77,25 @@ O canal de atendimento e as retenções não serão declarados resolvidos. A alt
 ## Atualização do planejamento de consentimento — 27/10/2026
 
 O usuário indicou preferência pela opção de consentimento do responsável e explicou o uso escolar pelo professor. Esclareceu que a pesquisa pela UESC é uma possibilidade futura, sem análises ainda definidas e com consentimentos provavelmente ainda não elaborados. O PRD, a Tech Spec e a tarefa 6.0 passaram a distinguir operação educativa, autorização de responsável e pesquisa/banco formal. A necessidade atual dos dados precisa ser justificada; a possibilidade genérica de uso futuro não encerra essa avaliação. Não foram alterados os campos do produto, atribuídos novos consentimentos ou habilitado uso de pesquisa nesta atualização. A tarefa 6.0 continua pendente de definições do professor/UESC e do detalhamento do fluxo.
+
+
+## Cadastro direto - opção 1, 03/11/2026
+
+| # | Tarefa | Arquivo | Deps | Status |
+|---|--------|---------|------|--------|
+| 7.0 | Cadastro direto com proteção por padrão | [tasks/7_task.md](tasks/7_task.md) | 1.0 a 5.0 | ✅ |
+
+Idade, escolaridade e cidade preservadas, inclusive valores antigos; cidade e escolaridade mantêm a opcionalidade vigente. Os novos códigos do ranking não são derivados de nome, e-mail ou ID sequencial. Não há novo fluxo de aprovação externa e nenhum consentimento é atribuído automaticamente. Contato público: Guilhardes de Jesus Júnior, guilhardesj@gmail.com.
+
+A [avaliação preliminar](avaliacao-tratamentos.md) não conclui que todos os dados possam ser tratados por legítimo interesse; campos demográficos, necessidade da identificação, retenções e proteção de menores ainda exigem decisão. O [procedimento de atendimento](atendimento-privacidade.md) também exige execução real pela equipe. Textos públicos atualizados para 0.3; o PDF usa os mesmos textos. Tópicos 3 e 4 continuam pendentes de suas rodadas.
+
+### Validação técnica da opção 1 — 03/11/2026
+
+- `bin/rails test`: **97 testes, 581 assertions, zero falhas e zero erros**.
+- Testes de navegador de cadastro, ranking, documentos, aceite e perfil: **6 testes, 40 assertions, zero falhas e zero erros**. A suíte completa de navegador não foi repetida nesta rodada; o resultado reprovado de 27/10 permanece registrado acima.
+- `bin/rubocop -a`: **132 arquivos, nenhuma infração**, cache em `/tmp`.
+- `bin/brakeman --no-pager`: comando obrigatório interrompido pela versão instalada 8.0.6 versus 8.1.0 disponível. A análise adicional com `bundle exec brakeman --no-pager` executou **79 verificações, zero alertas e zero erros**.
+- `bin/bundler-audit`: **8 avisos preexistentes**, um em `crass` 1.0.7 e sete em `net-ssh` 7.3.3. Nenhuma dependência foi alterada. Os dois checks obrigatórios de segurança não são declarados aprovados.
+- Migração aplicada em desenvolvimento e teste; schema gerado pelo Rails. Nenhum campo demográfico ou valor existente foi removido, nenhum aceite foi criado retroativamente e nenhuma conta de desenvolvimento foi excluída.
+- CSS compilado; cadastro e contato público conferidos no navegador em largura móvel de 390 px. PDF de **12 páginas**, com extração de conteúdo e inspeção visual de todas as páginas sem cortes ou sobreposições.
+- `git diff --check`: sem erros. A implementação desta tarefa está validada; a conformidade jurídica do pacote, os tópicos 3 e 4 e a revisão final antes do PR não estão concluídos.

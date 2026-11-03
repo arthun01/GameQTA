@@ -10,10 +10,10 @@ class LegalDocumentsTest < ActionDispatch::IntegrationTest
         assert_select "html[lang='pt-BR']"
         assert_select "main article h1", count: 1
         assert_select "[data-legal-draft]", text: /Minuta — documento em elaboração/
-        assert_select "[data-legal-version]", text: "0.2 — minuta"
-        assert_select "time[datetime='2026-10-27']", text: "27/10/2026"
+        assert_select "[data-legal-version]", text: "0.3 — minuta"
+        assert_select "time[datetime='2026-11-03']", text: "03/11/2026"
         assert_select "form", count: 0
-        assert_select "a[href^='mailto:']", count: 0
+        assert_select "a[href='mailto:guilhardesj@gmail.com']", count: 1
         assert_select "iframe", count: 0
         assert_select "link[href*='fonts.googleapis.com']", count: 0
         assert_no_match(/translation missing|Translation missing/, response.body)
@@ -27,21 +27,24 @@ class LegalDocumentsTest < ActionDispatch::IntegrationTest
     assert_select "h1", "Termos de Uso"
     assert_select "#section-rules", text: /bloqueio encerra as sessões/
     assert_select "#section-participation", text: /não comprovam autorização de um responsável legal/
-    assert_select "#section-closing", text: /não recebe nem protocola pedidos/
+    assert_select "#section-closing", text: /não envia mensagens nem gera protocolo/
     assert_select "#section-changes", text: /não registra concordância automática/i
     assert_select "a[href=?]", privacy_policy_path
   end
 
-  test "privacy describes actual data third parties and pending contact and retention" do
+  test "privacy describes actual data third parties responsible contact and pending retention" do
     get privacy_policy_path
 
     assert_select "h1", "Política de Privacidade"
+    assert_select "#section-responsibility", text: /Guilhardes de Jesus Júnior/
+    assert_select "#section-children", text: /Não há aprovação externa/
+    assert_select "#section-purposes", text: /Não existe autorização automática para pesquisas futuras/
     assert_select "#section-generated_data", text: /endereço IP/
     assert_select "#section-access", text: /exportações.*nome, e-mail, cidade, escolaridade/m
     assert_select "#section-cookies", text: /YouTube.*Google Fonts/m
     assert_select "#section-retention", text: /Ainda não foram definidos os prazos/
     assert_select "#section-rights", text: /corrigir.*revogar.*revisão/m
-    assert_select "#section-requests", text: /O canal de privacidade ainda não foi definido/
+    assert_select "#section-requests", text: /guilhardesj@gmail.com/
     assert_select "a[href=?]", "https://www.gov.br/anpd/pt-br/assuntos/titular-de-dados/direito-dos-titulares"
     assert_select "a[href=?]", terms_path
   end

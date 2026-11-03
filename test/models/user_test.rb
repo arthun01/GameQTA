@@ -1,6 +1,19 @@
 require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
+  test "ranking code does not derive from profile and is preserved when profile changes" do
+    user = User.create!(full_name: "Pessoa Exemplo", email_address: "new-alias@example.com", password: "password123", age: 11, city: "Ilhéus", education_level: :fundamental_incompleto)
+    original_code = user.ranking_code
+
+    assert_match(/\A[A-F0-9]{12}\z/, original_code)
+    assert_equal "Jogador #{original_code}", user.ranking_name
+    assert user.update_profile({ full_name: "Outro Nome" }, password: "password123")
+    assert_equal original_code, user.reload.ranking_code
+    assert_equal "Ilhéus", user.city
+    assert_equal "fundamental_incompleto", user.education_level
+    assert_equal 11, user.age
+  end
+
   test "should not save without required parameters" do
     user = User.new
     assert_not user.save, "Saved the user without required attributes"

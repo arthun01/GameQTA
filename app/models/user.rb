@@ -19,6 +19,7 @@ class User < ApplicationRecord
   }, validate: { allow_nil: true }
 
   validates :full_name, :age, :email_address, presence: true
+  validates :ranking_code, presence: true, uniqueness: true, format: { with: /\A[A-F0-9]{12}\z/ }
   validates :full_name, length: { maximum: 100 }
   validates :city, length: { maximum: 100 }, allow_nil: true
   validates :age, numericality: { only_integer: true, greater_than_or_equal_to: 5, less_than_or_equal_to: 120 }
@@ -28,6 +29,7 @@ class User < ApplicationRecord
   normalizes :city, with: ->(value) { value.strip.presence }
 
   validate :validate_legal_acceptance, on: :registration
+  before_validation :assign_ranking_code, if: :new_record?
   before_create :set_initial_acceptance_time
   after_create :record_initial_legal_acceptance
 
@@ -37,6 +39,10 @@ class User < ApplicationRecord
 
   def current_legal_acceptance?
     legal_acceptances.exists?(document_revision: LegalDocument.revision)
+  end
+
+  def ranking_name
+    I18n.t("rankings.player_name", code: ranking_code)
   end
 
   def accept_legal_documents(accepted:, revision:)
@@ -113,6 +119,10 @@ class User < ApplicationRecord
   end
 
   private
+    def assign_ranking_code
+      self.ranking_code ||= SecureRandom.hex(6).upcase
+    end
+
     def validate_legal_acceptance
       unless legal_documents_accepted == true
         errors.add(:legal_documents_accepted, :accepted)

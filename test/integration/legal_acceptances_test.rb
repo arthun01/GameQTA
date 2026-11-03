@@ -1,6 +1,23 @@
 require "test_helper"
 
 class LegalAcceptancesTest < ActionDispatch::IntegrationTest
+  test "direct registration preserves demographic fields and does not add external approval for a child" do
+    post cadastrar_path, params: { user: registration_attributes.merge(
+      age: 10, city: "Ilhéus", education_level: "fundamental_incompleto",
+      legal_documents_accepted: "1", legal_revision: LegalDocument.revision, ranking_code: "FORGED123456"
+    ) }
+
+    assert_redirected_to jornada_path
+    user = User.find_by!(email_address: "new-student@example.com")
+    assert_equal 10, user.age
+    assert_equal "Ilhéus", user.city
+    assert_equal "fundamental_incompleto", user.education_level
+    assert_match(/\A[A-F0-9]{12}\z/, user.ranking_code)
+    assert_not_equal "FORGED123456", user.ranking_code
+    get jornada_path
+    assert_response :success
+  end
+
   test "registration rejects missing acceptance or an outdated document revision" do
     [ {}, { legal_documents_accepted: "0", legal_revision: LegalDocument.revision }, { legal_documents_accepted: "1", legal_revision: "old" } ].each do |acceptance|
       assert_no_difference [ "User.count", "LegalAcceptance.count", "UserSession.count" ] do

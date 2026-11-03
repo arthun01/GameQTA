@@ -169,3 +169,25 @@ Se o professor quiser constituir um banco para uso científico futuro, deverão 
 Sem essas definições, não habilitar exportação com o rótulo de pesquisa autorizada, não atribuir consentimento retroativo e não declarar a tarefa 6.0 concluída. O professor deverá confirmar os procedimentos de ética em pesquisa aplicáveis junto à instituição. A base jurídica do jogo e as obrigações do ECA Digital permanecem independentes da eventual autorização para pesquisa.
 
 Fontes: [Guia ANPD para fins acadêmicos e pesquisas](https://www.gov.br/anpd/pt-br/centrais-de-conteudo/materiais-educativos-e-publicacoes/web-guia-anpd-tratamento-de-dados-para-fins-academicos.pdf), [LGPD, arts. 6º, 8º e 14](https://www2.camara.leg.br/legin/fed/lei/2018/lei-13709-14-agosto-2018-787077-normaatualizada-pl.html), [Resolução CNS nº 738 sobre bancos de pesquisa](https://bvsms.saude.gov.br/bvs/saudelegis/cns/2025/res_0738_22_01_2025.html) e [orientação institucional sobre uso de bases de dados](https://www.cep.epsjv.fiocruz.br/orientacoes-protocolos/uso-de-base-de-dados). As referências não constituem aprovação de um estudo ou de consentimentos do projeto.
+
+## Opção 1 autorizada em 03/11/2026
+
+O usuário escolheu preservar o cadastro atual, incluindo idade, escolaridade e cidade, com entrada direta. A implementação adiciona salvaguardas comuns a todos, sem novas faixas, perguntas, upload de documentos, aprovação externa ou consentimentos fictícios. Os limites existentes da idade permanecem; cidade/escolaridade conservam o estado opcional vigente, sem remoção ou alteração dos valores.
+
+### Ranking e cache
+
+Adicionar `users.ranking_code`, string de 12 caracteres hexadecimais aleatórios, índice único e NOT NULL. Migração reversível preenche somente a coluna nova em contas existentes, sem derivar código de nome, e-mail ou ID sequencial. Contas novas recebem código antes da validação; parâmetros públicos não permitem alterá-lo. Pódio, lista e posição pessoal usam `User#ranking_name`, com label i18n e o código. O perfil permite reconhecer o código. As relações internas e os cálculos continuam os mesmos; trata-se de pseudonimização, pois os administradores ainda acessam a identidade.
+
+Páginas autenticadas de estudantes e relatórios administrativos passam a emitir `Cache-Control: no-store`; o controle de sessão existente permanece. Relatórios já são exclusivos de administradores autenticados e não viram banco de pesquisa ou exportação pública.
+
+### Responsável, atendimento e textos
+
+Responsável informado: Guilhardes de Jesus Júnior; contato: guilhardesj@gmail.com. Os textos descrevem o papel informado sem atribuir operação formal à UESC nem declarar ausência de responsabilidade legal independentemente dos fatos. Partial compartilhada apresenta e-mail público no cadastro, perfil e documentos, inclusive para quem não possui acesso à conta. O site apenas abre o aplicativo de e-mail, não envia pedidos ou emite protocolo.
+
+Documentos sobem para versão 0.3, de 03/11/2026. A mudança gera nova revisão e usa o gate de aceites existente; não se atribuem aceites retroativos. Retenção e hospedagem permanecem explícitas como pendentes. O aceite permanece distinto de consentimento de pesquisa. Um documento de avaliação por finalidade registra hipóteses, evidências, limites e decisões que dependem do controlador; não afirma que o legítimo interesse tenha sido validado para todos os campos pelo simples pedido do usuário.
+
+### PDF e verificação
+
+Produzir PDF para a equipe, com identidade, inventário, acesso/ranking, versão integral dos documentos, operação de atendimento, explicação da opção escolhida e quadro de pendências. Usar o locale real como fonte dos termos/política, evitar divergência entre PDF e site, renderizar e inspecionar todas as páginas. Não declarar pesquisa autorizada, conformidade integral à LGPD/ECA Digital ou auditoria WCAG concluída.
+
+Ref: tarefa 7.0; testes de cadastro de menores sem novos gates, rejeição de ranking_code fornecido pelo cliente, não exposição dos nomes e e-mails de terceiros em todas as posições, persistência dos campos e presença do contato. Nenhum dado real é excluído na validação.

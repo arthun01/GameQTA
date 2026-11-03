@@ -8,6 +8,7 @@
 
   <section aria-labelledby="profile-data-title" class="rounded-2xl border border-emerald-100 bg-white p-6 sm:p-8">
     <h2 id="profile-data-title" class="text-xl font-bold text-emerald-950"><%= t(".data_title") %></h2>
+    <p class="mt-3 text-sm leading-relaxed text-slate-700"><%= t("users.profiles.ranking_identity", name: @user.ranking_name) %></p>
     <dl class="mt-6 grid gap-5 sm:grid-cols-2">
       <% { full_name: @user.full_name, email_address: @user.email_address, age: @user.age, city: @user.city, education_level: @user.education_level.present? ? t("activerecord.attributes.user/education_level.#{@user.education_level}") : nil }.each do |attribute, value| %>
         <div class="min-w-0">
@@ -37,6 +38,7 @@
     <h2 id="delete-account-title" class="text-xl font-bold text-red-900"><%= t(".delete_title") %></h2>
     <p class="mt-3 leading-relaxed text-slate-700"><%= t(".delete_effects") %></p>
     <p class="mt-3 leading-relaxed text-slate-700"><%= t(".retention_limits") %></p>
+    <%= render "shared/privacy_contact" %>
     <div class="mt-5"><%= render "shared/form_errors", record: @user %></div>
     <%= form_with scope: :user, url: profile_path, method: :delete, class: "mt-6 space-y-5", data: { turbo: false } do |form| %>
       <div>

@@ -42,3 +42,7 @@ Mantida a autorização de implementar sem Paper, seguindo a identidade existent
 Perfil: seção de dados com rótulos e valores, ação de editar e seção separada de exclusão com consequências, senha e confirmação. Edição: campos de cadastro, indicação dos opcionais e confirmação com senha. Erros em bloco acessível; sem modais dependentes de JavaScript ou mensagens de atendimento inexistente.
 
 A proposta de faixas etárias não foi aprovada; nenhuma tela de autorização de responsáveis é declarada implementada.
+
+## Atualização da opção 1 — 03/11/2026
+
+Mantém telas e fluxo do cadastro, com os campos atuais. Ranking troca nome por código automático; perfil mostra o próprio código. Cadastro, perfil e documentos recebem contato público de privacidade, em texto legível e link de e-mail, sem modais ou nova aprovação. A tarefa 7.0 não depende do Paper.

@@ -64,3 +64,8 @@ Conforme o quadro de tasks.md. Para menores, aguardar definição operacional co
 - Antes da implementação, confirmar instituição/controlador por finalidade, finalidade e campos necessários, termos e procedimento de verificação, participação/assentimento aplicável, revogação, acesso e retenção. Não presumir aprovação ética ou autorização retroativa.
 
 A tarefa continua pendente. Esta rodada atualizou somente os documentos de planejamento; a implementação de consentimentos específicos permanece por detalhar.
+
+
+## Atualização em 03/11/2026
+
+O usuário optou por cadastro direto sem autorização externa, preservando idade, escolaridade e cidade. A proposta anterior de criar aprovação presencial/escola foi substituída. A tarefa 7.0 implementa as salvaguardas autorizadas e documenta a avaliação preliminar por finalidade. Esta tarefa não fica concluída por mudança de preferência: as decisões jurídicas e medidas de supervisão/proteção devem ser validadas pelo responsável. O contato público agora informado é Guilhardes de Jesus Júnior, guilhardesj@gmail.com.

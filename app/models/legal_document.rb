@@ -2,7 +2,7 @@ class LegalDocument
   def self.snapshot
     documents = I18n.t(:legal_documents, locale: I18n.default_locale).deep_stringify_keys
     {
-      "shared" => documents.fetch("shared").slice("version", "updated_on", "draft_title", "draft_notice"),
+      "shared" => documents.fetch("shared").slice("version", "updated_on", "draft_title", "draft_notice", "contact_name", "contact_email"),
       "terms" => documents.fetch("terms"),
       "privacy" => documents.fetch("privacy")
     }

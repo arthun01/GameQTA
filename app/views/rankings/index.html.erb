@@ -20,6 +20,7 @@
   </div>
 
   <div class="flex flex-col grow basis-[0%] py-6 px-5 gap-3">
+    <p class="text-sm leading-relaxed text-slate-700"><%= t("rankings.privacy_notice") %></p>
     <% @top_leaderboards.each_with_index do |leaderboard, index| %>
       <% position = index + 1 %>
       <% if position > 3 %>
@@ -39,7 +40,7 @@
         </div>
         <div class="flex flex-col grow basis-[0%] ml-3">
           <div class="font-sans font-bold text-emerald-800 text-[15px]/4.5">
-            <%= t('rankings.index.you', name: Current.user.full_name) %>
+            <%= t('rankings.index.you', name: Current.user.ranking_name) %>
           </div>
           <div class="font-sans font-medium text-emerald-600 text-[13px]/4">
             <%= t('rankings.index.time_format', min: @current_user_leaderboard.total_time_taken / 60, sec: @current_user_leaderboard.total_time_taken % 60) %>

@@ -57,12 +57,15 @@
       </div>
 
       <p class="text-sm leading-relaxed text-slate-600"><%= t("users.profiles.optional_fields") %></p>
+      <p class="text-sm leading-relaxed text-slate-600"><%= t("users.registrations.direct_entry") %></p>
       <%= render "shared/legal_acceptance_fields", form: form %>
 
       <div class="pt-4">
         <%= form.submit t(".submit"), class: "w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-lg shadow-emerald-200 transition-all active:scale-95 cursor-pointer" %>
       </div>
     <% end %>
+
+    <%= render "shared/privacy_contact" %>
 
     <div class="mt-8 text-center text-sm text-gray-600">
       <%= t(".has_account") %>

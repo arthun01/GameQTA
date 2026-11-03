@@ -42,4 +42,4 @@ O sistema tem tolerância zero para manipulação ou violação de regras.
 - Atualização do perfil exige senha atual e somente campos permitidos. Estado de bloqueio, senha e metadados de aceite não podem ser alterados por esse formulário.
 - A exclusão exige senha e confirmação explícita, age exclusivamente sobre `Current.user` e remove os dados relacionados em transação. Todas as sessões do estudante são encerradas; outros usuários e o conteúdo didático são preservados.
 - Atualizações de ranking usam lock da conta, em comum com exclusão e bloqueio. Conta ausente ou bloqueada não recebe novo ranking.
-- Autorizações por faixa etária, bases legais, contato público, retenções e cópias exportadas seguem pendentes. A entrega parcial não declara adequação integral à LGPD.
+- A operação segue cadastro direto sem nova aprovação externa, com idade, escolaridade e cidade preservadas. Ranking usa código automático; contato público informado: Guilhardes de Jesus Júnior, guilhardesj@gmail.com. Bases legais, medidas de proteção/supervisão, retenções e cópias exportadas continuam em avaliação. A entrega parcial não declara adequação integral à LGPD.

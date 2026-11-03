@@ -7,7 +7,13 @@ pt-BR:
       not_an_integer: "deve ser um número inteiro"
       greater_than_or_equal_to: "deve ser maior ou igual a %{count}"
       less_than_or_equal_to: "deve ser menor ou igual a %{count}"
+  rankings:
+    player_name: "Jogador %{code}"
+    privacy_notice: "O ranking usa códigos gerados automaticamente para proteger a identificação dos participantes. Consulte o seu código no perfil."
   shared:
+    privacy_contact:
+      description: "Dúvidas sobre dados, correção, exclusão ou proteção de menores? Entre em contato com o responsável:"
+      safety: "Informe a conta e o pedido. Não envie sua senha ou documentos pessoais sem necessidade. O link abre seu aplicativo de e-mail; esta página não envia mensagens."
     legal_acceptance:
       version: "Documentos apresentados: %{version}."
       draft: "Os documentos ainda são minutas, com decisões jurídicas e operacionais pendentes."
@@ -18,6 +24,8 @@ pt-BR:
       title: "Confira as informações abaixo:"
     profile_link: "Meu perfil e meus dados"
   users:
+    registrations:
+      direct_entry: "Seu cadastro permite entrar diretamente no jogo. O ranking usa um código automático em vez do seu nome; o aceite dos documentos não autoriza pesquisas futuras."
     legal_acceptances:
       new:
         title: "Conheça os documentos atualizados"
@@ -26,6 +34,7 @@ pt-BR:
         rights: "Você pode consultar ou corrigir seus dados, excluir a conta e sair sem registrar este aceite."
         sign_out: "Sair da conta"
     profiles:
+      ranking_identity: "Seu nome no ranking: %{name}. Seu nome de cadastro e e-mail não aparecem na classificação."
       city_placeholder: "Sua cidade (opcional)"
       back_to_game: "Voltar à jornada"
       not_informed: "Não informado"
@@ -43,7 +52,7 @@ pt-BR:
         edit: "Editar meus dados"
         delete_title: "Excluir minha conta"
         delete_effects: "A exclusão é permanente: apaga seu cadastro, suas sessões, tentativas, respostas e registros de aceite, além de retirar você do ranking. Todas as sessões serão encerradas. Essa ação não pode ser desfeita."
-        retention_limits: "Esta ação remove os dados da aplicação ativa. Os prazos e procedimentos para registros operacionais, backups e cópias de relatórios já exportados ainda estão pendentes; não prometemos a remoção imediata dessas cópias. O canal de atendimento será informado quando estiver disponível."
+        retention_limits: "Esta ação remove os dados da aplicação ativa. Os prazos e procedimentos para registros operacionais, backups e cópias de relatórios já exportados ainda estão pendentes; não prometemos a remoção imediata dessas cópias. Outros pedidos podem ser encaminhados ao contato de privacidade abaixo."
         delete_confirmation: "Entendo as consequências e confirmo que quero excluir permanentemente minha conta e meus dados da aplicação ativa."
         delete_submit: "Excluir minha conta e meus dados"
       edit:
