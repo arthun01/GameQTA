@@ -23,3 +23,7 @@ Rechecagem confirmou as correções e a vinculação da resposta à submission_i
 ## Resultado e limites
 
 Achados técnicos identificados foram tratados e receberam regressões. Checks finais e resultados estão no tasks.md. O PR preserva dados existentes e não publica em produção. As decisões para disponibilização pública constam de pendencias-publicacao.md e não são declaradas resolvidas por esta revisão.
+
+## Atualização de dependências após refresh da base
+
+Após a revisão de aplicação, o refresh da base de advisories identificou cinco pacotes adicionais. O diff subsequente limita-se às versões de patch e checksums de addressable, loofah, nokogiri, rack e rails-html-sanitizer, mais o registro dos resultados. Todos os checks foram repetidos e passaram; ver tasks.md.

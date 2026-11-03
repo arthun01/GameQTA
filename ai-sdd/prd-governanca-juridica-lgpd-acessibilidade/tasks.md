@@ -139,3 +139,12 @@ Revisão em dois eixos registrada em [revisao.md](revisao.md). Corrigidos cache 
 ### Entrega para revisão da equipe
 
 [PR #22: governança, privacidade e acessibilidade](https://github.com/arthun01/GameQTA/pull/22), base main, branch rafael. A revisão automatizada antes da abertura e os testes foram concluídos. Status técnico das tarefas 8–10 não encerra a tarefa 6 ou as decisões jurídicas/operacionais em pendencias-publicacao.md. Nenhum merge ou deploy foi realizado.
+
+
+### Base de segurança atualizada antes de encerrar
+
+A atualização explícita de ruby-advisory-db para `adeaf12` trouxe alertas adicionais que não estavam na primeira base local. Foram corrigidos por atualizações conservadoras de patch: addressable **2.9.2**, loofah **2.25.3**, nokogiri **1.19.7** (todas as plataformas do lockfile), rack **3.2.8** e rails-html-sanitizer **1.7.2**. Nenhum alerta foi ignorado na configuração.
+
+Revalidação com essa base: Rubocop **139 arquivos sem infrações**, Brakeman **zero alertas/erros**, bundler-audit **nenhuma vulnerabilidade conhecida**, aplicação **105 testes / 654 assertions** e navegador **30 testes / 197 assertions**, sem falhas/erros/skips. Logs em `tmp/lgpd-security-final-*.log`. `bin/importmap audit`: nenhum pacote vulnerável encontrado.
+
+Na consulta ao GitHub, o PR está aberto, mas não foram informados checks ou execuções de Actions para a branch. Os resultados acima são locais; não se declara CI remoto aprovado. A configuração de Actions e permissões da conta não foi alterada.

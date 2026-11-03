@@ -214,3 +214,5 @@ Fontes: [ANPD cookies](https://www.gov.br/anpd/pt-br/centrais-de-conteudo/materi
 ### Correções da revisão final
 
 Desativar snapshots Turbo nos layouts que contêm formulários e dados privados, além de no-store HTTP; limpar cache no logout de ambos os perfis. O cronômetro usa deadline absoluto e horário de referência do servidor para calcular uma âncora performance.now, preservada no reconnect, evitando tanto reinício quanto erro por relógio civil local incorreto. Envio inclui submission_id e consulta a resposta dentro da tentativa autenticada; duplicata não atua sobre outra questão. Timestamp de aceite usa touch específico no lock, sem revalidar campos legados que não foram alterados. Regressões cobrem esses cenários; ver revisao.md.
+
+A checagem final atualiza explicitamente ruby-advisory-db: além dos três pacotes iniciais, patches corretivos de addressable, loofah, nokogiri, rack e rails-html-sanitizer foram necessários. Ver versões e revalidação no tasks.md.
