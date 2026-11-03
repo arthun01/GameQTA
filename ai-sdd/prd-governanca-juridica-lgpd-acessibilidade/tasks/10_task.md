@@ -13,8 +13,12 @@ Pacote completo, com decisões operacionais explícitas
 - [x] Atualizar dependências com alertas e executar checks obrigatórios
 - [x] Corrigir testes gerais e revisar mudanças
 - [x] Atualizar PRD, README, auditorias e PDF
-- [ ] Preparar PR para main sem publicar em produção
+- [x] Preparar PR para main sem publicar em produção
 
 ## Validação
 
 Minitest e Capybara nos fluxos afetados, lint e segurança. Sem exclusão de dados reais, consentimento inventado ou declaração de conformidade jurídica/WCAG integral. Resultados no tasks.md.
+
+## Entrega
+
+[PR #22 para main](https://github.com/arthun01/GameQTA/pull/22), aberto após revisão e correções. Implementação técnica, documentação e PDF entregues. As decisões de publicação, avaliações jurídicas e editoriais permanecem explícitas; não há publicação em produção.

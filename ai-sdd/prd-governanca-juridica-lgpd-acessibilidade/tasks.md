@@ -107,7 +107,7 @@ A [avaliação preliminar](avaliacao-tratamentos.md) não conclui que todos os d
 |---|---|---|
 | 8.0 | [Cookies e serviços externos](tasks/8_task.md) | ✅ |
 | 9.0 | [Acessibilidade](tasks/9_task.md) | ✅ |
-| 10.0 | [Validação final, documentos e PR](tasks/10_task.md) | 🔄 |
+| 10.0 | [Validação final, documentos e PR](tasks/10_task.md) | ✅ |
 
 Execução sequencial 8 → 9 → 10. Mantém cadastro direto e campos atuais. Pendências jurídicas/operacionais não são presumidas resolvidas pela conclusão técnica.
 
@@ -134,3 +134,8 @@ Revisão em dois eixos registrada em [revisao.md](revisao.md). Corrigidos cache 
 - `bin/rails test`: **105 testes, 654 assertions, zero falhas/erros/skips**.
 - `bin/rails test:system`: **30 testes, 197 assertions, zero falhas/erros/skips**. Inclui desvio de relógio de 24h e histórico após logout, além das verificações anteriores.
 - Logs finais: `tmp/lgpd-review-final-*.log`. PDF de **12 páginas**, com conteúdo extraído e todas as páginas renderizadas/inspecionadas. Nenhum aceite ou exclusão de conta real foi realizado em validação.
+
+
+### Entrega para revisão da equipe
+
+[PR #22: governança, privacidade e acessibilidade](https://github.com/arthun01/GameQTA/pull/22), base main, branch rafael. A revisão automatizada antes da abertura e os testes foram concluídos. Status técnico das tarefas 8–10 não encerra a tarefa 6 ou as decisões jurídicas/operacionais em pendencias-publicacao.md. Nenhum merge ou deploy foi realizado.
