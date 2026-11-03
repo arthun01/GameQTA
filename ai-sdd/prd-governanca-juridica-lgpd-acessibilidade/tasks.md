@@ -123,3 +123,14 @@ Execução sequencial 8 → 9 → 10. Mantém cadastro direto e campos atuais. P
 - Nova migração aplicada em desenvolvimento e teste; schema gerado pelo Rails. Nenhum campo de cadastro, pontuação ou conta real foi removido. Novo limite não reinicia com reload; respostas encerradas por timeout deixam de reabrir a mesma questão.
 - Versão jurídica **0.4 — minuta**: novo texto gera nova revisão, sem aceite retroativo. PDF atualizado com mesmos textos integrais, controles e pendências. Site reiniciado em localhost:3000.
 - Ver [cookies](auditoria-cookies.md), [acessibilidade](auditoria-acessibilidade.md) e [decisões para publicação](pendencias-publicacao.md). A entrega técnica não conclui a avaliação jurídica do tópico 2, a revisão editorial audiovisual ou testes humanos com leitor de tela; sem declaração de conformidade integral.
+
+
+### Revisão e revalidação — 03/11/2026
+
+Revisão em dois eixos registrada em [revisao.md](revisao.md). Corrigidos cache de snapshots privados, relógio após histórico/desvio do dispositivo e aceite de conta legada. Envio de resposta vinculado ao ID da submission autenticada. Todos os achados concretos foram rechecados.
+
+- `bin/rubocop -a`: **139 arquivos**, um ajuste de estilo em teste corrigido; verificação subsequente limpa.
+- `bin/brakeman --no-pager`: **79 verificações, zero alertas/erros**. `bin/bundler-audit`: **nenhuma vulnerabilidade conhecida**.
+- `bin/rails test`: **105 testes, 654 assertions, zero falhas/erros/skips**.
+- `bin/rails test:system`: **30 testes, 197 assertions, zero falhas/erros/skips**. Inclui desvio de relógio de 24h e histórico após logout, além das verificações anteriores.
+- Logs finais: `tmp/lgpd-review-final-*.log`. PDF de **12 páginas**, com conteúdo extraído e todas as páginas renderizadas/inspecionadas. Nenhum aceite ou exclusão de conta real foi realizado em validação.

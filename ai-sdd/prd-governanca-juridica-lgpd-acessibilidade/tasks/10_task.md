@@ -10,9 +10,9 @@ Pacote completo, com decisões operacionais explícitas
 
 ## Subtarefas e critérios de sucesso
 
-- [ ] Atualizar dependências com alertas e executar checks obrigatórios
-- [ ] Corrigir testes gerais e revisar mudanças
-- [ ] Atualizar PRD, README, auditorias e PDF
+- [x] Atualizar dependências com alertas e executar checks obrigatórios
+- [x] Corrigir testes gerais e revisar mudanças
+- [x] Atualizar PRD, README, auditorias e PDF
 - [ ] Preparar PR para main sem publicar em produção
 
 ## Validação

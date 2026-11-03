@@ -28,3 +28,7 @@ O aviso de cookies está no fluxo do rodapé, sem sobreposição, bloqueio de jo
 O professor deve revisar adequação dos vídeos, legendas, conteúdo, classificação e requisitos do fornecedor para sites direcionados a crianças antes da liberação pública. A duração e o comportamento das tecnologias do YouTube podem mudar; não são apresentados como controlados pela aplicação. Nova integração exige inventário e avaliação antes de ativação.
 
 Referências: [ANPD cookies](https://www.gov.br/anpd/pt-br/centrais-de-conteudo/materiais-educativos-e-publicacoes/guia_orientativo_cookies_e_protecao_de_dados_pessoais), [Rails cookies](https://api.rubyonrails.org/classes/ActionDispatch/Cookies.html), [YouTube incorporações](https://support.google.com/youtube/answer/171780?hl=pt-BR).
+
+## Cache privado
+
+Além de no-store HTTP, layouts com formulários/áreas privadas desativam snapshots Turbo com meta no-cache. Logout limpa o cache Turbo. Teste de histórico após sair verifica que o perfil é revalidado e o e-mail não reaparece.

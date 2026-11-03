@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><%= content_for?(:title) ? yield(:title) : t("app.name") %></title>
+    <meta name="turbo-cache-control" content="no-cache">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     
@@ -23,6 +24,7 @@
     <% if Current.user.present? %>
       <nav aria-label="<%= t('shared.profile_link') %>" class="px-4 pt-5 text-center text-sm">
         <%= link_to t("shared.profile_link"), profile_path, class: "rounded-sm font-semibold text-emerald-900 underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4" %>
+        <%= button_to t("accessibility.sign_out"), sair_path, method: :delete, form: { data: { controller: 'cache-reset', action: 'turbo:submit-start->cache-reset#clear' } }, class: 'mt-3 rounded-lg border border-emerald-800 px-4 py-2 font-semibold text-emerald-900' %>
       </nav>
     <% end %>
     <%= render "shared/legal_links" %>

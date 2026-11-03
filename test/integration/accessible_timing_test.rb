@@ -7,6 +7,15 @@ class AccessibleTimingTest < ActionDispatch::IntegrationTest
     sign_in_as_user users(:student_one)
   end
 
+  test "a stale answer cannot close another revealed question" do
+    post reveal_play_theme_attempt_question_path(@attempt), as: :turbo_stream
+    pending = @attempt.question_submissions.find_by!(question: @question)
+    post submit_play_theme_attempt_question_path(@attempt), params: { submission_id: question_submissions(:one).id }, as: :turbo_stream
+    assert_redirected_to play_theme_attempt_question_path(@attempt)
+    assert_nil pending.reload.answered_at
+    assert_select "dialog", count: 0
+  end
+
   test "time choice is recorded once and reload cannot reset it" do
     post reveal_play_theme_attempt_question_path(@attempt), params: { time_multiplier: "10" }, as: :turbo_stream
     submission = @attempt.question_submissions.find_by!(question: @question)
@@ -28,14 +37,14 @@ class AccessibleTimingTest < ActionDispatch::IntegrationTest
     submission = @attempt.question_submissions.find_by!(question: @question)
     assert_equal GameSetting.current.easy_time, submission.allowed_seconds
     travel (submission.allowed_seconds + 3).seconds do
-      post submit_play_theme_attempt_question_path(@attempt), params: { option_id: @question.options.first.id }, as: :turbo_stream
+      post submit_play_theme_attempt_question_path(@attempt), params: { submission_id: submission.id, option_id: @question.options.first.id }, as: :turbo_stream
     end
     assert_response :success
     assert submission.reload.answered_at
     assert_not submission.is_correct?
     assert_nil @attempt.next_pending_question
     answered_at = submission.answered_at
-    post submit_play_theme_attempt_question_path(@attempt), as: :turbo_stream
+    post submit_play_theme_attempt_question_path(@attempt), params: { submission_id: submission.id }, as: :turbo_stream
     assert_equal answered_at, submission.reload.answered_at
   end
 end

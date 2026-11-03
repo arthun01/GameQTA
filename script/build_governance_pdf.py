@@ -111,7 +111,7 @@ table([
     ['Aceite', 'Registro de horário, versões, revisão e cópia dos textos apresentados. Contas antigas não recebem aceite retroativo. Mudança de texto exige nova manifestação antes do jogo.'],
     ['Direitos', 'Perfil e exclusão continuam disponíveis mesmo sem novo aceite. O contato público complementa casos de representantes, falta de acesso e outros direitos.'],
     ['Tempo e resposta', 'Escolha de 1 a 10 vezes o tempo antes de revelar a questão. Pontos iguais, tempo efetivo no desempate. Alternativa só é enviada pelo botão de confirmação.'],
-    ['Segurança', 'Senha verificada com BCrypt no servidor; edição exige senha atual e exclusão exige confirmação adicional. Páginas estudantis e exportações administrativas recebem no-store.'],
+    ['Segurança', 'Senha verificada com BCrypt no servidor; edição exige senha atual e exclusão exige confirmação adicional. Páginas privadas recebem no-store; snapshots Turbo são desativados e o cache é limpo ao sair.'],
 ], [42 * mm, 126 * mm])
 heading('2. Dados, finalidades e pesquisa', 1)
 para('A operação educativa e eventual pesquisa são finalidades distintas. O cadastro não concede autorização geral para qualquer estudo. O professor informou interesse em idade, escolaridade e cidade para possível pesquisa futura, mas as análises ainda não foram definidas.')
@@ -136,7 +136,7 @@ heading('Cookies e acessibilidade implementados', 2)
 para('Cookies próprios: _qta_rails8_session (navegação, até 12h após uso), user_session_id (estudante) e session_id (administração). O acesso autenticado vence 12h após login também no servidor. HttpOnly e SameSite=Lax; Secure e HTTPS em produção. Sair revoga a sessão. Esse limite de acesso não define retenção de registros no banco.')
 para('Fontes do dispositivo substituem Google Fonts. Vídeos começam sem iframe ou conexão externa. Carregar este vídeo ativa somente aquele player; Continuar sem vídeo mantém bloqueio, e Desativar vídeo externo remove o iframe. A escolha não é salva. Navegar ou recarregar exige nova escolha. O fornecedor recebe dados após ativação; revogar não desfaz dados já enviados.')
 para('Foco visível, skip link, diálogos nativos com Escape, erros associados aos campos, preferência de reduzir movimento e confirmação explícita pelo botão Confirmar resposta foram implementados. O relógio anuncia apenas um aviso próximo do fim, sem interromper leitura a cada segundo. A página /acessibilidade explica esses recursos e os limites conhecidos.')
-para('Validação local: 103 testes de aplicação e 28 de navegador passaram. Brakeman sem alertas; bundler-audit sem vulnerabilidades conhecidas. Axe verificou as telas públicas, estudantis e administrativas. Resultados automáticos não são certificação jurídica ou WCAG. Vídeos, leitor de tela humano e implantação definitiva exigem avaliação complementar.')
+para('Validação local: 105 testes de aplicação e 30 de navegador passaram. Brakeman sem alertas; bundler-audit sem vulnerabilidades conhecidas. Axe verificou as telas públicas, estudantis e administrativas. Resultados automáticos não são certificação jurídica ou WCAG. Vídeos, leitor de tela humano e implantação definitiva exigem avaliação complementar.')
 heading('4. Pontos que ainda precisam de decisão', 1)
 table([
     ['Tema', 'Pendência'],

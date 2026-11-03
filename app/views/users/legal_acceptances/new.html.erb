@@ -11,5 +11,5 @@
   <% end %>
   <p class="text-sm leading-relaxed text-slate-700"><%= t(".rights") %></p>
   <%= link_to t("shared.profile_link"), profile_path, class: "inline-block text-emerald-900 underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4" %>
-  <%= button_to t(".sign_out"), sair_path, method: :delete, class: "mt-4 min-h-11 cursor-pointer rounded-lg border border-emerald-800 px-5 py-3 font-semibold text-emerald-900 focus-visible:outline-2 focus-visible:outline-offset-4" %>
+  <%= button_to t(".sign_out"), sair_path, method: :delete, form: { data: { controller: "cache-reset", action: "turbo:submit-start->cache-reset#clear" } }, class: "mt-4 min-h-11 cursor-pointer rounded-lg border border-emerald-800 px-5 py-3 font-semibold text-emerald-900 focus-visible:outline-2 focus-visible:outline-offset-4" %>
 </div>

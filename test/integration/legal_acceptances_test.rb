@@ -1,6 +1,19 @@
 require "test_helper"
 
 class LegalAcceptancesTest < ActionDispatch::IntegrationTest
+  test "legacy profile validation does not prevent an explicit legal acceptance" do
+    user = users(:student_one)
+    user.legal_acceptances.destroy_all
+    user.update_columns(full_name: "x" * 120)
+    sign_in_as_user user
+    assert_difference "LegalAcceptance.count", 1 do
+      post legal_acceptance_path, params: { user: { legal_documents_accepted: "1", legal_revision: LegalDocument.revision } }
+    end
+    assert_redirected_to jornada_path
+    assert user.reload.accepted_terms_at
+    assert_equal "x" * 120, user.full_name
+  end
+
   test "direct registration preserves demographic fields and does not add external approval for a child" do
     post cadastrar_path, params: { user: registration_attributes.merge(
       age: 10, city: "Ilhéus", education_level: "fundamental_incompleto",

@@ -54,7 +54,7 @@ class User < ApplicationRecord
 
     with_lock do
       acceptance = record_legal_acceptance
-      update!(accepted_terms_at: acceptance.accepted_at)
+      touch(:accepted_terms_at, time: acceptance.accepted_at)
     end
   end
 

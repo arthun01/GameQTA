@@ -28,6 +28,7 @@ pt-BR:
       limits: "As verificações automáticas e de teclado não substituem testes com pessoas e tecnologias assistivas. A equipe ainda precisa conferir legendas, transcrições e alternativas dos vídeos, além de realizar avaliação com leitor de tela. Os formulários e questões usam texto, mas isso não garante equivalência integral do conteúdo audiovisual. Informe dificuldades e o endereço da página pelo contato abaixo, sem enviar senha."
     admin_navigation: "Navegação da administração"
     close: "Fechar"
+    sign_out: "Sair da conta"
     level_number: "Nível %{number}"
     in_progress: "Em progresso"
     previous_level: "Alcance a meta no nível anterior"

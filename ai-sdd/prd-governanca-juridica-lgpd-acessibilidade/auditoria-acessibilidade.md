@@ -16,7 +16,7 @@ Axe Core 4.14, tags wcag2a, wcag2aa, wcag21a, wcag21aa: login estudantil, cadast
 | 1.4.1, 1.4.3 e 1.4.11 cor/contraste | Verde mais escuro com branco, textos mutados, controles com borda; acerto/erro também por texto | Axe nas telas/estados testados sem violações; manter revisão de conteúdo dinâmico |
 | 1.4.4, 1.4.10, 1.4.12 ampliação/reflow/espaçamento | Layout fluido, administração vertical no celular e textos quebráveis | Verificação móvel; grade de todas as combinações de navegador/zoom não certificada |
 | 2.1.1, 2.1.2 teclado | Controles nativos, radios visíveis, confirmação explícita, Escape e foco em dialog nativo | Testes funcionais passaram; nenhuma resposta enviada só ao selecionar |
-| 2.2.1 tempo | Escolha de 1 a 10× antes da revelação, servidor guarda limite; reload não reinicia | Implementado para todos; pontos iguais, tempo real desempata; classificação não é teste padronizado de capacidade |
+| 2.2.1 tempo | Escolha de 1 a 10× antes da revelação, servidor guarda limite; reload não reinicia; prazo usa referência de servidor e âncora monotônica, independente do relógio local | Implementado para todos; pontos iguais, tempo real desempata; classificação não é teste padronizado de capacidade |
 | 2.2.2 movimento | Sem pulsação do timer, preferência reduced-motion respeitada | CSS e comportamento verificados |
 | 2.3.1 flashes | Não foram adicionados efeitos de flashes | Vídeos de terceiros exigem revisão editorial |
 | 2.4.1–2.4.7 navegação/foco | Skip link, foco global contrastante, títulos, links nomeados, foco na questão e dialog | Teclado e axe; testar leitores de tela reais antes de declaração integral |

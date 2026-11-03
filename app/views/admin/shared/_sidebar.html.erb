@@ -43,7 +43,7 @@
   </nav>
 
   <div class="p-4 border-t border-black border-opacity-10">
-    <%= button_to admin_session_path, method: :delete, class: "flex w-full items-center px-3 py-2.5 text-sm font-medium text-white rounded-lg hover:bg-white hover:bg-opacity-10 transition-all duration-200" do %>
+    <%= button_to admin_session_path, method: :delete, form: { data: { controller: "cache-reset", action: "turbo:submit-start->cache-reset#clear" } }, class: "flex w-full items-center px-3 py-2.5 text-sm font-medium text-white rounded-lg hover:bg-white hover:bg-opacity-10 transition-all duration-200" do %>
       <svg aria-hidden="true" class="mr-3 h-5 w-5" style="color: #fca5a5;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
       </svg>

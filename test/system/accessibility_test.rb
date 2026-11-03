@@ -65,6 +65,29 @@ class AccessibilityTest < ApplicationSystemTestCase
     assert_accessibility
   end
 
+  test "device clock drift does not submit a newly revealed answer" do
+    login_student
+    visit play_theme_attempt_question_path(theme_attempts(:one))
+    page.execute_script("window.originalNow = Date.now; Date.now = () => window.originalNow() + 86400000")
+    click_on "Mostrar Questão"
+    assert_selector "[role=timer]", text: /00:5[0-9]/, wait: 3
+    assert_selector "fieldset"
+    assert_button "Confirmar resposta"
+  ensure
+    page.execute_script("if (window.originalNow) Date.now = window.originalNow")
+  end
+
+  test "private history is revalidated after logout" do
+    login_student
+    visit profile_path
+    assert_text users(:student_one).email_address
+    click_on "Sair da conta"
+    assert_current_path entrar_path
+    page.go_back
+    assert_current_path entrar_path
+    assert_no_text users(:student_one).email_address
+  end
+
   private
     def login_student
       visit entrar_path

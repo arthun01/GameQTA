@@ -11,7 +11,7 @@
       </div>
     </div>
     
-    <div id="question-timer" data-controller="gameplay-timer" data-gameplay-timer-seconds-value="<%= submission.remaining_seconds %>" data-gameplay-timer-warning-value="<%= t("accessibility.time_warning") %>" class="py-1 px-2 rounded-md bg-(--color-danger-subtle) transition-all" data-gameplay-timer-target="container">
+    <div id="question-timer" data-controller="gameplay-timer" data-gameplay-timer-server-now-value="<%= Time.current.iso8601(3) %>" data-gameplay-timer-deadline-value="<%= submission.deadline_at.iso8601(3) %>" data-gameplay-timer-seconds-value="<%= submission.remaining_seconds %>" data-gameplay-timer-warning-value="<%= t("accessibility.time_warning") %>" class="py-1 px-2 rounded-md bg-(--color-danger-subtle) transition-all" data-gameplay-timer-target="container">
       <div class="font-sans font-bold text-(--color-danger) text-base/5" role="timer" aria-label="<%= t("accessibility.time_remaining") %>" aria-live="off" data-gameplay-timer-target="display">
         <%= "%02d:%02d" % [submission.remaining_seconds / 60, submission.remaining_seconds % 60] %>
       </div>
@@ -27,6 +27,7 @@
     </h1>
     
     <%= form_with url: submit_play_theme_attempt_question_path(@theme_attempt), id: "evaluation_form", class: "flex flex-col gap-3", data: { turbo: true, turbo_frame: "_top" } do |f| %>
+      <%= f.hidden_field :submission_id, value: submission.id %>
       <fieldset class="space-y-3">
       <legend class="mb-3 font-semibold"><%= t("accessibility.choose_answer") %></legend>
       <% ('A'..'Z').zip(question.options.order(:id)).each do |letter, option| %>

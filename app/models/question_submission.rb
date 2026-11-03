@@ -13,7 +13,11 @@ class QuestionSubmission < ApplicationRecord
   end
 
   def remaining_seconds
-    [ (revealed_at + allowed_seconds - Time.current).ceil, 0 ].max
+    [ (deadline_at - Time.current).ceil, 0 ].max
+  end
+
+  def deadline_at
+    revealed_at + allowed_seconds
   end
 
   def answer(option_id:)

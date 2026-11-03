@@ -24,7 +24,7 @@ class Play::QuestionsController < Users::BaseController
   end
 
   def submit
-    @submission = @theme_attempt.question_submissions.order(created_at: :desc).first
+    @submission = @theme_attempt.question_submissions.find_by(id: params[:submission_id])
 
     if @submission.nil? || @submission.answered_at.present? || @submission.option_id.present?
       redirect_to play_theme_attempt_question_path(@theme_attempt)
