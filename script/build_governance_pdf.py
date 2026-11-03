@@ -1,14 +1,14 @@
 """Build the governance dossier from the current pt-BR legal text and project records.
 
 Usage: python3 script/build_governance_pdf.py tmp/pdfs/legal_documents.json
-Requires ReportLab and DejaVu Sans. No network or application database access.
+Requires ReportLab and Liberation Serif. No network or application database access.
 """
 import json
 import sys
 from html import escape
 from pathlib import Path
 from reportlab.lib import colors
-from reportlab.lib.enums import TA_LEFT
+from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_JUSTIFY
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import mm
@@ -19,20 +19,18 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, Tabl
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'output/pdf/game-qta-governanca-e-privacidade.pdf'
 DATA = json.loads(Path(sys.argv[1]).read_text())
-FONT = Path('/usr/share/fonts/dejavu-sans-fonts')
-pdfmetrics.registerFont(TTFont('DejaVu', str(FONT / 'DejaVuSans.ttf')))
-pdfmetrics.registerFont(TTFont('DejaVu-Bold', str(FONT / 'DejaVuSans-Bold.ttf')))
-pdfmetrics.registerFontFamily('DejaVu', normal='DejaVu', bold='DejaVu-Bold', italic='DejaVu', boldItalic='DejaVu-Bold')
-INK = colors.HexColor('#163B35')
-GREEN = colors.HexColor('#065F46')
-MUTED = colors.HexColor('#475569')
+FONT = Path('/usr/share/fonts/liberation-serif-fonts')
+pdfmetrics.registerFont(TTFont('Document', str(FONT / 'LiberationSerif-Regular.ttf')))
+pdfmetrics.registerFont(TTFont('Document-Bold', str(FONT / 'LiberationSerif-Bold.ttf')))
+pdfmetrics.registerFontFamily('Document', normal='Document', bold='Document-Bold', italic='Document', boldItalic='Document-Bold')
 styles = getSampleStyleSheet()
-styles.add(ParagraphStyle(name='BodyQTA', fontName='DejaVu', fontSize=9.3, leading=14, textColor=colors.HexColor('#24332F'), spaceAfter=8))
-styles.add(ParagraphStyle(name='H1QTA', fontName='DejaVu-Bold', fontSize=20, leading=26, textColor=INK, spaceBefore=6, spaceAfter=15, keepWithNext=True))
-styles.add(ParagraphStyle(name='H2QTA', fontName='DejaVu-Bold', fontSize=12, leading=17, textColor=GREEN, spaceBefore=11, spaceAfter=7, keepWithNext=True))
-styles.add(ParagraphStyle(name='SmallQTA', parent=styles['BodyQTA'], fontSize=8, leading=12, textColor=MUTED))
-styles.add(ParagraphStyle(name='CoverQTA', parent=styles['H1QTA'], fontSize=31, leading=39, spaceAfter=20))
-styles.add(ParagraphStyle(name='CellQTA', parent=styles['BodyQTA'], fontSize=8.5, leading=12.5, spaceAfter=0))
+styles.add(ParagraphStyle(name='BodyQTA', fontName='Document', fontSize=11, leading=16, textColor=colors.black, alignment=TA_JUSTIFY, spaceAfter=8))
+styles.add(ParagraphStyle(name='H1QTA', fontName='Document-Bold', fontSize=16, leading=21, textColor=colors.black, spaceBefore=8, spaceAfter=12, keepWithNext=True))
+styles.add(ParagraphStyle(name='H2QTA', fontName='Document-Bold', fontSize=12, leading=17, textColor=colors.black, spaceBefore=10, spaceAfter=7, keepWithNext=True))
+styles.add(ParagraphStyle(name='SmallQTA', parent=styles['BodyQTA'], fontSize=9.5, leading=13, alignment=TA_LEFT))
+styles.add(ParagraphStyle(name='CoverQTA', parent=styles['H1QTA'], fontSize=24, leading=30, alignment=TA_CENTER, spaceAfter=20))
+styles.add(ParagraphStyle(name='CoverLabelQTA', parent=styles['SmallQTA'], alignment=TA_CENTER, spaceAfter=12))
+styles.add(ParagraphStyle(name='CellQTA', parent=styles['BodyQTA'], fontSize=9.5, leading=13, alignment=TA_LEFT, spaceAfter=0))
 story = []
 
 
@@ -57,18 +55,20 @@ def bullet(text):
 
 
 def link(label, url):
-    story.append(Paragraph(f'<link href="{escape(url, quote=True)}" color="#065F46"><u>{escape(clean(label))}</u></link>', styles['SmallQTA']))
+    story.append(Paragraph(f'<link href="{escape(url, quote=True)}" color="#000000"><u>{escape(clean(label))}</u></link>', styles['SmallQTA']))
 
 
 def table(rows, widths):
     cells = [[p(cell, 'CellQTA') for cell in row] for row in rows]
+    cells[0] = [Paragraph('<b>' + escape(clean(cell)) + '</b>', styles['CellQTA']) for cell in rows[0]]
     t = Table(cells, colWidths=widths, repeatRows=1, hAlign='LEFT')
     t.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#D1FAE5')),
+        ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#F2F2F2')),
         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+        ('FONTNAME', (0, 0), (-1, 0), 'Document-Bold'),
         ('LEFTPADDING', (0, 0), (-1, -1), 8), ('RIGHTPADDING', (0, 0), (-1, -1), 8),
         ('TOPPADDING', (0, 0), (-1, -1), 8), ('BOTTOMPADDING', (0, 0), (-1, -1), 8),
-        ('LINEBELOW', (0, 0), (-1, -1), 0.4, colors.HexColor('#CBD5E1')),
+        ('LINEBELOW', (0, 0), (-1, -1), 0.4, colors.black),
     ]))
     story.append(t)
     story.append(Spacer(1, 10))
@@ -77,18 +77,18 @@ def table(rows, widths):
 def page(canvas, doc):
     canvas.saveState()
     w, h = A4
-    canvas.setStrokeColor(colors.HexColor('#C5DAD2'))
-    canvas.line(21 * mm, h - 18 * mm, w - 21 * mm, h - 18 * mm)
-    canvas.setFillColor(MUTED)
-    canvas.setFont('DejaVu', 7)
-    canvas.drawString(21 * mm, h - 14 * mm, 'GAME QTA  |  GOVERNANÇA E PRIVACIDADE')
-    canvas.drawString(21 * mm, 14 * mm, '03/11/2026  |  Minutas e registro de implementação')
-    canvas.drawRightString(w - 21 * mm, 14 * mm, str(doc.page))
+    canvas.setStrokeColor(colors.black)
+    canvas.line(25 * mm, h - 18 * mm, w - 25 * mm, h - 18 * mm)
+    canvas.setFillColor(colors.black)
+    canvas.setFont('Document', 8)
+    canvas.drawString(25 * mm, h - 14 * mm, 'GAME QTA  |  GOVERNANÇA E PRIVACIDADE')
+    canvas.drawString(25 * mm, 14 * mm, '03/11/2026  |  Minutas e registro de implementação')
+    canvas.drawRightString(w - 25 * mm, 14 * mm, str(doc.page))
     canvas.restoreState()
 
 
 story.append(Spacer(1, 28 * mm))
-para('GAME QTA', 'SmallQTA')
+para('GAME QTA', 'CoverLabelQTA')
 para('Governança, termos\ne privacidade'.replace('\n', ' '), 'CoverQTA')
 para('Dossiê para o responsável e a equipe do projeto', 'H2QTA')
 para('Emissão: 03/11/2026. Documentos do site: ' + DATA['shared']['version'] + '.')
@@ -112,7 +112,7 @@ table([
     ['Direitos', 'Perfil e exclusão continuam disponíveis mesmo sem novo aceite. O contato público complementa casos de representantes, falta de acesso e outros direitos.'],
     ['Tempo e resposta', 'Escolha de 1 a 10 vezes o tempo antes de revelar a questão. Pontos iguais, tempo efetivo no desempate. Alternativa só é enviada pelo botão de confirmação.'],
     ['Segurança', 'Senha verificada com BCrypt no servidor; edição exige senha atual e exclusão exige confirmação adicional. Páginas privadas recebem no-store; snapshots Turbo são desativados e o cache é limpo ao sair.'],
-], [42 * mm, 126 * mm])
+], [40 * mm, 120 * mm])
 heading('2. Dados, finalidades e pesquisa', 1)
 para('A operação educativa e eventual pesquisa são finalidades distintas. O cadastro não concede autorização geral para qualquer estudo. O professor informou interesse em idade, escolaridade e cidade para possível pesquisa futura, mas as análises ainda não foram definidas.')
 para('A hipótese de legítimo interesse está em avaliação para conta, progresso e segurança. A avaliação considera o uso real de cada dado e os direitos dos menores. Não há conclusão favorável automática, especialmente para os campos demográficos e guarda sem prazo definido.')
@@ -146,15 +146,15 @@ table([
     ['Cookies e terceiros', 'Controles técnicos implementados e inventário disponível. Confirmar adequação dos vídeos ao público infantil e requisitos do fornecedor; não afirmar ausência de tratamento externo após ativação.'],
     ['Acessibilidade', 'Testes automáticos e de teclado executados. Conferir legendas, transcrições, alternativas e leitores de tela com avaliação humana. Sem declaração integral WCAG ou de PDF acessível/tagueado.'],
     ['Pesquisa', 'Estudo, análises, instituição responsável e requisitos éticos/bases aplicáveis ainda por definir.'],
-], [42 * mm, 126 * mm])
+], [40 * mm, 120 * mm])
 story.append(PageBreak())
 
 for number, key in [(5, 'terms'), (6, 'privacy')]:
     document = DATA[key]
     heading(f'{number}. {document["title"]} - texto integral')
     para('Versão: ' + DATA['shared']['version'] + ' | Atualização: 03/11/2026', 'SmallQTA')
-    notice = Table([[p(DATA['shared']['draft_title'] + '. ' + DATA['shared']['draft_notice'], 'SmallQTA')]], colWidths=[168 * mm])
-    notice.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), colors.HexColor('#FFFBEB')), ('BOX', (0, 0), (-1, -1), 0.5, colors.HexColor('#A16207')), ('LEFTPADDING', (0, 0), (-1, -1), 10), ('RIGHTPADDING', (0, 0), (-1, -1), 10), ('TOPPADDING', (0, 0), (-1, -1), 10), ('BOTTOMPADDING', (0, 0), (-1, -1), 10)]))
+    notice = Table([[p(DATA['shared']['draft_title'] + '. ' + DATA['shared']['draft_notice'], 'SmallQTA')]], colWidths=[160 * mm])
+    notice.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), colors.white), ('BOX', (0, 0), (-1, -1), 0.5, colors.black), ('LEFTPADDING', (0, 0), (-1, -1), 10), ('RIGHTPADDING', (0, 0), (-1, -1), 10), ('TOPPADDING', (0, 0), (-1, -1), 10), ('BOTTOMPADDING', (0, 0), (-1, -1), 10)]))
     story.append(notice)
     story.append(Spacer(1, 12))
     para(document['subtitle'])
@@ -194,6 +194,6 @@ para('Revisar os documentos quando houver mudança de finalidade, responsável, 
 para('Antes da disponibilização definitiva, o responsável deve concluir as decisões pendentes e providenciar a validação cabível. A existência deste documento não indica aprovação da UESC, de comitê de ética ou da ANPD.')
 
 OUT.parent.mkdir(parents=True, exist_ok=True)
-doc = SimpleDocTemplate(str(OUT), pagesize=A4, leftMargin=21 * mm, rightMargin=21 * mm, topMargin=25 * mm, bottomMargin=23 * mm, title='Game QTA - Governança, termos e privacidade', author=DATA['shared']['contact_name'])
+doc = SimpleDocTemplate(str(OUT), pagesize=A4, leftMargin=25 * mm, rightMargin=25 * mm, topMargin=25 * mm, bottomMargin=25 * mm, title='Game QTA - Governança, termos e privacidade', author=DATA['shared']['contact_name'])
 doc.build(story, onFirstPage=page, onLaterPages=page)
 print(OUT)

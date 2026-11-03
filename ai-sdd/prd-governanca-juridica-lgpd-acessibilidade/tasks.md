@@ -148,3 +148,8 @@ A atualização explícita de ruby-advisory-db para `adeaf12` trouxe alertas adi
 Revalidação com essa base: Rubocop **139 arquivos sem infrações**, Brakeman **zero alertas/erros**, bundler-audit **nenhuma vulnerabilidade conhecida**, aplicação **105 testes / 654 assertions** e navegador **30 testes / 197 assertions**, sem falhas/erros/skips. Logs em `tmp/lgpd-security-final-*.log`. `bin/importmap audit`: nenhum pacote vulnerável encontrado.
 
 Na consulta ao GitHub, o PR está aberto, mas não foram informados checks ou execuções de Actions para a branch. Os resultados acima são locais; não se declara CI remoto aprovado. A configuração de Actions e permissões da conta não foi alterada.
+
+
+### Ajuste de apresentação do PDF solicitado pelo usuário
+
+PDF reformulado com Liberation Serif, texto integralmente preto, títulos discretos, margens de 25 mm, tabelas monocromáticas e capa sóbria. A nova diagramação possui **13 páginas**. Conteúdo preservado por comparação da extração textual; todas as páginas foram renderizadas e inspecionadas. Gerador e instrução de fonte no README atualizados. Alteração exclusivamente documental, sem mudanças no funcionamento da aplicação.

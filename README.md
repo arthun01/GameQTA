@@ -121,7 +121,7 @@ A atualização de 03/11/2026 preserva idade, escolaridade e cidade, além dos v
 
 As mudanças de banco devem ser aplicadas com `bin/rails db:migrate`. Resultados de testes e limitações das auditorias estão no [acompanhamento da feature](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/tasks.md).
 
-Para regenerar o dossiê a partir dos textos localizados, use Python com ReportLab e a fonte DejaVu Sans instalada em `/usr/share/fonts/dejavu-sans-fonts`:
+Para regenerar o dossiê a partir dos textos localizados, use Python com ReportLab e a fonte Liberation Serif instalada em `/usr/share/fonts/liberation-serif-fonts`:
 
 ```bash
 mkdir -p tmp/pdfs
