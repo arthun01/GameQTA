@@ -1,0 +1,16 @@
+<% if question.youtube_video_id.present? %>
+  <section data-controller="external-video" data-action="turbo:before-cache@document->external-video#reset" data-external-video-url-value="https://www.youtube-nocookie.com/embed/<%= question.youtube_video_id %>?rel=0" data-external-video-title-value="<%= t('privacy_controls.video_title') %>" class="rounded-xl border border-slate-300 bg-slate-50 p-4 text-sm text-slate-800">
+    <div data-external-video-target="choices" class="space-y-3">
+      <p><%= t('privacy_controls.video_notice') %></p>
+      <div class="flex flex-wrap gap-3">
+        <button type="button" data-action="external-video#load" class="rounded-lg border border-emerald-800 bg-white px-4 py-2 font-semibold text-emerald-900"><%= t('privacy_controls.load_video') %></button>
+        <button type="button" data-action="external-video#reject" class="rounded-lg border border-emerald-800 bg-white px-4 py-2 font-semibold text-emerald-900"><%= t('privacy_controls.skip_video') %></button>
+      </div>
+    </div>
+    <p data-external-video-target="status" role="status"></p>
+    <div data-external-video-target="player"></div>
+    <button type="button" hidden data-external-video-target="stop" data-action="external-video#reset" class="mt-3 rounded-lg border border-emerald-800 bg-white px-4 py-2 font-semibold text-emerald-900"><%= t('privacy_controls.stop_video') %></button>
+    <span hidden data-external-video-target="rejection"><%= t('privacy_controls.video_rejected') %></span>
+    <noscript><p><%= t('privacy_controls.video_no_js') %></p></noscript>
+  </section>
+<% end %>

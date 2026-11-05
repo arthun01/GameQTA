@@ -15,6 +15,8 @@ class RankingTest < ApplicationSystemTestCase
     visit ranking_path
 
     assert_text "Ranking Global"
-    assert_text "João"
+    assert_text @user.ranking_name
+    assert_no_text @user.full_name
+    assert_no_text users(:student_two).full_name
   end
 end

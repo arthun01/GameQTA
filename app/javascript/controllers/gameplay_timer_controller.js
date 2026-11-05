@@ -1,66 +1,29 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = [ "display", "container" ]
-  static values = {
-    seconds: Number
-  }
+  static targets = ["display", "announcement"]
+  static values = { deadline: String, serverNow: String, warning: String }
 
   connect() {
-    this.remainingSeconds = this.secondsValue
-    this.updateDisplay()
-    
-    // Inicia apenas se houver tempo > 0
-    if (this.remainingSeconds > 0) {
-      this.timer = setInterval(() => {
-        this.tick()
-      }, 1000)
-    } else {
-      this.submitForm()
-    }
+    this.deadline ||= performance.now() + Date.parse(this.deadlineValue) - Date.parse(this.serverNowValue)
+    this.tick()
+    if (this.deadline > performance.now()) this.timer = setInterval(() => this.tick(), 1000)
   }
 
   disconnect() {
-    this.clearTimer()
-  }
-
-  clearTimer() {
-    if (this.timer) {
-      clearInterval(this.timer)
-      this.timer = null
-    }
+    clearInterval(this.timer)
   }
 
   tick() {
-    this.remainingSeconds--
-    this.updateDisplay()
-
-    if (this.remainingSeconds <= 0) {
-      this.clearTimer()
-      this.submitForm()
+    const remaining = Math.max(0, Math.ceil((this.deadline - performance.now()) / 1000))
+    this.displayTarget.textContent = `${Math.floor(remaining / 60).toString().padStart(2, "0")}:${(remaining % 60).toString().padStart(2, "0")}`
+    if (remaining <= 20 && !this.warned) {
+      this.announcementTarget.textContent = this.warningValue
+      this.warned = true
     }
-  }
-
-  updateDisplay() {
-    const minutes = Math.floor(Math.max(0, this.remainingSeconds) / 60)
-    const seconds = Math.max(0, this.remainingSeconds) % 60
-    
-    const m = minutes.toString().padStart(2, '0')
-    const s = seconds.toString().padStart(2, '0')
-    
-    if (this.hasDisplayTarget) {
-      this.displayTarget.textContent = `${m}:${s}`
-    }
-
-    if (this.remainingSeconds <= 10 && this.hasContainerTarget) {
-      this.containerTarget.classList.add("animate-pulse")
-    }
-  }
-
-  submitForm() {
-    const form = document.getElementById("evaluation_form")
-    if (form) {
-      form.requestSubmit()
+    if (remaining === 0) {
+      clearInterval(this.timer)
+      document.getElementById("evaluation_form")?.requestSubmit()
     }
   }
 }

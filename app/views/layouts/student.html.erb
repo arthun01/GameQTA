@@ -4,24 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><%= content_for?(:title) ? yield(:title) : t("app.name") %></title>
+    <meta name="turbo-cache-control" content="no-cache">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     
     <%= yield :head %>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body class="h-full antialiased font-body bg-(--color-surface) text-(--color-text-primary)">
-    <main id="main-content" class="min-h-full">
+    <%= render "shared/skip_link" %>
+    <main id="main-content" tabindex="-1" class="min-h-full">
       <%= render "shared/flash" %>
       <%= yield %>
     </main>
+    <% if Current.user.present? %>
+      <nav aria-label="<%= t('shared.profile_link') %>" class="px-4 pt-5 text-center text-sm">
+        <%= link_to t("shared.profile_link"), profile_path, class: "rounded-sm font-semibold text-emerald-900 underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4" %>
+        <%= button_to t("accessibility.sign_out"), sair_path, method: :delete, form: { data: { controller: 'cache-reset', action: 'turbo:submit-start->cache-reset#clear' } }, class: 'mt-3 rounded-lg border border-emerald-800 px-4 py-2 font-semibold text-emerald-900' %>
+      </nav>
+    <% end %>
+    <%= render "shared/legal_links" %>
+    <%= render "shared/cookie_notice" %>
     <div id="modal_container"></div>
   </body>
 </html>

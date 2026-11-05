@@ -26,7 +26,7 @@ module Authentication
     end
 
     def find_session_by_cookie
-      Session.find_by(id: cookies.signed[:session_id]) if cookies.signed[:session_id]
+      Session.where(created_at: 12.hours.ago..).find_by(id: cookies.signed[:session_id]) if cookies.signed[:session_id]
     end
 
     def request_authentication
@@ -41,7 +41,7 @@ module Authentication
     def start_new_session_for(admin)
       admin.sessions.create!(user_agent: request.user_agent, ip_address: request.remote_ip).tap do |session|
         Current.session = session
-        cookies.signed.permanent[:session_id] = { value: session.id, httponly: true, same_site: :lax }
+        cookies.signed[:session_id] = { value: session.id, expires: 12.hours.from_now, httponly: true, same_site: :lax, secure: Rails.env.production? }
       end
     end
 

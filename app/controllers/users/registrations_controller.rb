@@ -1,5 +1,6 @@
 class Users::RegistrationsController < Users::BaseController
   allow_unauthenticated_access only: %i[ new create ]
+  skip_before_action :require_current_legal_acceptance
 
   def new
     @user = User.new
@@ -7,7 +8,7 @@ class Users::RegistrationsController < Users::BaseController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    if @user.save(context: :registration)
       start_new_session_for @user
       redirect_to after_authentication_url
     else
@@ -17,6 +18,6 @@ class Users::RegistrationsController < Users::BaseController
 
   private
     def user_params
-      params.expect(user: [ :email_address, :password, :full_name, :age, :city, :education_level ])
+      params.expect(user: [ :email_address, :password, :full_name, :age, :city, :education_level, :legal_documents_accepted, :legal_revision ])
     end
 end

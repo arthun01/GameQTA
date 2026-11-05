@@ -8,8 +8,8 @@ class Admin::AdminsTest < ApplicationSystemTestCase
     visit new_admin_session_path
     fill_in "email_address", with: @admin.email_address
     fill_in "password", with: "password"
-    click_on "Sign in"
-    assert_text "Dashboard"
+    click_on "Entrar na administração"
+    assert_current_path admin_root_path
   end
 
   test "creating a new admin" do

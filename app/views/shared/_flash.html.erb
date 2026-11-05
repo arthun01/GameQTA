@@ -1,5 +1,5 @@
 <% if flash.any? %>
-  <div id="flash-messages" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex flex-col gap-2 min-w-[300px] max-w-md w-full px-4">
+  <div id="flash-messages" role="status" class="mx-auto flex w-full max-w-md flex-col gap-2 px-4 py-2">
     <% flash.each do |key, message| %>
       <%
         bg_color = case key.to_s

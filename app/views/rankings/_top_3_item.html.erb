@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="font-sans font-bold text-white text-base/5">
-    <%= leaderboard.user.full_name.split(' ').first %>
+    <%= leaderboard.user.ranking_name %>
   </div>
   <div class="font-sans font-extrabold text-amber-100 text-base/5">
     <%= t('rankings.index.points', count: leaderboard.total_score) %>

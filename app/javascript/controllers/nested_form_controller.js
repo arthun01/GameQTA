@@ -7,14 +7,16 @@ export default class extends Controller {
   add(e) {
     e.preventDefault()
 
-    const content = this.templateTarget.innerHTML.replace(/NEW_RECORD/g, new Date().getTime())
+    const content = this.templateTarget.innerHTML.replace(/NEW_RECORD/g, crypto.randomUUID())
     this.targetTarget.insertAdjacentHTML('beforeend', content)
+    this.targetTarget.lastElementChild.querySelector("input[type=text]")?.focus()
   }
 
   remove(e) {
     e.preventDefault()
     
     const wrapper = e.target.closest('.nested-fields')
+    this.element.querySelector('[data-action="nested-form#add"]')?.focus()
     if (wrapper.dataset.newRecord === 'true') {
       wrapper.remove()
     } else {

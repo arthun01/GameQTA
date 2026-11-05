@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_27_035010) do
+ActiveRecord::Schema[8.1].define(version: 2026_11_03_140000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -40,6 +40,19 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_27_035010) do
     t.index ["user_id"], name: "index_leaderboards_on_user_id", unique: true
   end
 
+  create_table "legal_acceptances", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "accepted_at", null: false
+    t.datetime "created_at", null: false
+    t.string "document_revision", null: false
+    t.jsonb "document_snapshot", null: false
+    t.string "privacy_version", null: false
+    t.string "terms_version", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id", "document_revision"], name: "index_legal_acceptances_on_user_id_and_document_revision", unique: true
+    t.index ["user_id"], name: "index_legal_acceptances_on_user_id"
+  end
+
   create_table "levels", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.text "description", null: false
@@ -58,6 +71,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_27_035010) do
   end
 
   create_table "question_submissions", force: :cascade do |t|
+    t.datetime "answered_at"
     t.datetime "created_at", null: false
     t.boolean "is_correct", default: false, null: false
     t.bigint "option_id"
@@ -65,6 +79,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_27_035010) do
     t.datetime "revealed_at", null: false
     t.integer "score", default: 0, null: false
     t.bigint "theme_attempt_id", null: false
+    t.integer "time_limit_seconds"
     t.integer "time_taken"
     t.datetime "updated_at", null: false
     t.index ["option_id"], name: "index_question_submissions_on_option_id"
@@ -124,17 +139,20 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_27_035010) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.datetime "accepted_terms_at"
     t.integer "age", null: false
     t.datetime "blocked_at"
-    t.string "city", null: false
+    t.string "city"
     t.datetime "created_at", null: false
-    t.integer "education_level", null: false
+    t.integer "education_level"
     t.string "email_address", null: false
     t.string "full_name", null: false
     t.string "password_digest", null: false
+    t.string "ranking_code", limit: 12, null: false
     t.integer "total_score", default: 0, null: false
     t.datetime "updated_at", null: false
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
+    t.index ["ranking_code"], name: "index_users_on_ranking_code", unique: true
     t.index ["total_score"], name: "index_users_on_total_score", order: :desc
   end
 

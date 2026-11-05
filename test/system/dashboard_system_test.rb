@@ -29,6 +29,6 @@ class DashboardSystemTest < ApplicationSystemTestCase
 
     # O level unlocked deve ter o botão Iniciar Tema
     assert_selector "form.button_to", visible: true
-    assert_text "Iniciar Tema"
+    assert_button "Iniciar Tema"
   end
 end

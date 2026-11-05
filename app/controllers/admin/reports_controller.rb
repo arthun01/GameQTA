@@ -6,7 +6,7 @@ class Admin::ReportsController < Admin::BaseController
 
   def students
     headers.delete("Content-Length")
-    headers["Cache-Control"] = "no-cache"
+    headers["Cache-Control"] = "no-store"
     headers["Content-Type"] = "text/csv; charset=utf-8"
     headers["Content-Disposition"] = "attachment; filename=\"relatorio_estudantes_#{Date.today}.csv\""
     headers["X-Accel-Buffering"] = "no"
@@ -36,7 +36,7 @@ class Admin::ReportsController < Admin::BaseController
 
   def themes
     headers.delete("Content-Length")
-    headers["Cache-Control"] = "no-cache"
+    headers["Cache-Control"] = "no-store"
     headers["Content-Type"] = "text/csv; charset=utf-8"
     headers["Content-Disposition"] = "attachment; filename=\"relatorio_temas_#{Date.today}.csv\""
     headers["X-Accel-Buffering"] = "no"

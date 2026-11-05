@@ -1,0 +1,50 @@
+@media print {
+  .legal-page {
+    background: white;
+    color: black;
+    font-size: 11pt;
+  }
+
+  .legal-page .legal-screen-only {
+    display: none !important;
+  }
+
+  .legal-page .legal-shell,
+  .legal-page .legal-content {
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+  }
+
+  .legal-page .legal-columns {
+    display: block;
+  }
+
+  .legal-page [data-legal-draft] {
+    border: 1pt solid black;
+    background: white;
+    color: black;
+    break-inside: avoid;
+  }
+
+  .legal-page h1,
+  .legal-page h2 {
+    color: black;
+    break-after: avoid;
+  }
+
+  .legal-page p,
+  .legal-page li {
+    color: black;
+    line-height: 1.6;
+    orphans: 3;
+    widows: 3;
+  }
+
+  .legal-page a {
+    color: black;
+    overflow-wrap: anywhere;
+  }
+}

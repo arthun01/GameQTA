@@ -17,7 +17,7 @@ O ecossistema é dividido em duas frentes complementares:
 
 ## 🚀 Status do Projeto
 
-> **Status Atual:** MVP e Refatoração de Design Concluídos (Fases 1 a 6 Completas). Prontos para Homologação e Produção.
+> **Status Atual:** MVP e Refatoração de Design concluídos (Fases 1 a 6). Adequação jurídica, proteção de dados e acessibilidade em andamento; existem decisões pendentes antes da publicação definitiva.
 
 ### 📍 O que TEMOS atualmente (Feito)
 
@@ -68,6 +68,7 @@ O ecossistema é dividido em duas frentes complementares:
 
 ### 🚧 Próximos Passos (O que NÃO TEMOS)
 
+- [ ] Concluir os quatro tópicos do [pacote de governança jurídica, LGPD e acessibilidade](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/prd.md), em sequência. A primeira entrega disponibiliza minutas públicas; não representa conclusão da adequação.
 - [ ] Validação de campo (homologação) com alunos e professores da rede de ensino atendida pelo projeto de extensão da UESC.
 - [ ] Planejamento e execução de itens da v2.0 a partir do [Backlog Estratégico](./ai-sdd/system/backlog.md) (como Sistema de Vidas/Energia, Streaks e Gráficos analíticos).
 
@@ -99,6 +100,44 @@ Se você acabou de chegar no projeto, por favor leia os guias abaixo:
 - 🚀 [Acesse o Backlog Estratégico (Pós-MVP)](./ai-sdd/system/backlog.md)
 
 *(Nota Histórica: O histórico imutável do planejamento das sprints iniciais usando a metodologia AI-SDD repousa preservado na pasta `/ai-sdd/`).*
+
+### Termos e Política de Privacidade — tópico 1
+
+As páginas públicas **`/termos`** e **`/privacidade`** podem ser lidas sem login. Há links no cadastro, nos logins e nas áreas autenticadas, que abrem em nova aba para preservar formulários e partidas. Para imprimir ou salvar em PDF, use a opção **Imprimir** do navegador: a página mantém conteúdo, versão, data e aviso de minuta, ocultando a navegação.
+
+Os textos estão em **minuta**, com descrição dos dados atuais, sessões, ranking, relatórios e vídeos opcionais do YouTube. O responsável informado é Guilhardes de Jesus Júnior, com contato público de privacidade em guilhardesj@gmail.com. Avaliação das bases legais e medidas de proteção de menores, hospedagem e retenção de dados/backups permanecem pendentes. As páginas não recebem pedidos nem registram consentimento. Aceite, perfil e exclusão estão disponíveis na entrega parcial do tópico 2 descrita abaixo. Cookies próprios foram inventariados e os recursos de acessibilidade estão documentados, com limitações explícitas.
+
+O acompanhamento está no [PRD](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/prd.md), na [Tech Spec](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/techspec.md) e nas [tarefas](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/tasks.md). O usuário autorizou implementar a estrutura funcional antes do design do Paper, que poderá ser incorporado pelo colaborador posteriormente.
+
+### Cadastro, perfil e exclusão — tópico 2 (parcial)
+
+O cadastro público exige manifestação desmarcada por padrão sobre os termos e a política apresentados. O servidor conserva data, versões e cópia do texto; ele rejeita revisão desatualizada e não atribui aceites retroativos a contas antigas. Quando necessário, o estudante é direcionado para **`/aceite/new`** antes de voltar ao jogo. Isso não equivale a consentimento geral de tratamento nem a autorização do responsável.
+
+**`/perfil`** permite consultar dados e o histórico de aceites, editar o cadastro com senha atual e excluir a própria conta com senha e confirmação das consequências. A exclusão remove dados da aplicação ativa (cadastro, sessões, tentativas, respostas, ranking e aceites). Jobs pendentes não restauram o ranking de contas excluídas ou bloqueadas. Os procedimentos para logs, backups e cópias exportadas continuam pendentes e são informados antes da confirmação.
+
+Cidade e escolaridade são opcionais e podem ser apagadas do perfil. O cadastro permanece aberto com os limites de idade já existentes; não foi acrescentada uma exigência geral de autorização para todos os menores de 18 anos. A opção aprovada mantém entrada direta com as mesmas proteções para todos. O ranking usa um código gerado automaticamente em vez do nome, inclusive para adultos; não há aprovação externa no cadastro. A avaliação das bases legais e das medidas legais de proteção/supervisão continua pendente, sem dispensa presumida pelo caráter educativo. Nenhuma autorização presencial ou escolar é simulada pelo sistema. O contato de privacidade para estudantes, representantes e pessoas sem acesso à conta é **guilhardesj@gmail.com**; o responsável informado é **Guilhardes de Jesus Júnior**. O site fornece um link de e-mail, sem envio automático ou protocolo.
+
+A atualização de 03/11/2026 preserva idade, escolaridade e cidade, além dos valores existentes, e atribui códigos de ranking às contas por migração. Nenhum aceite é criado retroativamente. Cidade e escolaridade continuam opcionais, conforme a implementação anterior. A avaliação preliminar e suas limitações estão em [avaliação dos tratamentos](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/avaliacao-tratamentos.md); as instruções da equipe estão no [procedimento de atendimento](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/atendimento-privacidade.md). O [dossiê em PDF](./output/pdf/game-qta-governanca-e-privacidade.pdf) contém os textos integrais da versão 0.4, procedimentos e pendências.
+
+As mudanças de banco devem ser aplicadas com `bin/rails db:migrate`. Resultados de testes e limitações das auditorias estão no [acompanhamento da feature](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/tasks.md).
+
+Para regenerar o dossiê a partir dos textos localizados, use Python com ReportLab e a fonte Liberation Serif instalada em `/usr/share/fonts/liberation-serif-fonts`:
+
+```bash
+mkdir -p tmp/pdfs
+ruby -rjson -ryaml -e 'print JSON.pretty_generate(YAML.load_file("config/locales/pt-BR/legal.yml").fetch("pt-BR").fetch("legal_documents"))' > tmp/pdfs/legal_documents.json
+python3 script/build_governance_pdf.py tmp/pdfs/legal_documents.json
+```
+
+O dossiê também contém um retrato operacional datado: revise esse conteúdo no gerador e confira a diagramação antes de publicar uma nova edição.
+
+### Cookies e acessibilidade — tópicos 3 e 4
+
+A sessão de acesso dura **12 horas**, com expiração também no servidor; em produção cookies usam Secure e o serviço força HTTPS. Google Fonts foi removido. Vídeos começam desligados e só conectam ao YouTube após **Carregar este vídeo**; é possível continuar sem vídeo ou desativar o player. Não existe autorização geral salva nem analytics instalado. O rodapé explica o uso sem bloquear a entrada.
+
+**`/acessibilidade`** explica teclado, foco e limites conhecidos. Antes da revelação é possível escolher de **1 a 10× o tempo padrão**, para qualquer pessoa. A escolha é registrada no servidor e recarregar não reinicia o prazo; o tempo efetivo continua no desempate. Selecionar alternativa não envia a resposta: use **Confirmar resposta**. Diálogos usam foco nativo, Escape e títulos; formulários associam erros aos campos e respeitam preferência de reduzir movimento.
+
+Evidências: [cookies](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/auditoria-cookies.md), [acessibilidade](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/auditoria-acessibilidade.md) e [decisões para publicação](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/pendencias-publicacao.md). A auditoria automática usa axe-core-capybara somente em testes, sem dependência no navegador de produção. Legendas/alternativas dos vídeos e avaliação humana com leitor de tela ainda dependem da equipe; não há certificação WCAG integral. A aprovação do PR não substitui as decisões jurídicas e operacionais pendentes.
 
 ---
 

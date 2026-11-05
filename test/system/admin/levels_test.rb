@@ -7,8 +7,8 @@ class Admin::LevelsSystemTest < ApplicationSystemTestCase
     visit new_admin_session_path
     fill_in "email_address", with: @admin.email_address
     fill_in "password", with: "password"
-    click_on "Sign in"
-    assert_text "Dashboard" # wait for dashboard to load
+    click_on "Entrar na administração"
+    assert_current_path admin_root_path
   end
 
   test "creating a Level" do
@@ -16,7 +16,7 @@ class Admin::LevelsSystemTest < ApplicationSystemTestCase
 
     click_on "Novo Nível"
 
-    assert_text "Novo Nível" # wait for the page to load
+    assert_selector "h1", text: "Novo Nível"
 
     fill_in "level[name]", with: "Nível Avançado"
     fill_in "level[description]", with: "Uma nova fase muito legal"
@@ -34,7 +34,7 @@ class Admin::LevelsSystemTest < ApplicationSystemTestCase
     visit admin_levels_url
 
     # Click edit on the first level in the list
-    within(first(".group")) do
+    within(first("[data-level-card]")) do
       click_on "Editar"
     end
 
@@ -51,7 +51,7 @@ class Admin::LevelsSystemTest < ApplicationSystemTestCase
     empty_level = Level.create!(name: "Novo Nível Vazio Criado", description: "Sem temas", icon: "🌱")
     visit admin_levels_url
 
-    within(find(".group", text: empty_level.name)) do
+    within(find("[data-level-card]", text: empty_level.name)) do
       accept_confirm do
         click_on "Excluir"
       end

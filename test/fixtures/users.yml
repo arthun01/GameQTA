@@ -1,6 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 student_one:
+  ranking_code: A1B2C3D4E5F6
   email_address: student1@example.com
   password_digest: <%= BCrypt::Password.create('password') %>
   full_name: João Aluno
@@ -9,6 +10,7 @@ student_one:
   education_level: 3
 
 student_two:
+  ranking_code: F6E5D4C3B2A1
   email_address: student2@example.com
   password_digest: <%= BCrypt::Password.create('password') %>
   full_name: Maria Estudante

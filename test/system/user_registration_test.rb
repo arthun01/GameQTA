@@ -13,6 +13,7 @@ class UserRegistrationTest < ApplicationSystemTestCase
 
     fill_in "E-mail", with: "joao.silva@example.com"
     fill_in "Senha", with: "senha123456"
+    check "Li e concordo com os Termos de Uso"
 
     click_on "Começar a jogar!"
 

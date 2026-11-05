@@ -1,19 +1,30 @@
 require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
+  test "ranking code does not derive from profile and is preserved when profile changes" do
+    user = User.create!(full_name: "Pessoa Exemplo", email_address: "new-alias@example.com", password: "password123", age: 11, city: "Ilhéus", education_level: :fundamental_incompleto)
+    original_code = user.ranking_code
+
+    assert_match(/\A[A-F0-9]{12}\z/, original_code)
+    assert_equal "Jogador #{original_code}", user.ranking_name
+    assert user.update_profile({ full_name: "Outro Nome" }, password: "password123")
+    assert_equal original_code, user.reload.ranking_code
+    assert_equal "Ilhéus", user.city
+    assert_equal "fundamental_incompleto", user.education_level
+    assert_equal 11, user.age
+  end
+
   test "should not save without required parameters" do
     user = User.new
     assert_not user.save, "Saved the user without required attributes"
     assert_includes user.errors[:full_name], "não pode ficar em branco"
     assert_includes user.errors[:age], "não pode ficar em branco"
-    assert_includes user.errors[:city], "não pode ficar em branco"
-    assert_includes user.errors[:education_level], "não pode ficar em branco"
   end
 
   test "should reject invalid education_level" do
-    assert_raises(ArgumentError) do
-      User.new(education_level: "doutorado")
-    end
+    user = users(:student_one)
+    assert_not user.update(education_level: "doutorado")
+    assert user.errors[:education_level].present?
   end
 
   test "should save with all valid attributes" do
@@ -54,5 +65,54 @@ class UserTest < ActiveSupport::TestCase
     user.unblock!
 
     assert_not user.blocked?
+  end
+
+  test "profile reports are optional and can be cleared with the current password" do
+    user = users(:student_one)
+
+    assert user.update_profile({ city: "", education_level: "" }, password: "password")
+    assert_nil user.reload.city
+    assert_nil user.education_level
+  end
+
+  test "profile changes require the current password and preserve persisted data on failure" do
+    user = users(:student_one)
+    original_email = user.email_address
+
+    assert_not user.update_profile({ email_address: "changed@example.com" }, password: "wrong")
+    assert user.errors[:current_password].present?
+    assert_equal original_email, user.reload.email_address
+  end
+
+  test "erasure requires both the password and explicit confirmation" do
+    user = users(:student_one)
+    [ [ "wrong", "1" ], [ "password", "0" ], [ "", "1" ], [ "password", nil ] ].each do |password, confirmation|
+      assert_no_difference [ "User.count", "ThemeAttempt.count", "QuestionSubmission.count", "UserSession.count", "Leaderboard.count" ] do
+        assert_not user.erase_account(password: password, confirmed: confirmation)
+      end
+    end
+  end
+
+  test "erasure removes associated personal data and preserves other students and teaching content" do
+    user = users(:student_one)
+    user.user_sessions.create!
+    user.user_sessions.create!
+    attempt_ids = user.theme_attempts.pluck(:id)
+    other_user = users(:student_two)
+    other_attempt_ids = other_user.theme_attempts.pluck(:id)
+
+    assert_no_difference [ "Question.count", "Option.count", "Theme.count", "Admin.count" ] do
+      assert user.erase_account(password: "password", confirmed: "1")
+    end
+
+    assert_not User.exists?(user.id)
+    assert_not UserSession.exists?(user_id: user.id)
+    assert_not ThemeAttempt.exists?(user_id: user.id)
+    assert_not QuestionSubmission.exists?(theme_attempt_id: attempt_ids)
+    assert_not Leaderboard.exists?(user_id: user.id)
+    assert_not LegalAcceptance.exists?(user_id: user.id)
+    assert User.exists?(other_user.id)
+    assert_equal other_attempt_ids, other_user.theme_attempts.pluck(:id)
+    assert other_user.leaderboard.present?
   end
 end
