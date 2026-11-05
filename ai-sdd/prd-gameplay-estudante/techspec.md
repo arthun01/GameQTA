@@ -114,3 +114,11 @@ As seguintes telas devem ser implementadas usando Tailwind CSS e Flexbox conform
 - **`turbo-patterns`**: Uso de Turbo Frames/Streams no formulário de questão, mantendo o usuário na página e abrindo popups inline.
 - **`AGENTS.md`**: Controllers *thin*, restritos a ações REST e lógica de negócios focada no modelo. Testes puramente em Minitest/Fixtures. Sem RSpec ou FactoryBot.
 
+
+## Correções de integridade - 04/11/2026
+
+Esta seção atualiza o fluxo anterior de início/conclusão. User#start_theme serializa por estudante, valida disponibilidade e retoma tentativa ativa. Tema sem questões é recusado. Level#available_to?, #completed_for? e #passed_by? centralizam pré-requisitos, conclusão e o mínimo exato de 70% do nível; score_for mantém todos os itens exigidos no denominador.
+
+O caminho existente de início aponta para Play::ThemeAttemptsController#create. O caminho GET de resultado aponta para Play::ThemeCompletionsController#show e não muda estado. POST no recurso singular de conclusão chama ThemeAttempt#complete sob lock do estudante, exige todas as questões encerradas e só avalia/reinicia o nível com todos os temas concluídos. O resultado pertence ao estudante e fica na sessão; repetição após reset reutiliza o resultado válido sem recriar registros.
+
+A tela sem questões pendentes oferece formulário de conclusão, aprimorado por um controlador Stimulus genérico auto-submit; sem JavaScript existe botão. Conteúdo vazio retorna à jornada e não entra em ciclo. Remoções de respostas atualizam o ranking após commit. Ver evidências e limites em docs/reviews/2026-11-04-correcoes.md.

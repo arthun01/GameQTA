@@ -17,13 +17,12 @@ class Play::ThemesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to play_theme_attempt_question_url(attempt)
   end
 
-  test "starting theme should clear previous in_progress attempt for same theme" do
+  test "starting theme should resume previous in_progress attempt for same theme" do
     assert_no_difference("ThemeAttempt.count") do
       post start_play_theme_url(@theme)
     end
 
-    attempt = ThemeAttempt.last
-    assert_redirected_to play_theme_attempt_question_url(attempt)
+    assert_redirected_to play_theme_attempt_question_url(theme_attempts(:one))
   end
 
   test "cannot start if not logged in" do

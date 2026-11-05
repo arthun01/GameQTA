@@ -2,10 +2,12 @@
 <% content_for :title, document.fetch(:title) %>
 
 <article aria-labelledby="document-title">
-  <div class="mb-8 max-w-3xl border-l-4 border-amber-700 bg-amber-50 px-5 py-4 text-amber-950" role="note" aria-labelledby="draft-notice-title" data-legal-draft>
-    <p id="draft-notice-title" class="text-sm font-bold"><%= t("legal_documents.shared.draft_title") %></p>
-    <p class="mt-2 text-sm leading-relaxed"><%= t("legal_documents.shared.draft_notice") %></p>
-  </div>
+  <% if t("legal_documents.shared.draft_notice").present? %>
+    <div class="mb-8 max-w-3xl border-l-4 border-amber-700 bg-amber-50 px-5 py-4 text-amber-950" role="note" aria-labelledby="draft-notice-title" data-legal-draft>
+      <p id="draft-notice-title" class="text-sm font-bold"><%= t("legal_documents.shared.draft_title") %></p>
+      <p class="mt-2 text-sm leading-relaxed"><%= t("legal_documents.shared.draft_notice") %></p>
+    </div>
+  <% end %>
 
   <header class="mb-10 max-w-3xl">
     <p class="mb-3 text-sm font-semibold tracking-wide text-emerald-800"><%= t("legal_documents.shared.eyebrow") %></p>

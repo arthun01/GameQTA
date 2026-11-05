@@ -11,6 +11,8 @@ module ActiveSupport
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
 
+    setup { ActionController::Base.cache_store.clear }
+
     # Add more helper methods to be used by all tests here...
   end
 end

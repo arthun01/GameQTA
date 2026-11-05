@@ -5,7 +5,11 @@ class Play::QuestionsController < Users::BaseController
     @question = @theme_attempt.next_pending_question
 
     if @question.nil?
-      redirect_to finish_play_theme_path(@theme_attempt.theme)
+      if @theme_attempt.all_questions_answered?
+        render "play/theme_completions/new"
+      else
+        redirect_to jornada_path, alert: t("play.questions.empty_theme")
+      end
     end
   end
 
@@ -49,10 +53,12 @@ class Play::QuestionsController < Users::BaseController
   end
 
   private
-
-  def set_theme_attempt
-    @theme_attempt = Current.user.theme_attempts.find(params[:theme_attempt_id])
-  rescue ActiveRecord::RecordNotFound
-    redirect_to jornada_path, alert: t("play.questions.unauthorized", default: "Tentativa inválida ou não autorizada.")
-  end
+    def set_theme_attempt
+      @theme_attempt = Current.user.theme_attempts.find(params[:theme_attempt_id])
+      unless @theme_attempt.theme.level.available_to?(Current.user)
+        redirect_to jornada_path, alert: t("play.questions.unauthorized")
+      end
+    rescue ActiveRecord::RecordNotFound
+      redirect_to jornada_path, alert: t("play.questions.unauthorized", default: "Tentativa inválida ou não autorizada.")
+    end
 end

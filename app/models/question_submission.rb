@@ -6,7 +6,10 @@ class QuestionSubmission < ApplicationRecord
   validates :revealed_at, presence: true
   validates :question_id, uniqueness: { scope: :theme_attempt_id }
 
-  after_commit :update_leaderboard, on: [ :create, :update ]
+  scope :answered, -> { where.not(answered_at: nil).or(where.not(option_id: nil)) }
+
+  before_destroy :remember_leaderboard_user
+  after_commit :update_leaderboard, on: [ :create, :update, :destroy ]
 
   def allowed_seconds
     time_limit_seconds || GameSetting.current.time_for_difficulty(question.difficulty)
@@ -35,8 +38,11 @@ class QuestionSubmission < ApplicationRecord
   end
 
   private
+    def remember_leaderboard_user
+      @leaderboard_user_id = theme_attempt.user_id
+    end
 
-  def update_leaderboard
-    Leaderboards::UpdateUserJob.perform_later(theme_attempt.user_id)
-  end
+    def update_leaderboard
+      Leaderboards::UpdateUserJob.perform_later(@leaderboard_user_id || theme_attempt.user_id)
+    end
 end

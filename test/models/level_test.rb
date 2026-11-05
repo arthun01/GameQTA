@@ -38,8 +38,11 @@ class LevelTest < ActiveSupport::TestCase
 
     # We need to simulate destroying first_level. But first_level has themes in fixtures.
     # Let's delete the themes first to allow level deletion.
-    first_level.themes.destroy_all
-    first_level.destroy
+    first_level.themes.each do |theme|
+      theme.questions.destroy_all
+      theme.destroy!
+    end
+    first_level.reload.destroy!
 
     assert second_level.starting_level?
   end

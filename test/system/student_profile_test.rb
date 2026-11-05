@@ -9,12 +9,14 @@ class StudentProfileSystemTest < ApplicationSystemTestCase
 
     click_link "Meu perfil e meus dados"
     click_link "Editar meus dados"
+    fill_in "Idade", with: ""
     fill_in "Cidade", with: "Ilhéus"
     fill_in "Senha atual", with: "password"
     click_on "Salvar alterações"
 
     assert_text "Seus dados foram atualizados."
     assert_selector "dd", text: "Ilhéus"
+    assert_nil users(:student_one).reload.age
     fill_in "Senha atual", with: "password"
     check "Entendo as consequências", allow_label_click: true
     click_on "Excluir minha conta e meus dados"

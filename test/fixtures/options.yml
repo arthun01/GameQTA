@@ -34,3 +34,13 @@ three_opt2:
   content: "Errada 3"
   is_correct: false
   question: three
+
+four_opt1:
+  content: "Promover o uso sustentável da água."
+  is_correct: true
+  question: four
+
+four_opt2:
+  content: "Dispensar a proteção dos recursos hídricos."
+  is_correct: false
+  question: four

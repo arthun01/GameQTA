@@ -45,7 +45,7 @@ class LegalAcceptancesTest < ActionDispatch::IntegrationTest
   test "registration stores the actual documents and server time and permits optional fields to be omitted" do
     travel_to Time.zone.local(2026, 10, 27, 15, 0, 0) do
       assert_difference [ "User.count", "LegalAcceptance.count", "UserSession.count" ], 1 do
-        post cadastrar_path, params: { user: registration_attributes.merge(
+        post cadastrar_path, params: { user: registration_attributes.except(:age).merge(
           legal_documents_accepted: "1", legal_revision: LegalDocument.revision,
           accepted_terms_at: "2000-01-01", terms_version: "forged", blocked_at: Time.current
         ) }
@@ -61,6 +61,7 @@ class LegalAcceptancesTest < ActionDispatch::IntegrationTest
       assert_equal LegalDocument.version, acceptance.privacy_version
       assert user.current_legal_acceptance?
       assert_nil user.blocked_at
+      assert_nil user.age
       assert_nil user.city
       assert_nil user.education_level
     end

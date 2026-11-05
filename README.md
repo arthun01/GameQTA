@@ -68,7 +68,7 @@ O ecossistema é dividido em duas frentes complementares:
 
 ### 🚧 Próximos Passos (O que NÃO TEMOS)
 
-- [ ] Concluir os quatro tópicos do [pacote de governança jurídica, LGPD e acessibilidade](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/prd.md), em sequência. A primeira entrega disponibiliza minutas públicas; não representa conclusão da adequação.
+- [ ] Concluir os quatro tópicos do [pacote de governança jurídica, LGPD e acessibilidade](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/prd.md), em sequência. A documentação está consolidada em versão 1.0; a execução operacional e as verificações de publicação continuam acompanhadas separadamente.
 - [ ] Validação de campo (homologação) com alunos e professores da rede de ensino atendida pelo projeto de extensão da UESC.
 - [ ] Planejamento e execução de itens da v2.0 a partir do [Backlog Estratégico](./ai-sdd/system/backlog.md) (como Sistema de Vidas/Energia, Streaks e Gráficos analíticos).
 
@@ -103,9 +103,9 @@ Se você acabou de chegar no projeto, por favor leia os guias abaixo:
 
 ### Termos e Política de Privacidade — tópico 1
 
-As páginas públicas **`/termos`** e **`/privacidade`** podem ser lidas sem login. Há links no cadastro, nos logins e nas áreas autenticadas, que abrem em nova aba para preservar formulários e partidas. Para imprimir ou salvar em PDF, use a opção **Imprimir** do navegador: a página mantém conteúdo, versão, data e aviso de minuta, ocultando a navegação.
+As páginas públicas **`/termos`** e **`/privacidade`** podem ser lidas sem login. Há links no cadastro, nos logins e nas áreas autenticadas, que abrem em nova aba para preservar formulários e partidas. Para imprimir ou salvar em PDF, use a opção **Imprimir** do navegador: a página mantém conteúdo, versão e data, ocultando a navegação.
 
-Os textos estão em **minuta**, com descrição dos dados atuais, sessões, ranking, relatórios e vídeos opcionais do YouTube. O responsável informado é Guilhardes de Jesus Júnior, com contato público de privacidade em guilhardesj@gmail.com. Avaliação das bases legais e medidas de proteção de menores, hospedagem e retenção de dados/backups permanecem pendentes. As páginas não recebem pedidos nem registram consentimento. Aceite, perfil e exclusão estão disponíveis na entrega parcial do tópico 2 descrita abaixo. Cookies próprios foram inventariados e os recursos de acessibilidade estão documentados, com limitações explícitas.
+Os textos públicos estão consolidados em **versão 1.0, de 04/11/2026**, com regras de participação, finalidades e fundamentos, dados, direitos, cookies, menores, terceiros e retenção. O responsável e atendente é **Guilhardes de Jesus Júnior**, no contato **guilhardesj@gmail.com**. A infraestrutura principal foi definida em VPS Hostinger no Brasil para aplicação, banco e backups. Isso não exclui tratamento internacional por fornecedores externos. O documento define regras de governança sem afirmar que todos os procedimentos estejam automatizados ou certificar conformidade integral.
 
 O acompanhamento está no [PRD](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/prd.md), na [Tech Spec](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/techspec.md) e nas [tarefas](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/tasks.md). O usuário autorizou implementar a estrutura funcional antes do design do Paper, que poderá ser incorporado pelo colaborador posteriormente.
 
@@ -113,11 +113,13 @@ O acompanhamento está no [PRD](./ai-sdd/prd-governanca-juridica-lgpd-acessibili
 
 O cadastro público exige manifestação desmarcada por padrão sobre os termos e a política apresentados. O servidor conserva data, versões e cópia do texto; ele rejeita revisão desatualizada e não atribui aceites retroativos a contas antigas. Quando necessário, o estudante é direcionado para **`/aceite/new`** antes de voltar ao jogo. Isso não equivale a consentimento geral de tratamento nem a autorização do responsável.
 
-**`/perfil`** permite consultar dados e o histórico de aceites, editar o cadastro com senha atual e excluir a própria conta com senha e confirmação das consequências. A exclusão remove dados da aplicação ativa (cadastro, sessões, tentativas, respostas, ranking e aceites). Jobs pendentes não restauram o ranking de contas excluídas ou bloqueadas. Os procedimentos para logs, backups e cópias exportadas continuam pendentes e são informados antes da confirmação.
+**`/perfil`** permite consultar dados e o histórico de aceites, editar o cadastro com senha atual e excluir a própria conta com senha e confirmação das consequências. A exclusão remove dados da aplicação ativa (cadastro, sessões, tentativas, respostas, ranking e aceites). Jobs pendentes não restauram o ranking de contas excluídas ou bloqueadas. Os prazos de logs, backups e cópias exportadas estão definidos na política e no manual. Sua execução e as rotinas de descarte precisam de evidência operacional.
 
-Cidade e escolaridade são opcionais e podem ser apagadas do perfil. O cadastro permanece aberto com os limites de idade já existentes; não foi acrescentada uma exigência geral de autorização para todos os menores de 18 anos. A opção aprovada mantém entrada direta com as mesmas proteções para todos. O ranking usa um código gerado automaticamente em vez do nome, inclusive para adultos; não há aprovação externa no cadastro. A avaliação das bases legais e das medidas legais de proteção/supervisão continua pendente, sem dispensa presumida pelo caráter educativo. Nenhuma autorização presencial ou escolar é simulada pelo sistema. O contato de privacidade para estudantes, representantes e pessoas sem acesso à conta é **guilhardesj@gmail.com**; o responsável informado é **Guilhardes de Jesus Júnior**. O site fornece um link de e-mail, sem envio automático ou protocolo.
+Idade, cidade e escolaridade são opcionais e podem ser apagadas do perfil. Sua finalidade atual aprovada é conhecer o público e orientar melhorias pedagógicas com relatórios agregados, protegendo grupos pequenos. O cadastro permanece direto, com as mesmas proteções para todos e sem aprovação externa geral. Essa experiência não substitui consentimento específico quando exigido, comprovação etária ou medidas aplicáveis de proteção de menores. O ranking usa códigos em lugar de nomes.
 
-A atualização de 03/11/2026 preserva idade, escolaridade e cidade, além dos valores existentes, e atribui códigos de ranking às contas por migração. Nenhum aceite é criado retroativamente. Cidade e escolaridade continuam opcionais, conforme a implementação anterior. A avaliação preliminar e suas limitações estão em [avaliação dos tratamentos](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/avaliacao-tratamentos.md); as instruções da equipe estão no [procedimento de atendimento](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/atendimento-privacidade.md). O [dossiê em PDF](./output/pdf/game-qta-governanca-e-privacidade.pdf) contém os textos integrais da versão 0.4, procedimentos e pendências.
+A regra aprovada prevê encerramento após 12 meses sem atividade autenticada, precedido de aviso por e-mail de pelo menos 30 dias. Sessões expiradas: até 30 dias; logs: até 90 dias; exportações: até concluir a tarefa, máximo 30 dias; atendimento: registro mínimo por 2 anos; backups/snapshots: até 30 dias. Incidentes seguem conservação mínima própria de 5 anos. As rotinas de inatividade, aviso e descarte não foram automatizadas nesta rodada.
+
+O [manual](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/governanca-privacidade.md) e o [PDF completo](./output/pdf/game-qta-governanca-e-privacidade.pdf) reúnem as regras e os textos integrais. Ver [avaliação dos tratamentos](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/avaliacao-tratamentos.md), [atendimento](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/atendimento-privacidade.md) e [verificações de publicação](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/pendencias-publicacao.md). Pesquisa futura não recebe autorização pelo cadastro.
 
 As mudanças de banco devem ser aplicadas com `bin/rails db:migrate`. Resultados de testes e limitações das auditorias estão no [acompanhamento da feature](./ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/tasks.md).
 
@@ -129,7 +131,7 @@ ruby -rjson -ryaml -e 'print JSON.pretty_generate(YAML.load_file("config/locales
 python3 script/build_governance_pdf.py tmp/pdfs/legal_documents.json
 ```
 
-O dossiê também contém um retrato operacional datado: revise esse conteúdo no gerador e confira a diagramação antes de publicar uma nova edição.
+O gerador combina o manual em Markdown com os textos integrais do locale. Revise as duas fontes e confira todas as páginas renderizadas antes de distribuir uma nova edição.
 
 ### Cookies e acessibilidade — tópicos 3 e 4
 
@@ -217,3 +219,21 @@ bin/rubocop -a        # Arruma a formatação do código
 bin/rails test        # Roda os testes de unidade
 bin/rails test:system # Roda os testes simulando cliques no navegador
 ```
+
+## Correções do code review - 04/11/2026
+
+Os 17 achados foram tratados na branch rafael. Consulte [correções e evidências](docs/reviews/2026-11-04-correcoes.md). Rails foi atualizado para 8.1.4.1, com auditoria atualizada sem vulnerabilidades conhecidas.
+
+A aprovação da jornada é por nível, com todos os temas concluídos e no mínimo 70% das questões exigidas. O início retoma a tentativa ativa, a conclusão usa POST e os empates do ranking compartilham posição. O CSV de temas agora distingue Total_Tentativas de Total_Respostas; integrações com a planilha devem usar os novos cabeçalhos.
+
+### Primeiro administrador e demonstração
+
+A preparação normal do banco não cria credenciais públicas nem carrega dados de demonstração. Para provisionar um administrador, forneça BOOTSTRAP_ADMIN_EMAIL e BOOTSTRAP_ADMIN_PASSWORD por mecanismo seguro e execute bin/rails admins:create. A senha inicial deve ter pelo menos 12 caracteres e não é impressa. Instalações antigas com a credencial de demonstração precisam substituí-la e revogar sessões antes de exposição pública.
+
+Demonstração exige desenvolvimento e opção explícita: LOAD_DEMO_DATA=1 bin/rails db:seed. Esse comando substitui conteúdo de demonstração e não deve ser executado em uma base com dados reais. O arquivo também recusa execução direta fora desse contexto.
+
+### Entrega de recuperação de senha
+
+Produção utiliza APP_HOST (somente o host, sem protocolo), MAILER_FROM, SMTP_ADDRESS, SMTP_PORT (padrão 587), SMTP_USERNAME, SMTP_PASSWORD e, se necessário, SMTP_AUTHENTICATION (padrão plain). O transporte exige STARTTLS. Valores devem vir da configuração segura do ambiente; não grave segredos no repositório. Configure um provedor real e confira o processamento dos jobs antes de usar a recuperação em produção. A validação local executa os jobs no adaptador de teste e não envia mensagens externas.
+
+As correções não automatizam os avisos e descartes da política de retenção. A documentação de governança 1.0 e o PDF foram preservados.

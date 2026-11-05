@@ -1,0 +1,7 @@
+<div class="mx-auto max-w-md px-6 py-12 text-center">
+  <h1 class="mb-5 text-2xl font-bold text-emerald-950"><%= t(".title") %></h1>
+  <%= form_with url: play_theme_completion_path(@theme_attempt.theme), data: { controller: "auto-submit" } do |form| %>
+    <%= form.hidden_field :attempt_id, value: @theme_attempt.id %>
+    <%= form.submit t(".submit"), class: "min-h-11 rounded-lg bg-emerald-800 px-5 py-3 font-semibold text-white" %>
+  <% end %>
+</div>

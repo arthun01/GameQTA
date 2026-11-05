@@ -18,8 +18,8 @@ O Leaderboard define quem são os melhores alunos da plataforma.
 ## 3. Progressão de Nível e Temas (Regra dos 70%)
 O aluno não pode avançar livremente pelos níveis. Existe um fluxo de validação de conhecimento.
 *   Um **Tema** possui várias questões. O estudante joga um tema por vez (`ThemeAttempt`).
-*   **Aprovação:** Para ser aprovado em um Tema e desbloquear o próximo, o aluno precisa acertar **70% ou mais** das questões daquele tema específico.
-*   **Reprovação:** Se a taxa de acerto for menor que 70%, a tentativa falha. O banco de dados **apaga atômica e integralmente** aquela submissão em transação (`QuestionSubmission`), obrigando o estudante a repassar pelo conteúdo do tema para fixação de aprendizado.
+*   **Aprovação:** Para liberar o próximo Nível, o aluno precisa concluir todos os Temas e acertar **70% ou mais de todas as questões exigidas desse Nível**, conforme RF-008 a RF-010 do PRD de gameplay. Questões omitidas entram no denominador. Uma tentativa só é concluída após todas as questões serem respondidas ou encerradas por tempo.
+*   **Reprovação:** Abaixo de 70% no Nível completo, o progresso desse Nível é reiniciado em transação, incluindo tentativas e respostas. O ranking é recalculado após o commit. A aprovação usa a proporção exata; o percentual exibido pode ser arredondado.
 
 ## 4. Estrutura Educacional (Conteúdo)
 *   **Hierarquia Rígida:** Nível (Level) ➔ Tema (Theme) ➔ Questão (Question) ➔ Opção (Option).
@@ -50,3 +50,7 @@ O sistema tem tolerância zero para manipulação ou violação de regras.
 Vídeos externos ficam desligados até a escolha Carregar este vídeo. É possível continuar sem vídeo ou desativá-lo depois; essa escolha não é salva para outras páginas. Antes de revelar cada questão, qualquer pessoa pode escolher de 1 a 10 vezes o tempo padrão. A seleção não exige diagnóstico. O limite é definido no servidor e não reinicia ao recarregar. Pontos por acerto não mudam; o tempo efetivo continua no desempate. Selecione a alternativa e use Confirmar resposta; o envio não ocorre só pela seleção. Uma resposta encerrada por tempo esgotado não reabre a mesma questão.
 
 O acesso expira 12 horas após login; dados e progresso da conta são preservados. A página /acessibilidade explica teclado, controles e limitações. Não há declaração de equivalência audiovisual ou conformidade integral antes da avaliação editorial e humana.
+
+### Integridade da conclusão e do ranking
+
+A conclusão ocorre por POST; consultar resultado por GET não altera tentativas. Repetir o início retoma a tentativa ativa e preserva respostas. Início e conclusão são serializados por estudante. Níveis são liberados segundo os anteriores na ordem de ID. No ranking, pontuação e tempo iguais compartilham posição (DENSE_RANK); ID do usuário estabiliza apenas a ordem de exibição entre empatados. Quem não aparece nas dez linhas recebe cartão pessoal, mesmo com posição empatada menor que dez. O acúmulo de pontos de repetições mantém o comportamento existente, sem nova política nesta correção.
