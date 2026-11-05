@@ -1,4 +1,4 @@
-"""Build the governance dossier from the current pt-BR legal text and project records.
+"""Build the governance manual and the complete current pt-BR legal documents.
 
 Usage: python3 script/build_governance_pdf.py tmp/pdfs/legal_documents.json
 Requires ReportLab and Liberation Serif. No network or application database access.
@@ -82,118 +82,114 @@ def page(canvas, doc):
     canvas.setFillColor(colors.black)
     canvas.setFont('Document', 8)
     canvas.drawString(25 * mm, h - 14 * mm, 'GAME QTA  |  GOVERNANÇA E PRIVACIDADE')
-    canvas.drawString(25 * mm, 14 * mm, '03/11/2026  |  Minutas e registro de implementação')
+    canvas.drawString(25 * mm, 14 * mm, 'Versão 1.0  |  04/11/2026')
     canvas.drawRightString(w - 25 * mm, 14 * mm, str(doc.page))
     canvas.restoreState()
 
 
-story.append(Spacer(1, 28 * mm))
+
+def markdown_source(path):
+    lines = path.read_text().splitlines()
+    paragraph = []
+    rows = []
+
+    def flush_paragraph():
+        if paragraph:
+            para(' '.join(paragraph))
+            paragraph.clear()
+
+    def flush_table():
+        if rows:
+            count = len(rows[0])
+            widths = [35 * mm, 65 * mm, 60 * mm] if count == 3 else [50 * mm, 110 * mm]
+            table(rows, widths)
+            rows.clear()
+
+    for line in lines + ['']:
+        line = line.strip()
+        if line.startswith('|'):
+            flush_paragraph()
+            cells = [cell.strip() for cell in line.strip('|').split('|')]
+            if not all(set(cell) <= set('-: ') for cell in cells):
+                rows.append(cells)
+        else:
+            flush_table()
+            if line.startswith('# '):
+                continue
+            elif line.startswith('## '):
+                flush_paragraph()
+                heading(line[3:])
+            elif line.startswith('- '):
+                flush_paragraph()
+                bullet(line[2:])
+            elif not line:
+                flush_paragraph()
+            else:
+                paragraph.append(line)
+
+
+story.append(Spacer(1, 30 * mm))
 para('GAME QTA', 'CoverLabelQTA')
-para('Governança, termos\ne privacidade'.replace('\n', ' '), 'CoverQTA')
-para('Dossiê para o responsável e a equipe do projeto', 'H2QTA')
-para('Emissão: 03/11/2026. Documentos do site: ' + DATA['shared']['version'] + '.')
-para('Responsável informado: ' + DATA['shared']['contact_name'])
-para('Contato público de privacidade: ' + DATA['shared']['contact_email'])
-story.append(Spacer(1, 10 * mm))
-para('Estado da entrega', 'H2QTA')
-para('Cadastro direto preservado, com os campos de idade, escolaridade e cidade. Termos, política, aceite versionado, perfil e exclusão já possuem implementação. A entrega também protege cookies, bloqueia conexões opcionais, melhora acessibilidade e publica o contato do responsável.')
-para('Este dossiê reúne decisões de produto, funcionamento implementado, minutas integrais e pendências. Não é parecer jurídico, aprovação de pesquisa ou certificação de conformidade. As avaliações de bases legais e de proteção de menores não estão encerradas.')
-story.append(Spacer(1, 8 * mm))
-para('A UESC não foi indicada como responsável formal pela operação do jogo. A possibilidade de pesquisa futura pela instituição será avaliada separadamente. Papéis jurídicos dependem da atuação efetiva das partes.', 'SmallQTA')
+para('Governança e Privacidade', 'CoverQTA')
+para('Manual de governança, Termos de Uso e Política de Privacidade', 'CoverLabelQTA')
+story.append(Spacer(1, 12 * mm))
+para('Versão ' + DATA['shared']['version'] + ' | Emissão: 04/11/2026', 'CoverLabelQTA')
+para('Responsável: ' + DATA['shared']['contact_name'], 'CoverLabelQTA')
+para('Contato: ' + DATA['shared']['contact_email'], 'CoverLabelQTA')
+story.append(Spacer(1, 15 * mm))
+para('Este documento consolida as regras da operação educativa do Game QTA, os direitos dos participantes e os procedimentos da administração. A versão é completa e reúne os textos públicos integrais ao final do manual.')
+para('Os procedimentos de guarda, aviso, descarte e resposta a incidentes são regras de governança que devem ser executadas e verificadas. Sua formalização não declara automação já implantada, certificação jurídica ou autorização de pesquisa.', 'SmallQTA')
 story.append(PageBreak())
-
-heading('1. Decisões e experiência de uso')
-para('O visitante continua preenchendo o cadastro atual e registrando o aceite dos Termos e a ciência da Política. Não foi adicionada etapa de autorização externa, área de responsáveis, coleta de documentos ou formulário específico por idade. Os limites de idade que já existiam são preservados; esse campo é autodeclarado.')
-table([
-    ['Item', 'Comportamento implementado'],
-    ['Idade, escolaridade e cidade', 'Campos e valores preservados. Cidade e escolaridade continuam opcionais e podem ser removidas pelo perfil. A necessidade atual dos dados deve ser justificada.'],
-    ['Ranking', 'Código aleatório gerado pelo sistema substitui nome completo e e-mail. Pontos, tempo e ordem da classificação são preservados. O código ainda pode ser associado à conta pela administração.'],
-    ['Aceite', 'Registro de horário, versões, revisão e cópia dos textos apresentados. Contas antigas não recebem aceite retroativo. Mudança de texto exige nova manifestação antes do jogo.'],
-    ['Direitos', 'Perfil e exclusão continuam disponíveis mesmo sem novo aceite. O contato público complementa casos de representantes, falta de acesso e outros direitos.'],
-    ['Tempo e resposta', 'Escolha de 1 a 10 vezes o tempo antes de revelar a questão. Pontos iguais, tempo efetivo no desempate. Alternativa só é enviada pelo botão de confirmação.'],
-    ['Segurança', 'Senha verificada com BCrypt no servidor; edição exige senha atual e exclusão exige confirmação adicional. Páginas privadas recebem no-store; snapshots Turbo são desativados e o cache é limpo ao sair.'],
-], [40 * mm, 120 * mm])
-heading('2. Dados, finalidades e pesquisa', 1)
-para('A operação educativa e eventual pesquisa são finalidades distintas. O cadastro não concede autorização geral para qualquer estudo. O professor informou interesse em idade, escolaridade e cidade para possível pesquisa futura, mas as análises ainda não foram definidas.')
-para('A hipótese de legítimo interesse está em avaliação para conta, progresso e segurança. A avaliação considera o uso real de cada dado e os direitos dos menores. Não há conclusão favorável automática, especialmente para os campos demográficos e guarda sem prazo definido.')
-para('Uma pesquisa ou banco futuro exigirá finalidade delimitada, governança, acesso, retenção, base aplicável e observância dos procedimentos éticos pertinentes. Dados codificados não são necessariamente anônimos. Exportação administrativa existente não constitui autorização científica.')
-story.append(PageBreak())
-
-heading('3. Atendimento e exercício de direitos')
-para('Responsável: ' + DATA['shared']['contact_name'] + '. Canal: ' + DATA['shared']['contact_email'] + '.')
+heading('Organização do documento')
 for item in [
-    'O site apresenta um link de e-mail. O visitante usa seu próprio serviço de correio; o site não envia a mensagem, não comprova a entrega e não emite protocolo.',
-    'A equipe deve monitorar a caixa, confirmar recebimento, registrar a demanda com acesso restrito e responder segundo os prazos legais aplicáveis ao direito solicitado.',
-    'Identidade e eventual representação devem ser verificadas de modo proporcional. Não solicitar senha nem cópia de documento como regra geral. A autorização da escola não substitui automaticamente a do responsável legal.',
-    'Pedidos sobre acesso, correção, exclusão, oposição, informações, moderação ou proteção de menores podem ser encaminhados pelo mesmo contato. Eventual impossibilidade deve ser explicada.',
-    'Registros do atendimento também são dados pessoais: precisam de acesso restrito e regra de guarda definida pelo responsável.'
+    'Parte I - Manual de Governança: responsabilidades; finalidades e fundamentos; crianças e adolescentes; retenção e descarte; atendimento; segurança e incidentes; terceiros; acessibilidade; pesquisa e mudanças.',
+    'Parte II - Termos de Uso: texto integral apresentado aos participantes.',
+    'Parte III - Política de Privacidade: texto integral apresentado aos participantes.',
+    'Parte IV - Referências normativas e orientações oficiais.'
 ]:
     bullet(item)
-heading('Autoatendimento no perfil', 2)
-para('O estudante pode consultar e editar seus dados em /perfil. A edição verifica a senha atual. A exclusão exige senha e confirmação, remove cadastro, sessões, tentativas, respostas, ranking e aceites da aplicação ativa. Conteúdo didático e dados dos demais participantes são preservados. Jobs pendentes não devem restaurar um ranking excluído.')
-para('A exclusão na aplicação não apaga automaticamente logs, backups, e-mails recebidos ou cópias de relatórios já exportadas. Os procedimentos e prazos dessas cópias permanecem pendentes. Não se promete eliminação universal imediata.')
-heading('Cookies e acessibilidade implementados', 2)
-para('Cookies próprios: _qta_rails8_session (navegação, até 12h após uso), user_session_id (estudante) e session_id (administração). O acesso autenticado vence 12h após login também no servidor. HttpOnly e SameSite=Lax; Secure e HTTPS em produção. Sair revoga a sessão. Esse limite de acesso não define retenção de registros no banco.')
-para('Fontes do dispositivo substituem Google Fonts. Vídeos começam sem iframe ou conexão externa. Carregar este vídeo ativa somente aquele player; Continuar sem vídeo mantém bloqueio, e Desativar vídeo externo remove o iframe. A escolha não é salva. Navegar ou recarregar exige nova escolha. O fornecedor recebe dados após ativação; revogar não desfaz dados já enviados.')
-para('Foco visível, skip link, diálogos nativos com Escape, erros associados aos campos, preferência de reduzir movimento e confirmação explícita pelo botão Confirmar resposta foram implementados. O relógio anuncia apenas um aviso próximo do fim, sem interromper leitura a cada segundo. A página /acessibilidade explica esses recursos e os limites conhecidos.')
-para('Validação local: 105 testes de aplicação e 30 de navegador passaram. Brakeman sem alertas; bundler-audit sem vulnerabilidades conhecidas. Axe verificou as telas públicas, estudantis e administrativas. Resultados automáticos não são certificação jurídica ou WCAG. Vídeos, leitor de tela humano e implantação definitiva exigem avaliação complementar.')
-heading('4. Pontos que ainda precisam de decisão', 1)
-table([
-    ['Tema', 'Pendência'],
-    ['Base legal e menores', 'Concluir avaliação por finalidade, necessidade e riscos, com decisão do responsável. Definir medidas de supervisão/proteção aplicáveis antes de declarar adequação integral.'],
-    ['Infraestrutura e guarda', 'Definir hospedagem, operadores, locais de tratamento e retenção de contas, logs, aceites, backups e exportações. HTTPS está configurado, mas requer conferência do proxy e domínio definitivo.'],
-    ['Operação de atendimento', 'Confirmar monitoramento da caixa, substituto, procedimento para contas sem acesso e verificação de representantes.'],
-    ['Cookies e terceiros', 'Controles técnicos implementados e inventário disponível. Confirmar adequação dos vídeos ao público infantil e requisitos do fornecedor; não afirmar ausência de tratamento externo após ativação.'],
-    ['Acessibilidade', 'Testes automáticos e de teclado executados. Conferir legendas, transcrições, alternativas e leitores de tela com avaliação humana. Sem declaração integral WCAG ou de PDF acessível/tagueado.'],
-    ['Pesquisa', 'Estudo, análises, instituição responsável e requisitos éticos/bases aplicáveis ainda por definir.'],
-], [40 * mm, 120 * mm])
+para('O manual orienta a equipe. Os termos e a política explicam as regras ao público. Todos devem ser lidos com a versão e a data desta emissão. Alterações relevantes exigem revisão coerente das informações apresentadas aos participantes.')
+story.append(PageBreak())
+heading('Parte I - Manual de Governança')
+markdown_source(ROOT / 'ai-sdd/prd-governanca-juridica-lgpd-acessibilidade/governanca-privacidade.md')
 story.append(PageBreak())
 
-for number, key in [(5, 'terms'), (6, 'privacy')]:
+for part, key in [('Parte II', 'terms'), ('Parte III', 'privacy')]:
     document = DATA[key]
-    heading(f'{number}. {document["title"]} - texto integral')
-    para('Versão: ' + DATA['shared']['version'] + ' | Atualização: 03/11/2026', 'SmallQTA')
-    notice = Table([[p(DATA['shared']['draft_title'] + '. ' + DATA['shared']['draft_notice'], 'SmallQTA')]], colWidths=[160 * mm])
-    notice.setStyle(TableStyle([('BACKGROUND', (0, 0), (-1, -1), colors.white), ('BOX', (0, 0), (-1, -1), 0.5, colors.black), ('LEFTPADDING', (0, 0), (-1, -1), 10), ('RIGHTPADDING', (0, 0), (-1, -1), 10), ('TOPPADDING', (0, 0), (-1, -1), 10), ('BOTTOMPADDING', (0, 0), (-1, -1), 10)]))
-    story.append(notice)
-    story.append(Spacer(1, 12))
-    para(document['subtitle'])
+    heading(part + ' - ' + document['title'])
+    para('Versão ' + DATA['shared']['version'] + ' | Atualização: 04/11/2026', 'SmallQTA')
     para(document['summary'])
     for section in document['sections'].values():
-        section_start = len(story)
         heading(section['title'], 2)
-        for paragraph in section.get('paragraphs', []):
-            para(paragraph)
         for item in section.get('items', []):
             bullet(item)
+        for paragraph in section.get('paragraphs', []):
+            para(paragraph)
         for reference in section.get('links', []):
             link(reference['label'], reference['url'])
-        if section is list(document['sections'].values())[-1]:
-            heading('Contato de privacidade', 2)
-            para(DATA['shared']['contact_name'] + ' | ' + DATA['shared']['contact_email'])
-        section_content = story[section_start:]
-        del story[section_start:]
-        story.append(KeepTogether(section_content))
+    heading('Contato de privacidade', 2)
+    para(DATA['shared']['contact_name'] + ' | ' + DATA['shared']['contact_email'])
     story.append(PageBreak())
 
-heading('7. Referências e manutenção')
-para('As minutas integrais foram extraídas de config/locales/pt-BR/legal.yml. Os requisitos e resultados ficam no diretório ai-sdd/prd-governanca-juridica-lgpd-acessibilidade. A avaliação preliminar por finalidade e o procedimento de atendimento estão nos documentos desse diretório.')
+heading('Parte IV - Referências')
+para('Referências consultadas para a elaboração das regras. A menção a órgãos e instituições não representa aprovação ou certificação por eles. A manutenção deve considerar os textos normativos vigentes e as circunstâncias efetivas da operação.')
 for label, url in [
-    ('LGPD - texto compilado na Câmara dos Deputados', 'https://www2.camara.leg.br/legin/fed/lei/2018/lei-13709-14-agosto-2018-787077-normaatualizada-pl.html'),
-    ('ANPD - Enunciado 1/2023 sobre dados de crianças e adolescentes', 'https://bibliotecadigital.mj.gov.br/bitstream/1/10215/2/Enunciado_ANPD_2023_1.html'),
-    ('ANPD - Guia de legítimo interesse', 'https://www.gov.br/anpd/pt-br/centrais-de-conteudo/materiais-educativos-e-publicacoes/guia_legitimo_interesse.pdf'),
-    ('ANPD - ECA Digital', 'https://www.gov.br/anpd/pt-br/assuntos/eca-digital'),
+    ('LGPD - Lei nº 13.709/2018, texto atualizado', 'https://www2.camara.leg.br/legin/fed/lei/2018/lei-13709-14-agosto-2018-787077-normaatualizada-pl.html'),
+    ('ANPD - Tratamento de dados de crianças e adolescentes: Enunciado 1/2023', 'https://www.gov.br/anpd/pt-br/assuntos/noticias/anpd-divulga-enunciado-sobre-o-tratamento-de-dados-pessoais-de-criancas-e-adolescentes'),
+    ('ANPD - Legítimo interesse: finalidade, necessidade e balanceamento', 'https://www.gov.br/anpd/pt-br/assuntos/noticias/anpd-lanca-guia-orientativo-sobre-legitimo-interesse'),
+    ('ECA Digital - Lei nº 15.211/2025', 'https://www2.camara.leg.br/legin/fed/lei/2025/lei-15211-17-setembro-2025-797997-normaatualizada-pl.html'),
+    ('ANPD - Orientações sobre o ECA Digital', 'https://www.gov.br/anpd/pt-br/assuntos/eca-digital'),
+    ('ANPD - Regulamento de comunicação de incidentes: Resolução 15/2024', 'https://www.gov.br/anpd/pt-br/assuntos/noticias/anpd-aprova-o-regulamento-de-comunicacao-de-incidente-de-seguranca'),
+    ('ANPD - Comunicação de incidente de segurança', 'https://www.gov.br/anpd/pt-br/canais_atendimento/agente-de-tratamento/comunicado-de-incidente-de-seguranca-cis'),
+    ('ANPD - Direitos dos titulares', 'https://www.gov.br/anpd/pt-br/assuntos/titular-de-dados/direito-dos-titulares'),
     ('ANPD - Guia de cookies', 'https://www.gov.br/anpd/pt-br/centrais-de-conteudo/materiais-educativos-e-publicacoes/guia_orientativo_cookies_e_protecao_de_dados_pessoais'),
+    ('ANPD - Tratamento para fins acadêmicos e pesquisas', 'https://www.gov.br/anpd/pt-br/centrais-de-conteudo/materiais-educativos-e-publicacoes/web-guia-anpd-tratamento-de-dados-para-fins-academicos.pdf'),
     ('W3C - WCAG 2.1', 'https://www.w3.org/TR/WCAG21/'),
-    ('ANPD - Guia de fins acadêmicos e pesquisas', 'https://www.gov.br/anpd/pt-br/centrais-de-conteudo/materiais-educativos-e-publicacoes/web-guia-anpd-tratamento-de-dados-para-fins-academicos.pdf'),
 ]:
     link(label, url)
-    story.append(Spacer(1, 7))
-heading('Atualização e responsabilidade', 2)
-para('Revisar os documentos quando houver mudança de finalidade, responsável, infraestrutura, dados, integrações ou controles. A versão publicada no aplicativo pode evoluir após esta emissão; conferir data e versão antes de reutilizar o PDF. Os testes confirmam comportamento técnico, não certificam validade jurídica ou cumprimento operacional.')
-para('Antes da disponibilização definitiva, o responsável deve concluir as decisões pendentes e providenciar a validação cabível. A existência deste documento não indica aprovação da UESC, de comitê de ética ou da ANPD.')
+    story.append(Spacer(1, 8))
 
 OUT.parent.mkdir(parents=True, exist_ok=True)
-doc = SimpleDocTemplate(str(OUT), pagesize=A4, leftMargin=25 * mm, rightMargin=25 * mm, topMargin=25 * mm, bottomMargin=25 * mm, title='Game QTA - Governança, termos e privacidade', author=DATA['shared']['contact_name'])
+doc = SimpleDocTemplate(str(OUT), pagesize=A4, leftMargin=25 * mm, rightMargin=25 * mm, topMargin=25 * mm, bottomMargin=25 * mm, title='Game QTA - Governança e Privacidade - Versão 1.0', author=DATA['shared']['contact_name'])
 doc.build(story, onFirstPage=page, onLaterPages=page)
 print(OUT)

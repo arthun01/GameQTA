@@ -1,85 +1,85 @@
 pt-BR:
   errors:
     messages:
-      invalid: "não é válido"
-      too_long: "deve ter no máximo %{count} caracteres"
-      not_a_number: "deve ser um número"
-      not_an_integer: "deve ser um número inteiro"
-      greater_than_or_equal_to: "deve ser maior ou igual a %{count}"
-      less_than_or_equal_to: "deve ser menor ou igual a %{count}"
+      invalid: não é válido
+      too_long: deve ter no máximo %{count} caracteres
+      not_a_number: deve ser um número
+      not_an_integer: deve ser um número inteiro
+      greater_than_or_equal_to: deve ser maior ou igual a %{count}
+      less_than_or_equal_to: deve ser menor ou igual a %{count}
   rankings:
-    player_name: "Jogador %{code}"
-    privacy_notice: "O ranking usa códigos gerados automaticamente para proteger a identificação dos participantes. Consulte o seu código no perfil."
+    player_name: Jogador %{code}
+    privacy_notice: O ranking usa códigos gerados automaticamente para proteger a identificação dos participantes. Consulte o seu código no perfil.
   shared:
     privacy_contact:
-      description: "Dúvidas sobre dados, correção, exclusão ou proteção de menores? Entre em contato com o responsável:"
-      safety: "Informe a conta e o pedido. Não envie sua senha ou documentos pessoais sem necessidade. O link abre seu aplicativo de e-mail; esta página não envia mensagens."
+      description: 'Dúvidas sobre dados, correção, exclusão ou proteção de menores? Entre em contato com o responsável:'
+      safety: Informe a conta e o pedido. Não envie sua senha ou documentos pessoais sem necessidade. O link abre seu aplicativo de e-mail; esta página não envia mensagens.
     legal_acceptance:
-      version: "Documentos apresentados: %{version}."
-      draft: "Os documentos ainda são minutas, com decisões jurídicas e operacionais pendentes."
-      label: "Li e concordo com os Termos de Uso e estou ciente da Política de Privacidade na versão apresentada."
-      new_tab: "Os links abrem em nova aba e preservam os dados deste formulário."
-      distinction: "Este registro não é consentimento geral para tratamento de dados nem autorização de responsável por menor."
+      version: 'Documentos apresentados: %{version}.'
+      draft: Os documentos ainda são minutas, com decisões jurídicas e operacionais pendentes.
+      label: Li e concordo com os Termos de Uso e estou ciente da Política de Privacidade na versão apresentada.
+      new_tab: Os links abrem em nova aba e preservam os dados deste formulário.
+      distinction: Este registro não é consentimento geral para tratamento de dados nem autorização de responsável por menor.
     form_errors:
-      title: "Confira as informações abaixo:"
-    profile_link: "Meu perfil e meus dados"
+      title: 'Confira as informações abaixo:'
+    profile_link: Meu perfil e meus dados
   users:
     registrations:
-      direct_entry: "Seu cadastro permite entrar diretamente no jogo. O ranking usa um código automático em vez do seu nome; o aceite dos documentos não autoriza pesquisas futuras."
+      direct_entry: Seu cadastro permite entrar diretamente no jogo. O ranking usa um código automático em vez do seu nome; o aceite dos documentos não autoriza pesquisas futuras.
     legal_acceptances:
       new:
-        title: "Conheça os documentos atualizados"
-        description: "Antes de continuar no jogo, leia os documentos apresentados e registre sua manifestação. Nenhum aceite foi atribuído à sua conta automaticamente."
-        submit: "Registrar aceite e continuar"
-        rights: "Você pode consultar ou corrigir seus dados, excluir a conta e sair sem registrar este aceite."
-        sign_out: "Sair da conta"
+        title: Conheça os documentos atualizados
+        description: Antes de continuar no jogo, leia os documentos apresentados e registre sua manifestação. Nenhum aceite foi atribuído à sua conta automaticamente.
+        submit: Registrar aceite e continuar
+        rights: Você pode consultar ou corrigir seus dados, excluir a conta e sair sem registrar este aceite.
+        sign_out: Sair da conta
     profiles:
-      ranking_identity: "Seu nome no ranking: %{name}. Seu nome de cadastro e e-mail não aparecem na classificação."
-      city_placeholder: "Sua cidade (opcional)"
-      back_to_game: "Voltar à jornada"
-      not_informed: "Não informado"
-      current_password: "Senha atual"
-      optional_fields: "Cidade e escolaridade são opcionais e ajudam a conhecer o público do projeto. Você pode deixá-las em branco."
-      rate_limit: "Muitas tentativas. Aguarde alguns minutos antes de tentar novamente."
+      ranking_identity: 'Seu nome no ranking: %{name}. Seu nome de cadastro e e-mail não aparecem na classificação.'
+      city_placeholder: Sua cidade (opcional)
+      back_to_game: Voltar à jornada
+      not_informed: Não informado
+      current_password: Senha atual
+      optional_fields: Idade, cidade e escolaridade são opcionais. Quando informadas, ajudam a conhecer o público e orientar melhorias pedagógicas por meio de relatórios agregados, com cuidado para não identificar grupos pequenos. Você pode deixar esses campos em branco ou apagá-los no perfil, sem perder acesso ao jogo. Eles não autorizam pesquisas futuras.
+      rate_limit: Muitas tentativas. Aguarde alguns minutos antes de tentar novamente.
       show:
-        acceptance_history: "Seus registros de leitura e aceite"
-        acceptance_explanation: "Cada registro conserva uma cópia dos documentos apresentados. Ele não representa consentimento geral de tratamento ou autorização de responsável."
-        acceptance_record: "Termos: %{terms}; privacidade: %{privacy}. Registrado em %{date}."
-        no_acceptance: "Sua conta ainda não possui registro de aceite. Nenhum registro será atribuído automaticamente."
-        title: "Meu perfil e meus dados"
-        description: "Consulte seus dados de cadastro, corrija suas informações ou exclua a conta."
-        data_title: "Dados de cadastro"
-        edit: "Editar meus dados"
-        delete_title: "Excluir minha conta"
-        delete_effects: "A exclusão é permanente: apaga seu cadastro, suas sessões, tentativas, respostas e registros de aceite, além de retirar você do ranking. Todas as sessões serão encerradas. Essa ação não pode ser desfeita."
-        retention_limits: "Esta ação remove os dados da aplicação ativa. Os prazos e procedimentos para registros operacionais, backups e cópias de relatórios já exportados ainda estão pendentes; não prometemos a remoção imediata dessas cópias. Outros pedidos podem ser encaminhados ao contato de privacidade abaixo."
-        delete_confirmation: "Entendo as consequências e confirmo que quero excluir permanentemente minha conta e meus dados da aplicação ativa."
-        delete_submit: "Excluir minha conta e meus dados"
+        acceptance_history: Seus registros de leitura e aceite
+        acceptance_explanation: Cada registro conserva uma cópia dos documentos apresentados. Ele não representa consentimento geral de tratamento ou autorização de responsável.
+        acceptance_record: 'Termos: %{terms}; privacidade: %{privacy}. Registrado em %{date}.'
+        no_acceptance: Sua conta ainda não possui registro de aceite. Nenhum registro será atribuído automaticamente.
+        title: Meu perfil e meus dados
+        description: Consulte seus dados de cadastro, corrija suas informações ou exclua a conta.
+        data_title: Dados de cadastro
+        edit: Editar meus dados
+        delete_title: Excluir minha conta
+        delete_effects: 'A exclusão é permanente: apaga seu cadastro, suas sessões, tentativas, respostas e registros de aceite, além de retirar você do ranking. Todas as sessões serão encerradas. Essa ação não pode ser desfeita.'
+        retention_limits: A exclusão remove os dados da aplicação ativa. Backups e snapshots são descartados em até 30 dias; logs, em até 90 dias; e cópias exportadas devem ser eliminadas ao concluir a tarefa, em no máximo 30 dias. Registros mínimos de atendimento e incidentes seguem prazos próprios, além de conservações legalmente justificadas. Consulte a Política de Privacidade ou o contato abaixo.
+        delete_confirmation: Entendo as consequências e confirmo que quero excluir permanentemente minha conta e meus dados da aplicação ativa.
+        delete_submit: Excluir minha conta e meus dados
       edit:
-        title: "Editar meus dados"
-        description: "Para proteger sua conta, confirme as alterações com sua senha atual."
-        cancel: "Voltar ao perfil"
-        submit: "Salvar alterações"
+        title: Editar meus dados
+        description: Para proteger sua conta, confirme as alterações com sua senha atual.
+        cancel: Voltar ao perfil
+        submit: Salvar alterações
       update:
-        success: "Seus dados foram atualizados."
+        success: Seus dados foram atualizados.
       destroy:
-        success: "Sua conta e seus dados da aplicação ativa foram excluídos. As sessões foram encerradas."
+        success: Sua conta e seus dados da aplicação ativa foram excluídos. As sessões foram encerradas.
   activerecord:
     attributes:
       user:
-        legal_documents_accepted: "Leitura e aceite dos documentos"
-        legal_revision: "Versão dos documentos"
-        current_password: "Senha atual"
-        deletion_confirmed: "Confirmação de exclusão"
+        legal_documents_accepted: Leitura e aceite dos documentos
+        legal_revision: Versão dos documentos
+        current_password: Senha atual
+        deletion_confirmed: Confirmação de exclusão
     errors:
       models:
         user:
           attributes:
             legal_documents_accepted:
-              accepted: "precisa ser confirmada"
+              accepted: precisa ser confirmada
             legal_revision:
-              stale: "mudou durante o preenchimento; leia a versão atual e confirme novamente"
+              stale: mudou durante o preenchimento; leia a versão atual e confirme novamente
             current_password:
-              invalid: "está incorreta"
+              invalid: está incorreta
             deletion_confirmed:
-              accepted: "precisa ser marcada para excluir a conta"
+              accepted: precisa ser marcada para excluir a conta

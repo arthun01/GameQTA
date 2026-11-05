@@ -18,11 +18,11 @@ class User < ApplicationRecord
     superior_completo: 6
   }, validate: { allow_nil: true }
 
-  validates :full_name, :age, :email_address, presence: true
+  validates :full_name, :email_address, presence: true
   validates :ranking_code, presence: true, uniqueness: true, format: { with: /\A[A-F0-9]{12}\z/ }
   validates :full_name, length: { maximum: 100 }
   validates :city, length: { maximum: 100 }, allow_nil: true
-  validates :age, numericality: { only_integer: true, greater_than_or_equal_to: 5, less_than_or_equal_to: 120 }
+  validates :age, numericality: { only_integer: true, greater_than_or_equal_to: 5, less_than_or_equal_to: 120 }, allow_nil: true
   validates :email_address, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true, length: { maximum: 254 }
   normalizes :email_address, with: ->(e) { e.strip.downcase }
   normalizes :full_name, with: ->(value) { value.strip }
@@ -39,6 +39,20 @@ class User < ApplicationRecord
 
   def current_legal_acceptance?
     legal_acceptances.exists?(document_revision: LegalDocument.revision)
+  end
+
+  def start_theme(theme)
+    with_lock do
+      if !theme.questions.exists?
+        errors.add(:base, :theme_unavailable)
+        nil
+      elsif !blocked? && theme.level.available_to?(self)
+        theme_attempts.in_progress.find_by(theme: theme) || theme_attempts.create!(theme: theme)
+      else
+        errors.add(:base, :level_locked)
+        nil
+      end
+    end
   end
 
   def ranking_name

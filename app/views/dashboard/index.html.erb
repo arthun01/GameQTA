@@ -36,7 +36,7 @@
           <div class="w-1 h-6 bg-emerald-100 mx-auto rounded-full"></div>
         <% end %>
 
-        <% if level.starting_level? %>
+        <% if level.available_to?(Current.user) %>
           
           <!-- ==========================================
                Fase Atual

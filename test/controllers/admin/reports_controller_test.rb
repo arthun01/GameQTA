@@ -26,7 +26,7 @@ class Admin::ReportsControllerTest < ActionDispatch::IntegrationTest
     csv_content = String.new
     response.stream.each { |chunk| csv_content << chunk }
 
-    assert_match "ID,Nome,Email,Cidade,Nivel_Educacao,Pontuacao_Total,Tempo_Total,Status_Bloqueio,Criado_em", csv_content
+    assert_equal %w[ID Nome Email Cidade Nivel_Educacao Pontuacao_Total Tempo_Total Status_Bloqueio Criado_em], CSV.parse(csv_content).first
     assert_match "student1@example.com", csv_content
   end
 
@@ -40,7 +40,7 @@ class Admin::ReportsControllerTest < ActionDispatch::IntegrationTest
     csv_content = String.new
     response.stream.each { |chunk| csv_content << chunk }
 
-    assert_match "ID,Tema,Nivel,Total_Tentativas,Total_Acertos,Taxa_Acertos", csv_content
+    assert_equal %w[ID Tema Nivel Total_Tentativas Total_Respostas Total_Acertos Taxa_Acertos], CSV.parse(csv_content).first
     # student_one answered questions in fixtures? Actually we don't assert specific data because fixtures may vary, just headers.
   end
 end

@@ -56,3 +56,7 @@ Mantém telas e fluxo do cadastro, com os campos atuais. Ranking troca nome por 
 11. Jornada/admin: mesmos componentes e identidade; foco visível, skip link, dialog com título único e fechamento nomeado, formulários com rótulos e erros associados. Navegação administrativa reorganiza verticalmente no celular.
 
 Sem dependência de Paper, conforme autorização vigente. Conteúdo de vídeos não é substituído por transcrições inventadas; revisão editorial é registrada na auditoria.
+
+## Atualização documental 1.0 - 04/11/2026
+
+Termos e política completos, com número e data; aviso de minuta fica ausente quando não há aviso configurado. O formulário de aceite conserva sua distinção de consentimento e dispensa o aviso de minuta na versão 1.0. Idade passa a ser opcional no cadastro e perfil, com orientação comum sobre finalidade, opção de omitir e remoção. Identidade visual do aplicativo preservada; PDF serifado, monocromático e com margens de 25 mm. Paper continua dispensado conforme autorização.

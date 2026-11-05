@@ -46,8 +46,9 @@ Rails.application.routes.draw do
   root to: redirect("/jornada")
   namespace :play do
     resources :themes, only: [] do
-      post :start, on: :member
-      get :finish, on: :member
+      post :start, on: :member, to: "theme_attempts#create"
+      get :finish, on: :member, to: "theme_completions#show"
+      resource :completion, only: :create, controller: "theme_completions"
     end
     resources :theme_attempts, only: [] do
       resource :question, only: [ :show ] do

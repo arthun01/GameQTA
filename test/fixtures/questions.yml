@@ -19,3 +19,10 @@ three:
   feedback_article: "Feedback 3"
   difficulty: easy
   theme: one
+
+four:
+  statement: "Qual é o objetivo da gestão de recursos hídricos?"
+  youtube_link: "https://www.youtube.com/watch?v=444"
+  feedback_article: "A gestão busca uso sustentável da água."
+  difficulty: easy
+  theme: three

@@ -9,9 +9,9 @@ class LegalDocumentsTest < ActionDispatch::IntegrationTest
         assert_response :success
         assert_select "html[lang='pt-BR']"
         assert_select "main article h1", count: 1
-        assert_select "[data-legal-draft]", text: /Minuta — documento em elaboração/
-        assert_select "[data-legal-version]", text: "0.4 — minuta"
-        assert_select "time[datetime='2026-11-03']", text: "03/11/2026"
+        assert_select "[data-legal-draft]", count: 0
+        assert_select "[data-legal-version]", text: "1.0"
+        assert_select "time[datetime='2026-11-04']", text: "04/11/2026"
         assert_select "form", count: 0
         assert_select "a[href='mailto:guilhardesj@gmail.com']", count: 1
         assert_select "iframe", count: 0
@@ -21,7 +21,7 @@ class LegalDocumentsTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "terms describe participation moderation and limits of the draft" do
+  test "terms describe participation moderation and versioned acceptance" do
     get terms_path
 
     assert_select "h1", "Termos de Uso"
@@ -32,17 +32,20 @@ class LegalDocumentsTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", privacy_policy_path
   end
 
-  test "privacy describes actual data third parties responsible contact and pending retention" do
+  test "privacy describes optional data providers legal bases and approved retention rules" do
     get privacy_policy_path
 
     assert_select "h1", "Política de Privacidade"
     assert_select "#section-responsibility", text: /Guilhardes de Jesus Júnior/
-    assert_select "#section-children", text: /Não há aprovação externa/
+    assert_select "#section-children", text: /A entrada direta não afasta direitos/
+    assert_select "#section-supplied_data", text: /Idade, cidade e escolaridade são opcionais/
+    assert_select "#section-purposes", text: /legítimo interesse/
+    assert_select "#section-access", text: /VPS da Hostinger no Brasil/
     assert_select "#section-purposes", text: /Não existe autorização automática para pesquisas futuras/
     assert_select "#section-generated_data", text: /endereço IP/
     assert_select "#section-access", text: /exportações.*nome, e-mail, cidade, escolaridade/m
     assert_select "#section-cookies", text: /fontes externas.*youtube-nocookie/m
-    assert_select "#section-retention", text: /Ainda não foram definidos os prazos/
+    assert_select "#section-retention", text: /12 meses.*30 dias.*90 dias.*2 anos.*5 anos/m
     assert_select "#section-rights", text: /corrigir.*revogar.*revisão/m
     assert_select "#section-requests", text: /guilhardesj@gmail.com/
     assert_select "a[href=?]", "https://www.gov.br/anpd/pt-br/assuntos/titular-de-dados/direito-dos-titulares"

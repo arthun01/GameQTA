@@ -18,7 +18,6 @@ class UserTest < ActiveSupport::TestCase
     user = User.new
     assert_not user.save, "Saved the user without required attributes"
     assert_includes user.errors[:full_name], "não pode ficar em branco"
-    assert_includes user.errors[:age], "não pode ficar em branco"
   end
 
   test "should reject invalid education_level" do
@@ -70,8 +69,9 @@ class UserTest < ActiveSupport::TestCase
   test "profile reports are optional and can be cleared with the current password" do
     user = users(:student_one)
 
-    assert user.update_profile({ city: "", education_level: "" }, password: "password")
-    assert_nil user.reload.city
+    assert user.update_profile({ age: "", city: "", education_level: "" }, password: "password")
+    assert_nil user.reload.age
+    assert_nil user.city
     assert_nil user.education_level
   end
 

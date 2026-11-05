@@ -12,14 +12,14 @@ class Admin::ReportsController < Admin::BaseController
     headers["X-Accel-Buffering"] = "no"
 
     self.response_body = Enumerator.new do |y|
-      y << CSV.generate_line(%w[ID Nome Email Cidade Nivel_Educacao Pontuacao_Total Tempo_Total Status_Bloqueio Criado_em])
+      y << SpreadsheetExport.row(t("admin.reports.students_headers"))
 
       User.includes(:leaderboard).find_each(batch_size: 1000) do |user|
         score = user.leaderboard&.total_score || 0
         time = user.leaderboard&.total_time_taken || 0
-        status = user.blocked? ? "Bloqueado" : "Ativo"
+        status = user.blocked? ? t("admin.reports.blocked") : t("admin.reports.active")
 
-        y << CSV.generate_line([
+        y << SpreadsheetExport.row([
           user.id,
           user.full_name,
           user.email_address,
@@ -42,21 +42,21 @@ class Admin::ReportsController < Admin::BaseController
     headers["X-Accel-Buffering"] = "no"
 
     self.response_body = Enumerator.new do |y|
-      y << CSV.generate_line(%w[ID Tema Nivel Total_Tentativas Total_Acertos Taxa_Acertos])
+      y << SpreadsheetExport.row(t("admin.reports.themes_headers"))
 
-      # Duas queries agregadas otimizadas para evitar N+1 queries (100% O(1) loop)
-      total_por_tema = QuestionSubmission.joins(:theme_attempt).group("theme_attempts.theme_id").count
-      corretos_por_tema = QuestionSubmission.joins(:theme_attempt).where(is_correct: true).group("theme_attempts.theme_id").count
+      statistics = Theme.report_statistics
 
       Theme.includes(:level).find_each(batch_size: 100) do |theme|
-        total = total_por_tema[theme.id] || 0
-        correct = corretos_por_tema[theme.id] || 0
+        attempts = statistics[:attempts][theme.id] || 0
+        total = statistics[:responses][theme.id] || 0
+        correct = statistics[:correct][theme.id] || 0
         rate = total > 0 ? (correct.to_f / total * 100).round(1) : 0.0
 
-        y << CSV.generate_line([
+        y << SpreadsheetExport.row([
           theme.id,
           theme.name,
           theme.level.name,
+          attempts,
           total,
           correct,
           "#{rate}%"

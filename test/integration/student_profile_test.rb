@@ -32,12 +32,13 @@ class StudentProfileTest < ActionDispatch::IntegrationTest
     original_digest = user.password_digest
 
     patch profile_path, params: { user: {
-      id: other.id, full_name: "Nome corrigido", city: "", education_level: "", current_password: "password",
+      id: other.id, full_name: "Nome corrigido", age: "", city: "", education_level: "", current_password: "password",
       password: "forged-password", blocked_at: Time.current, accepted_terms_at: Time.current, ranking_code: "FORGED123456"
     } }
 
     assert_redirected_to profile_path
     assert_equal "Nome corrigido", user.reload.full_name
+    assert_nil user.age
     assert_nil user.city
     assert_nil user.education_level
     assert_nil user.blocked_at
@@ -59,6 +60,18 @@ class StudentProfileTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_entity
     assert_equal 18, user.reload.age
     assert_equal "medio_completo", user.education_level
+  end
+
+  test "optional age still rejects malformed fractional and out of range values" do
+    user = users(:student_one)
+    sign_in_as_user user
+
+    [ 4, 121, "not-a-number", "6.5" ].each do |age|
+      patch profile_path, params: { user: { age: age, current_password: "password" } }
+
+      assert_response :unprocessable_entity
+      assert_equal 18, user.reload.age
+    end
   end
 
   test "deletion failures preserve all data and a successful request invalidates every session" do

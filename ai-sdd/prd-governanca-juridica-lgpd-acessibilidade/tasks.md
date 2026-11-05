@@ -153,3 +153,30 @@ Na consulta ao GitHub, o PR está aberto, mas não foram informados checks ou ex
 ### Ajuste de apresentação do PDF solicitado pelo usuário
 
 PDF reformulado com Liberation Serif, texto integralmente preto, títulos discretos, margens de 25 mm, tabelas monocromáticas e capa sóbria. A nova diagramação possui **13 páginas**. Conteúdo preservado por comparação da extração textual; todas as páginas foram renderizadas e inspecionadas. Gerador e instrução de fonte no README atualizados. Alteração exclusivamente documental, sem mudanças no funcionamento da aplicação.
+
+
+## Consolidação documental 1.0 - 04/11/2026
+
+Entregues o manual completo, os Termos de Uso e a Política de Privacidade em versão 1.0, com data, finalidades e fundamento por tratamento, proteção de menores, fornecedores, atendimento, retenção, incidentes e pesquisa futura separada. O PDF formal monocromático reúne os textos integrais do mesmo locale usado no site. Minuta não é exibida na versão 1.0; o snapshot e a revisão mudam sem modificar aceites anteriores. Domínio, configuração de envio e responsável técnico ainda não definidos ficaram fora do PDF, conforme solicitação do usuário.
+
+Idade tornou-se opcional por migração de nulabilidade, validação e formulários; cidade/escolaridade continuam opcionais. Valores preenchidos foram preservados. A omissão permite cadastro e a senha atual permite limpar os campos pelo perfil. O limite numérico permanece quando a idade é informada. Schema gerado por migração em desenvolvimento e testes.
+
+Prazos aprovados: inatividade de 12 meses com aviso mínimo de 30 dias; sessões expiradas até 30 dias; logs até 90 dias; exportações até concluir a tarefa e no máximo 30 dias; atendimento mínimo por até 2 anos; backups e snapshots até 30 dias. Registros de incidentes seguem a retenção mínima legal própria de 5 anos. Essas são regras de governança; automação, entrega de avisos, descarte e configurações precisam de execução/evidência e não foram declarados implantados. Nenhuma conta real foi excluída ou avisada.
+
+### Verificação desta rodada
+
+- Rubocop: 140 arquivos, nenhuma infração. Cache em /tmp, sem alterar configurações pessoais.
+- Brakeman: zero alertas e erros.
+- Bundler-audit: permanece reprovado com 21 alertas de dependências, já identificados no code review de 04/11. Nenhum alerta foi ignorado ou dependência atualizada nesta rodada.
+- Aplicação: 106 testes, 667 assertions, zero falhas/erros/skips. Inclui ausência de idade e rejeição de valores não numéricos, fracionários e fora dos limites.
+- Navegador: 31 testes, 203 assertions, zero falhas/erros/skips; cadastro sem campos demográficos, perfil, aceite, impressão e acessibilidade.
+- PDF: 17 páginas renderizadas e inspecionadas; todos os parágrafos públicos conferidos contra a fonte; texto preto e sem conteúdo fora das margens.
+- Diff textual sem erros de whitespace; PDF tratado como binário. Sem commit, push, merge ou deploy nesta rodada. Os documentos do code review anteriores foram preservados.
+
+A tarefa 6 e a liberação em produção não são consideradas integralmente resolvidas por esta entrega documental. Acompanhamento de execução e riscos em pendencias-publicacao.md.
+
+## Correções posteriores do code review - 04/11/2026
+
+Os 17 achados foram corrigidos e registrados em docs/reviews/2026-11-04-correcoes.md. Rails 8.1.4.1 elimina os 21 alertas anteriores: bundler-audit com base atualizada e importmap audit aprovados, sem ignorar advisories. Rubocop: 149 arquivos sem infrações; Brakeman: zero alertas/erros; aplicação: 132 testes e 910 assertions sem falhas/erros/skips; navegador: 31 testes e 203 assertions sem falhas/erros/skips.
+
+A rodada cobre segurança administrativa, recuperação, sessões, CSV, acesso/progressão, concorrência, métricas e ranking, preservando as mudanças anteriores de governança e idade opcional. Nenhuma senha real foi trocada, nenhuma mensagem externa enviada e nenhum dado real foi apagado. Retenção e avisos operacionais continuam separados. Sem merge/deploy nesta rodada.
