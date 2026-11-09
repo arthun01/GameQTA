@@ -104,6 +104,6 @@
 
   <div class="flex justify-end space-x-3">
     <%= link_to "Cancelar", @question.persisted? ? admin_theme_questions_path(@question.theme) : admin_theme_questions_path(@theme), class: "bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
-    <%= f.submit "Salvar Questão", class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-700 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
+    <%= f.submit "Salvar Questão", class: "inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-emerald-800 hover:bg-emerald-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-700 cursor-pointer" %>
   </div>
 <% end %>

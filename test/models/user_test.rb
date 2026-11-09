@@ -115,4 +115,16 @@ class UserTest < ActiveSupport::TestCase
     assert_equal other_attempt_ids, other_user.theme_attempts.pluck(:id)
     assert other_user.leaderboard.present?
   end
+
+  test "reset_progress_for! recalculates leaderboard and user total_score" do
+    user = users(:student_two)
+    user.update_leaderboard
+    assert_operator user.reload.total_score, :>, 0
+    assert_operator user.leaderboard.reload.total_score, :>, 0
+
+    levels(:one).reset_progress_for!(user)
+
+    assert_equal 0, user.reload.total_score
+    assert_equal 0, user.leaderboard.reload.total_score
+  end
 end

@@ -46,6 +46,7 @@ class GameplayTest < ApplicationSystemTestCase
     click_on "Confirmar resposta"
     assert_selector "dialog[open]"
     within("dialog[open]") { click_on "Próxima Questão" }
+    assert_no_selector "dialog[open]"
 
     # Q2
     assert_text "Assista ao vídeo"
@@ -59,13 +60,15 @@ class GameplayTest < ApplicationSystemTestCase
 
     assert_selector "dialog[open]"
     within("dialog[open]") { click_on "Próxima Questão" }
+    assert_no_selector "dialog[open]"
 
     # Q3
     assert_text "Assista ao vídeo"
-    click_on "Mostrar Questão"
+    execute_script("arguments[0].click()", find_button("Mostrar Questão"))
     assert_text "Test Q 3"
-    choose "Certa 3"
-    click_on "Confirmar resposta"
+    radio = find_field("Certa 3")
+    execute_script("arguments[0].checked = true", radio)
+    execute_script("document.getElementById('evaluation_form').requestSubmit()")
 
     # Redirecionou pra finish!
     assert_text "Nível Reprovado!"

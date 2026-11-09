@@ -13,9 +13,9 @@
       </div>
   
   <!-- Avatar do Lado Direito -->
-  <div class="w-10 h-10 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold text-sm">
-    A
-  </div>
+  <%= link_to profile_path, aria: { label: t("accessibility.profile_link") }, class: "w-10 h-10 rounded-full bg-emerald-100 text-emerald-900 flex items-center justify-center font-bold text-sm hover:bg-emerald-200 transition-colors" do %>
+    <%= Current.user&.full_name&.first&.upcase || "U" %>
+  <% end %>
 </div>
 
 <!-- Título da Página -->
@@ -36,7 +36,7 @@
           <div class="w-1 h-6 bg-emerald-100 mx-auto rounded-full"></div>
         <% end %>
 
-        <% if level.starting_level? %>
+        <% if level.unlocked_for?(Current.user) %>
           
           <!-- ==========================================
                Fase Atual
@@ -56,8 +56,8 @@
                       <h2 class="text-base font-bold text-gray-900 leading-tight mt-0.5"><%= level.name %></h2>
                     </div>
                     
-                    <span class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-1 rounded-lg shrink-0 flex-none text-center leading-tight">
-                      <%= t("accessibility.in_progress") %>
+                    <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-1 rounded-lg shrink-0 flex-none text-center leading-tight">
+                      <%= level.completed_by?(Current.user) ? t("accessibility.completed") : t("accessibility.in_progress") %>
                     </span>
                   </div>
                   <p class="text-[13px] text-gray-500 mt-1.5 line-clamp-2 leading-tight"><%= level.description %></p>
@@ -86,6 +86,9 @@
                       <!-- Número e Título do Tema -->
                       <span class="text-[14px] font-semibold text-slate-600 leading-tight flex-1">
                         <%= t_index + 1 %>. <%= theme.name %>
+                        <% if theme.completed_by?(Current.user) %>
+                          <span class="ml-2 inline-block rounded bg-emerald-100 px-2 py-0.5 text-[11px] font-bold text-emerald-800"><%= t("accessibility.theme_completed_badge") %></span>
+                        <% end %>
                       </span>
                       
                       <!-- Botão 'Iniciar' como texto subtil -->

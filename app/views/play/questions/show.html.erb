@@ -8,9 +8,9 @@
         <img src="/logo_qta.png" alt="Game QTA" class="w-6 h-6 object-contain">
         <span class="text-emerald-800 font-bold text-lg tracking-tight">Game QTA</span>
       </div>
-      <div class="w-10 h-10 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold text-sm">
-        A
-      </div>
+      <%= link_to profile_path, data: { turbo_frame: "_top" }, aria: { label: t("accessibility.profile_link") }, class: "w-10 h-10 rounded-full bg-emerald-100 text-emerald-900 flex items-center justify-center font-bold text-sm hover:bg-emerald-200 transition-colors" do %>
+        <%= Current.user&.full_name&.first&.upcase || "U" %>
+      <% end %>
     </div>
 
     <% submission = @theme_attempt.question_submissions.find_by(question: @question, option_id: nil, answered_at: nil) %>

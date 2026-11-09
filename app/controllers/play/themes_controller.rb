@@ -2,6 +2,11 @@ class Play::ThemesController < Users::BaseController
   def start
     @theme = Theme.find(params[:id])
 
+    unless @theme.level.unlocked_for?(Current.user)
+      redirect_to jornada_path, alert: t(".level_locked", default: "Alcance 70% de acertos no nível anterior para liberar.")
+      return
+    end
+
     # Cancela qualquer tentativa in_progress anterior deste tema
     Current.user.theme_attempts.in_progress.where(theme: @theme).destroy_all
 
@@ -19,13 +24,18 @@ class Play::ThemesController < Users::BaseController
       return
     end
 
+    if @attempt.next_pending_question.present?
+      redirect_to play_theme_attempt_question_path(@attempt)
+      return
+    end
+
     if @attempt.in_progress?
       @attempt.update!(status: :completed)
     end
 
     @level = @theme.level
 
-    if @level.last_theme?(@theme)
+    if @level.all_themes_completed_by?(Current.user)
       @score = @level.score_for(Current.user)
       if @score < 70.0
         @level.reset_progress_for!(Current.user)

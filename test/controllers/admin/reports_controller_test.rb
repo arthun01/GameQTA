@@ -41,6 +41,27 @@ class Admin::ReportsControllerTest < ActionDispatch::IntegrationTest
     response.stream.each { |chunk| csv_content << chunk }
 
     assert_match "ID,Tema,Nivel,Total_Tentativas,Total_Acertos,Taxa_Acertos", csv_content
-    # student_one answered questions in fixtures? Actually we don't assert specific data because fixtures may vary, just headers.
+  end
+
+  test "should sanitize formula injection in students csv" do
+    malicious_user = User.create!(
+      full_name: "=CMD|' /C calc'!A0",
+      email_address: "formula@example.com",
+      password: "password123",
+      age: 20,
+      city: "+Recife",
+      education_level: :medio_completo
+    )
+
+    get students_admin_reports_path
+    assert_response :success
+
+    csv_content = String.new
+    response.stream.each { |chunk| csv_content << chunk }
+
+    assert_includes csv_content, "'=CMD|' /C calc'!A0"
+    assert_includes csv_content, "'+Recife"
+  ensure
+    malicious_user&.destroy
   end
 end

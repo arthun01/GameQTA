@@ -90,12 +90,13 @@ class User < ApplicationRecord
       unless blocked?
         submissions = QuestionSubmission.joins(:theme_attempt).where(theme_attempts: { user_id: id })
         total_time = submissions.sum(:time_taken)
-        total_score = submissions.joins(:question).where(is_correct: true).sum(
+        calculated_score = submissions.joins(:question).where(is_correct: true).sum(
           "CASE questions.difficulty WHEN 0 THEN 10 WHEN 1 THEN 20 WHEN 2 THEN 30 ELSE 0 END"
         )
 
+        update_column(:total_score, calculated_score)
         Leaderboard.upsert(
-          { user_id: id, total_score: total_score, total_time_taken: total_time },
+          { user_id: id, total_score: calculated_score, total_time_taken: total_time },
           unique_by: :user_id
         )
       end

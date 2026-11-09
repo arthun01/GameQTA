@@ -1,6 +1,6 @@
 class Admin::SessionsController < Admin::BaseController
   allow_unauthenticated_access only: %i[ new create ]
-  rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_admin_session_path, alert: "Try again later." }
+  rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_admin_session_path, alert: I18n.t("admin.sessions.create.rate_limit") }
 
   def new
   end
@@ -10,7 +10,7 @@ class Admin::SessionsController < Admin::BaseController
       start_new_session_for admin
       redirect_to after_authentication_url
     else
-      redirect_to new_admin_session_path, alert: "Try another email address or password."
+      redirect_to new_admin_session_path, alert: t(".invalid_credentials")
     end
   end
 

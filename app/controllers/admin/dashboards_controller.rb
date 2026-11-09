@@ -1,7 +1,7 @@
 class Admin::DashboardsController < Admin::BaseController
   def show
     @total_students = User.count
-    @themes_completed = ThemeAttempt.count
+    @themes_completed = ThemeAttempt.completed.count
 
     total_submissions = QuestionSubmission.count
     correct_submissions = QuestionSubmission.where(is_correct: true).count

@@ -36,11 +36,64 @@ class LevelTest < ActiveSupport::TestCase
     first_level = Level.order(:id).first
     second_level = Level.order(:id).second
 
-    # We need to simulate destroying first_level. But first_level has themes in fixtures.
-    # Let's delete the themes first to allow level deletion.
+    Question.where(theme: first_level.themes).destroy_all
     first_level.themes.destroy_all
     first_level.destroy
 
     assert second_level.starting_level?
+  end
+
+  test "unlocked_for? and completed_by? unlock next level when student reaches at least 70 percent across all themes" do
+    user = users(:student_one)
+    first_level = levels(:one)
+    second_level = levels(:two)
+
+    assert first_level.unlocked_for?(user)
+    assert_not second_level.unlocked_for?(user)
+
+    first_level.themes.each do |theme|
+      ThemeAttempt.where(user: user, theme: theme).destroy_all
+      attempt = ThemeAttempt.create!(user: user, theme: theme, status: :completed)
+      theme.questions.each do |question|
+        correct_option = question.options.find_by!(is_correct: true)
+        QuestionSubmission.create!(
+          theme_attempt: attempt,
+          question: question,
+          option: correct_option,
+          is_correct: true,
+          revealed_at: 10.seconds.ago,
+          answered_at: Time.current,
+          time_taken: 10
+        )
+      end
+    end
+
+    assert_equal 100.0, first_level.score_for(user)
+    assert first_level.completed_by?(user)
+    assert second_level.unlocked_for?(user)
+  end
+
+  test "score_for considers total questions in level and does not pass if themes are skipped" do
+    user = users(:student_one)
+    first_level = levels(:one)
+    ThemeAttempt.where(user: user, theme: first_level.themes).destroy_all
+
+    only_second_theme = themes(:two)
+    attempt = ThemeAttempt.create!(user: user, theme: only_second_theme, status: :completed)
+    question = only_second_theme.questions.first
+    correct_option = question.options.find_by!(is_correct: true)
+    QuestionSubmission.create!(
+      theme_attempt: attempt,
+      question: question,
+      option: correct_option,
+      is_correct: true,
+      revealed_at: 10.seconds.ago,
+      answered_at: Time.current,
+      time_taken: 10
+    )
+
+    assert_operator first_level.score_for(user), :<, 70.0
+    assert_not first_level.completed_by?(user)
+    assert_not levels(:two).unlocked_for?(user)
   end
 end

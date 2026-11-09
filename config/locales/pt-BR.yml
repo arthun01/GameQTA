@@ -49,6 +49,20 @@ pt-BR:
       time_format: "%{min}m %{sec}s"
   admin:
     app_name: Painel Admin
+    sessions:
+      create:
+        rate_limit: Muitas tentativas. Tente novamente mais tarde.
+        invalid_credentials: E-mail ou senha incorretos.
+      new:
+        email_placeholder: Digite seu e-mail
+        password_placeholder: Digite sua senha
+    passwords:
+      create:
+        sent: Instruções para redefinição de senha enviadas (caso o e-mail exista).
+      update:
+        success: A senha foi redefinida com sucesso.
+        mismatch: As senhas não coincidem.
+      invalid_token: O link de redefinição de senha é inválido ou expirou.
     shared:
       cancel: Cancelar
       save: Salvar
@@ -79,6 +93,7 @@ pt-BR:
         success: Nível atualizado com sucesso.
       destroy:
         success: Nível removido com sucesso.
+        error: Não foi possível remover o nível porque possui temas associados.
   activerecord:
     errors:
       messages:

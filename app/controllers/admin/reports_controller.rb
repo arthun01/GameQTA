@@ -21,9 +21,9 @@ class Admin::ReportsController < Admin::BaseController
 
         y << CSV.generate_line([
           user.id,
-          user.full_name,
-          user.email_address,
-          user.city,
+          sanitize_csv_field(user.full_name),
+          sanitize_csv_field(user.email_address),
+          sanitize_csv_field(user.city),
           user.education_level,
           score,
           time,
@@ -55,8 +55,8 @@ class Admin::ReportsController < Admin::BaseController
 
         y << CSV.generate_line([
           theme.id,
-          theme.name,
-          theme.level.name,
+          sanitize_csv_field(theme.name),
+          sanitize_csv_field(theme.level.name),
           total,
           correct,
           "#{rate}%"
@@ -64,4 +64,15 @@ class Admin::ReportsController < Admin::BaseController
       end
     end
   end
+
+  private
+    def sanitize_csv_field(value)
+      return value unless value.is_a?(String)
+
+      if value.match?(/\A[=+\-@\t\r]/)
+        "'#{value}"
+      else
+        value
+      end
+    end
 end

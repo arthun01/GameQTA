@@ -50,4 +50,12 @@ class Admin::LevelsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to admin_levels_url
   end
+
+  test "should not destroy level with themes and should show alert" do
+    assert_no_difference("Level.count") do
+      delete admin_level_url(@level)
+    end
+    assert_redirected_to admin_levels_url
+    assert_equal "Não foi possível remover o nível porque possui temas associados.", flash[:alert]
+  end
 end

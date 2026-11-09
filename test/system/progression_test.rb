@@ -7,6 +7,10 @@ class ProgressionTest < ApplicationSystemTestCase
     level = Level.create!(name: "Progression Level", description: "Desc", icon: "⭐")
     level.update_column(:id, (Level.minimum(:id) || 0) - 100)
 
+    next_level = Level.create!(name: "Second Progression Level", description: "Desc 2", icon: "🚀")
+    next_level.update_column(:id, level.id + 1)
+    next_level.themes.create!(name: "Second Theme", description: "Desc 2", icon: "🌊")
+
     theme = level.themes.create!(name: "Progression Theme", description: "Desc", icon: "🔥")
 
     q1 = theme.questions.build(statement: "Test Q 1", difficulty: :easy, youtube_link: "https://youtube.com/watch?v=123", feedback_article: "test")
@@ -46,5 +50,11 @@ class ProgressionTest < ApplicationSystemTestCase
 
     assert_text "Nível Concluído!"
     assert_text "100.0%"
+
+    visit jornada_path
+    assert_selector "summary", text: "Second Progression Level"
+    summary = find("summary", text: "Second Progression Level")
+    execute_script("arguments[0].click()", summary)
+    assert_text "Second Theme"
   end
 end
