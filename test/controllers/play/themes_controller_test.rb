@@ -30,4 +30,19 @@ class Play::ThemesControllerTest < ActionDispatch::IntegrationTest
     post start_play_theme_url(@theme)
     assert_redirected_to entrar_url
   end
+
+  test "cannot start a theme from a locked level" do
+    locked_theme = themes(:three)
+    assert_no_difference("ThemeAttempt.count") do
+      post start_play_theme_url(locked_theme)
+    end
+    assert_redirected_to jornada_url
+  end
+
+  test "cannot finish a theme while questions are still pending" do
+    attempt = theme_attempts(:one)
+    post play_theme_completion_path(attempt.theme), params: { attempt_id: attempt.id }
+    assert_redirected_to play_theme_attempt_question_url(attempt)
+    assert attempt.reload.in_progress?
+  end
 end

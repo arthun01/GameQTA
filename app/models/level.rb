@@ -44,8 +44,7 @@ class Level < ApplicationRecord
 
   private
     def latest_attempts_for(user)
-      ThemeAttempt.where(user: user, theme_id: themes.select(:id))
-        .order(created_at: :desc, id: :desc).to_a.uniq(&:theme_id)
+      ThemeAttempt.latest_for(user).where(theme_id: themes.select(:id)).to_a
     end
 
     def required_questions

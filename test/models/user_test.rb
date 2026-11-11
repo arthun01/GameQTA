@@ -1,6 +1,8 @@
 require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
+  include ActiveJob::TestHelper
+
   test "ranking code does not derive from profile and is preserved when profile changes" do
     user = User.create!(full_name: "Pessoa Exemplo", email_address: "new-alias@example.com", password: "password123", age: 11, city: "Ilhéus", education_level: :fundamental_incompleto)
     original_code = user.ranking_code
@@ -114,5 +116,17 @@ class UserTest < ActiveSupport::TestCase
     assert User.exists?(other_user.id)
     assert_equal other_attempt_ids, other_user.theme_attempts.pluck(:id)
     assert other_user.leaderboard.present?
+  end
+
+  test "reset_progress_for recalculates leaderboard and user total_score" do
+    user = users(:student_two)
+    user.update_leaderboard
+    assert_operator user.reload.total_score, :>, 0
+    assert_operator user.leaderboard.reload.total_score, :>, 0
+
+    perform_enqueued_jobs { levels(:one).reset_progress_for(user) }
+
+    assert_equal 0, user.reload.total_score
+    assert_equal 0, user.leaderboard.reload.total_score
   end
 end

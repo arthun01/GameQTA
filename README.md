@@ -237,3 +237,11 @@ Demonstração exige desenvolvimento e opção explícita: LOAD_DEMO_DATA=1 bin/
 Produção utiliza APP_HOST (somente o host, sem protocolo), MAILER_FROM, SMTP_ADDRESS, SMTP_PORT (padrão 587), SMTP_USERNAME, SMTP_PASSWORD e, se necessário, SMTP_AUTHENTICATION (padrão plain). O transporte exige STARTTLS. Valores devem vir da configuração segura do ambiente; não grave segredos no repositório. Configure um provedor real e confira o processamento dos jobs antes de usar a recuperação em produção. A validação local executa os jobs no adaptador de teste e não envia mensagens externas.
 
 As correções não automatizam os avisos e descartes da política de retenção. A documentação de governança 1.0 e o PDF foram preservados.
+
+## Consolidação das branches — 10/11/2026
+
+A versão consolidada reúne a governança e as proteções de `rafael` com os ajustes de interface e pontuação de `arthur-testes`. As imagens ODS seguem a posição dos níveis, o avatar leva ao perfil, níveis/temas concluídos têm indicadores e os botões administrativos usam Emerald. Pontos por resposta são gravados; o total da conta acompanha o recálculo do ranking.
+
+Também resolve as quatro pendências da segunda revisão: consulta sem instanciar todo o histórico, cadastro simultâneo com erro de formulário, restauração do ranking no desbloqueio e destinos de login independentes. Rejogar um tema aprovado mantém a conclusão anterior durante a tentativa; ao concluir, o novo resultado passa a valer, incluindo reset em caso de reprovação do nível.
+
+Consulte a [comparação e decisões de consolidação](docs/reviews/2026-11-10-consolidacao-branches.md) e o [PRD de progressão e estabilidade](ai-sdd/prd-correcoes-progressao-e-estabilidade/prd.md). O PR #23 concentra a entrega das duas branches.

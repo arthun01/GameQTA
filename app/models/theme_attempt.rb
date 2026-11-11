@@ -8,6 +8,11 @@ class ThemeAttempt < ApplicationRecord
   validates :status, presence: true
   validates :theme_id, uniqueness: { scope: :user_id, conditions: -> { in_progress } }, if: :in_progress?
 
+  def self.latest_for(user)
+    where(user: user).select("DISTINCT ON (theme_id) theme_attempts.*")
+      .order(:theme_id, status: :desc, created_at: :desc, id: :desc)
+  end
+
   def all_questions_answered?
     theme.questions.exists? && !theme.questions.where.not(id: question_submissions.answered.select(:question_id)).exists?
   end

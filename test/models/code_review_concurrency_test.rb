@@ -69,6 +69,46 @@ class CodeReviewConcurrencyTest < ActiveSupport::TestCase
     Admin.where(email_address: email).destroy_all if email
   end
 
+  test "concurrent public registrations return one success and one form error" do
+    email = "concurrent-student@example.com"
+    ready = Queue.new
+    continue = Queue.new
+    barrier = ->(record) do
+      if record.email_address == email
+        ready << true
+        continue.pop
+      end
+    end
+    User.set_callback(:create, :before, barrier)
+    threads = 2.times.map do
+      Thread.new do
+        ActiveRecord::Base.connection_pool.with_connection do
+          browser = ActionDispatch::Integration::Session.new(Rails.application)
+          browser.post "/cadastrar", params: { user: {
+            full_name: "Novo estudante", email_address: email, password: "password",
+            legal_documents_accepted: "1", legal_revision: LegalDocument.revision
+          } }
+          { status: browser.response.status, body: browser.response.body }
+        end
+      end
+    end
+    Timeout.timeout(10) { 2.times { ready.pop } }
+    2.times { continue << true }
+    results = Timeout.timeout(10) { threads.map(&:value) }
+
+    assert_equal [ 302, 422 ], results.map { |result| result[:status] }.sort
+    assert_includes results.find { |result| result[:status] == 422 }[:body], I18n.t("errors.messages.taken")
+    assert_equal 1, User.where(email_address: email).count
+    user = User.find_by!(email_address: email)
+    assert_equal 1, user.legal_acceptances.count
+    assert_equal 1, user.user_sessions.count
+  ensure
+    2.times { continue << true } if continue
+    threads&.each { |thread| thread.join(2) }
+    User.skip_callback(:create, :before, barrier) if barrier
+    User.where(email_address: email).destroy_all if email
+  end
+
   private
     def concurrently
       ready = Queue.new

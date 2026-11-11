@@ -30,12 +30,13 @@ module Authentication
     end
 
     def request_authentication
-      session[:return_to_after_authenticating] = request.url
+      session[:admin_return_to_after_authenticating] = request.fullpath
       redirect_to new_admin_session_path
     end
 
     def after_authentication_url
-      session.delete(:return_to_after_authenticating) || admin_root_url
+      destination = session.delete(:admin_return_to_after_authenticating)
+      destination&.match?(%r{\A/admin(?:/|\?|$)}) ? destination : admin_root_url
     end
 
     def start_new_session_for(admin)

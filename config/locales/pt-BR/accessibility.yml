@@ -31,6 +31,9 @@ pt-BR:
     sign_out: "Sair da conta"
     level_number: "Nível %{number}"
     in_progress: "Em progresso"
+    completed: "Concluído"
+    theme_completed_badge: "Concluído"
+    profile_link: "Seus dados e privacidade"
     previous_level: "Alcance a meta no nível anterior"
     time_adjustment: "Tempo para responder"
     time_multiple:

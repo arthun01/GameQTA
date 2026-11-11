@@ -1,5 +1,7 @@
 # Segunda revisão de código - Game QTA
 
+> Atualização de 10/11/2026: os quatro achados abaixo foram corrigidos na consolidação das branches. Este relatório preserva o estado histórico revisado; consulte [decisões e validação da consolidação](2026-11-10-consolidacao-branches.md).
+
 Data: 04/11/2026. Branch: `rafael`. Referência: `10741c9b54fd47c402d89b88f45170fb55cff7a7`, incluindo as alterações locais e os arquivos novos ainda não commitados.
 
 Esta revisão reavaliou as correções anteriores em dois eixos independentes, Standards e Spec, seguidos de reproduções complementares. Foram confirmados quatro achados P2: uma regressão de performance e três defeitos preexistentes que não faziam parte dos 17 itens anteriores. Não foi confirmado novo P1 nesta rodada. A análise não é teste de invasão, teste de carga ou validação da implantação em produção.

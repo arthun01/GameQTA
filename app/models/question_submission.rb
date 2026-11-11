@@ -29,7 +29,8 @@ class QuestionSubmission < ApplicationRecord
         elapsed = [ Time.current - revealed_at, 0 ].max
         selected = question.options.find_by(id: option_id)
         selected = nil if elapsed > allowed_seconds + 2
-        update!(option: selected, is_correct: selected&.is_correct? || false,
+        correct = selected&.is_correct? || false
+        update!(option: selected, is_correct: correct, score: correct ? points_for_question : 0,
           answered_at: Time.current, time_taken: elapsed.round)
       else
         false
@@ -38,6 +39,15 @@ class QuestionSubmission < ApplicationRecord
   end
 
   private
+    def points_for_question
+      case question.difficulty
+      when "easy" then 10
+      when "medium" then 20
+      when "hard" then 30
+      else 0
+      end
+    end
+
     def remember_leaderboard_user
       @leaderboard_user_id = theme_attempt.user_id
     end

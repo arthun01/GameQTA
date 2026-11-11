@@ -8,7 +8,7 @@ class Users::RegistrationsController < Users::BaseController
 
   def create
     @user = User.new(user_params)
-    if @user.save(context: :registration)
+    if @user.save_for_registration
       start_new_session_for @user
       redirect_to after_authentication_url
     else

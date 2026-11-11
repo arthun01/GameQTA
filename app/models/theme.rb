@@ -13,4 +13,9 @@ class Theme < ApplicationRecord
       correct: responses.where(is_correct: true).count
     }
   end
+
+  def completed_by?(user)
+    attempt = theme_attempts.latest_for(user).first if user.present?
+    attempt.present? && attempt.completed? && attempt.all_questions_answered?
+  end
 end

@@ -13,9 +13,9 @@
       </div>
   
   <!-- Avatar do Lado Direito -->
-  <div class="w-10 h-10 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold text-sm">
-    A
-  </div>
+  <%= link_to profile_path, aria: { label: t("accessibility.profile_link") }, class: "w-10 h-10 rounded-full bg-emerald-100 text-emerald-900 flex items-center justify-center font-bold text-sm hover:bg-emerald-200 transition-colors" do %>
+    <%= Current.user.full_name.first.upcase %>
+  <% end %>
 </div>
 
 <!-- Título da Página -->
@@ -37,6 +37,7 @@
         <% end %>
 
         <% if level.available_to?(Current.user) %>
+          <% passed = level.passed_by?(Current.user) %>
           
           <!-- ==========================================
                Fase Atual
@@ -46,7 +47,7 @@
               <div class="flex items-start gap-4">
                 
                 <div class="w-16 h-16 min-w-[64px] flex-none shrink-0 rounded-2xl overflow-hidden border border-emerald-100 bg-emerald-50/50 flex items-center justify-center shadow-sm">
-                 <img src="<%= level_image_path(level.id) %>" style="width: 170%; height: auto; max-width: none;" class="object-center" alt="<%= level.name %>">
+                 <img src="<%= level_image_path(level, position: index + 1) %>" style="width: 170%; height: auto; max-width: none;" class="object-center" alt="<%= level.name %>">
                 </div>
 
                 <div class="flex-1 min-w-0 pt-0.5">
@@ -56,8 +57,11 @@
                       <h2 class="text-base font-bold text-gray-900 leading-tight mt-0.5"><%= level.name %></h2>
                     </div>
                     
-                    <span class="bg-emerald-100 text-emerald-700 text-[10px] font-bold px-2 py-1 rounded-lg shrink-0 flex-none text-center leading-tight">
-                      <%= t("accessibility.in_progress") %>
+                    <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-1 rounded-lg shrink-0 flex-none text-center leading-tight">
+                      <%= passed ? t("accessibility.completed") : t("accessibility.in_progress") %>
+                      <% if passed %>
+                        <span class="block mt-1"><%= t('.score', score: number_with_precision(level.score_for(Current.user), precision: 1)) %></span>
+                      <% end %>
                     </span>
                   </div>
                   <p class="text-[13px] text-gray-500 mt-1.5 line-clamp-2 leading-tight"><%= level.description %></p>
@@ -86,6 +90,9 @@
                       <!-- Número e Título do Tema -->
                       <span class="text-[14px] font-semibold text-slate-600 leading-tight flex-1">
                         <%= t_index + 1 %>. <%= theme.name %>
+                        <% if theme.completed_by?(Current.user) %>
+                          <span class="ml-2 inline-block rounded bg-emerald-100 px-2 py-0.5 text-[11px] font-bold text-emerald-800"><%= t("accessibility.theme_completed_badge") %></span>
+                        <% end %>
                       </span>
                       
                       <!-- Botão 'Iniciar' como texto subtil -->
@@ -111,7 +118,7 @@
               <div class="flex items-center gap-3 sm:gap-4">
                 
                 <div class="w-12 h-12 min-w-[48px] flex-none shrink-0 rounded-2xl overflow-hidden bg-gray-50 border border-gray-100 flex items-center justify-center grayscale opacity-60 transition-transform group-hover:scale-105">
-                 <img src="<%= level_image_path(level.id) %>" style="width: 170%; height: auto; max-width: none;" class="object-center" alt="<%= level.name %>">
+                 <img src="<%= level_image_path(level, position: index + 1) %>" style="width: 170%; height: auto; max-width: none;" class="object-center" alt="<%= level.name %>">
                 </div>
                 <div class="flex-1 min-w-0">
                   <div class="flex justify-between items-center gap-2">

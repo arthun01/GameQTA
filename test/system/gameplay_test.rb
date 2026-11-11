@@ -46,6 +46,7 @@ class GameplayTest < ApplicationSystemTestCase
     click_on "Confirmar resposta"
     assert_selector "dialog[open]"
     within("dialog[open]") { click_on "Próxima Questão" }
+    assert_no_selector "dialog[open]"
 
     # Q2
     assert_text "Assista ao vídeo"
@@ -59,6 +60,7 @@ class GameplayTest < ApplicationSystemTestCase
 
     assert_selector "dialog[open]"
     within("dialog[open]") { click_on "Próxima Questão" }
+    assert_no_selector "dialog[open]"
 
     # Q3
     assert_text "Assista ao vídeo"

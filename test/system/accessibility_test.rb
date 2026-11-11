@@ -91,6 +91,7 @@ class AccessibilityTest < ApplicationSystemTestCase
   private
     def login_student
       visit entrar_path
+      assert_selector "h1", text: "Bem-vindo de volta!"
       fill_in "E-mail", with: users(:student_one).email_address
       fill_in "Senha", with: "password"
       click_on "Entrar para jogar"
