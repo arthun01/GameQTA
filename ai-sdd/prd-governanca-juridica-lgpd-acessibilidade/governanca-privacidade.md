@@ -1,6 +1,6 @@
 # Manual de Governança e Privacidade
 
-Versão 1.0. Emissão: 04/11/2026. Responsável: Guilhardes de Jesus Júnior. Contato: guilhardesj@gmail.com.
+Versão 1.1. Emissão: 10/11/2026. Responsável: Guilhardes de Jesus Júnior. Contato: guilhardesj@gmail.com.
 
 ## 1. Objeto e aplicação
 
@@ -100,7 +100,7 @@ Os fornecedores operam nos limites de seus serviços: Hostinger para infraestrut
 
 Cookies próprios sustentam navegação, segurança dos formulários e autenticação. O acesso vence em 12 horas também no servidor; retenção dos registros segue a tabela. Não adicionar analytics, publicidade comportamental ou nova integração sem avaliar finalidade, fundamento, riscos e transparência.
 
-A aplicação oferece recursos de teclado, foco, ajuste do tempo e conteúdo textual. A equipe deve revisar legendas, transcrições e alternativas de conteúdo, receber relatos de barreiras e corrigir problemas. Este PDF não declara conformidade integral com WCAG nem certificação de PDF acessível; a versão HTML dos documentos é alternativa de consulta.
+A aplicação oferece recursos de teclado, foco, ajuste do tempo e conteúdo textual. O tempo padrão é automático; uma preferência de 1 a 10 vezes esse tempo pode ser salva no perfil, sem diagnóstico ou senha adicional. Ela vale para próximas questões, não reinicia prazo de questão revelada e é excluída com a conta. Vídeos só se conectam ao YouTube após clicar em Assistir vídeo; seguir diretamente à questão mantém o player desligado. A equipe deve revisar legendas, transcrições e alternativas de conteúdo, receber relatos de barreiras e corrigir problemas. Este PDF não declara conformidade integral com WCAG nem certificação de PDF acessível; a versão HTML dos documentos é alternativa de consulta.
 
 ## 9. Pesquisa, mudanças e prestação de contas
 

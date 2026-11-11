@@ -135,7 +135,7 @@ O gerador combina o manual em Markdown com os textos integrais do locale. Revise
 
 ### Cookies e acessibilidade — tópicos 3 e 4
 
-A sessão de acesso dura **12 horas**, com expiração também no servidor; em produção cookies usam Secure e o serviço força HTTPS. Google Fonts foi removido. Vídeos começam desligados e só conectam ao YouTube após **Carregar este vídeo**; é possível continuar sem vídeo ou desativar o player. Não existe autorização geral salva nem analytics instalado. O rodapé explica o uso sem bloquear a entrada.
+A sessão de acesso dura **12 horas**, com expiração também no servidor; em produção cookies usam Secure e o serviço força HTTPS. Google Fonts foi removido. Vídeos começam desligados e só conectam ao YouTube após **Assistir vídeo**, com aviso curto; é possível mostrar a questão diretamente ou desativar o player. Não existe autorização geral salva nem analytics instalado. O rodapé explica o uso sem bloquear a entrada.
 
 **`/acessibilidade`** explica teclado, foco e limites conhecidos. Antes da revelação é possível escolher de **1 a 10× o tempo padrão**, para qualquer pessoa. A escolha é registrada no servidor e recarregar não reinicia o prazo; o tempo efetivo continua no desempate. Selecionar alternativa não envia a resposta: use **Confirmar resposta**. Diálogos usam foco nativo, Escape e títulos; formulários associam erros aos campos e respeitam preferência de reduzir movimento.
 
@@ -245,3 +245,9 @@ A versão consolidada reúne a governança e as proteções de `rafael` com os a
 Também resolve as quatro pendências da segunda revisão: consulta sem instanciar todo o histórico, cadastro simultâneo com erro de formulário, restauração do ranking no desbloqueio e destinos de login independentes. Rejogar um tema aprovado mantém a conclusão anterior durante a tentativa; ao concluir, o novo resultado passa a valer, incluindo reset em caso de reprovação do nível.
 
 Consulte a [comparação e decisões de consolidação](docs/reviews/2026-11-10-consolidacao-branches.md) e o [PRD de progressão e estabilidade](ai-sdd/prd-correcoes-progressao-e-estabilidade/prd.md). O PR #23 concentra a entrega das duas branches.
+
+### Tempo automático e vídeo opcional
+
+O jogo aplica o tempo padrão sem configuração por questão. Em `/perfil`, abra **Ajustar tempo de resposta** para salvar de 1 a 10 vezes esse tempo ou restaurar o padrão. A preferência fica na conta, sem pedido de diagnóstico ou senha adicional, e vale para próximas questões. Mudar a preferência ou recarregar não reinicia uma questão já revelada. O servidor usa o valor salvo, ignorando multiplicadores enviados pela tela de jogo.
+
+Aplicar `bin/rails db:migrate` inclui a preferência com padrão 1 para contas existentes. Os documentos públicos e o PDF passam à versão **1.1, de 10/11/2026**, descrevendo o fluxo atual. A nova revisão exige nova manifestação pelo mecanismo de aceite existente e preserva registros anteriores.

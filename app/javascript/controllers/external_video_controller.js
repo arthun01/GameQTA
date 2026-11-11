@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["choices", "status", "player", "stop", "rejection"]
+  static targets = ["choices", "player", "stop"]
   static values = { url: String, title: String }
 
   load() {
@@ -12,21 +12,15 @@ export default class extends Controller {
     frame.allowFullscreen = true
     frame.referrerPolicy = "strict-origin-when-cross-origin"
     this.playerTarget.replaceChildren(frame)
-    this.statusTarget.textContent = ""
     this.choicesTarget.hidden = true
     this.stopTarget.hidden = false
     this.stopTarget.focus()
-  }
-
-  reject() {
-    this.statusTarget.textContent = this.rejectionTarget.textContent
   }
 
   reset() {
     this.playerTarget.replaceChildren()
     this.choicesTarget.hidden = false
     this.stopTarget.hidden = true
-    this.statusTarget.textContent = ""
     this.choicesTarget.querySelector("button").focus()
   }
 

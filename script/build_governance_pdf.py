@@ -6,6 +6,7 @@ Requires ReportLab and Liberation Serif. No network or application database acce
 import json
 import sys
 from html import escape
+from datetime import date
 from pathlib import Path
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_LEFT, TA_CENTER, TA_JUSTIFY
@@ -19,6 +20,8 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, Tabl
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'output/pdf/game-qta-governanca-e-privacidade.pdf'
 DATA = json.loads(Path(sys.argv[1]).read_text())
+UPDATED_ON = date.fromisoformat(DATA['shared']['updated_on']).strftime('%d/%m/%Y')
+VERSION_DATE = 'Versão ' + DATA['shared']['version'] + ' | ' + UPDATED_ON
 FONT = Path('/usr/share/fonts/liberation-serif-fonts')
 pdfmetrics.registerFont(TTFont('Document', str(FONT / 'LiberationSerif-Regular.ttf')))
 pdfmetrics.registerFont(TTFont('Document-Bold', str(FONT / 'LiberationSerif-Bold.ttf')))
@@ -82,7 +85,7 @@ def page(canvas, doc):
     canvas.setFillColor(colors.black)
     canvas.setFont('Document', 8)
     canvas.drawString(25 * mm, h - 14 * mm, 'GAME QTA  |  GOVERNANÇA E PRIVACIDADE')
-    canvas.drawString(25 * mm, 14 * mm, 'Versão 1.0  |  04/11/2026')
+    canvas.drawString(25 * mm, 14 * mm, VERSION_DATE)
     canvas.drawRightString(w - 25 * mm, 14 * mm, str(doc.page))
     canvas.restoreState()
 
@@ -133,7 +136,7 @@ para('GAME QTA', 'CoverLabelQTA')
 para('Governança e Privacidade', 'CoverQTA')
 para('Manual de governança, Termos de Uso e Política de Privacidade', 'CoverLabelQTA')
 story.append(Spacer(1, 12 * mm))
-para('Versão ' + DATA['shared']['version'] + ' | Emissão: 04/11/2026', 'CoverLabelQTA')
+para('Versão ' + DATA['shared']['version'] + ' | Emissão: ' + UPDATED_ON, 'CoverLabelQTA')
 para('Responsável: ' + DATA['shared']['contact_name'], 'CoverLabelQTA')
 para('Contato: ' + DATA['shared']['contact_email'], 'CoverLabelQTA')
 story.append(Spacer(1, 15 * mm))
@@ -157,7 +160,7 @@ story.append(PageBreak())
 for part, key in [('Parte II', 'terms'), ('Parte III', 'privacy')]:
     document = DATA[key]
     heading(part + ' - ' + document['title'])
-    para('Versão ' + DATA['shared']['version'] + ' | Atualização: 04/11/2026', 'SmallQTA')
+    para('Versão ' + DATA['shared']['version'] + ' | Atualização: ' + UPDATED_ON, 'SmallQTA')
     para(document['summary'])
     for section in document['sections'].values():
         heading(section['title'], 2)

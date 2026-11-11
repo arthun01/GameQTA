@@ -23,6 +23,7 @@ class User < ApplicationRecord
   validates :full_name, length: { maximum: 100 }
   validates :city, length: { maximum: 100 }, allow_nil: true
   validates :age, numericality: { only_integer: true, greater_than_or_equal_to: 5, less_than_or_equal_to: 120 }, allow_nil: true
+  validates :response_time_multiplier, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 10 }
   validates :email_address, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true, length: { maximum: 254 }
   normalizes :email_address, with: ->(e) { e.strip.downcase }
   normalizes :full_name, with: ->(value) { value.strip }

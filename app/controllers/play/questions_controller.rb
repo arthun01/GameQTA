@@ -14,7 +14,7 @@ class Play::QuestionsController < Users::BaseController
   end
 
   def reveal
-    @submission = @theme_attempt.reveal_question(time_multiplier: params[:time_multiplier])
+    @submission = @theme_attempt.reveal_question(time_multiplier: Current.user.response_time_multiplier)
     if @submission.nil?
       redirect_to finish_play_theme_path(@theme_attempt.theme)
       return

@@ -17,7 +17,9 @@ class AccessibleTimingTest < ActionDispatch::IntegrationTest
   end
 
   test "time choice is recorded once and reload cannot reset it" do
-    post reveal_play_theme_attempt_question_path(@attempt), params: { time_multiplier: "10" }, as: :turbo_stream
+    patch profile_time_preference_path, params: { user: { response_time_multiplier: "10" } }
+    assert_redirected_to profile_path
+    post reveal_play_theme_attempt_question_path(@attempt), params: { time_multiplier: "1" }, as: :turbo_stream
     submission = @attempt.question_submissions.find_by!(question: @question)
     assert_equal GameSetting.current.easy_time * 10, submission.time_limit_seconds
     deadline = submission.revealed_at
@@ -26,10 +28,32 @@ class AccessibleTimingTest < ActionDispatch::IntegrationTest
       assert_select "[data-gameplay-timer-seconds-value]" do |elements|
         assert_operator elements.first["data-gameplay-timer-seconds-value"].to_i, :<=, submission.allowed_seconds - 44
       end
+      patch profile_time_preference_path, params: { user: { response_time_multiplier: "1" } }
       post reveal_play_theme_attempt_question_path(@attempt), params: { time_multiplier: "1" }, as: :turbo_stream
     end
     assert_equal deadline, submission.reload.revealed_at
     assert_equal GameSetting.current.easy_time * 10, submission.time_limit_seconds
+  end
+
+  test "saved preference applies automatically to subsequent questions after logging in again" do
+    patch profile_time_preference_path, params: { user: { response_time_multiplier: "3" } }
+    delete sair_path
+    post entrar_path, params: { email_address: users(:student_one).email_address, password: "password" }
+    post reveal_play_theme_attempt_question_path(@attempt), as: :turbo_stream
+    assert_equal GameSetting.current.easy_time * 3, @attempt.question_submissions.find_by!(question: @question).allowed_seconds
+
+    post start_play_theme_path(themes(:two))
+    second = users(:student_one).theme_attempts.find_by!(theme: themes(:two))
+    post reveal_play_theme_attempt_question_path(second), as: :turbo_stream
+    assert_equal GameSetting.current.medium_time * 3, second.question_submissions.sole.allowed_seconds
+  end
+
+  test "gameplay has no time selection and uses the default without any setup" do
+    get play_theme_attempt_question_path(@attempt)
+    assert_select "select", count: 0
+    assert_select "form[action=?] input[name=time_multiplier]", reveal_play_theme_attempt_question_path(@attempt), count: 0
+    post reveal_play_theme_attempt_question_path(@attempt), params: { time_multiplier: "10" }, as: :turbo_stream
+    assert_equal GameSetting.current.easy_time, @attempt.question_submissions.find_by!(question: @question).allowed_seconds
   end
 
   test "timeout is final and advances instead of reopening the same question" do

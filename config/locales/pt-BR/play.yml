@@ -5,5 +5,5 @@ pt-BR:
       show:
         theme_completed: "Tema concluído!"
         video_unavailable: "Vídeo não disponível"
-        instructions: "Assista ao vídeo, se desejar. Quando estiver pronto, revele a questão para iniciar o tempo."
+        instructions: "Quando estiver pronto, mostre a questão para iniciar o tempo. O vídeo é opcional."
         show_question: "Mostrar Questão"

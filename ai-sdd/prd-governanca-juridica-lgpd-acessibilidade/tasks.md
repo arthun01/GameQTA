@@ -180,3 +180,11 @@ A tarefa 6 e a liberação em produção não são consideradas integralmente re
 Os 17 achados foram corrigidos e registrados em docs/reviews/2026-11-04-correcoes.md. Rails 8.1.4.1 elimina os 21 alertas anteriores: bundler-audit com base atualizada e importmap audit aprovados, sem ignorar advisories. Rubocop: 149 arquivos sem infrações; Brakeman: zero alertas/erros; aplicação: 132 testes e 910 assertions sem falhas/erros/skips; navegador: 31 testes e 203 assertions sem falhas/erros/skips.
 
 A rodada cobre segurança administrativa, recuperação, sessões, CSV, acesso/progressão, concorrência, métricas e ranking, preservando as mudanças anteriores de governança e idade opcional. Nenhuma senha real foi trocada, nenhuma mensagem externa enviada e nenhum dado real foi apagado. Retenção e avisos operacionais continuam separados. Sem merge/deploy nesta rodada.
+
+## Simplificação de vídeo e tempo - 10/11/2026
+
+| # | Entregável | Arquivo | Status |
+|---|---|---|---|
+| 11.0 | Vídeo por clique e preferência de tempo no perfil | [tasks/11_task.md](tasks/11_task.md) | ✅ |
+
+Validação local da tarefa 11: RuboCop em 154 arquivos sem infrações; Brakeman sem erros/alertas; Bundler-audit atualizado e Importmap sem vulnerabilidades conhecidas. Aplicação: 153 testes/1.074 assertions; navegador: 33 testes/242 assertions, sem falhas, erros ou skips. Testes incluem teclado/Axe, preferência no perfil, vídeo desligado antes do clique e fluxo de jogo sem vídeo. PDF 1.1 com 17 páginas, texto integral conferido e páginas inspecionadas, mantendo preto/serifas e margens. Migração aplicada em desenvolvimento/teste; preferências e contas reais não foram editadas pelos testes.

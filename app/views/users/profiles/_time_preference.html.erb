@@ -1,0 +1,15 @@
+<details id="response-time-preference" class="rounded-2xl border border-emerald-100 bg-white p-6 sm:p-8" <%= "open" if user.errors.include?(:response_time_multiplier) %>>
+  <summary class="cursor-pointer font-semibold text-emerald-950 focus-visible:outline-2 focus-visible:outline-offset-4">
+    <%= t(".title") %>
+    <span class="mt-1 block text-sm font-normal text-slate-600"><%= t("accessibility.time_multiple", count: user.response_time_multiplier || 1) %></span>
+  </summary>
+  <p id="response-time-help" class="mt-4 text-sm leading-relaxed text-slate-700"><%= t(".description") %></p>
+  <%= form_with model: user, url: profile_time_preference_path, method: :patch, class: "mt-4 space-y-4", data: { turbo: false } do |form| %>
+    <%= render "shared/form_errors", record: user %>
+    <div>
+      <%= form.label :response_time_multiplier, t("accessibility.time_adjustment"), class: "mb-2 block text-sm font-semibold text-slate-800" %>
+      <%= form.select :response_time_multiplier, (1..10).map { |n| [t("accessibility.time_multiple", count: n), n] }, {}, class: "w-full rounded-lg border border-slate-300 px-4 py-3 focus:ring-2 focus:ring-emerald-800", aria: { describedby: "response-time-help" } %>
+    </div>
+    <%= form.submit t(".submit"), class: "min-h-11 cursor-pointer rounded-lg bg-emerald-800 px-5 py-3 font-semibold text-white hover:bg-emerald-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-800" %>
+  <% end %>
+</details>

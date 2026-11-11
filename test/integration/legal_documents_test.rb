@@ -10,8 +10,8 @@ class LegalDocumentsTest < ActionDispatch::IntegrationTest
         assert_select "html[lang='pt-BR']"
         assert_select "main article h1", count: 1
         assert_select "[data-legal-draft]", count: 0
-        assert_select "[data-legal-version]", text: "1.0"
-        assert_select "time[datetime='2026-11-04']", text: "04/11/2026"
+        assert_select "[data-legal-version]", text: "1.1"
+        assert_select "time[datetime='2026-11-10']", text: "10/11/2026"
         assert_select "form", count: 0
         assert_select "a[href='mailto:guilhardesj@gmail.com']", count: 1
         assert_select "iframe", count: 0

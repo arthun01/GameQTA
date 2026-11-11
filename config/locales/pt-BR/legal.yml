@@ -16,9 +16,9 @@ pt-BR:
       draft_title: ''
       draft_notice: ''
       version_label: Versão
-      version: '1.0'
+      version: '1.1'
       updated_on_label: Atualização
-      updated_on: '2026-11-04'
+      updated_on: '2026-11-10'
       print_hint: Para imprimir ou salvar uma cópia em PDF, use a opção Imprimir do seu navegador. A impressão mantém o texto, a versão e os avisos deste documento.
       index_title: Neste documento
       contact_name: Guilhardes de Jesus Júnior
@@ -57,7 +57,7 @@ pt-BR:
           title: 5. Jornada, desempenho e ranking
           paragraphs:
           - O jogo registra tentativas, respostas e informações de desempenho para organizar a jornada e calcular resultados. A dificuldade das questões influencia a pontuação; o tempo registrado participa dos critérios do ranking.
-          - Antes de revelar cada questão, qualquer participante pode escolher de 1 a 10 vezes o tempo padrão, sem informar diagnóstico. Os pontos não mudam; o tempo efetivo continua sendo usado no desempate. Por isso o ranking é uma classificação lúdica e não uma comparação padronizada de capacidade entre pessoas. Outros estudantes autenticados visualizam códigos de jogador gerados automaticamente, pontuações e tempos no ranking. O ranking não apresenta o nome de cadastro ou o e-mail. O código reduz a exposição, mas a administração ainda pode relacioná-lo à conta; não representa anonimização completa.
+          - O tempo padrão é aplicado automaticamente. Qualquer participante pode salvar no perfil uma preferência de 1 a 10 vezes esse tempo, sem informar diagnóstico. A preferência vale para as próximas questões e não altera o prazo de uma questão já revelada. Os pontos não mudam; o tempo efetivo continua sendo usado no desempate. Por isso o ranking é uma classificação lúdica e não uma comparação padronizada de capacidade entre pessoas. Outros estudantes autenticados visualizam códigos de jogador gerados automaticamente, pontuações e tempos no ranking. O ranking não apresenta o nome de cadastro ou o e-mail. O código reduz a exposição, mas a administração ainda pode relacioná-lo à conta; não representa anonimização completa.
         external_content:
           title: 6. Conteúdo e serviços externos
           paragraphs:
@@ -89,6 +89,7 @@ pt-BR:
           items:
           - 'Estudantes: nome de cadastro, e-mail e senha para criação e acesso à conta. Idade, cidade e escolaridade são opcionais e podem ser apagadas no perfil.'
           - 'Administradores: e-mail e senha para acesso à gestão do conteúdo e da comunidade.'
+          - Preferência de tempo de resposta, com valor padrão ou ajuste escolhido no perfil. Fica salva na conta apenas para aplicar o tempo das próximas questões e pode ser alterada ou restaurada ao padrão a qualquer momento.
           paragraphs:
           - A aplicação guarda uma representação protegida da senha, sem armazená-la em texto aberto. Nome e e-mail identificam a conta, e a senha protegida permite autenticação. Não solicitamos documentos, biometria, endereço preciso ou informações de saúde para jogar.
           - Idade, cidade e escolaridade informadas facultativamente destinam-se a conhecer o público e orientar melhorias pedagógicas em análises agregadas. Não serão usadas para publicidade, discriminação, decisões individuais sobre o estudante ou pesquisa futura automática. A equipe deve evitar recortes que identifiquem pessoas em grupos pequenos. Deixar esses campos em branco não reduz o acesso ao jogo.
@@ -125,7 +126,7 @@ pt-BR:
           title: 6. Cookies e serviços externos
           paragraphs:
           - 'O cookie próprio _qta_rails8_session mantém a navegação e a proteção dos formulários, com validade de até 12 horas após uso. Os cookies user_session_id (estudante) e session_id (administração) guardam identificadores assinados: o acesso expira 12 horas após o login também no servidor. Não guardam a senha. São HttpOnly e SameSite=Lax; em produção usam Secure e HTTPS. Sair da conta invalida a respectiva sessão no servidor. Apagar só o cookie não exclui o cadastro nem os registros da sessão no banco.'
-          - 'Não instalamos analytics, pixels comerciais ou fontes externas. Os vídeos são opcionais, sem conexão automática ou autorização salva: Carregar este vídeo ativa somente o player da página em youtube-nocookie.com; Continuar sem vídeo mantém o bloqueio. Desativar vídeo externo interrompe novas conexões daquele player, sem desfazer dados já enviados. Recarregar, navegar ou revelar a questão exige nova escolha. O domínio de privacidade avançada não significa ausência de tratamento ou armazenamento pelo Google; aplicam-se as políticas do fornecedor. A escolha do player não equivale a autorização parental ou consentimento de pesquisa.'
+          - 'Não instalamos analytics, pixels comerciais ou fontes externas. Os vídeos são opcionais, sem conexão automática ou autorização salva: Assistir vídeo ativa somente o player da página em youtube-nocookie.com; seguir para a questão sem clicar mantém o bloqueio. Desativar vídeo externo interrompe novas conexões daquele player, sem desfazer dados já enviados. Recarregar, navegar ou revelar a questão exige nova escolha. O domínio de privacidade avançada não significa ausência de tratamento ou armazenamento pelo Google; aplicam-se as políticas do fornecedor. A escolha do player não equivale a autorização parental ou consentimento de pesquisa.'
         children:
           title: 7. Crianças e adolescentes
           paragraphs:

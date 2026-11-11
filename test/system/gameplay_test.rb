@@ -49,7 +49,7 @@ class GameplayTest < ApplicationSystemTestCase
     assert_no_selector "dialog[open]"
 
     # Q2
-    assert_text "Assista ao vídeo"
+    assert_button "Assistir vídeo"
     click_on "Mostrar Questão"
     assert_text "Test Q 2"
 
@@ -63,7 +63,7 @@ class GameplayTest < ApplicationSystemTestCase
     assert_no_selector "dialog[open]"
 
     # Q3
-    assert_text "Assista ao vídeo"
+    assert_button "Assistir vídeo"
     click_on "Mostrar Questão"
     assert_text "Test Q 3"
     choose "Certa 3"

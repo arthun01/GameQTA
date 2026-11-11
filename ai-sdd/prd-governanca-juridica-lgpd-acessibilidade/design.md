@@ -60,3 +60,9 @@ Sem dependência de Paper, conforme autorização vigente. Conteúdo de vídeos 
 ## Atualização documental 1.0 - 04/11/2026
 
 Termos e política completos, com número e data; aviso de minuta fica ausente quando não há aviso configurado. O formulário de aceite conserva sua distinção de consentimento e dispensa o aviso de minuta na versão 1.0. Idade passa a ser opcional no cadastro e perfil, com orientação comum sobre finalidade, opção de omitir e remoção. Identidade visual do aplicativo preservada; PDF serifado, monocromático e com margens de 25 mm. Paper continua dispensado conforme autorização.
+
+## Simplificação de vídeo e tempo - 10/11/2026
+
+Esta atualização substitui os estados de vídeo/tempo descritos nos itens 9 e 10 acima. Na questão, manter apenas Assistir vídeo, aviso curto sobre conexão ao YouTube e a ação Mostrar Questão. Seguir para a questão sem assistir é a alternativa direta, sem segundo botão de recusa. Após carregar, Desativar vídeo externo continua disponível; sem JavaScript o vídeo permanece desligado.
+
+No perfil, inserir um `<details>` recolhido por padrão, com título Ajustar tempo de resposta e indicação do valor atual. Ao abrir, apresentar explicação, select rotulado de 1 a 10 vezes e Salvar tempo de resposta. Erros abrem a seção e associam mensagens ao campo; sucesso retorna ao perfil com confirmação. Disponível por teclado, no celular e sem JavaScript. Nenhum controle de tempo aparece no formulário de revelar a questão. Preservar Emerald e o contraste atual.

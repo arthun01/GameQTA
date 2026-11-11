@@ -12,7 +12,7 @@ class LegalDocumentsSystemTest < ApplicationSystemTestCase
       assert_current_path privacy_policy_path
       assert_selector "h1", text: "Política de Privacidade"
       assert_no_selector "[data-legal-draft]"
-      assert_selector "[data-legal-version]", text: "1.0"
+      assert_selector "[data-legal-version]", text: "1.1"
 
       click_link "Termos de Uso"
       assert_current_path terms_path
@@ -43,7 +43,7 @@ class LegalDocumentsSystemTest < ApplicationSystemTestCase
 
       assert_no_selector ".legal-screen-only", visible: true
       assert_no_selector "[data-legal-draft]"
-      assert_selector "[data-legal-version]", text: "1.0"
+      assert_selector "[data-legal-version]", text: "1.1"
       assert_equal screen_text, find(".legal-content").text
 
       page.driver.browser.execute_cdp("Emulation.setEmulatedMedia", media: "screen")

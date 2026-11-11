@@ -112,3 +112,13 @@ RF-019 a RF-024: cookies próprios inventariados, acesso limitado a 12 horas tam
 RF-025 a RF-032: melhorias de contraste, teclado, foco, semântica, formulários e dialog; confirmação explícita de alternativa e opção de tempo de 1 a 10× antes da questão. O servidor conserva o limite e o tempo efetivo, sem bônus de pontos ou reinício ao recarregar. O ranking não representa comparação padronizada de capacidade. Ver [auditoria de acessibilidade](auditoria-acessibilidade.md), que registra evidências e limites, especialmente vídeos e leitor de tela humano. Não se declara conformidade WCAG integral.
 
 Termos e política evoluem para 0.4. O [inventário de cookies](auditoria-cookies.md), a [lista de decisões para publicação](pendencias-publicacao.md), o PDF e os testes acompanham o PR. O tópico 2 mantém pendências de avaliação e operação. Concluir desenvolvimento não encerra as decisões jurídicas nem autoriza publicação em produção.
+
+## Simplificação do jogo e preferências - 10/11/2026
+
+O usuário aprovou vídeo carregado apenas ao clicar em Assistir vídeo, com aviso curto, e remoção da escolha de tempo em cada questão. Seguir diretamente para Mostrar Questão mantém o vídeo desligado; o player continua reversível e sem autorização persistente. Não adicionar autoplay, thumbnails externas ou conexões antecipadas.
+
+O tempo padrão é automático. Em `/perfil`, um controle recolhível Ajustar tempo de resposta permite salvar de 1 a 10 vezes o padrão na conta, restaurar o padrão e conservar a escolha entre acessos. Não exige diagnóstico ou nova confirmação de senha para essa preferência de uso. Correção dos dados pessoais e exclusão continuam exigindo a senha atual.
+
+A preferência aplica-se somente a questões ainda não reveladas. Prazo já salvo não reinicia nem muda ao atualizar a conta, recarregar ou repetir requisições. O servidor ignora multiplicadores enviados pelo jogo e utiliza a preferência validada da conta. O mesmo ajuste fica disponível a todos; pontos e critério de tempo efetivo no ranking permanecem.
+
+Termos, Política e manual passam à versão 1.1, de 10/11/2026, com PDF integral coerente. A preferência é informada como dado de configuração da conta para a finalidade de acessibilidade/uso; não representa diagnóstico nem autorização para inferi-lo. A revisão dos documentos segue o mecanismo existente de novos aceites, preservando o histórico anterior.
