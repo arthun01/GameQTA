@@ -31,12 +31,13 @@ module Users
       end
 
       def request_authentication
-        session[:return_to_after_authenticating] = request.url
+        session[:user_return_to_after_authenticating] = request.fullpath
         redirect_to "/entrar"
       end
 
       def after_authentication_url
-        session.delete(:return_to_after_authenticating) || "/jornada"
+        destination = session.delete(:user_return_to_after_authenticating)
+        destination&.match?(%r{\A/(?:jornada|ranking|perfil|aceite|play)(?:/|\?|$)}) ? destination : jornada_path
       end
 
       def start_new_session_for(user)

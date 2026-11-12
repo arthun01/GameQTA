@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resource :terms, only: :show, path: "termos"
   resource :privacy_policy, only: :show, path: "privacidade"
   resource :accessibility, only: :show, path: "acessibilidade"
-  resource :profile, only: %i[ show edit update destroy ], path: "perfil", controller: "users/profiles"
+  resource :profile, only: %i[ show edit update destroy ], path: "perfil", controller: "users/profiles" do
+    resource :time_preference, only: :update, path: "tempo", controller: "users/time_preferences"
+  end
   resource :legal_acceptance, only: %i[ new create ], path: "aceite", controller: "users/legal_acceptances"
 
   namespace :admin do
@@ -46,8 +48,9 @@ Rails.application.routes.draw do
   root to: redirect("/jornada")
   namespace :play do
     resources :themes, only: [] do
-      post :start, on: :member
-      get :finish, on: :member
+      post :start, on: :member, to: "theme_attempts#create"
+      get :finish, on: :member, to: "theme_completions#show"
+      resource :completion, only: :create, controller: "theme_completions"
     end
     resources :theme_attempts, only: [] do
       resource :question, only: [ :show ] do

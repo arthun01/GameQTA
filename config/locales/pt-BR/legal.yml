@@ -1,156 +1,178 @@
 pt-BR:
   shared:
     legal_links:
-      label: "Documentos do Game QTA"
-      terms: "Termos de Uso"
-      privacy: "Política de Privacidade"
-      new_tab: "(abre em nova aba)"
+      label: Documentos do Game QTA
+      terms: Termos de Uso
+      privacy: Política de Privacidade
+      new_tab: (abre em nova aba)
   legal_documents:
     shared:
-      skip_to_content: "Ir para o conteúdo"
-      navigation: "Documentos do Game QTA"
-      terms: "Termos de Uso"
-      privacy: "Política de Privacidade"
-      back_to_game: "Voltar ao Game QTA"
-      eyebrow: "Game QTA · Transparência"
-      draft_title: "Minuta — documento em elaboração"
-      draft_notice: "Este texto apresenta o funcionamento atual do projeto. O responsável e o contato estão informados abaixo. A avaliação das bases legais e das medidas para menores, a hospedagem e os prazos de retenção ainda precisam ser concluídos e validados. Esta minuta não declara que a adequação à LGPD está concluída."
-      version_label: "Versão"
-      version: "0.4 — minuta"
-      updated_on_label: "Atualização"
-      updated_on: "2026-11-03"
-      print_hint: "Para imprimir ou salvar uma cópia em PDF, use a opção Imprimir do seu navegador. A impressão mantém o texto, a versão e os avisos deste documento."
-      index_title: "Neste documento"
-      contact_name: "Guilhardes de Jesus Júnior"
-      contact_email: "guilhardesj@gmail.com"
+      skip_to_content: Ir para o conteúdo
+      navigation: Documentos do Game QTA
+      terms: Termos de Uso
+      privacy: Política de Privacidade
+      back_to_game: Voltar ao Game QTA
+      eyebrow: Game QTA · Transparência
+      draft_title: ''
+      draft_notice: ''
+      version_label: Versão
+      version: '1.1'
+      updated_on_label: Atualização
+      updated_on: '2026-11-10'
+      print_hint: Para imprimir ou salvar uma cópia em PDF, use a opção Imprimir do seu navegador. A impressão mantém o texto, a versão e os avisos deste documento.
+      index_title: Neste documento
+      contact_name: Guilhardes de Jesus Júnior
+      contact_email: guilhardesj@gmail.com
     terms:
-      title: "Termos de Uso"
-      subtitle: "Conheça a proposta do jogo e as regras de participação."
-      summary: "O Game QTA é um projeto educacional sobre Direito Ambiental, com vídeos, questões e uma jornada de aprendizado. Estes termos estão em elaboração e devem ser lidos junto com a Política de Privacidade. A leitura desta página não registra aceite nem autoriza tratamentos opcionais de dados."
+      title: Termos de Uso
+      subtitle: Conheça a proposta do jogo e as regras de participação.
+      summary: O Game QTA oferece uma jornada educacional sobre Direito Ambiental. Estes termos estabelecem as regras de participação e devem ser lidos junto com a Política de Privacidade. Consultar esta página não registra aceite nem autoriza tratamentos opcionais de dados.
       sections:
         project:
-          title: "1. Sobre o Game QTA"
+          title: 1. Sobre o Game QTA
           paragraphs:
-            - "O projeto busca apoiar o aprendizado por meio de níveis, temas, perguntas e explicações. Os conteúdos têm finalidade educacional e não substituem orientação jurídica sobre um caso concreto."
-            - "Guilhardes de Jesus Júnior foi informado como responsável pelo Game QTA e pelo atendimento de privacidade, com apoio da equipe do projeto. A operação descrita nesta minuta não é formalmente atribuída à UESC. Referências institucionais não substituem a identificação de quem efetivamente decide sobre o uso dos dados."
+          - O projeto apoia o aprendizado com níveis, temas, vídeos, perguntas e explicações. O conteúdo é educacional e não substitui orientação jurídica sobre um caso concreto.
+          - 'Guilhardes de Jesus Júnior é o responsável pela operação e pelo atendimento de privacidade: guilhardesj@gmail.com. A UESC não integra formalmente a operação informada. Referências acadêmicas não atribuem, por si sós, responsabilidade institucional; os papéis legais decorrem das atividades efetivamente realizadas.'
         participation:
-          title: "2. Cadastro e participação"
+          title: 2. Cadastro e participação
           paragraphs:
-            - "O cadastro é aberto ao público e solicita nome, e-mail, senha e idade. Cidade e escolaridade são opcionais e ajudam a conhecer o público do projeto. Use informações corretas e uma conta que você possa administrar com segurança. Não use a identidade de outra pessoa."
-            - "O cadastro segue o mesmo fluxo para as idades aceitas pelo jogo: não existe uma etapa de aprovação externa. As proteções de privacidade descritas nesta minuta são aplicadas a todos. A idade informada é declarada pelo participante; o cadastro e o aceite não comprovam autorização de um responsável legal. A avaliação jurídica dos tratamentos de dados de crianças e adolescentes e das medidas de supervisão aplicáveis ainda precisa ser concluída."
+          - O cadastro é aberto ao público e exige nome de cadastro, e-mail e senha. Idade, cidade e escolaridade são opcionais e podem ser deixadas em branco ou apagadas no perfil, sem perder acesso ao jogo. Quando informadas, destinam-se a conhecer o público e orientar melhorias pedagógicas com relatórios agregados, protegendo grupos pequenos contra identificação.
+          - Use informações que permitam administrar sua conta com segurança, sem se passar por outra pessoa. Não forneça CPF, documentos, endereço completo, informações de saúde ou outros dados desnecessários.
+          - A entrada é direta, sem etapa geral de aprovação externa. As mesmas proteções se aplicam a todos, inclusive quando a idade não é informada. A idade declarada, o cadastro e o aceite não comprovam autorização de um responsável legal. Crianças e adolescentes têm proteção prioritária, e responsáveis podem solicitar esclarecimentos, proteção, correção e exclusão pelo contato público.
         rules:
-          title: "3. Regras de participação"
+          title: 3. Regras de participação
           items:
-            - "Respeite a finalidade educacional do jogo e as demais pessoas participantes."
-            - "Não tente manipular respostas, pontuações, tempos ou mecanismos de acesso."
-            - "Não tente acessar contas, relatórios ou informações que não pertençam a você ou às suas atribuições."
-            - "Não utilize falhas do sistema para prejudicar o projeto ou expor dados de terceiros."
+          - Respeite a finalidade educacional do jogo e as demais pessoas participantes.
+          - Não tente manipular respostas, pontuações, tempos ou mecanismos de acesso.
+          - Não tente acessar contas, relatórios ou informações que não pertençam a você ou às suas atribuições.
+          - Não utilize falhas do sistema para prejudicar o projeto ou expor dados de terceiros.
           paragraphs:
-            - "A administração pode bloquear contas por infrações às regras. O bloqueio encerra as sessões do estudante e retira sua participação do ranking. Esclarecimentos e contestações podem ser enviados ao contato informado abaixo; a equipe deverá analisar o pedido e explicar sua decisão."
+          - A administração pode bloquear contas por infrações às regras. O bloqueio encerra as sessões do estudante e retira sua participação do ranking. Esclarecimentos e contestações podem ser enviados ao contato informado abaixo; a equipe deverá analisar o pedido e explicar sua decisão.
         account:
-          title: "4. Segurança da conta"
+          title: 4. Segurança da conta
           paragraphs:
-            - "Mantenha sua senha em sigilo, evite reutilizá-la em outros serviços e encerre sua sessão ao usar um dispositivo compartilhado. A equipe não deve solicitar que você informe sua senha para atender um pedido."
-            - "As áreas de estudantes e de administração utilizam acessos separados. A existência de uma conta de estudante não concede acesso aos dados administrativos."
+          - Mantenha sua senha em sigilo, evite reutilizá-la em outros serviços e encerre sua sessão ao usar um dispositivo compartilhado. A equipe não deve solicitar que você informe sua senha para atender um pedido.
+          - As áreas de estudantes e de administração utilizam acessos separados. A existência de uma conta de estudante não concede acesso aos dados administrativos.
         learning:
-          title: "5. Jornada, desempenho e ranking"
+          title: 5. Jornada, desempenho e ranking
           paragraphs:
-            - "O jogo registra tentativas, respostas e informações de desempenho para organizar a jornada e calcular resultados. A dificuldade das questões influencia a pontuação; o tempo registrado participa dos critérios do ranking."
-            - "Antes de revelar cada questão, qualquer participante pode escolher de 1 a 10 vezes o tempo padrão, sem informar diagnóstico. Os pontos não mudam; o tempo efetivo continua sendo usado no desempate. Por isso o ranking é uma classificação lúdica e não uma comparação padronizada de capacidade entre pessoas. Outros estudantes autenticados visualizam códigos de jogador gerados automaticamente, pontuações e tempos no ranking. O ranking não apresenta o nome de cadastro ou o e-mail. O código reduz a exposição, mas a administração ainda pode relacioná-lo à conta; não representa anonimização completa."
+          - O jogo registra tentativas, respostas e informações de desempenho para organizar a jornada e calcular resultados. A dificuldade das questões influencia a pontuação; o tempo registrado participa dos critérios do ranking.
+          - O tempo padrão é aplicado automaticamente. Qualquer participante pode salvar no perfil uma preferência de 1 a 10 vezes esse tempo, sem informar diagnóstico. A preferência vale para as próximas questões e não altera o prazo de uma questão já revelada. Os pontos não mudam; o tempo efetivo continua sendo usado no desempate. Por isso o ranking é uma classificação lúdica e não uma comparação padronizada de capacidade entre pessoas. Outros estudantes autenticados visualizam códigos de jogador gerados automaticamente, pontuações e tempos no ranking. O ranking não apresenta o nome de cadastro ou o e-mail. O código reduz a exposição, mas a administração ainda pode relacioná-lo à conta; não representa anonimização completa.
         external_content:
-          title: "6. Conteúdo e serviços externos"
+          title: 6. Conteúdo e serviços externos
           paragraphs:
-            - "Os vídeos do YouTube começam desligados. Você escolhe carregar apenas o vídeo da página ou continuar sem ele. Ao carregá-lo, o navegador se conecta ao Google/YouTube, que recebe dados de conexão e pode usar armazenamento próprio. É possível desativar o player a qualquer momento nessa página; isso não apaga dados já recebidos pelo fornecedor. Não usamos fontes remotas do Google: a tipografia vem do seu dispositivo."
-            - "Disponibilidade, anúncios, acessibilidade e conteúdo dos serviços externos podem mudar. A equipe precisa avaliar alternativas e medidas de proteção antes da versão definitiva destes documentos."
+          - Os vídeos do YouTube começam desligados. Você pode carregar somente o vídeo da página ou continuar sem ele. Ao carregá-lo, seu navegador se conecta ao Google/YouTube, que recebe dados de conexão e pode usar armazenamento próprio. Desativar o player interrompe novas conexões daquele player, sem apagar dados já recebidos pelo fornecedor. As fontes do jogo vêm do seu dispositivo.
+          - A equipe deve selecionar conteúdo adequado à finalidade educacional e ao público infantil, revisar acessibilidade e oferecer explicações textuais nas atividades. Conteúdos externos podem mudar; problemas, anúncios inadequados e dificuldades de acesso podem ser comunicados ao responsável. A escolha de carregar um vídeo não é autorização parental nem autorização de pesquisa.
         closing:
-          title: "7. Encerramento e direitos"
+          title: 7. Encerramento e direitos
           paragraphs:
-            - "Você pode parar de utilizar o jogo. Sair da sessão ou deixar de jogar não equivale a excluir os dados da conta. O procedimento de solicitação de exclusão está descrito, com suas pendências atuais, na Política de Privacidade."
-            - "Estes termos não afastam direitos garantidos pela legislação. Pedidos e esclarecimentos podem ser enviados ao contato de privacidade informado abaixo, inclusive por responsáveis ou por quem perdeu acesso à conta. Esta página apenas fornece o contato; não envia mensagens nem gera protocolo."
+          - Você pode deixar de jogar ou excluir a conta pelo perfil, mediante senha atual e confirmação. A exclusão remove os dados da aplicação ativa e encerra as sessões. Sair da conta ou deixar de jogar não equivale a excluí-la. As regras para outras cópias estão na Política de Privacidade.
+          - Contas sem acesso ou interação autenticada por 12 meses ficam sujeitas ao encerramento por inatividade, sempre precedido de aviso por e-mail com pelo menos 30 dias de antecedência. Retomar o acesso antes do encerramento cancela esse procedimento. A execução dessa regra cabe à administração.
+          - Estes termos preservam os direitos garantidos pela legislação. Estudantes, representantes legais e pessoas sem acesso à conta podem enviar pedidos e contestações a guilhardesj@gmail.com. A página apenas fornece o contato; não envia mensagens nem gera protocolo.
         changes:
-          title: "8. Alterações e versão deste documento"
+          title: 8. Alterações e versão deste documento
           paragraphs:
-            - "A versão e a data acima permitem identificar esta minuta. Textos e funcionalidades poderão ser ajustados durante sua revisão. Mudanças relevantes precisarão ser comunicadas aos participantes antes da adoção definitiva."
-            - "O cadastro registra o aceite dos termos e a ciência da política, com data, versões e cópia dos textos apresentados. Contas existentes precisam registrar sua manifestação para retomar o jogo quando houver documentos atualizados. Essa manifestação não equivale a consentimento geral de tratamento nem a autorização de responsável por menor. A navegação nesta página não registra concordância automática."
+          - A versão e a data identificam o texto apresentado. Mudanças relevantes de finalidade, dados, compartilhamentos ou regras serão informadas antes de sua aplicação. Uma nova finalidade exige avaliação própria e, quando necessário, manifestação específica.
+          - O cadastro registra o aceite dos termos e a ciência da política, com data, versões e cópia dos textos apresentados. Contas existentes precisam registrar sua manifestação para retomar o jogo quando os documentos forem atualizados. Esse registro não equivale a consentimento geral, autorização parental ou consentimento de pesquisa. A navegação nesta página não registra concordância automática.
     privacy:
-      title: "Política de Privacidade"
-      subtitle: "Entenda quais dados aparecem no jogo, para que são usados e quais direitos você tem."
-      summary: "Esta minuta descreve o uso atual de dados de estudantes e administradores no Game QTA. Ela também aponta decisões ainda pendentes. Não há, nesta página, formulário de atendimento ou registro de consentimento."
+      title: Política de Privacidade
+      subtitle: Entenda quais dados aparecem no jogo, para que são usados e quais direitos você tem.
+      summary: Esta política explica quais dados de estudantes e administradores são tratados no Game QTA, suas finalidades, regras de guarda e caminhos para exercer direitos. Sua leitura não registra consentimento nem abre solicitação de atendimento.
       sections:
         responsibility:
-          title: "1. Quem responde pelos dados"
+          title: 1. Quem responde pelos dados
           paragraphs:
-            - "O responsável informado pelo Game QTA é Guilhardes de Jesus Júnior. O contato para privacidade é guilhardesj@gmail.com, disponível também a representantes legais e a pessoas sem acesso à conta."
-            - "A operação desta aplicação foi informada como responsabilidade do professor e da equipe, sem papel formal da UESC. Uma eventual pesquisa institucional será avaliada separadamente. A identificação dos papéis considera quem decide e executa cada tratamento de dados."
+          - Guilhardes de Jesus Júnior é o responsável pelas decisões sobre o tratamento de dados na operação descrita nesta política e realiza o atendimento pelo e-mail guilhardesj@gmail.com. O canal também atende representantes legais e pessoas sem acesso à conta.
+          - A UESC não exerce papel institucional formal na operação informada. Uma eventual pesquisa institucional será tratada separadamente. A identificação de controlador e operadores acompanha as atividades efetivas de cada parte.
         supplied_data:
-          title: "2. Dados que você fornece"
+          title: 2. Dados que você fornece
           items:
-            - "Estudantes: nome, e-mail, idade e senha para criação e acesso à conta. Cidade e escolaridade são opcionais e podem ser removidas no perfil."
-            - "Administradores: e-mail e senha para acesso à gestão do conteúdo e da comunidade."
+          - 'Estudantes: nome de cadastro, e-mail e senha para criação e acesso à conta. Idade, cidade e escolaridade são opcionais e podem ser apagadas no perfil.'
+          - 'Administradores: e-mail e senha para acesso à gestão do conteúdo e da comunidade.'
+          - Preferência de tempo de resposta, com valor padrão ou ajuste escolhido no perfil. Fica salva na conta apenas para aplicar o tempo das próximas questões e pode ser alterada ou restaurada ao padrão a qualquer momento.
           paragraphs:
-            - "A aplicação armazena uma representação protegida da senha, e não a senha em texto aberto. Os demais dados de cadastro são usados para identificar a conta e compor informações sobre o público participante. Nome e e-mail identificam a conta; a senha protegida permite autenticação. Idade, cidade e escolaridade estão preservadas no cadastro. Cidade e escolaridade continuam opcionais. A necessidade da identificação completa e dos dados demográficos será avaliada por finalidade; o possível uso científico futuro não autoriza, por si só, sua coleta ou guarda indefinida."
+          - A aplicação guarda uma representação protegida da senha, sem armazená-la em texto aberto. Nome e e-mail identificam a conta, e a senha protegida permite autenticação. Não solicitamos documentos, biometria, endereço preciso ou informações de saúde para jogar.
+          - Idade, cidade e escolaridade informadas facultativamente destinam-se a conhecer o público e orientar melhorias pedagógicas em análises agregadas. Não serão usadas para publicidade, discriminação, decisões individuais sobre o estudante ou pesquisa futura automática. A equipe deve evitar recortes que identifiquem pessoas em grupos pequenos. Deixar esses campos em branco não reduz o acesso ao jogo.
         generated_data:
-          title: "3. Dados gerados durante o uso"
+          title: 3. Dados gerados durante o uso
           items:
-            - "Tentativas de temas, questões respondidas, alternativas escolhidas, acertos e erros."
-            - "Momentos de revelação e envio de respostas, informações de tempo quando registradas, pontuação e posição no ranking."
-            - "Dados de sessão, endereço IP e informações do navegador no login."
-            - "Datas dos registros, situação de bloqueio da conta, histórico de aceite dos documentos e registros operacionais de acesso e de erros."
+          - Tentativas de temas, questões respondidas, alternativas escolhidas, acertos e erros.
+          - Momentos de revelação e envio de respostas, informações de tempo quando registradas, pontuação e posição no ranking.
+          - Dados de sessão, endereço IP e informações do navegador no login.
+          - Datas dos registros, situação de bloqueio da conta, histórico de aceite dos documentos e registros operacionais de acesso e de erros.
           paragraphs:
-            - "Esses registros apoiam o funcionamento da jornada, a apresentação de resultados, a autenticação, a segurança e a manutenção do serviço. A política de retenção e a avaliação de necessidade dos registros ainda estão pendentes."
+          - Esses registros permitem retomar a jornada, apresentar resultados, autenticar a conta, prevenir abuso e manter o serviço. O ranking usa código gerado pelo sistema. Aplicam-se os limites de finalidade, acesso e retenção desta política.
         purposes:
-          title: "4. Finalidades e bases legais"
+          title: 4. Finalidades e bases legais
           paragraphs:
-            - "O uso atual dos dados abrange funcionamento das contas, atividades educacionais, acompanhamento do desempenho, ranking, moderação e relatórios administrativos. A hipótese de legítimo interesse está em avaliação para os tratamentos necessários ao serviço educativo e à segurança, com análise específica dos direitos de crianças e adolescentes. A opção por cadastro direto não confirma, por si só, a adequação dessa base a todos os dados. Finalidades e bases precisam de validação antes da adoção definitiva desta política."
-            - "A ciência da política, o aceite dos termos e um consentimento específico têm funções diferentes. A leitura desta página ou o uso do jogo não representam autorização geral para todas as formas de tratamento de dados. Não existe autorização automática para pesquisas futuras: cada estudo ou banco de pesquisa deverá ter finalidade, base legal, governança e requisitos éticos próprios, quando aplicáveis."
+          - O funcionamento educativo, progresso, autenticação, segurança, moderação proporcional, classificação lúdica e melhoria pedagógica utilizam a hipótese de legítimo interesse, nos limites dos arts. 7º, IX, e 10 da LGPD. Sua aplicação exige finalidade concreta, dados necessários, expectativas razoáveis, ponderação dos direitos e salvaguardas. Para crianças e adolescentes, prevalece o melhor interesse; essa hipótese não autoriza todo e qualquer tratamento.
+          - Atendimento de direitos e comunicações legalmente exigidas utilizam a base de cumprimento de obrigação legal ou regulatória, quando aplicável. Conservação excepcional necessária a uma disputa concreta pode se fundamentar no exercício regular de direitos, limitada aos dados pertinentes. Cada exceção exige motivo, prazo e revisão documentados.
+          - A ciência da política, o aceite dos termos e o consentimento específico têm funções diferentes. Se uma finalidade depender de consentimento, ele deverá ser específico, informado, livre e revogável. Para crianças, quando essa for a base aplicável, será necessário consentimento de pelo menos um responsável legal, com esforços razoáveis de verificação. Sem ele, a finalidade dependente não será executada; não se presume consentimento pelo simples uso do jogo.
+          - Não existe autorização automática para pesquisas futuras. Cada estudo ou banco de pesquisa exige finalidade, base legal, governança e requisitos éticos próprios, quando aplicáveis. A possibilidade de pesquisa futura não justifica guarda indefinida.
         access:
-          title: "5. Quem pode visualizar os dados"
+          title: 5. Quem pode visualizar os dados
           paragraphs:
-            - "Administradores autenticados têm acesso a dados de estudantes e relatórios. As exportações de estudantes podem conter nome, e-mail, cidade, escolaridade, pontuação, tempo, situação de bloqueio e data de cadastro. Os relatórios por tema apresentam resultados agregados."
-            - "O ranking mostra a outros estudantes autenticados um código de jogador, pontuação e tempo efetivo. O limite de resposta pode ser ajustado antes da revelação por qualquer participante; a pontuação por acerto permanece igual. Nome, e-mail, idade, cidade e escolaridade não são exibidos nessa classificação. A equipe administrativa mantém acesso aos dados necessários às suas atribuições, e relatórios identificáveis exigem cuidado adicional de acesso, guarda e descarte."
-            - "Cópias de relatórios baixadas por administradores também precisam de regras de acesso, guarda e descarte. A exclusão na aplicação não apaga automaticamente essas cópias."
-        cookies:
-          title: "6. Cookies e serviços externos"
-          paragraphs:
-            - "O cookie próprio _qta_rails8_session mantém a navegação e a proteção dos formulários, com validade de até 12 horas após uso. Os cookies user_session_id (estudante) e session_id (administração) guardam identificadores assinados: o acesso expira 12 horas após o login também no servidor. Não guardam a senha. São HttpOnly e SameSite=Lax; em produção usam Secure e HTTPS. Sair da conta invalida a respectiva sessão no servidor. Apagar só o cookie não exclui o cadastro nem os registros da sessão no banco."
-            - "Não instalamos analytics, pixels comerciais ou fontes externas. Os vídeos são opcionais, sem conexão automática ou autorização salva: Carregar este vídeo ativa somente o player da página em youtube-nocookie.com; Continuar sem vídeo mantém o bloqueio. Desativar vídeo externo interrompe novas conexões daquele player, sem desfazer dados já enviados. Recarregar, navegar ou revelar a questão exige nova escolha. O domínio de privacidade avançada não significa ausência de tratamento ou armazenamento pelo Google; aplicam-se as políticas do fornecedor. A escolha do player não equivale a autorização parental ou consentimento de pesquisa."
-            - "A definição de hospedagem, fornecedores, locais de tratamento e eventuais transferências internacionais está pendente. Esta política será complementada com essas informações antes da publicação definitiva."
-        children:
-          title: "7. Crianças e adolescentes"
-          paragraphs:
-            - "O cadastro é aberto ao público, inclusive para as idades aceitas no formulário, e pode alcançar crianças menores de 12 anos. Não há aprovação externa no fluxo atual. A avaliação de necessidade, base legal e medidas de apoio aos responsáveis permanece pendente; não declaramos dispensa geral das obrigações de proteção de menores. A classificação usa códigos em vez dos nomes para todos os participantes."
-            - "Responsáveis podem conhecer os dados usados e os direitos nesta página e solicitar esclarecimentos, correção ou exclusão pelo contato informado. A equipe deverá verificar proporcionalmente a identidade e a representação antes de fornecer dados ou agir sobre uma conta. O aceite do estudante não será tratado como autorização parental ou consentimento de pesquisa."
-        retention:
-          title: "8. Guarda e exclusão dos dados"
-          paragraphs:
-            - "Ainda não foram definidos os prazos de guarda de contas, dados de jogo, registros operacionais e backups. Não há nesta minuta um prazo fictício ou promessa de exclusão automática de contas inativas."
-            - "O estudante autenticado pode excluir sua conta no perfil, confirmando a senha atual e as consequências da ação. A exclusão remove o cadastro, todas as sessões, tentativas, respostas, ranking e registros de aceite da aplicação ativa. A atualização pendente do ranking não restaura uma conta excluída. O contato para pedidos está disponível abaixo. Os prazos e procedimentos de tratamento de registros operacionais, backups e cópias exportadas continuam pendentes, observadas as hipóteses legais de conservação."
-            - "Sair da conta, interromper o uso ou apagar cookies do navegador não exclui os registros já armazenados pelo projeto."
-        rights:
-          title: "9. Seus direitos sobre os dados"
-          paragraphs:
-            - "A LGPD prevê direitos que podem ser exercidos pelo titular ou por seu representante legal, conforme as condições aplicáveis a cada tratamento."
-          items:
-            - "Confirmar o tratamento e acessar seus dados; corrigir informações incompletas, inexatas ou desatualizadas."
-            - "Pedir anonimização, bloqueio ou eliminação de dados desnecessários, excessivos ou tratados em desacordo com a lei."
-            - "Solicitar portabilidade nos limites da regulamentação e eliminação de dados tratados com consentimento, ressalvadas as hipóteses legais de conservação."
-            - "Conhecer os compartilhamentos, a possibilidade de recusar consentimento e as consequências dessa escolha; revogar o consentimento quando ele for a base utilizada."
-            - "Opor-se ao tratamento em caso de descumprimento da LGPD e solicitar revisão e explicação de decisões exclusivamente automatizadas que afetem seus interesses, quando cabível."
-            - "Apresentar petição à ANPD e recorrer aos órgãos competentes nas hipóteses legais."
-        requests:
-          title: "10. Como solicitar correção ou exclusão"
-          paragraphs:
-            - "Para corrigir dados de cadastro ou excluir a conta da aplicação ativa, entre no jogo e acesse Meu perfil e meus dados. As ações pedem sua senha atual; a exclusão exige confirmação adicional e não pode ser desfeita. Esses recursos continuam disponíveis mesmo sem aceitar documentos atualizados. Quem perdeu acesso à conta, representantes legais e outros pedidos podem usar guilhardesj@gmail.com. Esta página não recebe mensagens nem gera protocolo; o pedido é encaminhado pelo seu serviço de e-mail."
-            - "No e-mail, identifique a conta, informe o direito que deseja exercer e descreva a solicitação. Se atuar como representante, informe essa condição sem anexar documentos sensíveis desnecessariamente. A equipe deverá verificar identidade e representação de forma proporcional, confirmar o recebimento e responder nos prazos legais aplicáveis, justificando eventual impossibilidade. Pedidos e contestações sobre dados ou proteção de menores devem ser direcionados ao mesmo contato."
-            - "Não envie sua senha ou documentos pessoais sem necessidade. Para conhecer os direitos e os canais da autoridade, consulte as orientações oficiais da ANPD abaixo."
-        updates:
-          title: "11. Atualizações e referências"
-          paragraphs:
-            - "A versão e a data identificam esta minuta. As definições pendentes e as mudanças no funcionamento do jogo deverão ser refletidas nas próximas versões, com comunicação adequada das alterações relevantes."
+          - Administradores autorizados acessam dados de estudantes e relatórios para suas atribuições. As exportações de estudantes podem conter nome, e-mail, cidade, escolaridade, pontuação, tempo, situação de bloqueio e data de cadastro. Os relatórios por tema apresentam resultados agregados. Acesso e cópias devem ficar restritos à finalidade administrativa; não representam autorização de pesquisa.
+          - 'O ranking mostra a outros estudantes autenticados um código de jogador, pontuação e tempo efetivo. Nome, e-mail, idade, cidade e escolaridade não aparecem nessa classificação. A administração pode relacionar o código à conta: trata-se de pseudonimização, não anonimização completa. O tempo ajustável limita a comparabilidade; a classificação é lúdica.'
+          - A infraestrutura principal da aplicação, banco de dados e backups foi definida em VPS da Hostinger no Brasil. A equipe deve restringir acessos e verificar a localização das cópias. Essa escolha não significa que todos os serviços externos tratem dados exclusivamente no Brasil.
+          - O atendimento utiliza Gmail, e vídeos opcionais utilizam Google/YouTube. Esses fornecedores podem tratar dados fora do Brasil. A equipe deve verificar e documentar os mecanismos de transferência internacional aplicáveis; políticas de fornecedores não substituem as obrigações do Game QTA. A conexão ao YouTube ocorre somente após a ativação do player.
+          - Não vendemos dados nem utilizamos publicidade comportamental ou rastreamento comercial no aplicativo. Fornecimento a autoridades depende de obrigação ou determinação válida e se limita ao necessário. Relatórios baixados seguem as mesmas restrições de acesso, finalidade e descarte.
           links:
-            - label: "LGPD — Lei nº 13.709/2018"
-              url: "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709compilado.htm"
-            - label: "ANPD — Direitos dos titulares"
-              url: "https://www.gov.br/anpd/pt-br/assuntos/titular-de-dados/direito-dos-titulares"
-            - label: "ANPD — Proteção de crianças e adolescentes no ambiente digital"
-              url: "https://www.gov.br/anpd/pt-br/assuntos/eca-digital"
+          - label: Hostinger - Política de Privacidade
+            url: https://www.hostinger.com/br/legal/politica-de-privacidade
+          - label: Google - Política de Privacidade (Gmail e YouTube)
+            url: https://policies.google.com/privacy?hl=pt-BR
+        cookies:
+          title: 6. Cookies e serviços externos
+          paragraphs:
+          - 'O cookie próprio _qta_rails8_session mantém a navegação e a proteção dos formulários, com validade de até 12 horas após uso. Os cookies user_session_id (estudante) e session_id (administração) guardam identificadores assinados: o acesso expira 12 horas após o login também no servidor. Não guardam a senha. São HttpOnly e SameSite=Lax; em produção usam Secure e HTTPS. Sair da conta invalida a respectiva sessão no servidor. Apagar só o cookie não exclui o cadastro nem os registros da sessão no banco.'
+          - 'Não instalamos analytics, pixels comerciais ou fontes externas. Os vídeos são opcionais, sem conexão automática ou autorização salva: Assistir vídeo ativa somente o player da página em youtube-nocookie.com; seguir para a questão sem clicar mantém o bloqueio. Desativar vídeo externo interrompe novas conexões daquele player, sem desfazer dados já enviados. Recarregar, navegar ou revelar a questão exige nova escolha. O domínio de privacidade avançada não significa ausência de tratamento ou armazenamento pelo Google; aplicam-se as políticas do fornecedor. A escolha do player não equivale a autorização parental ou consentimento de pesquisa.'
+        children:
+          title: 7. Crianças e adolescentes
+          paragraphs:
+          - O Game QTA pode ser utilizado por crianças e adolescentes. A entrada direta não afasta direitos nem dispensa as medidas de proteção da LGPD e do ECA Digital. As proteções comuns incluem campos demográficos opcionais, ranking sem nome ou e-mail, ausência de chat e publicidade comportamental, vídeos desligados por padrão e canais de correção e exclusão.
+          - A idade opcional caracteriza o público em análises agregadas e não comprova idade nem autoriza conteúdo inadequado. Eventuais informações coletadas especificamente para verificação etária não podem ser reaproveitadas para estatísticas ou pesquisa. A equipe deve avaliar riscos, conteúdo, aferição etária e supervisão conforme as exigências aplicáveis, preservando privacidade elevada para todos.
+          - Responsáveis podem solicitar informações, proteção, correção, interrupção de tratamento inadequado ou exclusão pelo contato público. Antes de entregar dados ou agir sobre uma conta, o atendimento verificará identidade e representação de forma proporcional. Matrícula escolar não comprova, por si só, autorização do representante legal.
+          - Riscos e violações envolvendo menores recebem prioridade. Um tratamento sem fundamento adequado ou incompatível com o melhor interesse deve ser suspenso ou restringido. O aceite do estudante não será usado como autorização parental fictícia.
+        retention:
+          title: 8. Guarda e exclusão dos dados
+          paragraphs:
+          - As regras abaixo limitam a guarda, inclusive de cópias administrativas. Cada prazo conta do evento indicado. Possível pesquisa futura não prorroga esses prazos. A administração deve executar e registrar as rotinas de descarte; a política não declara que todas estejam automatizadas.
+          - 'Cadastro, progresso, respostas, ranking e aceites identificáveis: enquanto houver uso, até a exclusão solicitada ou o encerramento por inatividade. Após 12 meses sem acesso ou interação autenticada, aplica-se aviso por e-mail com antecedência mínima de 30 dias da exclusão. Retomar o acesso antes do encerramento cancela o procedimento. Para contas sem histórico confiável, a contagem começa com a adoção do controle, sem exclusão retroativa presumida.'
+          - 'Sessões expiradas no banco: eliminação em até 30 dias após expiração ou revogação. A validade de acesso de 12 horas é independente desse prazo de guarda.'
+          - 'Logs de segurança e registros operacionais: até 90 dias da geração. Relatórios identificáveis exportados: somente durante a tarefa administrativa e por no máximo 30 dias da exportação, com descarte antecipado ao concluir a finalidade.'
+          - 'Registro mínimo dos pedidos de privacidade: até 2 anos após encerrar o atendimento. Documentos recebidos apenas para verificação devem ser descartados após essa verificação, salvo conservação específica justificada.'
+          - 'Backups e snapshots: no máximo 30 dias da criação de cada cópia. Dados excluídos da aplicação ativa deixam essas cópias pelo descarte no ciclo de retenção. Após restauração, exclusões e bloqueios posteriores à cópia devem ser reaplicados antes de reabrir o serviço.'
+          - 'Registros de incidentes de segurança com dados pessoais: pelo menos 5 anos do registro do incidente, conforme o regulamento da ANPD. Isso não autoriza guardar todos os dados ou todos os logs por esse período.'
+          - Conservações excepcionais por obrigação legal, ordem válida ou disputa concreta exigem motivo, dados mínimos, acesso restrito e prazo ou revisão definidos. Encerrada a necessidade, aplica-se eliminação ou anonimização efetiva. Textos legais sem vínculo com pessoas podem ser preservados para histórico de versões.
+        rights:
+          title: 9. Seus direitos sobre os dados
+          paragraphs:
+          - A LGPD prevê direitos que podem ser exercidos pelo titular ou por seu representante legal, conforme as condições aplicáveis a cada tratamento.
+          items:
+          - Confirmar o tratamento e acessar seus dados; corrigir informações incompletas, inexatas ou desatualizadas.
+          - Pedir anonimização, bloqueio ou eliminação de dados desnecessários, excessivos ou tratados em desacordo com a lei.
+          - Solicitar portabilidade nos limites da regulamentação e eliminação de dados tratados com consentimento, ressalvadas as hipóteses legais de conservação.
+          - Conhecer os compartilhamentos, a possibilidade de recusar consentimento e as consequências dessa escolha; revogar o consentimento quando ele for a base utilizada.
+          - Opor-se ao tratamento em caso de descumprimento da LGPD e solicitar revisão e explicação de decisões exclusivamente automatizadas que afetem seus interesses, quando cabível.
+          - Apresentar petição à ANPD e recorrer aos órgãos competentes nas hipóteses legais.
+        requests:
+          title: 10. Como solicitar correção ou exclusão
+          paragraphs:
+          - Para corrigir o cadastro ou excluir a conta ativa, entre no jogo e acesse Meu perfil e meus dados. As ações pedem sua senha atual; a exclusão exige confirmação adicional e é permanente. Esses recursos continuam disponíveis mesmo sem aceitar documentos atualizados. A exclusão remove cadastro, sessões, tentativas, respostas, ranking e aceites identificáveis da aplicação ativa.
+          - Quem perdeu acesso, representantes legais e outros pedidos podem usar guilhardesj@gmail.com. Guilhardes realiza o atendimento. Identifique a conta e explique o pedido; informe se atua como representante. Não envie senha ou cópias de documentos sem necessidade. O link abre seu serviço de e-mail; o site não envia mensagens nem gera protocolo.
+          - O atendimento confirma recebimento, registra o pedido com acesso restrito e verifica identidade e representação proporcionalmente ao risco, sem exigir cópia de documento por padrão. A resposta informa providências ou motivos de eventual impossibilidade nos prazos legais aplicáveis.
+          - 'Confirmação e acesso seguem o art. 19 da LGPD: formato simplificado imediatamente ou declaração completa em até 15 dias, conforme o pedido e as condições legais aplicáveis. Esse prazo não é uma regra única para todos os direitos. Você também pode procurar a ANPD e os órgãos competentes.'
+          - A exclusão ativa não apaga imediatamente backups, registros de atendimento, registros de incidente ou cópias com conservação legalmente justificada. Aplicam-se os limites desta política.
+        updates:
+          title: 11. Atualizações e referências
+          paragraphs:
+          - Versão e data identificam o texto apresentado. Alterações relevantes serão comunicadas antes de sua aplicação. Novos usos, fornecedores e mecanismos de proteção exigem revisão da política e das medidas correspondentes. Direitos previstos em lei prevalecem sobre disposição incompatível deste documento.
+          - Dúvidas sobre o tratamento e a aplicação destas regras podem ser enviadas a guilhardesj@gmail.com.
+          links:
+          - label: LGPD — Lei nº 13.709/2018
+            url: https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709compilado.htm
+          - label: ANPD — Direitos dos titulares
+            url: https://www.gov.br/anpd/pt-br/assuntos/titular-de-dados/direito-dos-titulares
+          - label: ANPD — Proteção de crianças e adolescentes no ambiente digital
+            url: https://www.gov.br/anpd/pt-br/assuntos/eca-digital

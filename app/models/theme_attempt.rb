@@ -6,7 +6,39 @@ class ThemeAttempt < ApplicationRecord
   enum :status, { in_progress: 0, completed: 1 }
 
   validates :status, presence: true
-  validates :theme_id, uniqueness: { scope: :user_id, conditions: -> { in_progress } }
+  validates :theme_id, uniqueness: { scope: :user_id, conditions: -> { in_progress } }, if: :in_progress?
+
+  def self.latest_for(user)
+    where(user: user).select("DISTINCT ON (theme_id) theme_attempts.*")
+      .order(:theme_id, status: :desc, created_at: :desc, id: :desc)
+  end
+
+  def all_questions_answered?
+    theme.questions.exists? && !theme.questions.where.not(id: question_submissions.answered.select(:question_id)).exists?
+  end
+
+  def complete
+    user.with_lock do
+      reload
+      if user.blocked? || !theme.level.available_to?(user)
+        errors.add(:base, :level_locked)
+        nil
+      elsif all_questions_answered?
+        update!(status: :completed) unless completed?
+        level = theme.level
+        finished = level.completed_for?(user)
+        score = level.score_for(user) if finished
+        passed = level.passed_by?(user) if finished
+        result = { "user_id" => user_id, "attempt_id" => id, "theme_id" => theme_id,
+          "level_id" => level.id, "level_finished" => finished, "score" => score, "passed" => passed }
+        level.reset_progress_for(user) if finished && !passed
+        result
+      else
+        errors.add(:base, :unanswered_questions)
+        nil
+      end
+    end
+  end
 
   def next_pending_question
     # Se existe uma submission pendente (foi revelada mas option_id é nil), retorna a questão dela
@@ -19,6 +51,8 @@ class ThemeAttempt < ApplicationRecord
   end
 
   def reveal_question(time_multiplier:)
+    return nil if completed?
+
     with_lock do
       question = next_pending_question
       if question.present?

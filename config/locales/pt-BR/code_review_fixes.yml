@@ -1,0 +1,78 @@
+pt-BR:
+  admin:
+    reports:
+      students_headers: [ID, Nome, Email, Cidade, Nivel_Educacao, Pontuacao_Total, Tempo_Total, Status_Bloqueio, Criado_em]
+      themes_headers: [ID, Tema, Nivel, Total_Tentativas, Total_Respostas, Total_Acertos, Taxa_Acertos]
+      blocked: "Bloqueado"
+      active: "Ativo"
+    bootstrap:
+      demo_created: "Conta de demonstração preparada. Use somente em desenvolvimento."
+      demo_disabled: "Dados de demonstração são permitidos somente em desenvolvimento e mediante opção explícita."
+      password_too_short: "Use uma senha inicial com pelo menos 12 caracteres."
+      created: "Administrador criado. Nenhuma credencial foi registrada nesta saída."
+    admins:
+      create:
+        success: "Administrador criado com sucesso."
+      update:
+        success: "Administrador atualizado com sucesso."
+      destroy:
+        success: "Administrador excluído com sucesso."
+    passwords:
+      new:
+        title: "Recupere sua senha"
+        email: "E-mail"
+        submit: "Enviar instruções"
+      edit:
+        title: "Defina sua nova senha"
+        password: "Nova senha"
+        confirmation: "Confirme a nova senha"
+        submit: "Salvar nova senha"
+      create:
+        requested: "Se o e-mail estiver cadastrado, as instruções de recuperação serão enviadas."
+      update:
+        success: "Sua senha foi redefinida. Entre novamente para continuar."
+        invalid: "Informe uma nova senha e confirme o mesmo valor."
+      invalid_token: "O link de recuperação é inválido ou expirou. Solicite um novo link."
+    levels:
+      destroy:
+        success: "Nível removido com sucesso."
+  passwords_mailer:
+    reset:
+      subject: "Recupere sua senha do Game QTA"
+      instructions: "Para definir uma nova senha, acesse:"
+      link: "a página de recuperação de senha"
+      expires: "Este link expira em %{duration}."
+  play:
+    questions:
+      empty_theme: "Este tema ainda não possui questões disponíveis. Volte à jornada."
+      unauthorized: "Tentativa inválida, bloqueada ou não autorizada."
+    theme_completions:
+      new:
+        title: "Questões respondidas"
+        submit: "Ver resultado"
+      create:
+        theme_completed: "Tema concluído com sucesso!"
+  activerecord:
+    attributes:
+      admin:
+        email_address: "E-mail"
+        password: "Senha"
+        password_confirmation: "Confirmação de senha"
+    errors:
+      models:
+        user:
+          attributes:
+            base:
+              theme_unavailable: "Este tema ainda não possui questões disponíveis."
+              level_locked: "Conclua os níveis anteriores para acessar este conteúdo."
+        theme_attempt:
+          attributes:
+            base:
+              level_locked: "Este nível não está disponível para sua conta."
+              unanswered_questions: "Responda todas as questões antes de concluir o tema."
+        admin:
+          attributes:
+            base:
+              cannot_remove_self: "Você não pode excluir a si mesmo."
+              actor_unavailable: "Sua conta administrativa não está mais disponível."
+              last_admin: "Não é possível excluir o único administrador do sistema."

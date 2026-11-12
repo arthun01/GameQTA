@@ -18,11 +18,12 @@ class User < ApplicationRecord
     superior_completo: 6
   }, validate: { allow_nil: true }
 
-  validates :full_name, :age, :email_address, presence: true
+  validates :full_name, :email_address, presence: true
   validates :ranking_code, presence: true, uniqueness: true, format: { with: /\A[A-F0-9]{12}\z/ }
   validates :full_name, length: { maximum: 100 }
   validates :city, length: { maximum: 100 }, allow_nil: true
-  validates :age, numericality: { only_integer: true, greater_than_or_equal_to: 5, less_than_or_equal_to: 120 }
+  validates :age, numericality: { only_integer: true, greater_than_or_equal_to: 5, less_than_or_equal_to: 120 }, allow_nil: true
+  validates :response_time_multiplier, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 10 }
   validates :email_address, format: { with: URI::MailTo::EMAIL_REGEXP }, uniqueness: true, length: { maximum: 254 }
   normalizes :email_address, with: ->(e) { e.strip.downcase }
   normalizes :full_name, with: ->(value) { value.strip }
@@ -39,6 +40,29 @@ class User < ApplicationRecord
 
   def current_legal_acceptance?
     legal_acceptances.exists?(document_revision: LegalDocument.revision)
+  end
+
+  def save_for_registration
+    self.class.transaction(requires_new: true) { save(context: :registration) }
+  rescue ActiveRecord::RecordNotUnique => error
+    raise unless error.cause.result.error_field(PG::Result::PG_DIAG_CONSTRAINT_NAME) == "index_users_on_email_address"
+
+    errors.add(:email_address, :taken)
+    false
+  end
+
+  def start_theme(theme)
+    with_lock do
+      if !theme.questions.exists?
+        errors.add(:base, :theme_unavailable)
+        nil
+      elsif !blocked? && theme.level.available_to?(self)
+        theme_attempts.in_progress.find_by(theme: theme) || theme_attempts.create!(theme: theme)
+      else
+        errors.add(:base, :level_locked)
+        nil
+      end
+    end
   end
 
   def ranking_name
@@ -90,12 +114,13 @@ class User < ApplicationRecord
       unless blocked?
         submissions = QuestionSubmission.joins(:theme_attempt).where(theme_attempts: { user_id: id })
         total_time = submissions.sum(:time_taken)
-        total_score = submissions.joins(:question).where(is_correct: true).sum(
+        calculated_score = submissions.joins(:question).where(is_correct: true).sum(
           "CASE questions.difficulty WHEN 0 THEN 10 WHEN 1 THEN 20 WHEN 2 THEN 30 ELSE 0 END"
         )
 
+        update_column(:total_score, calculated_score)
         Leaderboard.upsert(
-          { user_id: id, total_score: total_score, total_time_taken: total_time },
+          { user_id: id, total_score: calculated_score, total_time_taken: total_time },
           unique_by: :user_id
         )
       end
@@ -111,7 +136,14 @@ class User < ApplicationRecord
   end
 
   def unblock!
-    update(blocked_at: nil)
+    with_lock do
+      if update(blocked_at: nil)
+        update_leaderboard
+        true
+      else
+        false
+      end
+    end
   end
 
   def blocked?

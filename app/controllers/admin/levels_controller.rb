@@ -33,17 +33,19 @@ class Admin::LevelsController < Admin::BaseController
   end
 
   def destroy
-    @level.destroy
-    redirect_to admin_levels_path, notice: t(".success", default: "Nível removido com sucesso."), status: :see_other
+    if @level.destroy
+      redirect_to admin_levels_path, notice: t(".success"), status: :see_other
+    else
+      redirect_to admin_levels_path, alert: @level.errors.full_messages.to_sentence, status: :see_other
+    end
   end
 
   private
+    def set_level
+      @level = Level.find(params[:id])
+    end
 
-  def set_level
-    @level = Level.find(params[:id])
-  end
-
-  def level_params
-    params.expect(level: [ :name, :description, :icon ])
-  end
+    def level_params
+      params.expect(level: [ :name, :description, :icon ])
+    end
 end

@@ -12,7 +12,8 @@ class CookiePrivacyTest < ActionDispatch::IntegrationTest
     get play_theme_attempt_question_path(theme_attempts(:one))
     assert_response :success
     assert_select "iframe", count: 0
-    assert_select "[data-controller=external-video] button", text: "Carregar este vídeo"
+    assert_select "[data-controller=external-video] button", text: "Assistir vídeo"
+    assert_select "button[data-action='external-video#reject']", count: 0
   end
 
   test "authentication cookie is limited and protected and logout revokes server record" do

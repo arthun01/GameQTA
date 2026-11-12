@@ -4,16 +4,16 @@ one:
   name: "Princípio do Poluidor-Pagador"
   description: "Entenda quem deve arcar com os custos de prevenção e reparação ambiental."
   icon: "💰"
-  level: one
+  level_id: 1
 
 two:
   name: "Princípio da Precaução"
   description: "Quando não há certeza científica absoluta, como o Direito deve agir?"
   icon: "🛡️"
-  level: one
+  level_id: 1
 
 three:
   name: "Política Nacional de Recursos Hídricos"
   description: "Fundamentos da gestão de águas no Brasil."
   icon: "🌊"
-  level: two
+  level_id: 2

@@ -14,8 +14,10 @@ class Admin::AdminsTest < ApplicationSystemTestCase
 
   test "creating a new admin" do
     visit admin_admins_path
+    assert_selector "a", text: "Novo Administrador"
 
     click_on "Novo Administrador"
+    assert_current_path new_admin_admin_path
 
     fill_in "E-mail", with: "novo_admin@example.com"
     fill_in "Senha", with: "secret123"

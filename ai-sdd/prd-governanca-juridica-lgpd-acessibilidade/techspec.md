@@ -216,3 +216,23 @@ Fontes: [ANPD cookies](https://www.gov.br/anpd/pt-br/centrais-de-conteudo/materi
 Desativar snapshots Turbo nos layouts que contêm formulários e dados privados, além de no-store HTTP; limpar cache no logout de ambos os perfis. O cronômetro usa deadline absoluto e horário de referência do servidor para calcular uma âncora performance.now, preservada no reconnect, evitando tanto reinício quanto erro por relógio civil local incorreto. Envio inclui submission_id e consulta a resposta dentro da tentativa autenticada; duplicata não atua sobre outra questão. Timestamp de aceite usa touch específico no lock, sem revalidar campos legados que não foram alterados. Regressões cobrem esses cenários; ver revisao.md.
 
 A checagem final atualiza explicitamente ruby-advisory-db: além dos três pacotes iniciais, patches corretivos de addressable, loofah, nokogiri, rack e rails-html-sanitizer foram necessários. Ver versões e revalidação no tasks.md.
+
+## Consolidação 1.0 - 04/11/2026
+
+As decisões atuais do PRD e do manual substituem as hipóteses anteriores sobre hospedagem, campos demográficos e retenção. Migração `MakeUserAgeOptional` altera somente a nulabilidade de `users.age`; Rails gera o schema. Modelo aceita ausência, mantendo validação numérica e limites para idade preenchida. Cadastro e perfil deixam de exigir idade; nome/e-mail continuam obrigatórios. Valores anteriores são preservados. Rollback da nulabilidade exige resolver previamente registros sem idade, sem inventar valores.
+
+Documentos em `config/locales/pt-BR/legal.yml` sobem para 1.0 e 04/11/2026. Avisos de minuta vazios são omitidos das telas e do aceite; o novo snapshot provoca nova revisão sem reescrever aceites antigos. O manual `governanca-privacidade.md` e os textos do locale são fontes do PDF. Não duplicar termos integrais no gerador.
+
+Inatividade de 12 meses e demais retenções são regras aprovadas, com execução ainda por implantar/verificar. Esta rodada não adiciona agendamento, SMTP, exclusões em lote ou avisos reais. Registrar próximo trabalho: marco confiável de atividade, aviso mínimo de 30 dias, falha de envio, retorno, exclusão concorrente e reaplicação após restauração. Não usar `updated_at` do perfil como prova automática do último acesso. Configurações operacionais ficam fora do PDF, a pedido do usuário.
+
+## Simplificação de vídeo e preferência de tempo - 10/11/2026
+
+Esta revisão substitui a escolha por questão e os dois botões do player descritos na entrega de 03/11. A migração `AddResponseTimeMultiplierToUsers` adiciona `users.response_time_multiplier`, inteiro não nulo com padrão 1. `User` valida inteiro de 1 a 10; contas existentes recebem o padrão. A preferência é removida na exclusão da conta e não é adicionada às exportações demográficas.
+
+O recurso singular `profile/time_preference`, exposto por PATCH `/perfil/tempo`, usa `Users::TimePreferencesController#update`. Apenas o campo de tempo é permitido, sempre em `Current.user`. A preferência não exige senha adicional e continua disponível no perfil quando o aceite jurídico está pendente. Cadastro, correção de dados pessoais e exclusão mantêm seus controles existentes. Sem JavaScript, o formulário normal continua funcionando.
+
+`Play::QuestionsController#reveal` passa o valor salvo da conta a `ThemeAttempt#reveal_question`, ignorando o parâmetro de multiplicador recebido do navegador. O método conserva `find_or_create_by!` sob trava: uma submission já revelada mantém `time_limit_seconds` e `revealed_at`, mesmo após mudar a preferência. Novas questões usam a preferência atual, com os mesmos limites e verificação de prazo do servidor.
+
+O partial de vídeo preserva URL em data-attribute sem `src` de recurso externo, um botão Assistir vídeo e aviso curto associado. Stimulus cria o iframe somente no clique e mantém limpeza ao desativar, desconectar ou preparar o cache Turbo. Sem iframe, thumbnail externa ou autorização salva por padrão. O botão redundante de recusa e seus targets/estado foram removidos.
+
+Documentos públicos/manual são 1.1, de 10/11/2026, e o PDF usa os textos reais do locale. O gerador lê versão/data dessa fonte, inclusive no rodapé, para evitar datas fixas divergentes. Snapshots antigos não são reescritos. A mudança não certifica conformidade integral de acessibilidade ou execução das rotinas operacionais.

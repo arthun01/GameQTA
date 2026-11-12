@@ -1,6 +1,8 @@
 require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
+  include ActiveJob::TestHelper
+
   test "ranking code does not derive from profile and is preserved when profile changes" do
     user = User.create!(full_name: "Pessoa Exemplo", email_address: "new-alias@example.com", password: "password123", age: 11, city: "Ilhéus", education_level: :fundamental_incompleto)
     original_code = user.ranking_code
@@ -18,7 +20,6 @@ class UserTest < ActiveSupport::TestCase
     user = User.new
     assert_not user.save, "Saved the user without required attributes"
     assert_includes user.errors[:full_name], "não pode ficar em branco"
-    assert_includes user.errors[:age], "não pode ficar em branco"
   end
 
   test "should reject invalid education_level" do
@@ -70,8 +71,9 @@ class UserTest < ActiveSupport::TestCase
   test "profile reports are optional and can be cleared with the current password" do
     user = users(:student_one)
 
-    assert user.update_profile({ city: "", education_level: "" }, password: "password")
-    assert_nil user.reload.city
+    assert user.update_profile({ age: "", city: "", education_level: "" }, password: "password")
+    assert_nil user.reload.age
+    assert_nil user.city
     assert_nil user.education_level
   end
 
@@ -114,5 +116,17 @@ class UserTest < ActiveSupport::TestCase
     assert User.exists?(other_user.id)
     assert_equal other_attempt_ids, other_user.theme_attempts.pluck(:id)
     assert other_user.leaderboard.present?
+  end
+
+  test "reset_progress_for recalculates leaderboard and user total_score" do
+    user = users(:student_two)
+    user.update_leaderboard
+    assert_operator user.reload.total_score, :>, 0
+    assert_operator user.leaderboard.reload.total_score, :>, 0
+
+    perform_enqueued_jobs { levels(:one).reset_progress_for(user) }
+
+    assert_equal 0, user.reload.total_score
+    assert_equal 0, user.leaderboard.reload.total_score
   end
 end

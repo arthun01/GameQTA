@@ -6,6 +6,18 @@ O objetivo aqui é **registrar estrategicamente o "O quê", o "Por quê" e os "C
 
 ---
 
+## 🔥 PRIORIDADE 0 (BLOQUEADOR FUNCIONAL / SEGURANÇA): Correções Críticas de Progressão, Segurança de Gameplay e Estabilidade
+
+> **Especificação AI-SDD Completa:** [`ai-sdd/prd-correcoes-progressao-e-estabilidade/`](../prd-correcoes-progressao-e-estabilidade/prd.md) ([PRD](../prd-correcoes-progressao-e-estabilidade/prd.md) · [Design](../prd-correcoes-progressao-e-estabilidade/design.md) · [Tech Spec](../prd-correcoes-progressao-e-estabilidade/techspec.md) · [Tasks](../prd-correcoes-progressao-e-estabilidade/tasks.md))
+
+- [x] **Tarefa 1.0 — Motor de Desbloqueio Real de Níveis e Proteção Backend:** Implementar `Level#unlocked_for?`, `Level#completed_by?` e `Theme#completed_by?`, corrigir denominador de `Level#score_for` para considerar todas as questões do nível e bloquear acesso direto via URL a níveis trancados ou finalização prematura de temas.
+- [x] **Tarefa 2.0 — Sincronização do Ranking (`Leaderboard`) em Resets:** Recalcular o ranking ao destruir submissões/tentativas (reprovação de nível ou reinício de tema) e manter `users.total_score` e `question_submissions.score` sincronizados.
+- [x] **Tarefa 3.0 — Validações do Model `Admin`, Painel Admin e Proteção CSV:** Validar formato/unicidade de e-mail em `Admin` (evitando erro 500), corrigir aviso de exclusão de `Level` com temas associados, filtrar `ThemeAttempt.completed.count` no Dashboard Admin e sanitizar relatórios CSV contra *Formula Injection*.
+- [x] **Tarefa 4.0 — Interface "Sua Jornada" (Desbloqueio Visual, Imagens ODS por Ordem e Avatar):** Substituir `level.starting_level?` por `level.unlocked_for?(Current.user)` na view, exibir status de nível/tema concluído, mapear imagens `ods-1.png` a `ods-5.png` pela posição sequencial do nível e exibir a inicial real do estudante no cabeçalho.
+- [x] **Tarefa 5.0 — Higienização do Repositório, I18n, Padronização Admin e Testes E2E:** Remover scripts órfãos (`patch_auth.rb`, `rename_to_admin.rb`) e controllers Stimulus mortos, traduzir mensagens em inglês para `pt-BR`, padronizar botões restantes do Admin na paleta Emerald e estabilizar `bin/rails test:system`.
+
+---
+
 ## 🚨 PRIORIDADE 1 (CRÍTICA / LEGAL): Pacote de Governança Jurídica, LGPD & Acessibilidade
 
 > **Responsabilidade / Motivação:** Como o Game QTA é um projeto de extensão universitária da UESC voltado para o ambiente escolar (alunos dos ensinos fundamental e médio, majoritariamente menores de idade), a conformidade legal e a acessibilidade digital **não são opcionais**, mas sim requisitos regulatórios essenciais para evitar riscos de sanções administrativas (ANPD), processos judiciais e exclusão de estudantes com deficiência.

@@ -44,20 +44,24 @@ class AccessibilityTest < ApplicationSystemTestCase
     assert page.evaluate_script("document.activeElement.matches('button[data-action=\"click->modal#open\"]')")
   end
 
-  test "video remains blocked across refusal and navigation and answer requires confirmation" do
+  test "video loads only on request and profile preference replaces per-question setup" do
     login_student
+    visit profile_path
+    find("#response-time-preference summary").click
+    select "10× o tempo padrão", from: "Tempo para responder"
+    click_on "Salvar tempo de resposta"
+    assert_text "Tempo de resposta salvo"
     visit play_theme_attempt_question_path(theme_attempts(:one))
     assert_no_selector "iframe"
     assert_empty external_requests
-    click_on "Continuar sem vídeo"
-    assert_no_selector "iframe"
-    click_on "Carregar este vídeo"
+    assert_no_selector "select"
+    click_on "Assistir vídeo"
     assert_selector "iframe[title='Vídeo educativo do YouTube']"
     click_on "Desativar vídeo externo"
     assert_no_selector "iframe"
-    select "10× o tempo padrão", from: "Tempo para responder"
     click_on "Mostrar Questão"
     assert_selector "fieldset"
+    assert_equal GameSetting.current.easy_time * 10, theme_attempts(:one).question_submissions.find_by!(question: questions(:three)).allowed_seconds
     assert_no_selector "iframe"
     first("input[type=radio]").send_keys(:space)
     assert_button "Confirmar resposta"
@@ -91,6 +95,7 @@ class AccessibilityTest < ApplicationSystemTestCase
   private
     def login_student
       visit entrar_path
+      assert_selector "h1", text: "Bem-vindo de volta!"
       fill_in "E-mail", with: users(:student_one).email_address
       fill_in "Senha", with: "password"
       click_on "Entrar para jogar"

@@ -30,4 +30,21 @@ class QuestionSubmissionTest < ActiveSupport::TestCase
       )
     end
   end
+
+  test "answer persists earned score and enqueues UpdateUserJob on destroy" do
+    submission = QuestionSubmission.create!(
+      theme_attempt: theme_attempts(:two),
+      question: questions(:one),
+      revealed_at: Time.current
+    )
+    correct_option = questions(:one).options.find_by!(is_correct: true)
+    submission.answer(option_id: correct_option.id)
+
+    assert submission.reload.is_correct?
+    assert_equal 10, submission.score
+
+    assert_enqueued_with(job: Leaderboards::UpdateUserJob) do
+      submission.destroy!
+    end
+  end
 end

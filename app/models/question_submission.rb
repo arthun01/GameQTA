@@ -6,7 +6,10 @@ class QuestionSubmission < ApplicationRecord
   validates :revealed_at, presence: true
   validates :question_id, uniqueness: { scope: :theme_attempt_id }
 
-  after_commit :update_leaderboard, on: [ :create, :update ]
+  scope :answered, -> { where.not(answered_at: nil).or(where.not(option_id: nil)) }
+
+  before_destroy :remember_leaderboard_user
+  after_commit :update_leaderboard, on: [ :create, :update, :destroy ]
 
   def allowed_seconds
     time_limit_seconds || GameSetting.current.time_for_difficulty(question.difficulty)
@@ -26,7 +29,8 @@ class QuestionSubmission < ApplicationRecord
         elapsed = [ Time.current - revealed_at, 0 ].max
         selected = question.options.find_by(id: option_id)
         selected = nil if elapsed > allowed_seconds + 2
-        update!(option: selected, is_correct: selected&.is_correct? || false,
+        correct = selected&.is_correct? || false
+        update!(option: selected, is_correct: correct, score: correct ? points_for_question : 0,
           answered_at: Time.current, time_taken: elapsed.round)
       else
         false
@@ -35,8 +39,20 @@ class QuestionSubmission < ApplicationRecord
   end
 
   private
+    def points_for_question
+      case question.difficulty
+      when "easy" then 10
+      when "medium" then 20
+      when "hard" then 30
+      else 0
+      end
+    end
 
-  def update_leaderboard
-    Leaderboards::UpdateUserJob.perform_later(theme_attempt.user_id)
-  end
+    def remember_leaderboard_user
+      @leaderboard_user_id = theme_attempt.user_id
+    end
+
+    def update_leaderboard
+      Leaderboards::UpdateUserJob.perform_later(@leaderboard_user_id || theme_attempt.user_id)
+    end
 end

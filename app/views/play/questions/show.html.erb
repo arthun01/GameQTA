@@ -8,9 +8,9 @@
         <img src="/logo_qta.png" alt="Game QTA" class="w-6 h-6 object-contain">
         <span class="text-emerald-800 font-bold text-lg tracking-tight">Game QTA</span>
       </div>
-      <div class="w-10 h-10 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold text-sm">
-        A
-      </div>
+      <%= link_to profile_path, data: { turbo_frame: "_top" }, aria: { label: t("accessibility.profile_link") }, class: "w-10 h-10 rounded-full bg-emerald-100 text-emerald-900 flex items-center justify-center font-bold text-sm hover:bg-emerald-200 transition-colors" do %>
+        <%= Current.user&.full_name&.first&.upcase || "U" %>
+      <% end %>
     </div>
 
     <% submission = @theme_attempt.question_submissions.find_by(question: @question, option_id: nil, answered_at: nil) %>
@@ -44,17 +44,12 @@
 
         <!-- Instruções -->
         <div class="text-center flex justify-center flex-wrap text-slate-500 text-[15px] leading-relaxed px-2">
-          <%= t(".instructions", default: "Assista ao vídeo explicativo. Quando estiver pronto, revele a questão para iniciar o tempo.") %>
+          <%= t(".instructions") %>
         </div>
         
         <!-- Botão de Ação -->
         <div class="mt-auto flex flex-col gap-3 pb-2">
           <%= form_with url: reveal_play_theme_attempt_question_path(@theme_attempt) do |form| %>
-            <div class="mb-4">
-              <%= form.label :time_multiplier, t('accessibility.time_adjustment'), class: "block font-semibold text-slate-800" %>
-              <%= form.select :time_multiplier, (1..10).map { |n| [t('accessibility.time_multiple', count: n), n] }, {}, class: "mt-2 w-full rounded-lg border border-slate-400 p-2", aria: { describedby: "time-help" } %>
-              <p id="time-help" class="mt-2 text-sm text-slate-700"><%= t('accessibility.time_help') %></p>
-            </div>
             <%= form.submit t('.show_question'), class: "w-full rounded-2xl bg-emerald-800 px-6 py-4 font-bold text-white" %>
           <% end %>
         </div>

@@ -51,12 +51,12 @@ class Admin::QuestionsTest < ApplicationSystemTestCase
   end
 
   private
-
-  def login_as(admin)
-    visit new_admin_session_path
-    fill_in "Enter your email address", with: admin.email_address
-    fill_in "Enter your password", with: "password"
-    click_on "Entrar na administração"
-    assert_current_path admin_root_path
-  end
+    def login_as(admin)
+      visit new_admin_session_path
+      assert_selector "h1", text: "Entrar na administração"
+      fill_in "email_address", with: admin.email_address
+      fill_in "password", with: "password"
+      click_on "Entrar na administração"
+      assert_current_path admin_root_path
+    end
 end

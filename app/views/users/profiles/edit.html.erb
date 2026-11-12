@@ -10,7 +10,7 @@
     <% [ :full_name, :email_address, :age, :city ].each do |attribute| %>
       <div>
         <%= form.label attribute, class: "mb-2 block text-sm font-semibold text-slate-800" %>
-        <% field_options = { required: attribute != :city, class: "w-full rounded-lg border border-slate-300 px-4 py-3 focus:ring-2 focus:ring-emerald-800" } %>
+        <% field_options = { required: [ :full_name, :email_address ].include?(attribute), class: "w-full rounded-lg border border-slate-300 px-4 py-3 focus:ring-2 focus:ring-emerald-800" } %>
         <% if attribute == :age %>
           <%= form.number_field attribute, **field_options, min: 5, max: 120 %>
         <% elsif attribute == :email_address %>
